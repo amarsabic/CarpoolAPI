@@ -27,5 +27,10 @@ namespace Carpool.WebAPI.Controllers
         {
             return _service.Update(id, request);
         }
+        [HttpDelete("{id}")]
+        public T Delete(int id)
+        {
+            return _service.Delete(id);
+        }
     }
 }
