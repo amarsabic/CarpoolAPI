@@ -27,5 +27,17 @@ namespace Carpool.WebAPI.Services
 
             return _mapper.Map<List<Model.Obavijesti>>(result);
         }
+
+        public override Model.Obavijesti Insert(ObavijestiUpsertRequest request)
+        {
+            var entity = _mapper.Map<Database.Obavijesti>(request);
+            entity.VozacID = 23;
+            
+
+            _context.Obavijesti.Add(entity);
+            _context.SaveChanges();
+
+            return _mapper.Map<Model.Obavijesti>(entity);
+        }
     }
 }

@@ -8,5 +8,5 @@ namespace Carpool.Model
     {
         public int GradID { get; set; }
         public string Naziv { get; set; }
-    }
+     }
 }

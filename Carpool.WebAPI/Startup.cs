@@ -79,7 +79,7 @@ namespace Carpool.WebAPI
             services.AddScoped<ICRUDService<Model.Automobil, AutomobilSearchRequest, AutomobilInsertRequest, AutomobilInsertRequest>, AutomobilService>();
             services.AddScoped<ICRUDService<Model.Obavijesti, ObavijestiSearchRequest, ObavijestiUpsertRequest, ObavijestiUpsertRequest>, ObavijestService>();
 
-            services.AddScoped<IService<Model.Grad, object>, BaseService<Model.Grad, object, Grad>>();
+            services.AddScoped<ICRUDService<Model.Grad, object, Model.Grad, Model.Grad>, GradService>();
             services.AddScoped<IService<Model.AutomobilComboBox, object>, BaseService<Model.AutomobilComboBox, object, Automobil>>();
             services.AddScoped<IService<Model.KorisniciUloge, object>, BaseService<Model.KorisniciUloge, object, KorisniciUloge>>();
             services.AddScoped<IService<Model.Uloge, object>, BaseService<Model.Uloge, object, Uloge>>();

@@ -97,7 +97,7 @@ namespace Carpool.WebAPI.Services
             entity.LozinkaSalt = GenerateSalt();
             entity.LozinkaHash = GenerateHash(entity.LozinkaSalt, request.Password);
 
-            entity.GradID = 1;
+            entity.GradID = 4;
 
             _context.Korisnici.Add(entity);
 

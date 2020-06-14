@@ -11,9 +11,9 @@ namespace Carpool.WebAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class GradController : BaseController<Model.Grad, object>
+    public class GradController : BaseCRUDController<Model.Grad, object, Model.Grad, Model.Grad>
     {
-        public GradController(IService<Grad, object> service) : base(service)
+        public GradController(ICRUDService<Grad, object, Grad, Grad> service) : base(service)
         {
         }
     }

@@ -13,8 +13,6 @@ namespace Carpool.WebAPI.Database
         {
 
         }
-
-        public DbSet<Drzava> Drzave { get; set; }
         public DbSet<Grad> Gradovi { get; set; }
         public DbSet<Automobil> Autmobili { get; set; }
         public DbSet<Vozac> Vozaci { get; set; }

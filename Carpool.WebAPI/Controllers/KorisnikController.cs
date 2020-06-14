@@ -35,6 +35,7 @@ namespace Carpool.WebAPI.Controllers
         }
 
         [HttpPost]
+        [AllowAnonymous]
         public Model.Korisnik Insert(KorisnikInsertRequest request)
         {
             return _korisnikService.Insert(request);

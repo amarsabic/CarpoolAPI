@@ -1,9 +1,11 @@
 ﻿using Carpool.Model.Requests;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -120,6 +122,32 @@ namespace Carpool.WinUI.Voznje
            await _voznje.Insert<Model.Automobil>(request);
 
             MessageBox.Show("Uspješno dodavanje");
+        }
+
+        private void btnJson_Click(object sender, EventArgs e)
+        {
+            LoadJson();
+        }
+        public async void LoadJson()
+        {
+            using (StreamReader r = new StreamReader("C:\\Users\\Amar Sabic\\Desktop\\cities.json-master\\cities.json"))
+            {
+                string json = r.ReadToEnd();
+                List<Item> items = JsonConvert.DeserializeObject<List<Item>>(json);
+                List<Model.Grad> gradovi = items.Where(x => x.country == "BA").Select(x=>new Model.Grad { 
+                    Naziv=x.name
+                }).ToList();
+
+                foreach (var item in gradovi)
+                {
+                    await _gradovi.Insert<Model.Grad>(item);
+                }
+            }
+        }
+        public class Item
+        {
+            public string name;
+            public string country;
         }
     }
 }
