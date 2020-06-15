@@ -11,6 +11,8 @@ namespace Carpool.Model
         public string Naslov { get; set; }
         public DateTime DatumVrijemeObjave { get; set; }
         public int TipObavijestiID { get; set; }
+        public string NazivTipa { get; set; }
         public int VozacID { get; set; }
+        public string KorisnickoIme { get; set; }
     }
 }

@@ -16,6 +16,7 @@ namespace Carpool.WebAPI.Services
 
         public override List<Model.Obavijesti> Get(ObavijestiSearchRequest request)
         {
+
             var query = _context.Obavijesti.AsQueryable();
 
             if (!string.IsNullOrWhiteSpace(request?.Naslov))
@@ -25,7 +26,23 @@ namespace Carpool.WebAPI.Services
 
             var result = query.ToList();
 
-            return _mapper.Map<List<Model.Obavijesti>>(result);
+            var list = new List<Model.Obavijesti>();
+            foreach (var item in result)
+            {
+                list.Add(new Model.Obavijesti
+                {
+                    DatumVrijemeObjave = item.DatumVrijemeObjave,
+                    KorisnickoIme = _context.Korisnici.Where(k=>k.KorisnikID==item.VozacID).Select(k=>k.KorisnickoIme).FirstOrDefault(),
+                    KratkiOpis = item.KratkiOpis,
+                    Naslov = item.Naslov,
+                    TipObavijestiID = item.TipObavijestiID,
+                    NazivTipa = _context.TipObavijesti.Where(t=>t.TipObavijestiID==item.TipObavijestiID).Select(t=>t.NazivTipa).FirstOrDefault(),
+                    ObavijestiID = item.ObavijestiID,
+                    VozacID = item.VozacID
+                });
+            }
+
+            return list;
         }
 
         public override Model.Obavijesti Insert(ObavijestiUpsertRequest request)

@@ -32,6 +32,14 @@
             this.btnDodajObavijest = new System.Windows.Forms.Button();
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.btnTrazi = new System.Windows.Forms.Button();
+            this.Naslov = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.KratkiOpis = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NazivTipa = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DatumVrijemeObjave = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.KorisnickoIme = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.VozacID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ObavijestiID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TipObavijestiID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvObavijestiList)).BeginInit();
             this.SuspendLayout();
             // 
@@ -40,6 +48,15 @@
             this.dgvObavijestiList.AllowUserToAddRows = false;
             this.dgvObavijestiList.AllowUserToDeleteRows = false;
             this.dgvObavijestiList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvObavijestiList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Naslov,
+            this.KratkiOpis,
+            this.NazivTipa,
+            this.DatumVrijemeObjave,
+            this.KorisnickoIme,
+            this.VozacID,
+            this.ObavijestiID,
+            this.TipObavijestiID});
             this.dgvObavijestiList.Location = new System.Drawing.Point(12, 188);
             this.dgvObavijestiList.Name = "dgvObavijestiList";
             this.dgvObavijestiList.ReadOnly = true;
@@ -73,6 +90,65 @@
             this.btnTrazi.UseVisualStyleBackColor = true;
             this.btnTrazi.Click += new System.EventHandler(this.btnTrazi_Click);
             // 
+            // Naslov
+            // 
+            this.Naslov.DataPropertyName = "Naslov";
+            this.Naslov.HeaderText = "Naslov";
+            this.Naslov.Name = "Naslov";
+            this.Naslov.ReadOnly = true;
+            // 
+            // KratkiOpis
+            // 
+            this.KratkiOpis.DataPropertyName = "KratkiOpis";
+            this.KratkiOpis.HeaderText = "Kratki opis";
+            this.KratkiOpis.Name = "KratkiOpis";
+            this.KratkiOpis.ReadOnly = true;
+            // 
+            // NazivTipa
+            // 
+            this.NazivTipa.DataPropertyName = "NazivTipa";
+            this.NazivTipa.HeaderText = "Tip";
+            this.NazivTipa.Name = "NazivTipa";
+            this.NazivTipa.ReadOnly = true;
+            // 
+            // DatumVrijemeObjave
+            // 
+            this.DatumVrijemeObjave.DataPropertyName = "DatumVrijemeObjave";
+            this.DatumVrijemeObjave.HeaderText = "Objavljeno";
+            this.DatumVrijemeObjave.Name = "DatumVrijemeObjave";
+            this.DatumVrijemeObjave.ReadOnly = true;
+            // 
+            // KorisnickoIme
+            // 
+            this.KorisnickoIme.DataPropertyName = "KorisnickoIme";
+            this.KorisnickoIme.HeaderText = "Vozač";
+            this.KorisnickoIme.Name = "KorisnickoIme";
+            this.KorisnickoIme.ReadOnly = true;
+            // 
+            // VozacID
+            // 
+            this.VozacID.DataPropertyName = "VozacID";
+            this.VozacID.HeaderText = "Column1";
+            this.VozacID.Name = "VozacID";
+            this.VozacID.ReadOnly = true;
+            this.VozacID.Visible = false;
+            // 
+            // ObavijestiID
+            // 
+            this.ObavijestiID.DataPropertyName = "ObavijestiID";
+            this.ObavijestiID.HeaderText = "Column1";
+            this.ObavijestiID.Name = "ObavijestiID";
+            this.ObavijestiID.ReadOnly = true;
+            this.ObavijestiID.Visible = false;
+            // 
+            // TipObavijestiID
+            // 
+            this.TipObavijestiID.DataPropertyName = "TipObavijestiID";
+            this.TipObavijestiID.HeaderText = "Column1";
+            this.TipObavijestiID.Name = "TipObavijestiID";
+            this.TipObavijestiID.ReadOnly = true;
+            this.TipObavijestiID.Visible = false;
+            // 
             // frmDetaljiObavijesti
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -97,5 +173,13 @@
         private System.Windows.Forms.Button btnDodajObavijest;
         private System.Windows.Forms.TextBox txtSearch;
         private System.Windows.Forms.Button btnTrazi;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Naslov;
+        private System.Windows.Forms.DataGridViewTextBoxColumn KratkiOpis;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NazivTipa;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DatumVrijemeObjave;
+        private System.Windows.Forms.DataGridViewTextBoxColumn KorisnickoIme;
+        private System.Windows.Forms.DataGridViewTextBoxColumn VozacID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ObavijestiID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TipObavijestiID;
     }
 }
