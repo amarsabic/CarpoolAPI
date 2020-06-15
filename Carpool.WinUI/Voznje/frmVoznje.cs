@@ -7,6 +7,7 @@ using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -16,8 +17,9 @@ namespace Carpool.WinUI.Voznje
     public partial class frmVoznje : Form
     {
         private readonly APIService _gradovi = new APIService("Grad");
-        private readonly APIService _automobili = new APIService("AutomobilComboBox");
+        private readonly APIService _automobiliDVA = new APIService("Automobil");
         private readonly APIService _voznje = new APIService("Voznja");
+
         public frmVoznje()
         {
             InitializeComponent();
@@ -55,10 +57,25 @@ namespace Carpool.WinUI.Voznje
             cmbDestinacija.ValueMember = "GradID";
         }
 
+        public class AutomobilCombo
+        {
+            public int AutomobilID { get; set; }
+            public string Naziv { get; set; }
+            public string Model { get; set; }
+
+            public string NazivModel
+            {
+                get
+                {
+                    return Naziv + " " + Model;
+                }
+            }
+        }
+
         private async Task LoadAutomobili()
         {
-            var result = await _automobili.Get<List<Model.AutomobilComboBox>>(null);
-            result.Insert(0, new Model.AutomobilComboBox());
+            var result = await _automobiliDVA.Get<List<AutomobilCombo>>(null);
+            result.Insert(0, new AutomobilCombo());
 
             cmbAutomobil.DataSource = result;
 

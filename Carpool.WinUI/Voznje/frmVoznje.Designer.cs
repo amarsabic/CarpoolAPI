@@ -45,7 +45,6 @@
             this.txtCijena = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.dgvVoznje = new System.Windows.Forms.DataGridView();
-            this.btnJson = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvVoznje)).BeginInit();
             this.SuspendLayout();
             // 
@@ -191,22 +190,11 @@
             this.dgvVoznje.Size = new System.Drawing.Size(1190, 443);
             this.dgvVoznje.TabIndex = 19;
             // 
-            // btnJson
-            // 
-            this.btnJson.Location = new System.Drawing.Point(724, 126);
-            this.btnJson.Name = "btnJson";
-            this.btnJson.Size = new System.Drawing.Size(75, 23);
-            this.btnJson.TabIndex = 20;
-            this.btnJson.Text = "button1";
-            this.btnJson.UseVisualStyleBackColor = true;
-            this.btnJson.Click += new System.EventHandler(this.btnJson_Click);
-            // 
             // frmVoznje
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1214, 703);
-            this.Controls.Add(this.btnJson);
             this.Controls.Add(this.dgvVoznje);
             this.Controls.Add(this.txtCijena);
             this.Controls.Add(this.label8);
@@ -252,6 +240,5 @@
         private System.Windows.Forms.TextBox txtCijena;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.DataGridView dgvVoznje;
-        private System.Windows.Forms.Button btnJson;
     }
 }

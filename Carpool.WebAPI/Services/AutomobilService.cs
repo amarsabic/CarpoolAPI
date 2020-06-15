@@ -2,6 +2,8 @@
 using Carpool.Model;
 using Carpool.Model.Requests;
 using Carpool.WebAPI.Database;
+using Carpool.WebAPI.Helpers;
+using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,9 +13,13 @@ namespace Carpool.WebAPI.Services
 {
     public class AutomobilService : BaseCRUDService<Model.Automobil, AutomobilSearchRequest, Database.Automobil, AutomobilInsertRequest, AutomobilInsertRequest>
     {
-        public AutomobilService(CarpoolContext context, IMapper mapper) : base(context, mapper)
+        private readonly IHttpContextAccessor _httpContext;
+        public AutomobilService(CarpoolContext context, IMapper mapper, IHttpContextAccessor httpContext) : base(context, mapper)
         {
+            _httpContext = httpContext;
         }
+
+
         public override List<Model.Automobil> Get(AutomobilSearchRequest request)
         {
             var query = _context.Autmobili.AsQueryable();
@@ -30,15 +36,17 @@ namespace Carpool.WebAPI.Services
             {
                 query = query.Where(x => x.Godiste.StartsWith(request.Godiste));
             }
-
+        
             var result = query.ToList();
 
             return _mapper.Map<List<Model.Automobil>>(result);
         }
         public override Model.Automobil Insert(AutomobilInsertRequest request)
         {
+            var userId = _httpContext.GetUserId();
+
             var entity = _mapper.Map<Database.Automobil>(request);
-            entity.VozacID = 15;
+            entity.VozacID = int.Parse(userId);
             entity.IsAktivan = true;
 
             _context.Autmobili.Add(entity);

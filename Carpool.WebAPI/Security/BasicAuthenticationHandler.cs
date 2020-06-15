@@ -54,8 +54,8 @@ namespace Carpool.WebAPI.Security
                 return AuthenticateResult.Fail("Invalid Username or Password");
 
             var claims = new List<Claim> {
-                new Claim(ClaimTypes.NameIdentifier, user.KorisnickoIme),
-                new Claim(ClaimTypes.Name, user.Ime),
+                new Claim(ClaimTypes.NameIdentifier, user.KorisnikID.ToString()),
+                new Claim(ClaimTypes.Name, user.KorisnickoIme),
             };
 
             foreach (var role in user.KorisniciUloge)
