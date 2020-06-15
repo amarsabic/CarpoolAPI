@@ -39,8 +39,9 @@ namespace Carpool.WinUI.Korisnici
                     KorisnickoIme = txtKorisnickoIme.Text,
                     Password = txtPassword.Text,
                     PasswordConfirmation = txtPasswordPotvrda.Text,
-                    Uloge = roleList
+                    Uloge=roleList
                 };
+
 
                 if (_id.HasValue)
                 {

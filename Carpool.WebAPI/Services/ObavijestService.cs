@@ -1,6 +1,8 @@
 ﻿using AutoMapper;
 using Carpool.Model.Requests;
 using Carpool.WebAPI.Database;
+using Carpool.WebAPI.Helpers;
+using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,8 +12,10 @@ namespace Carpool.WebAPI.Services
 {
     public class ObavijestService : BaseCRUDService<Model.Obavijesti, ObavijestiSearchRequest, Database.Obavijesti, ObavijestiUpsertRequest, ObavijestiUpsertRequest>
     {
-        public ObavijestService(CarpoolContext context, IMapper mapper) : base(context, mapper)
+        private readonly IHttpContextAccessor _httpContext;
+        public ObavijestService(CarpoolContext context, IMapper mapper, IHttpContextAccessor httpContext) : base(context, mapper)
         {
+            _httpContext = httpContext;
         }
 
         public override List<Model.Obavijesti> Get(ObavijestiSearchRequest request)
@@ -47,8 +51,10 @@ namespace Carpool.WebAPI.Services
 
         public override Model.Obavijesti Insert(ObavijestiUpsertRequest request)
         {
+            var userId = _httpContext.GetUserId();
+
             var entity = _mapper.Map<Database.Obavijesti>(request);
-            entity.VozacID = 23;
+            entity.VozacID = int.Parse(userId);
             
 
             _context.Obavijesti.Add(entity);

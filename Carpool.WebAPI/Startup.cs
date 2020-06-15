@@ -49,7 +49,7 @@ namespace Carpool.WebAPI
                 {
                     Name = "Authorization",
                     Type = SecuritySchemeType.Http,
-                    Scheme ="basic",
+                    Scheme = "basic",
                     In = ParameterLocation.Header,
                     Description = "Basic Authorization header using the Bearer scheme."
                 });
@@ -78,18 +78,18 @@ namespace Carpool.WebAPI
 
             services.AddScoped<ICRUDService<Model.Automobil, AutomobilSearchRequest, AutomobilInsertRequest, AutomobilInsertRequest>, AutomobilService>();
             services.AddScoped<ICRUDService<Model.Obavijesti, ObavijestiSearchRequest, ObavijestiUpsertRequest, ObavijestiUpsertRequest>, ObavijestService>();
-
             services.AddScoped<ICRUDService<Model.Grad, object, Model.Grad, Model.Grad>, GradService>();
-            services.AddScoped<IService<Model.AutomobilComboBox, object>, BaseService<Model.AutomobilComboBox, object, Automobil>>();
+
             services.AddScoped<IService<Model.KorisniciUloge, object>, BaseService<Model.KorisniciUloge, object, KorisniciUloge>>();
             services.AddScoped<IService<Model.Uloge, object>, BaseService<Model.Uloge, object, Uloge>>();
+
             services.AddScoped<IService<Model.TipObavijesti, object>, BaseService<Model.TipObavijesti, object, TipObavijesti>>();
             services.AddHttpContextAccessor();
             services.AddScoped<ICRUDService<Model.Voznja, VoznjaSearchRequest, VoznjaUpsertRequest, VoznjaUpsertRequest>, VoznjaService>();
 
             services.AddAutoMapper(typeof(Startup));
 
-        
+
             services.AddDbContext<CarpoolContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
@@ -102,10 +102,6 @@ namespace Carpool.WebAPI
             {
                 app.UseDeveloperExceptionPage();
             }
-
-            //app.UseHttpsRedirection();
-
-           
 
             app.UseRouting();
             app.UseAuthentication();
@@ -125,8 +121,6 @@ namespace Carpool.WebAPI
             {
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
             });
-           
-   
         }
     }
 }

@@ -19,7 +19,7 @@ namespace Carpool.WinUI.Automobili
             InitializeComponent();
         }
 
-  
+ 
         private void dgvAutomobili_DoubleClick(object sender, EventArgs e)
         {
             var id = dgvAutomobili.SelectedRows[0].Cells[0].Value;

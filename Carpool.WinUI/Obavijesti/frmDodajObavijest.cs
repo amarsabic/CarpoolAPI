@@ -33,7 +33,6 @@ namespace Carpool.WinUI.Obavijesti
             request.DatumVrijemeObjave = DateTime.Now;
             request.Naslov = txtNaslov.Text;
             request.KratkiOpis = rtxtSadrzaj.Text;
-            request.VozacID = 15; //promijeniti na logiranog usera
 
             await _obavijestiService.Insert<Model.Obavijesti>(request);
 
