@@ -47,6 +47,8 @@
             this.label8 = new System.Windows.Forms.Label();
             this.txtPasswordPotvrda = new System.Windows.Forms.TextBox();
             this.clbUloge = new System.Windows.Forms.CheckedListBox();
+            this.cmbGrad = new System.Windows.Forms.ComboBox();
+            this.label9 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             this.SuspendLayout();
             // 
@@ -200,11 +202,30 @@
             this.clbUloge.Size = new System.Drawing.Size(195, 79);
             this.clbUloge.TabIndex = 17;
             // 
+            // cmbGrad
+            // 
+            this.cmbGrad.FormattingEnabled = true;
+            this.cmbGrad.Location = new System.Drawing.Point(25, 209);
+            this.cmbGrad.Name = "cmbGrad";
+            this.cmbGrad.Size = new System.Drawing.Size(194, 21);
+            this.cmbGrad.TabIndex = 19;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(22, 193);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(33, 13);
+            this.label9.TabIndex = 18;
+            this.label9.Text = "Grad ";
+            // 
             // frmDodaj
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(490, 526);
+            this.Controls.Add(this.cmbGrad);
+            this.Controls.Add(this.label9);
             this.Controls.Add(this.clbUloge);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.btnSpremi);
@@ -252,5 +273,7 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox txtPasswordPotvrda;
         private System.Windows.Forms.CheckedListBox clbUloge;
+        private System.Windows.Forms.ComboBox cmbGrad;
+        private System.Windows.Forms.Label label9;
     }
 }

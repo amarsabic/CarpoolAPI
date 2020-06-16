@@ -15,6 +15,7 @@ namespace Carpool.WinUI.Korisnici
     {
         private readonly APIService _apiService = new APIService("korisnik");
         private readonly APIService _ulogeService = new APIService("Uloga");
+        private readonly APIService _gradovi = new APIService("Grad");
 
         private int? _id = null;
         public frmDodaj(int? korisnikId = null)
@@ -42,17 +43,27 @@ namespace Carpool.WinUI.Korisnici
                     Uloge=roleList
                 };
 
+                var idGrad = cmbGrad.SelectedValue;
 
+                if (int.TryParse(idGrad.ToString(), out int gradId))
+                {
+                    request.GradID = gradId;
+                }
+
+                Model.Korisnik entity = null;
                 if (_id.HasValue)
                 {
-                    await _apiService.Update<Model.Korisnik>(_id.Value, request);
+                   entity = await _apiService.Update<Model.Korisnik>(_id.Value, request);
                 }
                 else
                 {
-                    await _apiService.Insert<Model.Korisnik>(request);
+                    entity = await _apiService.Insert<Model.Korisnik>(request);
                 }
 
-                MessageBox.Show("Operacija uspješna");
+                if (entity != null)
+                {
+                    MessageBox.Show("Uspješno izvršeno");
+                }
             }
         }
 
@@ -70,8 +81,18 @@ namespace Carpool.WinUI.Korisnici
             }
 
             await LoadUloge();
+            await LoadGradovi();
         }
+        private async Task LoadGradovi()
+        {
+            var result = await _gradovi.Get<List<Model.Grad>>(null);
+            result.Insert(0, new Model.Grad());
 
+            cmbGrad.DataSource = result;
+
+            cmbGrad.DisplayMember = "Naziv";
+            cmbGrad.ValueMember = "GradID";
+        }
         private async Task LoadUloge()
         {
             var ulogeList = await _ulogeService.Get<List<Model.Uloge>>(null);

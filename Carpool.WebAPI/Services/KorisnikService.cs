@@ -74,30 +74,7 @@ namespace Carpool.WebAPI.Services
 
             var list = query.ToList();
 
-            var modelList = new List<Model.Korisnik>();
-
-            modelList = list.Select(l => new Model.Korisnik
-            {
-                BrojTelefona = l.BrojTelefona,
-                Email = l.Email,
-                Ime = l.Ime,
-                KorisnickoIme = l.KorisnickoIme,
-                Prezime = l.Prezime,
-                KorisnikID = l.KorisnikID,
-
-                UlogaNaziv = _context.KorisniciUloge.Where(u => u.KorisnikId == l.KorisnikID).Select(u => u.Uloga.Naziv).ToList(),
-
-                KorisniciUloge = l.KorisniciUloge.Select(x => new Model.KorisniciUloge
-                {
-                    DatumIzmjene = x.DatumIzmjene,
-                    KorisnikId = x.KorisnikId,
-                    KorisnikUlogaId = x.KorisnikUlogaId,
-                    UlogaId = x.UlogaId
-                }).ToList()
-
-            }).ToList();
-
-            return modelList;
+            return _mapper.Map<List<Model.Korisnik>>(list);
         }
 
         public Model.Korisnik GetById(int id)
@@ -119,25 +96,8 @@ namespace Carpool.WebAPI.Services
             entity.LozinkaSalt = GenerateSalt();
             entity.LozinkaHash = GenerateHash(entity.LozinkaSalt, request.Password);
 
-            entity.GradID = 4; //dodati dropdown
-
 
             _context.Korisnici.Add(entity);
-            _context.SaveChanges();
-
-            foreach (var uloga in request.Uloge)
-            {
-                var addUloge = new Model.KorisniciUloge
-                {
-                    UlogaId = uloga,
-                    KorisnikId = entity.KorisnikID,
-                    DatumIzmjene = DateTime.Now
-                };
-
-                var listUloge = _mapper.Map<Database.KorisniciUloge>(addUloge);
-                _context.KorisniciUloge.Add(listUloge);
-            }
-
             _context.SaveChanges();
 
             return _mapper.Map<Model.Korisnik>(entity);
