@@ -29,13 +29,13 @@
         private void InitializeComponent()
         {
             this.dgvAutomobili = new System.Windows.Forms.DataGridView();
+            this.txtSearch = new System.Windows.Forms.TextBox();
+            this.btnPretraga = new System.Windows.Forms.Button();
             this.AutomobilID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Naziv = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Model = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Slika = new System.Windows.Forms.DataGridViewImageColumn();
             this.SlikaThumb = new System.Windows.Forms.DataGridViewImageColumn();
-            this.txtSearch = new System.Windows.Forms.TextBox();
-            this.btnPretraga = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAutomobili)).BeginInit();
             this.SuspendLayout();
             // 
@@ -55,9 +55,26 @@
             this.dgvAutomobili.ReadOnly = true;
             this.dgvAutomobili.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             this.dgvAutomobili.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvAutomobili.Size = new System.Drawing.Size(775, 335);
+            this.dgvAutomobili.Size = new System.Drawing.Size(775, 351);
             this.dgvAutomobili.TabIndex = 0;
             this.dgvAutomobili.DoubleClick += new System.EventHandler(this.dgvAutomobili_DoubleClick);
+            // 
+            // txtSearch
+            // 
+            this.txtSearch.Location = new System.Drawing.Point(13, 56);
+            this.txtSearch.Name = "txtSearch";
+            this.txtSearch.Size = new System.Drawing.Size(198, 20);
+            this.txtSearch.TabIndex = 2;
+            // 
+            // btnPretraga
+            // 
+            this.btnPretraga.Location = new System.Drawing.Point(225, 56);
+            this.btnPretraga.Name = "btnPretraga";
+            this.btnPretraga.Size = new System.Drawing.Size(83, 19);
+            this.btnPretraga.TabIndex = 3;
+            this.btnPretraga.Text = "button1";
+            this.btnPretraga.UseVisualStyleBackColor = true;
+            this.btnPretraga.Click += new System.EventHandler(this.btnPretraga_Click);
             // 
             // AutomobilID
             // 
@@ -84,6 +101,7 @@
             // 
             this.Slika.DataPropertyName = "Slika";
             this.Slika.HeaderText = "Slika";
+            this.Slika.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
             this.Slika.Name = "Slika";
             this.Slika.ReadOnly = true;
             this.Slika.Resizable = System.Windows.Forms.DataGridViewTriState.True;
@@ -93,25 +111,9 @@
             // 
             this.SlikaThumb.DataPropertyName = "SlikaThumb";
             this.SlikaThumb.HeaderText = "SlikaThumb";
+            this.SlikaThumb.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
             this.SlikaThumb.Name = "SlikaThumb";
             this.SlikaThumb.ReadOnly = true;
-            // 
-            // txtSearch
-            // 
-            this.txtSearch.Location = new System.Drawing.Point(13, 56);
-            this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(198, 20);
-            this.txtSearch.TabIndex = 2;
-            // 
-            // btnPretraga
-            // 
-            this.btnPretraga.Location = new System.Drawing.Point(225, 56);
-            this.btnPretraga.Name = "btnPretraga";
-            this.btnPretraga.Size = new System.Drawing.Size(83, 19);
-            this.btnPretraga.TabIndex = 3;
-            this.btnPretraga.Text = "button1";
-            this.btnPretraga.UseVisualStyleBackColor = true;
-            this.btnPretraga.Click += new System.EventHandler(this.btnPretraga_Click);
             // 
             // frmAutomobili
             // 

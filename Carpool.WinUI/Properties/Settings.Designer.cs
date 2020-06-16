@@ -31,5 +31,29 @@ namespace Carpool.WinUI.Properties {
                 return ((string)(this["APIUrl"]));
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("amar")]
+        public string userName {
+            get {
+                return ((string)(this["userName"]));
+            }
+            set {
+                this["userName"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("qweasd")]
+        public string passUser {
+            get {
+                return ((string)(this["passUser"]));
+            }
+            set {
+                this["passUser"] = value;
+            }
+        }
     }
 }

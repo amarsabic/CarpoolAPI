@@ -36,6 +36,7 @@
             this.panelLogin = new System.Windows.Forms.Panel();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
+            this.cbRemember = new System.Windows.Forms.CheckBox();
             this.panelLogin.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -43,7 +44,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(215, 59);
+            this.label1.Location = new System.Drawing.Point(256, 74);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(81, 16);
             this.label1.TabIndex = 0;
@@ -51,14 +52,16 @@
             // 
             // txtKorisnickoIme
             // 
-            this.txtKorisnickoIme.Location = new System.Drawing.Point(218, 76);
+            this.txtKorisnickoIme.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtKorisnickoIme.Location = new System.Drawing.Point(259, 91);
             this.txtKorisnickoIme.Name = "txtKorisnickoIme";
             this.txtKorisnickoIme.Size = new System.Drawing.Size(193, 20);
             this.txtKorisnickoIme.TabIndex = 1;
             // 
             // txtPassword
             // 
-            this.txtPassword.Location = new System.Drawing.Point(218, 125);
+            this.txtPassword.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtPassword.Location = new System.Drawing.Point(259, 140);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.PasswordChar = '*';
             this.txtPassword.Size = new System.Drawing.Size(193, 20);
@@ -68,7 +71,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(215, 109);
+            this.label2.Location = new System.Drawing.Point(256, 124);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(59, 16);
             this.label2.TabIndex = 2;
@@ -77,12 +80,13 @@
             // btnLogin
             // 
             this.btnLogin.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(136)))), ((int)(((byte)(169)))));
-            this.btnLogin.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnLogin.FlatAppearance.BorderSize = 0;
+            this.btnLogin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLogin.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLogin.ForeColor = System.Drawing.SystemColors.Control;
-            this.btnLogin.Location = new System.Drawing.Point(276, 164);
+            this.btnLogin.Location = new System.Drawing.Point(259, 203);
             this.btnLogin.Name = "btnLogin";
-            this.btnLogin.Size = new System.Drawing.Size(75, 28);
+            this.btnLogin.Size = new System.Drawing.Size(193, 28);
             this.btnLogin.TabIndex = 4;
             this.btnLogin.Text = "Login";
             this.btnLogin.UseVisualStyleBackColor = false;
@@ -96,7 +100,7 @@
             this.panelLogin.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelLogin.Location = new System.Drawing.Point(0, 0);
             this.panelLogin.Name = "panelLogin";
-            this.panelLogin.Size = new System.Drawing.Size(190, 268);
+            this.panelLogin.Size = new System.Drawing.Size(190, 322);
             this.panelLogin.TabIndex = 5;
             // 
             // label4
@@ -121,12 +125,23 @@
             this.label3.TabIndex = 0;
             this.label3.Text = "CAR";
             // 
+            // cbRemember
+            // 
+            this.cbRemember.AutoSize = true;
+            this.cbRemember.Location = new System.Drawing.Point(259, 166);
+            this.cbRemember.Name = "cbRemember";
+            this.cbRemember.Size = new System.Drawing.Size(94, 17);
+            this.cbRemember.TabIndex = 6;
+            this.cbRemember.Text = "Remember me";
+            this.cbRemember.UseVisualStyleBackColor = true;
+            // 
             // frmLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.ClientSize = new System.Drawing.Size(451, 268);
+            this.ClientSize = new System.Drawing.Size(505, 322);
+            this.Controls.Add(this.cbRemember);
             this.Controls.Add(this.panelLogin);
             this.Controls.Add(this.btnLogin);
             this.Controls.Add(this.txtPassword);
@@ -153,5 +168,6 @@
         private System.Windows.Forms.Panel panelLogin;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.CheckBox cbRemember;
     }
 }
