@@ -90,14 +90,14 @@
             // listaAutomobilaToolStripMenuItem
             // 
             this.listaAutomobilaToolStripMenuItem.Name = "listaAutomobilaToolStripMenuItem";
-            this.listaAutomobilaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.listaAutomobilaToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
             this.listaAutomobilaToolStripMenuItem.Text = "Lista automobila";
             this.listaAutomobilaToolStripMenuItem.Click += new System.EventHandler(this.listaAutomobilaToolStripMenuItem_Click);
             // 
             // dodajAutomobilToolStripMenuItem
             // 
             this.dodajAutomobilToolStripMenuItem.Name = "dodajAutomobilToolStripMenuItem";
-            this.dodajAutomobilToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.dodajAutomobilToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
             this.dodajAutomobilToolStripMenuItem.Text = "Dodaj automobil";
             this.dodajAutomobilToolStripMenuItem.Click += new System.EventHandler(this.dodajAutomobilToolStripMenuItem_Click);
             // 

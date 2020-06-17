@@ -10,13 +10,22 @@
         <vm:LoginViewModel/>
     </ContentPage.BindingContext>
     <ContentPage.Content>
-        <StackLayout Padding="10" VerticalOptions="CenterAndExpand">
-            <Label Text="Korisničko ime"/>
-            <Entry Text="{Binding Username}"></Entry>
-            <Label Text="Password:"/>
-            <Entry Text="{Binding Password}" IsPassword="True"></Entry>
-            <Button Command="{Binding LoginCommand}" Text="Login"></Button>
-            <Label IsVisible="{Binding IsBusy}" Text="..."></Label>
+        <StackLayout Spacing="0">
+            <Label FontSize="30" Text="CAR"/>
+            <Label FontSize="30" Text="POOL"/>
+            <StackLayout Padding="10" VerticalOptions="CenterAndExpand">
+                <Entry Placeholder="Korisničko ime" Text="{Binding Username}"></Entry>
+                <Entry Placeholder="Lozinka" Text="{Binding Password}" IsPassword="True"></Entry>
+                <Button Command="{Binding LoginCommand}" Text="Prijavi se"></Button>
+                <Label IsVisible="{Binding IsBusy}" Text="..."></Label>
+            </StackLayout>
+            <StackLayout 
+                         HorizontalOptions="Center"
+                         Orientation="Horizontal"
+                         Padding="0,0,0,30">
+                <Label Text="Niste prijavljeni?"></Label>
+                <Label TextColor="Blue" Text="Kreirajte Vaš profil"></Label>
+            </StackLayout>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
