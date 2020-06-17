@@ -20,7 +20,7 @@ namespace Carpool.WebAPI.Controllers
             _service = service;
         }
         [HttpGet]
-        public List<T> Get([FromQuery]TSearch search)
+        public virtual List<T> Get([FromQuery]TSearch search)
         {
             return _service.Get(search);
         }

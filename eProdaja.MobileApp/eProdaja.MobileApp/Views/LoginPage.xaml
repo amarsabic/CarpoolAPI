@@ -17,14 +17,18 @@
                 <Entry Placeholder="Korisničko ime" Text="{Binding Username}"></Entry>
                 <Entry Placeholder="Lozinka" Text="{Binding Password}" IsPassword="True"></Entry>
                 <Button Command="{Binding LoginCommand}" Text="Prijavi se"></Button>
-                <Label IsVisible="{Binding IsBusy}" Text="..."></Label>
+                <ActivityIndicator IsVisible="{Binding IsBusy}" IsRunning="{Binding IsBusy}" />
             </StackLayout>
             <StackLayout 
                          HorizontalOptions="Center"
                          Orientation="Horizontal"
                          Padding="0,0,0,30">
                 <Label Text="Niste prijavljeni?"></Label>
-                <Label TextColor="Blue" Text="Kreirajte Vaš profil"></Label>
+                <Label  TextColor="Blue" Text="Kreirajte Vaš profil">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding}"/>
+                    </Label.GestureRecognizers>
+                </Label>
             </StackLayout>
         </StackLayout>
     </ContentPage.Content>

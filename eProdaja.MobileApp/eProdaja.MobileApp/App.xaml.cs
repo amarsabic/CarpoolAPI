@@ -14,7 +14,7 @@ namespace eProdaja.MobileApp
             InitializeComponent();
 
             DependencyService.Register<MockDataStore>();
-            MainPage = new RegisterPage();
+            MainPage = new LoginPage();
         }
         
         protected override void OnStart()

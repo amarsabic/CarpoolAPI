@@ -4,26 +4,26 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
 namespace eProdaja.MobileApp.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class RegisterPage : ContentPage
+    public partial class NewsPage : ContentPage
     {
-        private RegisterViewModel model = null;
-        public RegisterPage()
+        NewsViewModel model = null;
+        public NewsPage()
         {
             InitializeComponent();
-
-            BindingContext = model = new RegisterViewModel();
+            BindingContext = model = new NewsViewModel();
         }
 
         protected async override void OnAppearing()
         {
             base.OnAppearing();
-            await model.Register();
+            await model.Init();
         }
     }
 }

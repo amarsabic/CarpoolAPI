@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Carpool.Model;
 using Carpool.WebAPI.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -15,6 +16,12 @@ namespace Carpool.WebAPI.Controllers
     {
         public GradController(ICRUDService<Grad, object, Grad, Grad> service) : base(service)
         {
+        }
+
+        [AllowAnonymous]
+        public override List<Grad> Get([FromQuery] object search)
+        {
+            return base.Get(search);
         }
     }
 }

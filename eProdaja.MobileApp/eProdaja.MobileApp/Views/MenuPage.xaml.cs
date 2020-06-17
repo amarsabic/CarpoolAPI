@@ -22,7 +22,8 @@ namespace eProdaja.MobileApp.Views
             {
                 new HomeMenuItem {Id = MenuItemType.Browse, Title="Browse" },
                 new HomeMenuItem {Id = MenuItemType.About, Title="About" },
-                new HomeMenuItem {Id = MenuItemType.Automobili, Title="Automobili" }
+                new HomeMenuItem {Id = MenuItemType.Automobili, Title="Automobili" },
+                new HomeMenuItem {Id = MenuItemType.Obavijesti, Title="Obavijesti" }
             };
 
             ListViewMenu.ItemsSource = menuItems;

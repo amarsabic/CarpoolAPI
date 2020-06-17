@@ -10,7 +10,8 @@ namespace eProdaja.MobileApp.ViewModels
 {
     public class LoginViewModel : BaseViewModel
     {
-        private readonly APIService _service = new APIService("Korisnik");
+        private readonly APIService _korisnik = new APIService("Korisnik");
+  
         public LoginViewModel()
         {
             LoginCommand = new Command(async () => await Login());
@@ -29,6 +30,7 @@ namespace eProdaja.MobileApp.ViewModels
         }
 
         public ICommand LoginCommand { get; set; }
+        public ICommand LabelCommand { get; set; }
 
         async Task Login()
         {
@@ -38,7 +40,7 @@ namespace eProdaja.MobileApp.ViewModels
 
             try
             {
-                await _service.Get<dynamic>(null);
+                await _korisnik.Get<dynamic>(null);
                 Application.Current.MainPage = new MainPage();
             }
             catch (Exception)

@@ -8,7 +8,8 @@ namespace eProdaja.MobileApp.Models
     {
         Browse,
         About,
-        Automobili
+        Automobili,
+        Obavijesti
     }
     public class HomeMenuItem
     {

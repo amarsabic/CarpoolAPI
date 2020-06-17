@@ -19,12 +19,17 @@
                 <Entry Placeholder="Ime" Text="{Binding Ime}"></Entry>
                 <Entry Placeholder="Prezime" Text="{Binding Prezime}"></Entry>
                 <Entry Placeholder="Email" Text="{Binding Email}"></Entry>
-                <Picker SelectedItem="{Binding GradID}"></Picker>
+                <Entry Placeholder="Telefon" Text="{Binding Telefon}"></Entry>
+                <Picker Title="Grad"
+                        ItemsSource="{Binding Gradovi}"
+                        ItemDisplayBinding="{Binding Naziv}"
+                        SelectedItem="{Binding SelectedGrad}"
+                        ></Picker>
                 <DatePicker Date="{Binding Datum}"></DatePicker>
-                <Entry Margin="0,20,0,0" Placeholder="Korisničko ime" Text="{Binding KorisnickoIme}"></Entry>
-                <Entry Placeholder="Lozinka" Text="{Binding Lozinka}"></Entry>
-                <Entry Placeholder="Potvrda lozinke" Text="{Binding LozinkaPotvrda}"></Entry>
-                <Button Command="{Binding RegisterCommand}" Margin="0,20,0,0" Text="Registriraj se"></Button>
+                <Entry Margin="0,0,0,0" Placeholder="Korisničko ime" Text="{Binding KorisnickoIme}"></Entry>
+                <Entry Placeholder="Lozinka" Text="{Binding Lozinka}" IsPassword="True"></Entry>
+                <Entry Placeholder="Potvrda lozinke" Text="{Binding LozinkaPotvrda}" IsPassword="True"></Entry>
+                <Button Command="{Binding RegisterCommand}" Margin="0,0,0,0" Text="Registriraj se"></Button>
             </StackLayout>
         </StackLayout>
     </ContentPage.Content>

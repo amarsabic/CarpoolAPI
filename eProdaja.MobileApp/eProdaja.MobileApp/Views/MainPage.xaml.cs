@@ -39,6 +39,9 @@ namespace eProdaja.MobileApp.Views
                     case (int)MenuItemType.Automobili:
                         MenuPages.Add(id, new NavigationPage(new AutomobiliPage()));
                         break;
+                    case (int)MenuItemType.Obavijesti:
+                        MenuPages.Add(id, new NavigationPage(new NewsPage()));
+                        break;
                 }
             }
 

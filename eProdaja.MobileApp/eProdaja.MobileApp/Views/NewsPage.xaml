@@ -3,29 +3,25 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:viewModel="clr-namespace:eProdaja.MobileApp.ViewModels"
+             xmlns:vm="clr-namespace:eProdaja.MobileApp.ViewModels"
              mc:Ignorable="d"
-             x:Class="eProdaja.MobileApp.Views.AutomobiliPage">
+             x:Class="eProdaja.MobileApp.Views.NewsPage">
     <ContentPage.BindingContext>
-        <viewModel:AutomobiliViewModel/>
+        <vm:NewsViewModel></vm:NewsViewModel>
     </ContentPage.BindingContext>
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Automobili"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-            <!--<Picker ItemsSource=""></Picker>-->
-            <ListView ItemsSource="{Binding AutomobilList}">
+            <ListView ItemsSource="{Binding ObavijestiList}">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
-                            <StackLayout Padding="10">
-                                <Label Text="{Binding Naziv}" 
+                            <StackLayout Padding="10" HorizontalOptions="Center" VerticalOptions="Center">
+                                <Label Text="{Binding Naslov}" 
                                 d:Text="{Binding .}"
                                 LineBreakMode="NoWrap" 
                                 Style="{DynamicResource ListItemTextStyle}" 
                                 FontSize="16" />
-                                <Label Text="{Binding Model}" 
+                                <Label Text="{Binding KratkiOpis}" 
                                 d:Text="Item descripton"
                                 LineBreakMode="NoWrap"
                                 Style="{DynamicResource ListItemDetailTextStyle}"
