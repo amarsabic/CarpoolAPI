@@ -7,9 +7,9 @@ namespace eProdaja.MobileApp.Models
     public enum MenuItemType
     {
         Browse,
-        About,
         Automobili,
-        Obavijesti
+        Obavijesti,
+        Dodaj 
     }
     public class HomeMenuItem
     {

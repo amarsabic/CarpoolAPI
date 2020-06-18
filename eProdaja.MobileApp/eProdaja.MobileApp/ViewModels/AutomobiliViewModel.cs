@@ -24,11 +24,14 @@ namespace eProdaja.MobileApp.ViewModels
         {
             var list = await _automobilService.Get<List<Automobil>>(null);
 
-            AutomobilList.Clear();
-            foreach (var automobil in list)
+            if (AutomobilList.Count == 0)
             {
-                AutomobilList.Add(automobil);
-            }
+                AutomobilList.Clear();
+                foreach (var automobil in list)
+                {
+                    AutomobilList.Add(automobil);
+                }
+            }        
         }
     }
 }

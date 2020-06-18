@@ -16,7 +16,9 @@
             <StackLayout Padding="10" VerticalOptions="CenterAndExpand">
                 <Entry Placeholder="Korisničko ime" Text="{Binding Username}"></Entry>
                 <Entry Placeholder="Lozinka" Text="{Binding Password}" IsPassword="True"></Entry>
-                <Button Command="{Binding LoginCommand}" Text="Prijavi se"></Button>
+                <Button Command="{Binding LoginCommand}" 
+                        Text="Prijavi se"
+                        FontAttributes="Bold"></Button>
                 <ActivityIndicator IsVisible="{Binding IsBusy}" IsRunning="{Binding IsBusy}" />
             </StackLayout>
             <StackLayout 

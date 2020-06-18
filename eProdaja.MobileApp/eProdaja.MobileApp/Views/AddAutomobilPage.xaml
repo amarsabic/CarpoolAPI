@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="clr-namespace:eProdaja.MobileApp.ViewModels"
+             xmlns:converters="clr-namespace:eProdaja.MobileApp.Converters"
+             mc:Ignorable="d"
+             x:Class="eProdaja.MobileApp.Views.AddAutomobilPage">
+    <ContentPage.BindingContext>
+        <vm:AddAutomobilViewModel></vm:AddAutomobilViewModel>
+    </ContentPage.BindingContext>
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:ImageConverter x:Key="imgConv"></converters:ImageConverter>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <StackLayout Padding="10">
+            <StackLayout Spacing="0">
+                <Label FontSize="30" Text="CAR"/>
+                <Label FontSize="30" Text="POOL"/>
+            </StackLayout>
+            <StackLayout>
+                <Entry Placeholder="Naziv" Text="{Binding Naziv}"></Entry>
+                <Entry Placeholder="Model" Text="{Binding Model}"></Entry>
+                <Entry Placeholder="Godina proizvodnje" Text="{Binding Godiste}"></Entry>
+                <Entry Placeholder="Broj registarskih oznaka" Text="{Binding BrojRegOznaka}"></Entry>
+                <DatePicker Date="{Binding Datum}" MinimumDate="01/01/2018"></DatePicker>
+                <Frame CornerRadius="20"
+                                       Padding="0"
+                                       IsClippedToBounds="True"
+                                       HasShadow="False">
+                    <Image Source="{Binding Slika, Converter={StaticResource imgConv}}"></Image>
+                </Frame>
+                <Button Text="Pick Photo"
+                 Clicked="OnPickPhotoButtonClicked" />
+                <Button Command="{Binding SaveCommand}" Margin="0,0,0,0" Text="Dodaj"></Button>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

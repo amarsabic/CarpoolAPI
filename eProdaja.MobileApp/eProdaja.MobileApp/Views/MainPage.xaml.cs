@@ -33,14 +33,14 @@ namespace eProdaja.MobileApp.Views
                     case (int)MenuItemType.Browse:
                         MenuPages.Add(id, new NavigationPage(new ItemsPage()));
                         break;
-                    case (int)MenuItemType.About:
-                        MenuPages.Add(id, new NavigationPage(new AboutPage()));
-                        break;
                     case (int)MenuItemType.Automobili:
                         MenuPages.Add(id, new NavigationPage(new AutomobiliPage()));
                         break;
                     case (int)MenuItemType.Obavijesti:
                         MenuPages.Add(id, new NavigationPage(new NewsPage()));
+                        break;
+                    case (int)MenuItemType.Dodaj:
+                        MenuPages.Add(id, new NavigationPage(new AddAutomobilPage()));
                         break;
                 }
             }

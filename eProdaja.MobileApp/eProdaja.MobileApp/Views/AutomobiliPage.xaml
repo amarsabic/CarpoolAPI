@@ -4,13 +4,19 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:viewModel="clr-namespace:eProdaja.MobileApp.ViewModels"
+             xmlns:converters="clr-namespace:eProdaja.MobileApp.Converters"
              mc:Ignorable="d"
              x:Class="eProdaja.MobileApp.Views.AutomobiliPage">
     <ContentPage.BindingContext>
         <viewModel:AutomobiliViewModel/>
     </ContentPage.BindingContext>
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:ImageConverter x:Key="imgConv"></converters:ImageConverter> 
+        </ResourceDictionary>
+    </ContentPage.Resources>
     <ContentPage.Content>
-        <StackLayout>
+        <StackLayout BackgroundColor="#E5E5E5">
             <Label Text="Automobili"
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" />
@@ -19,8 +25,14 @@
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
-                            <StackLayout Padding="10">
-                                <Label Text="{Binding Naziv}" 
+                            <StackLayout Padding="50, 20, 50, 20">
+                                <Frame CornerRadius="20"
+                                       Padding="0"
+                                       IsClippedToBounds="True"
+                                       HasShadow="False">
+                                    <Image Source="{Binding Slika, Converter={StaticResource imgConv}}"></Image>
+                                </Frame>
+                                <!--<Label Text="{Binding Naziv}" 
                                 d:Text="{Binding .}"
                                 LineBreakMode="NoWrap" 
                                 Style="{DynamicResource ListItemTextStyle}" 
@@ -30,6 +42,12 @@
                                 LineBreakMode="NoWrap"
                                 Style="{DynamicResource ListItemDetailTextStyle}"
                                 FontSize="13" />
+                                <StackLayout Orientation="Horizontal"
+                                             HorizontalOptions="Center"
+                                             VerticalOptions="Center">
+                                    <Button BackgroundColor="Blue" Text="Uredi" TextColor="White"></Button>
+                                    <Button BackgroundColor="Red" Text="Ukloni" TextColor="White"></Button>
+                                </StackLayout>-->
                             </StackLayout>
                         </ViewCell>
                     </DataTemplate>

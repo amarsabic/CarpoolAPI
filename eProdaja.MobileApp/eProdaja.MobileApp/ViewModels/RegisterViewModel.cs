@@ -47,6 +47,8 @@ namespace eProdaja.MobileApp.ViewModels
             set { SetProperty(ref _datum, value); }
         }
 
+
+
         ObservableCollection<Grad> _Gradovi = new ObservableCollection<Grad>();
 
         public ObservableCollection<Grad> Gradovi
