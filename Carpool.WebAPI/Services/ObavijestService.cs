@@ -27,6 +27,15 @@ namespace Carpool.WebAPI.Services
             {
                 query = query.Where(x => x.Naslov.StartsWith(request.Naslov));
             }
+            if (!string.IsNullOrWhiteSpace(request?.KratkiOpis))
+            {
+                query = query.Where(x => x.KratkiOpis.StartsWith(request.KratkiOpis));
+            }
+            if (request?.TipObavijestiID.HasValue == true)
+            {
+                query = query.Where(x => x.TipObavijestiID == request.TipObavijestiID);
+            }
+           
 
             var result = query.ToList();
 

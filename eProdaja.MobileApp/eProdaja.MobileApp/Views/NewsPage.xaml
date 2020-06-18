@@ -11,6 +11,9 @@
     </ContentPage.BindingContext>
     <ContentPage.Content>
         <StackLayout>
+            <Picker ItemsSource="{Binding TipObavijestiList}"
+                    ItemDisplayBinding="{Binding NazivTipa}"
+                    SelectedItem="{Binding SelectedTipObavijesti}"></Picker>
             <ListView ItemsSource="{Binding ObavijestiList}">
                 <ListView.ItemTemplate>
                     <DataTemplate>
