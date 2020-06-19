@@ -20,6 +20,7 @@ namespace Carpool.WebAPI.Services
 
         public override List<Model.Obavijesti> Get(ObavijestiSearchRequest request)
         {
+            var userId = int.Parse(_httpContext.GetUserId());
 
             var query = _context.Obavijesti.AsQueryable();
 
@@ -35,7 +36,10 @@ namespace Carpool.WebAPI.Services
             {
                 query = query.Where(x => x.TipObavijestiID == request.TipObavijestiID);
             }
-           
+            if (request.IsKorisnik)
+            {
+                query = query.Where(x => x.VozacID==userId);
+            }
 
             var result = query.ToList();
 
@@ -64,6 +68,7 @@ namespace Carpool.WebAPI.Services
 
             var entity = _mapper.Map<Database.Obavijesti>(request);
             entity.VozacID = int.Parse(userId);
+            entity.DatumVrijemeObjave = DateTime.Now;
             
 
             _context.Obavijesti.Add(entity);

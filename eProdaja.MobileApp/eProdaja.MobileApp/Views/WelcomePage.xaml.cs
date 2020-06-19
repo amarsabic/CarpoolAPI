@@ -10,13 +10,11 @@ using Xamarin.Forms.Xaml;
 namespace eProdaja.MobileApp.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class GreetPage : ContentPage
+    public partial class WelcomePage : TabbedPage
     {
-        public GreetPage()
+        public WelcomePage()
         {
             InitializeComponent();
-
-            slider.Value = 0.5;
         }
     }
 }

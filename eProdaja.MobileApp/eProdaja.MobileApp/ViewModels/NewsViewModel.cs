@@ -25,7 +25,9 @@ namespace eProdaja.MobileApp.ViewModels
         public TipObavijesti SelectedTipObavijesti
         {
             get { return _selectedTipObavijesti; }
-            set { SetProperty(ref _selectedTipObavijesti, value);
+            set
+            {
+                SetProperty(ref _selectedTipObavijesti, value);
                 if (value != null)
                 {
                     InitCommand.Execute(null);
@@ -37,6 +39,10 @@ namespace eProdaja.MobileApp.ViewModels
 
         public async Task Init()
         {
+            ObavijestiSearchRequest search = new ObavijestiSearchRequest();
+
+            search.IsKorisnik = true;
+
             if (TipObavijestiList.Count == 0)
             {
                 var tipovi = await _tipObavijesti.Get<List<TipObavijesti>>(null);
@@ -48,9 +54,18 @@ namespace eProdaja.MobileApp.ViewModels
 
             if (_selectedTipObavijesti != null)
             {
-                ObavijestiSearchRequest search = new ObavijestiSearchRequest();
                 search.TipObavijestiID = SelectedTipObavijesti.TipObavijestiID;
 
+                var listSelected = await _obavijesti.Get<List<Obavijesti>>(search);
+
+                ObavijestiList.Clear();
+                foreach (var obavijest in listSelected)
+                {
+                    ObavijestiList.Add(obavijest);
+                }
+            }
+            else
+            {
                 var list = await _obavijesti.Get<List<Obavijesti>>(search);
 
                 ObavijestiList.Clear();
@@ -59,8 +74,6 @@ namespace eProdaja.MobileApp.ViewModels
                     ObavijestiList.Add(obavijest);
                 }
             }
-
-           
         }
     }
 }

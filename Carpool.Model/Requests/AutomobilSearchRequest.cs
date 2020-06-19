@@ -10,6 +10,6 @@ namespace Carpool.Model.Requests
         public string Model { get; set; }
         public string Godiste { get; set; }
 
-        public bool IsKorisnik { get; set; }
+        public bool IsVozac { get; set; }
     }
 }

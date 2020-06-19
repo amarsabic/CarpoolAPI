@@ -11,7 +11,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UI", "UI", "{B16CA77C-938D-
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Carpool.WinUI", "Carpool.WinUI\Carpool.WinUI.csproj", "{9C756406-5318-4484-BD31-D103FD22DFAF}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "eProdaja.Mobile", "eProdaja.Mobile", "{E698DDC7-C789-4CAB-85B2-703DA0ED6A58}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Carpool.Mobile", "Carpool.Mobile", "{E698DDC7-C789-4CAB-85B2-703DA0ED6A58}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eProdaja.MobileApp.UWP", "eProdaja.MobileApp\eProdaja.MobileApp.UWP\eProdaja.MobileApp.UWP.csproj", "{0EDE55AF-DC3B-4653-AD6A-FF1E04E91B49}"
 EndProject
@@ -19,7 +19,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eProdaja.MobileApp.Android"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eProdaja.MobileApp.iOS", "eProdaja.MobileApp\eProdaja.MobileApp.iOS\eProdaja.MobileApp.iOS.csproj", "{2631203E-07BD-4D9F-8273-3F858729F794}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eProdaja.MobileApp", "eProdaja.MobileApp\eProdaja.MobileApp\eProdaja.MobileApp.csproj", "{A4257689-B435-4DF4-B6B2-B3FBC4598570}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "eProdaja.MobileApp", "eProdaja.MobileApp\eProdaja.MobileApp\eProdaja.MobileApp.csproj", "{A4257689-B435-4DF4-B6B2-B3FBC4598570}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

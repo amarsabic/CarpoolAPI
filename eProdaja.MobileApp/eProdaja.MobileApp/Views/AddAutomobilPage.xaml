@@ -35,6 +35,7 @@
                 </Frame>
                 <Button Text="Pick Photo"
                  Clicked="OnPickPhotoButtonClicked" />
+
                 <Button Command="{Binding SaveCommand}" Margin="0,0,0,0" Text="Dodaj"></Button>
             </StackLayout>
         </StackLayout>

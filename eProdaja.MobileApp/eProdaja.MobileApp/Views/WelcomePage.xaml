@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage
+      xmlns:local="clr-namespace:eProdaja.MobileApp.Views"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="eProdaja.MobileApp.Views.WelcomePage">
+    <!--Pages can be added as references or inline-->
+    <local:AutomobiliPage Title="Automobili"></local:AutomobiliPage>
+    <local:AddAutomobilPage Title="Dodaj automobil"></local:AddAutomobilPage>
+    <local:NewsPage Title="Obavijesti"></local:NewsPage>
+    <local:AddNewsPage Title="Dodaj obavijest"></local:AddNewsPage>
+</TabbedPage>

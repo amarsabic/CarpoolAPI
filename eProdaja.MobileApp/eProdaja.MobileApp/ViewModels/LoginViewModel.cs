@@ -41,7 +41,7 @@ namespace eProdaja.MobileApp.ViewModels
             try
             {
                 await _korisnik.Get<dynamic>(null);
-                Application.Current.MainPage = new MainPage();
+                Application.Current.MainPage = new WelcomePage();
             }
             catch (Exception)
             {

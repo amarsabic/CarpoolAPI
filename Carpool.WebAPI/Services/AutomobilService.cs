@@ -22,6 +22,8 @@ namespace Carpool.WebAPI.Services
 
         public override List<Model.Automobil> Get(AutomobilSearchRequest request)
         {
+            var userId = _httpContext.GetUserId();
+
             var query = _context.Autmobili.AsQueryable();
 
             if (!string.IsNullOrWhiteSpace(request?.Naziv))
@@ -36,7 +38,10 @@ namespace Carpool.WebAPI.Services
             {
                 query = query.Where(x => x.Godiste.StartsWith(request.Godiste));
             }
-        
+            if (request.IsVozac)
+            {
+                query = query.Where(x => x.VozacID==int.Parse(userId));
+            }
             var result = query.ToList();
 
             return _mapper.Map<List<Model.Automobil>>(result);
@@ -47,7 +52,7 @@ namespace Carpool.WebAPI.Services
 
             var entity = _mapper.Map<Database.Automobil>(request);
             entity.VozacID = int.Parse(userId);
-            entity.IsAktivan = true;
+            entity.IsAktivan = false;
 
             _context.Autmobili.Add(entity);
             _context.SaveChanges();

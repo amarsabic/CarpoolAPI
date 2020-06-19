@@ -1,4 +1,5 @@
 ﻿using Carpool.Model;
+using Carpool.Model.Requests;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -22,7 +23,11 @@ namespace eProdaja.MobileApp.ViewModels
 
         public async Task Init()
         {
-            var list = await _automobilService.Get<List<Automobil>>(null);
+            var searchByVozac = new AutomobilSearchRequest
+            {
+                IsVozac = true
+            };
+            var list = await _automobilService.Get<List<Automobil>>(searchByVozac);
 
             if (AutomobilList.Count == 0)
             {

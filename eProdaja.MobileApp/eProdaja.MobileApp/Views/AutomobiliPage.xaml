@@ -17,10 +17,6 @@
     </ContentPage.Resources>
     <ContentPage.Content>
         <StackLayout BackgroundColor="#E5E5E5">
-            <Label Text="Automobili"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-            <!--<Picker ItemsSource=""></Picker>-->
             <ListView ItemsSource="{Binding AutomobilList}">
                 <ListView.ItemTemplate>
                     <DataTemplate>
