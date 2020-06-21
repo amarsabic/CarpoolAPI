@@ -17,7 +17,8 @@
     </ContentPage.Resources>
     <ContentPage.Content>
         <StackLayout>
-            <ListView ItemSelected="ListView_ItemSelected" ItemsSource="{Binding AutomobilList}">
+            <Button Margin="50, 20, 50, 0" Command="{Binding DodajCommand}" Text="Dodaj automobil"></Button>
+            <ListView ItemSelected="CarClicked" ItemsSource="{Binding AutomobilList}">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>

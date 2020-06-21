@@ -26,11 +26,9 @@ namespace eProdaja.MobileApp.Views
             await model.Init();
         }
 
-        private async void ListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
+        private async void CarClicked(object sender, SelectedItemChangedEventArgs e)
         {
-            var x = sender;
-
-            await Navigation.PushAsync(new InfoAutomobilPage());
+            await Navigation.PushAsync(new InfoAutomobilPage(((Carpool.Model.Automobil)e.SelectedItem).AutomobilID));
         }
     }
 }

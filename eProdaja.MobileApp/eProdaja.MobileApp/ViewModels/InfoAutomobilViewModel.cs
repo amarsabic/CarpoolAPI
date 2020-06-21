@@ -1,5 +1,4 @@
-﻿using Carpool.Model.Requests;
-using eProdaja.MobileApp.Views;
+﻿using Carpool.Model;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -9,15 +8,20 @@ using Xamarin.Forms;
 
 namespace eProdaja.MobileApp.ViewModels
 {
-    public class AddAutomobilViewModel : BaseViewModel
+    public class InfoAutomobilViewModel : BaseViewModel
     {
         private readonly APIService _automobilService = new APIService("Automobil");
 
-        public AddAutomobilViewModel()
+        public InfoAutomobilViewModel()
         {
-            SaveCommand = new Command(async () => await Save());
+            InitCommand = new Command(async () => await Init(int.MaxValue));
         }
-
+        string _nazivModel = string.Empty;
+        public string NazivModel
+        {
+            get { return _nazivModel; }
+            set { SetProperty(ref _nazivModel, value); }
+        }
         string _naziv = string.Empty;
         public string Naziv
         {
@@ -49,7 +53,6 @@ namespace eProdaja.MobileApp.ViewModels
             get { return _datumIsteka; }
             set { SetProperty(ref _datumIsteka, value); }
         }
-
         public byte[] _slika = null;
         public byte[] Slika
         {
@@ -57,38 +60,25 @@ namespace eProdaja.MobileApp.ViewModels
             set { SetProperty(ref _slika, value); }
         }
 
-        public byte[] _slikaThumb = null;
-        public byte[] SlikaThumb
+        public ICommand InitCommand { get; set; }
+        public async Task Init(int automobilId)
         {
-            get { return _slikaThumb; }
-            set { SetProperty(ref _slikaThumb, value); }
-        }
-        public ICommand SaveCommand { get; set; }
-
-        async Task Save()
-        {
-            var model = new AutomobilInsertRequest
-            {
-                BrojRegOznaka = BrojRegOznaka,
-                DatumIstekaRegistracije = DatumIstekaRegistracije,
-                Godiste = Godiste,
-                Model = Model,
-                Naziv = Naziv,
-                Slika=Slika,
-                SlikaThumb=SlikaThumb
-            };
-
             try
             {
-                await _automobilService.Insert<dynamic>(model);
-                await Application.Current.MainPage.DisplayAlert("OK", "Uspješno dodavanje", "OK");
-
-                await Application.Current.MainPage.Navigation.PopAsync();
+                var auto = await _automobilService.GetById<Automobil>(automobilId);
+                Slika = auto.Slika;
+                Naziv = auto.Naziv;
+                Model = auto.Model;
+                BrojRegOznaka = auto.BrojRegOznaka;
+                Godiste = auto.Godiste;
+                DatumIstekaRegistracije = auto.DatumIstekaRegistracije;
+                NazivModel = auto.Naziv + " " + auto.Model;
             }
             catch (Exception)
             {
 
             }
+
         }
     }
 }

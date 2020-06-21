@@ -1,5 +1,6 @@
 ﻿using Carpool.Model;
 using Carpool.Model.Requests;
+using eProdaja.MobileApp.Views;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -16,10 +17,24 @@ namespace eProdaja.MobileApp.ViewModels
         public AutomobiliViewModel()
         {
             InitCommand = new Command(async () => await Init());
+            DodajCommand = new Command(async () => await Dodaj());
+            CarTappedCommand = new Command(async () => await CarTapped());
+            
         }
         public ObservableCollection<Automobil> AutomobilList { get; set; } = new ObservableCollection<Automobil>();
 
         public ICommand InitCommand { get; set; }
+        public ICommand DodajCommand { get; set; }
+        public ICommand CarTappedCommand { get; set; }
+
+        public async Task Dodaj()
+        {
+            await Application.Current.MainPage.Navigation.PushAsync(new AddAutomobilPage());
+        } 
+        public async Task CarTapped()
+        {
+            var x = 0;
+        }
 
         public async Task Init()
         {
@@ -34,14 +49,12 @@ namespace eProdaja.MobileApp.ViewModels
                 await Application.Current.MainPage.DisplayAlert("Carpool", "Trenutno nemate dodane automobile", "OK");
             }
 
-            if (AutomobilList.Count == 0)
+            AutomobilList.Clear();
+            foreach (var automobil in list)
             {
-                AutomobilList.Clear();
-                foreach (var automobil in list)
-                {
-                    AutomobilList.Add(automobil);
-                }
-            }        
+                AutomobilList.Add(automobil);
+            }
+
         }
     }
 }

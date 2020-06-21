@@ -1,15 +1,47 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+<ContentPage Title="{Binding NazivModel}"
+    xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:viewModel="clr-namespace:eProdaja.MobileApp.ViewModels"
+             xmlns:converters="clr-namespace:eProdaja.MobileApp.Converters"
              mc:Ignorable="d"
              x:Class="eProdaja.MobileApp.Views.InfoAutomobilPage">
+    <ContentPage.BindingContext>
+        <viewModel:InfoAutomobilViewModel/>
+    </ContentPage.BindingContext>
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:ImageConverter x:Key="imgConv"></converters:ImageConverter>
+        </ResourceDictionary>
+    </ContentPage.Resources>
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+        <StackLayout  Padding="50, 20, 50, 20">
+            <Frame CornerRadius="20"
+                                       Padding="0"
+                                       IsClippedToBounds="True">
+                <Image Source="{Binding Slika, Converter={StaticResource imgConv}}"></Image>
+            </Frame>
+            <StackLayout VerticalOptions="Center"
+                         HorizontalOptions="Center">
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Broj registarskih oznaka:"></Label>
+                    <Label Text="{Binding BrojRegOznaka}"></Label>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Datum isteka registracije:"></Label>
+                    <Label Text="{Binding DatumIstekaRegistracije}"></Label>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Godina proizvodnje:"></Label>
+                    <Label Text="{Binding Godiste}"></Label>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal">
+                    <Button Command="{Binding UrediCommand}" Text="Uredi"></Button>
+                    <Button Command="{Binding UkloniCommand}" Text="Ukloni"></Button>
+                </StackLayout>
+            </StackLayout>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

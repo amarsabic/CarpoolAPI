@@ -9,9 +9,12 @@
              mc:Ignorable="d"
              x:Class="eProdaja.MobileApp.Views.WelcomePage">
     <!--Pages can be added as references or inline-->
-
-    <local:PassengerProfilePage Title="Profil"></local:PassengerProfilePage>
-    <local:AutomobiliPage Title="Automobili"></local:AutomobiliPage>
-    <local:AddAutomobilPage Title="Dodaj automobil"></local:AddAutomobilPage>
-    <local:NewsPage Title="Obavijesti"></local:NewsPage>
+    
+    <local:PassengerProfilePage Title="Početna" IconImageSource="icons8-home-50.png"></local:PassengerProfilePage>
+    <local:PassengerProfilePage Title="Profil" IconImageSource="icons8-user-male-50.png"></local:PassengerProfilePage>
+    <local:AutomobiliPage Title="Automobili" IconImageSource="icons8-car-50.png"></local:AutomobiliPage>
+    <!--<local:AddAutomobilPage Title="Dodaj automobil"></local:AddAutomobilPage>-->
+    <local:NewsPage Title="Obavijesti" IconImageSource="icons8-news-50.png"></local:NewsPage>
+    <local:NewsPage Title="Dodaj" IconImageSource="icons8-plus-50.png"></local:NewsPage>
+    <local:NewsPage Title="Pretraži" IconImageSource="icons8-search-50.png"></local:NewsPage>
 </TabbedPage>
