@@ -10,8 +10,8 @@
              x:Class="eProdaja.MobileApp.Views.WelcomePage">
     <!--Pages can be added as references or inline-->
 
+    <local:PassengerProfilePage Title="Profil"></local:PassengerProfilePage>
     <local:AutomobiliPage Title="Automobili"></local:AutomobiliPage>
     <local:AddAutomobilPage Title="Dodaj automobil"></local:AddAutomobilPage>
     <local:NewsPage Title="Obavijesti"></local:NewsPage>
-    <local:RegisterPage Title="Register"></local:RegisterPage>
 </TabbedPage>

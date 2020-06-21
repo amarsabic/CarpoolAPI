@@ -56,9 +56,7 @@ namespace eProdaja.MobileApp
         {
             var url = $"{_apiUrl}/{_route}/{id}";
 
-            var result = await url.GetJsonAsync<T>();
-
-            return result;
+            return await url.WithBasicAuth(Username, Password).GetJsonAsync<T>();
         }
         public async Task<T> Insert<T>(object request)
         {

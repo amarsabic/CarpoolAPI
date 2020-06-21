@@ -29,6 +29,11 @@ namespace eProdaja.MobileApp.ViewModels
             };
             var list = await _automobilService.Get<List<Automobil>>(searchByVozac);
 
+            if (list.Count == 0)
+            {
+                await Application.Current.MainPage.DisplayAlert("Carpool", "Trenutno nemate dodane automobile", "OK");
+            }
+
             if (AutomobilList.Count == 0)
             {
                 AutomobilList.Clear();

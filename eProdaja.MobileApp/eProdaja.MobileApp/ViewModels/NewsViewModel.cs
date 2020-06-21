@@ -58,6 +58,13 @@ namespace eProdaja.MobileApp.ViewModels
 
                 var listSelected = await _obavijesti.Get<List<Obavijesti>>(search);
 
+
+                if (listSelected.Count == 0)
+                {
+                    var nazivTipa = SelectedTipObavijesti.NazivTipa;
+                    await Application.Current.MainPage.DisplayAlert("Carpool", "Trenutno nemate obavijesti tipa " + nazivTipa, "OK");
+                }
+
                 ObavijestiList.Clear();
                 foreach (var obavijest in listSelected)
                 {
@@ -67,6 +74,11 @@ namespace eProdaja.MobileApp.ViewModels
             else
             {
                 var list = await _obavijesti.Get<List<Obavijesti>>(search);
+
+                if (list.Count == 0)
+                {
+                    await Application.Current.MainPage.DisplayAlert("Carpool", "Trenutno nemate dodane obavijesti", "OK");
+                }
 
                 ObavijestiList.Clear();
                 foreach (var obavijest in list)

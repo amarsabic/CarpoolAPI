@@ -1,9 +1,11 @@
 ﻿using Carpool.Model;
 using Carpool.Model.Requests;
+using eProdaja.MobileApp.Services;
 using eProdaja.MobileApp.Views;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.IO;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
@@ -20,7 +22,12 @@ namespace eProdaja.MobileApp.ViewModels
             RegisterCommand = new Command(async () => await Register());
             LoadCommand = new Command(async () => await LoadGradovi());
         }
-
+        bool _photoPicked=false;
+        public bool PhotoPicked
+        {
+            get { return _photoPicked; }
+            set { SetProperty(ref _photoPicked, value); }
+        }
         string _ime = string.Empty;
         public string Ime
         {
@@ -51,13 +58,17 @@ namespace eProdaja.MobileApp.ViewModels
         public byte[] Slika
         {
             get { return _slika; }
-            set { SetProperty(ref _slika, value); }
+            set { 
+                SetProperty(ref _slika, value);
+                PhotoPicked = true;
+            }
         }
         public byte[] _slikaThumb = null;
         public byte[] SlikaThumb
         {
             get { return _slikaThumb; }
             set { SetProperty(ref _slikaThumb, value); }
+
         }
 
         ObservableCollection<Grad> _Gradovi = new ObservableCollection<Grad>();

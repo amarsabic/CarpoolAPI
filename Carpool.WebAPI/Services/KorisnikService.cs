@@ -9,17 +9,21 @@ using Carpool.Model;
 using Carpool.Model.Requests;
 using Carpool.WebAPI.Database;
 using Carpool.WebAPI.Exceptions;
+using Carpool.WebAPI.Helpers;
+using Microsoft.AspNetCore.Http;
 
 namespace Carpool.WebAPI.Services
 {
     public class KorisnikService : IKorisnikService
     {
+        private readonly IHttpContextAccessor _httpContext;
         private readonly CarpoolContext _context;
         private readonly IMapper _mapper;
-        public KorisnikService(CarpoolContext context, IMapper mapper)
+        public KorisnikService(CarpoolContext context, IMapper mapper, IHttpContextAccessor httpContext)
         {
             _context = context;
             _mapper = mapper;
+            _httpContext = httpContext;
         }
 
         public Model.Korisnik Authenticiraj(string username, string pass)
@@ -61,6 +65,8 @@ namespace Carpool.WebAPI.Services
 
         public List<Model.Korisnik> Get(KorisniciSearchRequest request)
         {
+            var userId = int.Parse(_httpContext.GetUserId());
+
             var query = _context.Korisnici.AsQueryable();
 
             if (!string.IsNullOrWhiteSpace(request?.Ime))
@@ -71,6 +77,10 @@ namespace Carpool.WebAPI.Services
             {
                 query = query.Where(x => x.Prezime.StartsWith(request.Prezime));
             }
+            if (request.IsKorisnik)
+            {
+                query = query.Where(x=>x.KorisnikID==userId);
+            }
 
             var list = query.ToList();
 
@@ -79,7 +89,9 @@ namespace Carpool.WebAPI.Services
 
         public Model.Korisnik GetById(int id)
         {
-            var korisnik = _context.Korisnici.Find(id);
+            var userId = int.Parse(_httpContext.GetUserId());
+
+            var korisnik = _context.Korisnici.Find(userId);
 
             return _mapper.Map<Model.Korisnik>(korisnik);
         }

@@ -20,6 +20,7 @@ namespace eProdaja.MobileApp.Views
             InitializeComponent();
 
             BindingContext = model = new RegisterViewModel();
+
         }
 
         protected async override void OnAppearing()

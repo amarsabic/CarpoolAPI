@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:converters="clr-namespace:eProdaja.MobileApp.Converters"
+             xmlns:vm="clr-namespace:eProdaja.MobileApp.ViewModels"
+             mc:Ignorable="d"
+             x:Class="eProdaja.MobileApp.Views.PassengerProfilePage">
+    <ContentPage.BindingContext>
+        <vm:UserProfileViewModel></vm:UserProfileViewModel>
+    </ContentPage.BindingContext>
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:ImageConverter x:Key="imgConv"></converters:ImageConverter>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <StackLayout>
+            <Frame  CornerRadius="100"
+                                       Padding="0"
+                                       IsClippedToBounds="True"
+                                       HeightRequest="200"
+                                       WidthRequest="200"
+                                       HorizontalOptions="Center">
+                <Image Source="{Binding Slika, Converter={StaticResource imgConv}}"></Image>
+            </Frame>
+            <Label Text="{Binding KorisnickoIme}"></Label>
+        </StackLayout>
+     </ContentPage.Content>
+</ContentPage>

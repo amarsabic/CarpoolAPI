@@ -108,6 +108,7 @@
     <EmbeddedResource Include="euro.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
+    <Content Include="icons8-add-100.png" />
     <Content Include="kindpng_787127.png" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LargeTile.scale-100.png" />

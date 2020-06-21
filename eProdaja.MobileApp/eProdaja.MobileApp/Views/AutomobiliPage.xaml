@@ -16,7 +16,7 @@
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.Content>
-        <StackLayout BackgroundColor="#E5E5E5">
+        <StackLayout>
             <ListView ItemSelected="ListView_ItemSelected" ItemsSource="{Binding AutomobilList}">
                 <ListView.ItemTemplate>
                     <DataTemplate>
@@ -24,26 +24,9 @@
                             <StackLayout Padding="50, 20, 50, 20">
                                 <Frame CornerRadius="20"
                                        Padding="0"
-                                       IsClippedToBounds="True"
-                                       HasShadow="False">
+                                       IsClippedToBounds="True">
                                     <Image Source="{Binding Slika, Converter={StaticResource imgConv}}"></Image>
                                 </Frame>
-                                <!--<Label Text="{Binding Naziv}" 
-                                d:Text="{Binding .}"
-                                LineBreakMode="NoWrap" 
-                                Style="{DynamicResource ListItemTextStyle}" 
-                                FontSize="16" />
-                                <Label Text="{Binding Model}" 
-                                d:Text="Item descripton"
-                                LineBreakMode="NoWrap"
-                                Style="{DynamicResource ListItemDetailTextStyle}"
-                                FontSize="13" />
-                                <StackLayout Orientation="Horizontal"
-                                             HorizontalOptions="Center"
-                                             VerticalOptions="Center">
-                                    <Button BackgroundColor="Blue" Text="Uredi" TextColor="White"></Button>
-                                    <Button BackgroundColor="Red" Text="Ukloni" TextColor="White"></Button>
-                                </StackLayout>-->
                             </StackLayout>
                         </ViewCell>
                     </DataTemplate>

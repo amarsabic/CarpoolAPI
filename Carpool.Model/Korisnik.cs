@@ -12,6 +12,7 @@ namespace Carpool.Model
         public string BrojTelefona { get; set; }
         public string Email { get; set; }
         public string KorisnickoIme { get; set; }
+        public byte[] Slika { get; set; }
         public ICollection<KorisniciUloge> KorisniciUloge { get; set; }
     }
 }

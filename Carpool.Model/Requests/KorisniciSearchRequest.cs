@@ -8,5 +8,6 @@ namespace Carpool.Model.Requests
     {
         public string Ime { get; set; }
         public string Prezime { get; set; }
+        public bool IsKorisnik { get; set; }
     }
 }
