@@ -31,6 +31,9 @@ namespace Carpool.WebAPI.Database
         public int? PreferencijeID { get; set; }
         public Preferencije Preferencije { get; set; }
 
+        public byte[] Slika { get; set; }
+        public byte[] SlikaThumb { get; set; }
+
         public List<Rezervacija> Rezervacije { get; set; }
 
         public ICollection<KorisniciUloge> KorisniciUloge { get; set; }

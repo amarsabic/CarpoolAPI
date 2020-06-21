@@ -47,7 +47,18 @@ namespace eProdaja.MobileApp.ViewModels
             set { SetProperty(ref _datum, value); }
         }
 
-
+        public byte[] _slika = null;
+        public byte[] Slika
+        {
+            get { return _slika; }
+            set { SetProperty(ref _slika, value); }
+        }
+        public byte[] _slikaThumb = null;
+        public byte[] SlikaThumb
+        {
+            get { return _slikaThumb; }
+            set { SetProperty(ref _slikaThumb, value); }
+        }
 
         ObservableCollection<Grad> _Gradovi = new ObservableCollection<Grad>();
 
@@ -90,7 +101,7 @@ namespace eProdaja.MobileApp.ViewModels
             set { SetProperty(ref _passwordConf, value); }
         }
         public ICommand LoadCommand { get; set; }
-        async Task LoadGradovi()
+        public async Task LoadGradovi()
         {
             var result = await _gradovi.Get<List<Grad>>(null);
 
@@ -100,7 +111,6 @@ namespace eProdaja.MobileApp.ViewModels
                 _Gradovi.Add(grad);
             }
         }
-
 
         public ICommand RegisterCommand { get; set; }
 
@@ -115,14 +125,16 @@ namespace eProdaja.MobileApp.ViewModels
                 GradID = SelectedGrad.GradID,
                 Password = Lozinka,
                 PasswordConfirmation = LozinkaPotvrda,
-                BrojTelefona= Telefon
+                BrojTelefona= Telefon,
+                Slika=Slika,
+                SlikaThumb=SlikaThumb
             };
 
             try
             {
                 await _korisnik.Insert<dynamic>(request);
                 await Application.Current.MainPage.DisplayAlert("OK", "Uspješna registracija", "OK");
-                Application.Current.MainPage = new LoginPage();
+                await Application.Current.MainPage.Navigation.PopAsync();
             }
             catch (Exception)
             {

@@ -25,5 +25,12 @@ namespace eProdaja.MobileApp.Views
             base.OnAppearing();
             await model.Init();
         }
+
+        private async void ListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
+        {
+            var x = sender;
+
+            await Navigation.PushAsync(new InfoAutomobilPage());
+        }
     }
 }

@@ -82,7 +82,7 @@ namespace eProdaja.MobileApp.ViewModels
             {
                 await _automobilService.Insert<dynamic>(model);
                 await Application.Current.MainPage.DisplayAlert("OK", "Uspješno dodavanje", "OK");
-                Application.Current.MainPage = new AutomobiliPage();
+                Application.Current.MainPage = new WelcomePage();
             }
             catch (Exception)
             {

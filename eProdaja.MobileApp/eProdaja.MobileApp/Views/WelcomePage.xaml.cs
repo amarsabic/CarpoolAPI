@@ -15,6 +15,7 @@ namespace eProdaja.MobileApp.Views
         public WelcomePage()
         {
             InitializeComponent();
+
         }
     }
 }

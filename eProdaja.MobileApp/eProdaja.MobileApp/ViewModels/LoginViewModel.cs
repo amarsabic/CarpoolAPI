@@ -15,6 +15,7 @@ namespace eProdaja.MobileApp.ViewModels
         public LoginViewModel()
         {
             LoginCommand = new Command(async () => await Login());
+            GoRegisterPageCommand = new Command(async () => await GoRegisterPage());
         }
         string _username = string.Empty;
         public string Username
@@ -30,8 +31,12 @@ namespace eProdaja.MobileApp.ViewModels
         }
 
         public ICommand LoginCommand { get; set; }
-        public ICommand LabelCommand { get; set; }
+        public ICommand GoRegisterPageCommand { get; set; }
 
+        async Task GoRegisterPage()
+        {
+            await Application.Current.MainPage.Navigation.PushAsync(new RegisterPage()); 
+        }
         async Task Login()
         {
             IsBusy = true;
@@ -41,7 +46,7 @@ namespace eProdaja.MobileApp.ViewModels
             try
             {
                 await _korisnik.Get<dynamic>(null);
-                Application.Current.MainPage = new WelcomePage();
+                Application.Current.MainPage = new NavigationPage(new WelcomePage());
             }
             catch (Exception)
             {

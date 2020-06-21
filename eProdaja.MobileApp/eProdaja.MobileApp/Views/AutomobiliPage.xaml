@@ -17,7 +17,7 @@
     </ContentPage.Resources>
     <ContentPage.Content>
         <StackLayout BackgroundColor="#E5E5E5">
-            <ListView ItemsSource="{Binding AutomobilList}">
+            <ListView ItemSelected="ListView_ItemSelected" ItemsSource="{Binding AutomobilList}">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>

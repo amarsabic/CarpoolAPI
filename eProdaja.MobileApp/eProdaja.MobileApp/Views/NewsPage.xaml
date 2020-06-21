@@ -10,7 +10,7 @@
         <vm:NewsViewModel></vm:NewsViewModel>
     </ContentPage.BindingContext>
     <ContentPage.Content>
-        <StackLayout>
+        <StackLayout Padding="20">
             <Picker ItemsSource="{Binding TipObavijestiList}"
                     ItemDisplayBinding="{Binding NazivTipa}"
                     SelectedItem="{Binding SelectedTipObavijesti}"></Picker>

@@ -14,13 +14,9 @@ namespace eProdaja.MobileApp
             InitializeComponent();
 
             DependencyService.Register<MockDataStore>();
-            MainPage = new LoginPage();
-          
-            //MainPage = new NavigationPage(new WelcomePage())
-            //{
-            //    BarBackgroundColor = Color.Gray,
-            //    BarTextColor=Color.White
-            //};
+            //MainPage = new LoginPage();
+
+            MainPage = new NavigationPage(new LoginPage());
         }
         
         protected override void OnStart()

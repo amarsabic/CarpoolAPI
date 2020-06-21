@@ -4,11 +4,17 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:vm="clr-namespace:eProdaja.MobileApp.ViewModels"
+             xmlns:converters="clr-namespace:eProdaja.MobileApp.Converters"
              mc:Ignorable="d"
              x:Class="eProdaja.MobileApp.Views.RegisterPage">
     <ContentPage.BindingContext>
         <vm:RegisterViewModel></vm:RegisterViewModel>
     </ContentPage.BindingContext>
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:ImageConverter x:Key="imgConv"></converters:ImageConverter>
+        </ResourceDictionary>
+    </ContentPage.Resources>
     <ContentPage.Content>
         <StackLayout Padding="10">
             <StackLayout Spacing="0">
@@ -16,6 +22,14 @@
                 <Label FontSize="30" Text="POOL"/>
             </StackLayout>
             <StackLayout>
+                <Frame CornerRadius="100"
+                                       Padding="0"
+                                       IsClippedToBounds="True"
+                                       HeightRequest="200"
+                                       WidthRequest="200"
+                                       HorizontalOptions="Center">
+                    <Image Source="{Binding Slika, Converter={StaticResource imgConv}}"></Image>
+                </Frame>
                 <Entry Placeholder="Ime" Text="{Binding Ime}"></Entry>
                 <Entry Placeholder="Prezime" Text="{Binding Prezime}"></Entry>
                 <Entry Placeholder="Email" Text="{Binding Email}"></Entry>
@@ -25,8 +39,11 @@
                         ItemDisplayBinding="{Binding Naziv}"
                         SelectedItem="{Binding SelectedGrad}"
                         ></Picker>
-                <DatePicker Date="{Binding Datum}"></DatePicker>
+                <DatePicker Date="{Binding Datum}" MaximumDate="01/01/2020"></DatePicker>
                 <Entry Margin="0,0,0,0" Placeholder="Korisničko ime" Text="{Binding KorisnickoIme}"></Entry>
+
+                <Button Text="Pick Photo"
+                 Clicked="OnPickPhotoButtonClicked" />
                 <Entry Placeholder="Lozinka" Text="{Binding Lozinka}" IsPassword="True"></Entry>
                 <Entry Placeholder="Potvrda lozinke" Text="{Binding LozinkaPotvrda}" IsPassword="True"></Entry>
                 <Button Command="{Binding RegisterCommand}" Margin="0,0,0,0" Text="Registriraj se"></Button>

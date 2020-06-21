@@ -13,7 +13,10 @@ namespace eProdaja.MobileApp.ViewModels
     public class BaseViewModel : INotifyPropertyChanged
     {
         public IDataStore<Item> DataStore => DependencyService.Get<IDataStore<Item>>();
-
+        //public interface IMyNavigation
+        //{
+        //    public void Naviga
+        //}
         bool isBusy = false;
         public bool IsBusy
         {

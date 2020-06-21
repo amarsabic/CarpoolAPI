@@ -24,6 +24,8 @@ namespace Carpool.Model.Requests
         public string Password { get; set; }
         [Required(AllowEmptyStrings = false)]
         public string PasswordConfirmation { get; set; }
+        public byte[] Slika { get; set; }
+        public byte[] SlikaThumb { get; set; }
         public int GradID { get; set; }
         public List<int> Uloge { get; set; } = new List<int>();
     }

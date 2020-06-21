@@ -5,15 +5,16 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:vm="clr-namespace:eProdaja.MobileApp.ViewModels"
              mc:Ignorable="d"
+             NavigationPage.HasNavigationBar="False"
              x:Class="eProdaja.MobileApp.Views.LoginPage">
     <ContentPage.BindingContext>
         <vm:LoginViewModel/>
     </ContentPage.BindingContext>
     <ContentPage.Content>
-        <StackLayout Spacing="0">
+        <StackLayout Spacing="0"  Padding="20">
             <Label FontSize="30" Text="CAR"/>
             <Label FontSize="30" Text="POOL"/>
-            <StackLayout Padding="10" VerticalOptions="CenterAndExpand">
+            <StackLayout VerticalOptions="CenterAndExpand">
                 <Entry Placeholder="Korisničko ime" Text="{Binding Username}"></Entry>
                 <Entry Placeholder="Lozinka" Text="{Binding Password}" IsPassword="True"></Entry>
                 <Button Command="{Binding LoginCommand}" 
@@ -28,7 +29,7 @@
                 <Label Text="Niste prijavljeni?"></Label>
                 <Label  TextColor="Blue" Text="Kreirajte Vaš profil">
                     <Label.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding}"/>
+                        <TapGestureRecognizer Command="{Binding GoRegisterPageCommand}"/>
                     </Label.GestureRecognizers>
                 </Label>
             </StackLayout>
