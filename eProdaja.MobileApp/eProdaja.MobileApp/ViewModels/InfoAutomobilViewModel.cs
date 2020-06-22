@@ -14,8 +14,12 @@ namespace eProdaja.MobileApp.ViewModels
 
         public InfoAutomobilViewModel()
         {
-            InitCommand = new Command(async () => await Init(int.MaxValue));
+            InitCommand = new Command(async (param) => await Init((int)param));
+            UkloniCommand = new Command(async () => await Ukloni());
         }
+
+        int AutomobilID;
+
         string _nazivModel = string.Empty;
         public string NazivModel
         {
@@ -61,6 +65,23 @@ namespace eProdaja.MobileApp.ViewModels
         }
 
         public ICommand InitCommand { get; set; }
+        public ICommand UrediCommand { get; set; }
+        public ICommand UkloniCommand { get; set; }
+
+        public async Task Ukloni()
+        {
+            try
+            {
+                await _automobilService.Delete<Automobil>(AutomobilID);
+                await Application.Current.MainPage.DisplayAlert("OK", "Uspješno brisanje", "OK");
+
+                await Application.Current.MainPage.Navigation.PopAsync();
+            }
+            catch (Exception)
+            {
+
+            }
+        }
         public async Task Init(int automobilId)
         {
             try
@@ -73,6 +94,7 @@ namespace eProdaja.MobileApp.ViewModels
                 Godiste = auto.Godiste;
                 DatumIstekaRegistracije = auto.DatumIstekaRegistracije;
                 NazivModel = auto.Naziv + " " + auto.Model;
+                AutomobilID = automobilId;
             }
             catch (Exception)
             {
