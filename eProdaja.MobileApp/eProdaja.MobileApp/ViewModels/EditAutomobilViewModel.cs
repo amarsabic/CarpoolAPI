@@ -1,5 +1,5 @@
 ﻿using Carpool.Model;
-using eProdaja.MobileApp.Views;
+using Carpool.Model.Requests;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -9,25 +9,18 @@ using Xamarin.Forms;
 
 namespace eProdaja.MobileApp.ViewModels
 {
-    public class InfoAutomobilViewModel : BaseViewModel
+    public class EditAutomobilViewModel:BaseViewModel
     {
         private readonly APIService _automobilService = new APIService("Automobil");
 
-        public InfoAutomobilViewModel()
+        public EditAutomobilViewModel()
         {
+            SaveCommand = new Command(async () => await Save());
             InitCommand = new Command(async (param) => await Init((int)param));
-            UkloniCommand = new Command(async () => await Ukloni());
-            UrediCommand = new Command(async () => await Uredi());
         }
 
-        int AutomobilID;
+        int automobilID;
 
-        string _nazivModel = string.Empty;
-        public string NazivModel
-        {
-            get { return _nazivModel; }
-            set { SetProperty(ref _nazivModel, value); }
-        }
         string _naziv = string.Empty;
         public string Naziv
         {
@@ -53,12 +46,13 @@ namespace eProdaja.MobileApp.ViewModels
             set { SetProperty(ref _brojReg, value); }
         }
 
-        DateTime _datumIsteka = DateTime.MaxValue;
+        DateTime _datumIsteka;
         public DateTime DatumIstekaRegistracije
         {
             get { return _datumIsteka; }
             set { SetProperty(ref _datumIsteka, value); }
         }
+
         public byte[] _slika = null;
         public byte[] Slika
         {
@@ -66,21 +60,54 @@ namespace eProdaja.MobileApp.ViewModels
             set { SetProperty(ref _slika, value); }
         }
 
-        public ICommand InitCommand { get; set; }
-        public ICommand UrediCommand { get; set; }
-        public ICommand UkloniCommand { get; set; }
-
-        public async Task Uredi()
+        public byte[] _slikaThumb = null;
+        public byte[] SlikaThumb
         {
-            await Application.Current.MainPage.Navigation.PushAsync(new EditAutomobilPage(AutomobilID));
+            get { return _slikaThumb; }
+            set { SetProperty(ref _slikaThumb, value); }
         }
+        public ICommand SaveCommand { get; set; }
+        public ICommand InitCommand { get; set; }
 
-        public async Task Ukloni()
+        public async Task Init(int AutomobilID)
         {
             try
             {
-                await _automobilService.Delete<Automobil>(AutomobilID);
-                await Application.Current.MainPage.DisplayAlert("OK", "Uspješno brisanje", "OK");
+                var automobil = await _automobilService.GetById<Automobil>(AutomobilID);
+
+                BrojRegOznaka =automobil.BrojRegOznaka;
+                DatumIstekaRegistracije = automobil.DatumIstekaRegistracije;
+                Godiste = automobil.Godiste;
+                Model = automobil.Model;
+                Naziv = automobil.Naziv;
+                Slika = automobil.Slika;
+                SlikaThumb = automobil.SlikaThumb;
+
+                automobilID = AutomobilID;
+            }
+            catch (Exception)
+            {
+
+            }
+        }
+
+        async Task Save()
+        {
+            var model = new AutomobilInsertRequest
+            {
+                BrojRegOznaka = BrojRegOznaka,
+                DatumIstekaRegistracije = DatumIstekaRegistracije,
+                Godiste = Godiste,
+                Model = Model,
+                Naziv = Naziv,
+                Slika = Slika,
+                SlikaThumb = SlikaThumb
+            };
+
+            try
+            {
+                await _automobilService.Update<Automobil>(automobilID, model);
+                await Application.Current.MainPage.DisplayAlert("Carpool", "Uspješna izmjena", "OK");
 
                 await Application.Current.MainPage.Navigation.PopAsync();
             }
@@ -88,26 +115,6 @@ namespace eProdaja.MobileApp.ViewModels
             {
 
             }
-        }
-        public async Task Init(int automobilId)
-        {
-            try
-            {
-                var auto = await _automobilService.GetById<Automobil>(automobilId);
-                Slika = auto.Slika;
-                Naziv = auto.Naziv;
-                Model = auto.Model;
-                BrojRegOznaka = auto.BrojRegOznaka;
-                Godiste = auto.Godiste;
-                DatumIstekaRegistracije = auto.DatumIstekaRegistracije;
-                NazivModel = auto.Naziv + " " + auto.Model;
-                AutomobilID = automobilId;
-            }
-            catch (Exception)
-            {
-
-            }
-
         }
     }
 }

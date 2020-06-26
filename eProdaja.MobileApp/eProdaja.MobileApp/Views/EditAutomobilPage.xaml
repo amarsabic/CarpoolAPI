@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="clr-namespace:eProdaja.MobileApp.ViewModels"
+             xmlns:converters="clr-namespace:eProdaja.MobileApp.Converters"
+             mc:Ignorable="d"
+             x:Class="eProdaja.MobileApp.Views.EditAutomobilPage">
+    <ContentPage.BindingContext>
+        <vm:EditAutomobilViewModel></vm:EditAutomobilViewModel>
+    </ContentPage.BindingContext>
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:ImageConverter x:Key="imgConv"></converters:ImageConverter>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <StackLayout Padding="20">
+            <StackLayout Spacing="0">
+                <Label FontSize="30" Text="CAR"/>
+                <Label FontSize="30" Text="POOL"/>
+            </StackLayout>
+            <StackLayout>
+                <Frame CornerRadius="20"
+                                       Padding="0"
+                                       IsClippedToBounds="True"
+                                       HasShadow="False">
+                    <Image Source="{Binding Slika, Converter={StaticResource imgConv}}"></Image>
+                </Frame>
+                <Entry Placeholder="{Binding Naziv}" Text="{Binding Naziv}"></Entry>
+                <Entry Placeholder="{Binding Model}" Text="{Binding Model}"></Entry>
+                <Entry Placeholder="{Binding Godiste}" Text="{Binding Godiste}"></Entry>
+                <Entry Placeholder="{Binding BrojRegOznaka}" Text="{Binding BrojRegOznaka}"></Entry>
+                <Label Text="Datum isteka registracije"></Label>
+                <DatePicker Date="{Binding DatumIstekaRegistracije}"></DatePicker>
+                <Button Text="Odaberite sliku"
+                 Clicked="OnPickPhotoButtonClicked" />
+
+                <Button Command="{Binding SaveCommand}" Margin="0,0,0,0" Text="Spremi"></Button>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
