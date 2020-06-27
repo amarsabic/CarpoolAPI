@@ -34,5 +34,18 @@ namespace Carpool.WebAPI.Services
 
             return _mapper.Map<List<Model.Vozac>>(result);
         }
+
+        public override Model.Vozac Insert(VozacUpsertRequest request)
+        {
+            var userId = int.Parse(_httpContext.GetUserId());
+
+            var model = _mapper.Map<Database.Vozac>(request);
+            model.VozacID = userId;
+
+            _context.Vozaci.Add(model);
+            _context.SaveChanges();
+
+            return _mapper.Map<Model.Vozac>(model);
+        }
     }
 }

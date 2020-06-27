@@ -40,7 +40,7 @@ namespace eProdaja.MobileApp.ViewModels
 
         public async Task AddVozac()
         {
-            //await Application.Current.MainPage.Navigation.PushAsync(new AddVozacPage());
+            await Application.Current.MainPage.Navigation.PushAsync(new AddVozacPage());
         }
 
         public async Task Logout()
@@ -49,14 +49,13 @@ namespace eProdaja.MobileApp.ViewModels
         }
         public async Task Load()
         {
-        
             try
             {
-                var k = await _korisnik.GetById<Korisnik>(1);
+                var k = await _korisnik.GetById<Korisnik>(0);
                 KorisnickoIme = k.KorisnickoIme;
                 Slika = k.Slika;
             }
-            catch (Exception)
+            catch (Exception er)
             {
 
             }

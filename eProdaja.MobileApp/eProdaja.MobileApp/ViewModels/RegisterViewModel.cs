@@ -47,7 +47,7 @@ namespace eProdaja.MobileApp.ViewModels
             set { SetProperty(ref _email, value); }
         }
 
-        DateTime _datum = DateTime.MaxValue;
+        DateTime _datum;
         public DateTime Datum
         {
             get { return _datum; }

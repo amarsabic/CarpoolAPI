@@ -91,9 +91,16 @@ namespace Carpool.WebAPI.Services
         {
             var userId = int.Parse(_httpContext.GetUserId());
 
-            var korisnik = _context.Korisnici.Find(userId);
-
-            return _mapper.Map<Model.Korisnik>(korisnik);
+            if (id != 0)
+            {
+                var korisnik = _context.Korisnici.Find(id);
+                return _mapper.Map<Model.Korisnik>(korisnik);
+            }
+            else
+            {
+                var korisnik = _context.Korisnici.Find(userId);
+                return _mapper.Map<Model.Korisnik>(korisnik);
+            }
         }
 
         public Model.Korisnik Insert(KorisnikInsertRequest request)

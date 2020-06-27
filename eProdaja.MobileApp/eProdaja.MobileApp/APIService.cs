@@ -51,7 +51,6 @@ namespace eProdaja.MobileApp
                 throw;
             }
         }
-
         public async Task<T> GetById<T>(object id)
         {
             var url = $"{_apiUrl}/{_route}/{id}";

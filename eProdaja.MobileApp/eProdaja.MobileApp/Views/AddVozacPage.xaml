@@ -1,15 +1,21 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+<ContentPage Title="Postani vozač"
+    xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="clr-namespace:eProdaja.MobileApp.ViewModels"
              mc:Ignorable="d"
              x:Class="eProdaja.MobileApp.Views.AddVozacPage">
+    <ContentPage.BindingContext>
+        <vm:AddVozacViewModel></vm:AddVozacViewModel>
+    </ContentPage.BindingContext>
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+        <StackLayout Padding="20, 30, 20, 20">
+            <Entry Placeholder="Broj vozačke dozvole" Text="{Binding BrVozackeDozvole}"></Entry>
+            <Label Text="Datum isteka vozačke dozvole"></Label>
+            <DatePicker Date="{Binding DatumIstekaVozackeDozvole}" MinimumDate="01/01/2020"></DatePicker>
+            <Button Command="{Binding SaveCommand}" Margin="0,0,0,0" Text="Spremi"></Button>
         </StackLayout>
     </ContentPage.Content>
-</ContentPage>
+</ContentPage> 
