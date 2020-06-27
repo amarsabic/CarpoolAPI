@@ -20,6 +20,7 @@
                         ItemDisplayBinding="{Binding NazivTipa}"
                         SelectedItem="{Binding SelectedTip}"></Picker>
                 <Button Command="{Binding SaveCommand}" Margin="0,0,0,0" Text="Spremi"></Button>
+                <Button Command="{Binding DeleteCommand}" Margin="0,0,0,0" Text="Ukloni"></Button>
             </StackLayout>
         </StackLayout>
     </ContentPage.Content>

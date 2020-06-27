@@ -77,6 +77,8 @@ namespace Carpool.WebAPI
             services.AddScoped<IKorisnikService, KorisnikService>();
 
             services.AddScoped<ICRUDService<Model.Automobil, AutomobilSearchRequest, AutomobilInsertRequest, AutomobilInsertRequest>, AutomobilService>();
+            services.AddScoped<ICRUDService<Model.Vozac, VozacSearchRequest, VozacUpsertRequest, VozacUpsertRequest>, VozacService>();
+
             services.AddScoped<ICRUDService<Model.Obavijesti, ObavijestiSearchRequest, ObavijestiUpsertRequest, ObavijestiUpsertRequest>, ObavijestService>();
             services.AddScoped<ICRUDService<Model.Grad, object, Model.Grad, Model.Grad>, GradService>();
 

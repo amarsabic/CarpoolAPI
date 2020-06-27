@@ -28,6 +28,9 @@ namespace Carpool.WebAPI.Mappers
             CreateMap<Database.Obavijesti, ObavijestiUpsertRequest>().ReverseMap();
             CreateMap<Database.TipObavijesti, Model.TipObavijesti>();
             CreateMap<Database.Grad, Model.Grad>().ReverseMap();
+            CreateMap<Database.Vozac, Model.Vozac>();
+            CreateMap<Database.Vozac, Model.Vozac>().ReverseMap();
+            CreateMap<Database.Vozac, VozacUpsertRequest>().ReverseMap();
         }
     }
 }

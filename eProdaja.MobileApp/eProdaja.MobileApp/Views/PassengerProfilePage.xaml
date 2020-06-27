@@ -16,16 +16,25 @@
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.Content>
-        <StackLayout>
+        <StackLayout HorizontalOptions="CenterAndExpand">
             <Frame  CornerRadius="100"
                                        Padding="0"
                                        IsClippedToBounds="True"
                                        HeightRequest="200"
                                        WidthRequest="200"
-                                       HorizontalOptions="Center">
+                                      >
                 <Image Source="{Binding Slika, Converter={StaticResource imgConv}}"></Image>
             </Frame>
-            <Label Text="{Binding KorisnickoIme}"></Label>
+            <Label TextColor="Blue" HorizontalTextAlignment="Center" Text="Odjavi se">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding LogoutCommand}"/>
+                </Label.GestureRecognizers>
+            </Label>
+            <StackLayout Orientation="Horizontal">
+                <Label HorizontalTextAlignment="Center"  FontSize="Medium" Text="Dobrodošli, "></Label>
+                <Label HorizontalTextAlignment="Center"  FontSize="Medium" Text="{Binding KorisnickoIme}"></Label>
+            </StackLayout>
+            <Button Text="Postani vozač" Command="{Binding AddVozac}"></Button>
         </StackLayout>
      </ContentPage.Content>
 </ContentPage>

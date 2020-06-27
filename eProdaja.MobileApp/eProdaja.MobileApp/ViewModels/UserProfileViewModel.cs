@@ -1,5 +1,6 @@
 ﻿using Carpool.Model;
 using Carpool.Model.Requests;
+using eProdaja.MobileApp.Views;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -16,7 +17,8 @@ namespace eProdaja.MobileApp.ViewModels
         private readonly APIService _korisnik = new APIService("Korisnik");
         public UserProfileViewModel()
         {
-          
+            LogoutCommand = new Command(async () => await Logout());
+            AddVozacCommand = new Command(async () => await AddVozac());
         }
 
         string _username = string.Empty;
@@ -33,7 +35,18 @@ namespace eProdaja.MobileApp.ViewModels
             set { SetProperty(ref _slika, value); }
         }
         public ICommand LoadKorisnik { get; set; }
+        public ICommand LogoutCommand { get; set; }
+        public ICommand AddVozacCommand { get; set; }
 
+        public async Task AddVozac()
+        {
+            //await Application.Current.MainPage.Navigation.PushAsync(new AddVozacPage());
+        }
+
+        public async Task Logout()
+        {
+            Application.Current.MainPage = new NavigationPage(new LoginPage());
+        }
         public async Task Load()
         {
         

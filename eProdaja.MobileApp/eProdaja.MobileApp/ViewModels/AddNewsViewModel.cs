@@ -21,6 +21,7 @@ namespace eProdaja.MobileApp.ViewModels
             SaveCommand = new Command(async() => await Save());
             LoadCommand = new Command(async() => await LoadTipovi());
             InitCommand = new Command(async(param) => await Init((int)param));
+            DeleteCommand = new Command(async() => await Ukloni());
         }
 
         int? obavijestID;
@@ -63,6 +64,22 @@ namespace eProdaja.MobileApp.ViewModels
         public ICommand SaveCommand { get; set; }
         public ICommand LoadCommand { get; set; }
         public ICommand InitCommand { get; set; }
+        public ICommand DeleteCommand { get; set; }
+
+        public async Task Ukloni()
+        {
+            try
+            {
+                await _obavijestiService.Delete<Obavijesti>((int)obavijestID);
+
+                await Application.Current.MainPage.DisplayAlert("Carpool", "Uspješno uklonjena obavijest", "OK");
+                await Application.Current.MainPage.Navigation.PopAsync();
+            }
+            catch (Exception)
+            {
+
+            }
+        }
 
         public async Task Init(int ObavijestiID)
         {
