@@ -20,8 +20,11 @@ namespace eProdaja.MobileApp.ViewModels
         {
             SaveCommand = new Command(async() => await Save());
             LoadCommand = new Command(async() => await LoadTipovi());
-            InitCommand = new Command(async() => await Init());
+            InitCommand = new Command(async(param) => await Init((int)param));
         }
+
+        int? obavijestID;
+        int vozacID;
 
         string _naslov = string.Empty;
         public string Naslov
@@ -61,15 +64,26 @@ namespace eProdaja.MobileApp.ViewModels
         public ICommand LoadCommand { get; set; }
         public ICommand InitCommand { get; set; }
 
-        async Task Init()
+        public async Task Init(int ObavijestiID)
         {
             try
             {
-                await _obavijestiService.Insert<dynamic>(request);
-                await Application.Current.MainPage.DisplayAlert("OK", "Uspješno objavljeno", "OK");
-                Application.Current.MainPage = new NewsPage();
+               var o = await _obavijestiService.GetById<Obavijesti>(ObavijestiID);
+
+                Naslov = o.Naslov;
+                KratkiOpis = o.KratkiOpis;
+                foreach (var tip in _tipovi)
+                {
+                    if (tip.TipObavijestiID == o.TipObavijestiID)
+                    {
+                        SelectedTip = tip;
+                    }
+                }
+    
+                obavijestID = ObavijestiID;
+                vozacID = o.VozacID;
             }
-            catch (Exception)
+            catch (Exception err)
             {
 
             }
@@ -80,21 +94,39 @@ namespace eProdaja.MobileApp.ViewModels
 
             var request = new ObavijestiUpsertRequest
             {
-                Naslov=Naslov,
-                KratkiOpis=KratkiOpis,
-                DatumVrijemeObjave=DatumVrijemeObajve,
-                TipObavijestiID=SelectedTip.TipObavijestiID
+                Naslov = Naslov,
+                KratkiOpis = KratkiOpis,
+                DatumVrijemeObjave = DatumVrijemeObajve,
+                TipObavijestiID = SelectedTip.TipObavijestiID,
+                VozacID = vozacID
             };
 
-            try
+            if (obavijestID != null)
             {
-                await _obavijestiService.Insert<dynamic>(request);
-                await Application.Current.MainPage.DisplayAlert("OK", "Uspješno objavljeno", "OK");
-                Application.Current.MainPage = new NewsPage();
-            }
-            catch (Exception)
-            {
+                try
+                {
+                    await _obavijestiService.Update<Obavijesti>(obavijestID, request);
+                    await Application.Current.MainPage.DisplayAlert("Carpool", "Uspješna izmjena", "OK");
 
+                    await Application.Current.MainPage.Navigation.PopAsync();
+                }
+                catch (Exception)
+                {
+
+                }
+            }
+            else
+            {
+                try
+                {
+                    await _obavijestiService.Insert<dynamic>(request);
+                    await Application.Current.MainPage.DisplayAlert("OK", "Uspješno objavljeno", "OK");
+                    await Application.Current.MainPage.Navigation.PopAsync();
+                }
+                catch (Exception)
+                {
+
+                }
             }
         }
         public async Task LoadTipovi()

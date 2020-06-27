@@ -14,9 +14,11 @@ namespace eProdaja.MobileApp.Views
     public partial class AddNewsPage : ContentPage
     {
         private AddNewsViewModel model = null;
-        public AddNewsPage()
+        private int? ObavijestiID;
+        public AddNewsPage(int? obavijestiID)
         {
             InitializeComponent();
+            ObavijestiID = obavijestiID;
 
             BindingContext = model = new AddNewsViewModel();
         }
@@ -25,6 +27,11 @@ namespace eProdaja.MobileApp.Views
         {
             base.OnAppearing();
             await model.LoadTipovi();
+
+            if (ObavijestiID != null)
+            {
+                await model.Init((int)ObavijestiID);
+            }
         }
     }
 }

@@ -14,7 +14,8 @@
             <Picker ItemsSource="{Binding TipObavijestiList}"
                     ItemDisplayBinding="{Binding NazivTipa}"
                     SelectedItem="{Binding SelectedTipObavijesti}"></Picker>
-            <ListView ItemsSource="{Binding ObavijestiList}">
+            <Button Text="Dodaj obavijest" Command="{Binding DodajCommand}"></Button>
+            <ListView  ItemSelected="NewsClicked" ItemsSource="{Binding ObavijestiList}">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>

@@ -25,5 +25,10 @@ namespace eProdaja.MobileApp.Views
             base.OnAppearing();
             await model.Init();
         }
+
+        private async void NewsClicked(object sender, SelectedItemChangedEventArgs e)
+        {
+            await Navigation.PushAsync(new AddNewsPage(((Carpool.Model.Obavijesti)e.SelectedItem).ObavijestiID));
+        }
     }
 }

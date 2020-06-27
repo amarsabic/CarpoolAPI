@@ -1,5 +1,6 @@
 ﻿using Carpool.Model;
 using Carpool.Model.Requests;
+using eProdaja.MobileApp.Views;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -17,6 +18,7 @@ namespace eProdaja.MobileApp.ViewModels
         public NewsViewModel()
         {
             InitCommand = new Command(async () => await Init());
+            DodajCommand = new Command(async () => await Dodaj());
         }
         public ObservableCollection<Obavijesti> ObavijestiList { get; set; } = new ObservableCollection<Obavijesti>();
         public ObservableCollection<TipObavijesti> TipObavijestiList { get; set; } = new ObservableCollection<TipObavijesti>();
@@ -36,6 +38,12 @@ namespace eProdaja.MobileApp.ViewModels
         }
 
         public ICommand InitCommand { get; set; }
+        public ICommand DodajCommand { get; set; }
+
+        public async Task Dodaj()
+        {
+            await Application.Current.MainPage.Navigation.PushAsync(new AddNewsPage(null));
+        }
 
         public async Task Init()
         {

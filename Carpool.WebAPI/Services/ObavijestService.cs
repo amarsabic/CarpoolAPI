@@ -24,6 +24,8 @@ namespace Carpool.WebAPI.Services
 
             var query = _context.Obavijesti.AsQueryable();
 
+            query = query.OrderByDescending(x => x.DatumVrijemeObjave);
+
             if (!string.IsNullOrWhiteSpace(request?.Naslov))
             {
                 query = query.Where(x => x.Naslov.StartsWith(request.Naslov));

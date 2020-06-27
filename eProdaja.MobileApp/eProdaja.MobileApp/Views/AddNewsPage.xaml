@@ -19,7 +19,7 @@
                 <Picker ItemsSource="{Binding TipObavijesti}"
                         ItemDisplayBinding="{Binding NazivTipa}"
                         SelectedItem="{Binding SelectedTip}"></Picker>
-                <Button Command="{Binding SaveCommand}" Margin="0,0,0,0" Text="Dodaj"></Button>
+                <Button Command="{Binding SaveCommand}" Margin="0,0,0,0" Text="Spremi"></Button>
             </StackLayout>
         </StackLayout>
     </ContentPage.Content>
