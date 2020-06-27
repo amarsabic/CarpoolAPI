@@ -114,6 +114,7 @@ namespace Carpool.WebAPI.Services
 
             entity.LozinkaSalt = GenerateSalt();
             entity.LozinkaHash = GenerateHash(entity.LozinkaSalt, request.Password);
+            entity.IsVozac = false;
 
 
             _context.Korisnici.Add(entity);

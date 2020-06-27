@@ -14,12 +14,12 @@ namespace eProdaja.MobileApp.ViewModels
     public class AutomobiliViewModel
     {
         private readonly APIService _automobilService = new APIService("Automobil");
+        private readonly APIService _korisnikService = new APIService("Korisnik");
         public AutomobiliViewModel()
         {
             InitCommand = new Command(async () => await Init());
             DodajCommand = new Command(async () => await Dodaj());
             CarTappedCommand = new Command(async () => await CarTapped());
-            
         }
         public ObservableCollection<Automobil> AutomobilList { get; set; } = new ObservableCollection<Automobil>();
 
@@ -29,7 +29,16 @@ namespace eProdaja.MobileApp.ViewModels
 
         public async Task Dodaj()
         {
-            await Application.Current.MainPage.Navigation.PushAsync(new AddAutomobilPage(null));
+           var IsVozac = await _korisnikService.GetById<Korisnik>(0);
+            if (IsVozac.IsVozac)
+            {
+                await Application.Current.MainPage.Navigation.PushAsync(new AddAutomobilPage(null));
+            }
+            else
+            {
+                await Application.Current.MainPage.DisplayAlert("Carpool", "Greška! Niste vozač", "OK");
+                await Application.Current.MainPage.Navigation.PushAsync(new AddVozacPage());
+            }
         } 
         public async Task CarTapped()
         {

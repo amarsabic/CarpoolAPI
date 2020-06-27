@@ -15,10 +15,18 @@ namespace eProdaja.MobileApp.ViewModels
     public class UserProfileViewModel : BaseViewModel
     {
         private readonly APIService _korisnik = new APIService("Korisnik");
+        private readonly APIService _vozac = new APIService("Vozac");
         public UserProfileViewModel()
         {
             LogoutCommand = new Command(async () => await Logout());
             AddVozacCommand = new Command(async () => await AddVozac());
+        }
+
+        bool _isVozac;
+        public bool IsVozac
+        {
+            get { return _isVozac; }
+            set { SetProperty(ref _isVozac, value); }
         }
 
         string _username = string.Empty;
@@ -54,6 +62,8 @@ namespace eProdaja.MobileApp.ViewModels
                 var k = await _korisnik.GetById<Korisnik>(0);
                 KorisnickoIme = k.KorisnickoIme;
                 Slika = k.Slika;
+
+                IsVozac = !k.IsVozac;
             }
             catch (Exception er)
             {

@@ -42,6 +42,9 @@ namespace Carpool.WebAPI.Services
             var model = _mapper.Map<Database.Vozac>(request);
             model.VozacID = userId;
 
+            var IsVozacSet = _context.Korisnici.Find(model.VozacID);
+            IsVozacSet.IsVozac = true;
+
             _context.Vozaci.Add(model);
             _context.SaveChanges();
 

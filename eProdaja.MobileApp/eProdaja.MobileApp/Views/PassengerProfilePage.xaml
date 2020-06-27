@@ -34,7 +34,7 @@
                 <Label HorizontalTextAlignment="Center"  FontSize="Medium" Text="Dobrodošli, "></Label>
                 <Label HorizontalTextAlignment="Center"  FontSize="Medium" Text="{Binding KorisnickoIme}"></Label>
             </StackLayout>
-            <Button Text="Postani vozač" Command="{Binding AddVozacCommand}"></Button>
+            <Button IsVisible="{Binding IsVozac}" Text="Postani vozač" Command="{Binding AddVozacCommand}"></Button>
         </StackLayout>
      </ContentPage.Content>
 </ContentPage>
