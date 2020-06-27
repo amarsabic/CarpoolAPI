@@ -29,7 +29,7 @@ namespace eProdaja.MobileApp.ViewModels
 
         public async Task Dodaj()
         {
-            await Application.Current.MainPage.Navigation.PushAsync(new AddAutomobilPage());
+            await Application.Current.MainPage.Navigation.PushAsync(new AddAutomobilPage(null));
         } 
         public async Task CarTapped()
         {

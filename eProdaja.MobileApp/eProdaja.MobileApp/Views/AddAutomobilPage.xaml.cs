@@ -16,10 +16,11 @@ namespace eProdaja.MobileApp.Views
     public partial class AddAutomobilPage : ContentPage
     {
         private AddAutomobilViewModel model = null;
-        public AddAutomobilPage()
+        private readonly int? AutomobilID;
+        public AddAutomobilPage(int? automobilID)
         {
             InitializeComponent();
-
+            AutomobilID = automobilID;
             BindingContext = model = new AddAutomobilViewModel();
         }
 
@@ -43,5 +44,15 @@ namespace eProdaja.MobileApp.Views
 
              (sender as Button).IsEnabled = true;
         }
+
+        protected async override void OnAppearing()
+        {
+            base.OnAppearing();
+            if (AutomobilID != null)
+            {
+                await model.Init((int)AutomobilID);
+            }
+        }
+
     }
 }

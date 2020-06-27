@@ -1,4 +1,5 @@
-﻿using Carpool.Model.Requests;
+﻿using Carpool.Model;
+using Carpool.Model.Requests;
 using eProdaja.MobileApp.Views;
 using System;
 using System.Collections.Generic;
@@ -16,7 +17,10 @@ namespace eProdaja.MobileApp.ViewModels
         public AddAutomobilViewModel()
         {
             SaveCommand = new Command(async () => await Save());
+            InitCommand = new Command(async (param) => await Init((int)param));
         }
+
+        int? automobilID;
 
         string _naziv = string.Empty;
         public string Naziv
@@ -43,7 +47,7 @@ namespace eProdaja.MobileApp.ViewModels
             set { SetProperty(ref _brojReg, value); }
         }
 
-        DateTime _datumIsteka = DateTime.MaxValue;
+        DateTime _datumIsteka;
         public DateTime DatumIstekaRegistracije
         {
             get { return _datumIsteka; }
@@ -64,6 +68,29 @@ namespace eProdaja.MobileApp.ViewModels
             set { SetProperty(ref _slikaThumb, value); }
         }
         public ICommand SaveCommand { get; set; }
+        public ICommand InitCommand { get; set; }
+
+        public async Task Init(int AutomobilID)
+        {
+            try
+            {
+                var automobil = await _automobilService.GetById<Automobil>(AutomobilID);
+
+                BrojRegOznaka = automobil.BrojRegOznaka;
+                DatumIstekaRegistracije = automobil.DatumIstekaRegistracije;
+                Godiste = automobil.Godiste;
+                Model = automobil.Model;
+                Naziv = automobil.Naziv;
+                Slika = automobil.Slika;
+                SlikaThumb = automobil.SlikaThumb;
+
+                automobilID = AutomobilID;
+            }
+            catch (Exception)
+            {
+
+            }
+        }
 
         async Task Save()
         {
@@ -77,17 +104,34 @@ namespace eProdaja.MobileApp.ViewModels
                 Slika=Slika,
                 SlikaThumb=SlikaThumb
             };
-
-            try
+            if (automobilID != null)
             {
-                await _automobilService.Insert<dynamic>(model);
-                await Application.Current.MainPage.DisplayAlert("OK", "Uspješno dodavanje", "OK");
 
-                await Application.Current.MainPage.Navigation.PopAsync();
+                try
+                {
+                    await _automobilService.Update<Automobil>(automobilID, model);
+                    await Application.Current.MainPage.DisplayAlert("Carpool", "Uspješna izmjena", "OK");
+
+                    await Application.Current.MainPage.Navigation.PopAsync();
+                }
+                catch (Exception)
+                {
+
+                }
             }
-            catch (Exception)
+            else
             {
+                try
+                {
+                    await _automobilService.Insert<dynamic>(model);
+                    await Application.Current.MainPage.DisplayAlert("OK", "Uspješno dodavanje", "OK");
 
+                    await Application.Current.MainPage.Navigation.PopAsync();
+                }
+                catch (Exception)
+                {
+
+                }
             }
         }
     }

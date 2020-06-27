@@ -20,6 +20,7 @@ namespace eProdaja.MobileApp.ViewModels
         {
             SaveCommand = new Command(async() => await Save());
             LoadCommand = new Command(async() => await LoadTipovi());
+            InitCommand = new Command(async() => await Init());
         }
 
         string _naslov = string.Empty;
@@ -56,10 +57,23 @@ namespace eProdaja.MobileApp.ViewModels
             set { SetProperty(ref _datum, value); }
         }
 
-
-
         public ICommand SaveCommand { get; set; }
         public ICommand LoadCommand { get; set; }
+        public ICommand InitCommand { get; set; }
+
+        async Task Init()
+        {
+            try
+            {
+                await _obavijestiService.Insert<dynamic>(request);
+                await Application.Current.MainPage.DisplayAlert("OK", "Uspješno objavljeno", "OK");
+                Application.Current.MainPage = new NewsPage();
+            }
+            catch (Exception)
+            {
+
+            }
+        }
 
         async Task Save()
         {

@@ -40,7 +40,7 @@ namespace eProdaja.MobileApp.Views
                         MenuPages.Add(id, new NavigationPage(new NewsPage()));
                         break;
                     case (int)MenuItemType.Dodaj:
-                        MenuPages.Add(id, new NavigationPage(new AddAutomobilPage()));
+                        MenuPages.Add(id, new NavigationPage(new AddAutomobilPage(null)));
                         break;
                 }
             }

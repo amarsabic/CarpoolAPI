@@ -72,7 +72,7 @@ namespace eProdaja.MobileApp.ViewModels
 
         public async Task Uredi()
         {
-            await Application.Current.MainPage.Navigation.PushAsync(new EditAutomobilPage(AutomobilID));
+            await Application.Current.MainPage.Navigation.PushAsync(new AddAutomobilPage(AutomobilID));
         }
 
         public async Task Ukloni()

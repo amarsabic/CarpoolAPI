@@ -32,11 +32,11 @@
                 <Entry Placeholder="Model" Text="{Binding Model}"></Entry>
                 <Entry Placeholder="Godina proizvodnje" Text="{Binding Godiste}"></Entry>
                 <Entry Placeholder="Broj registarskih oznaka" Text="{Binding BrojRegOznaka}"></Entry>
-                <DatePicker Date="{Binding Datum}" MinimumDate="01/01/2018"></DatePicker>
+                <DatePicker Date="{Binding DatumIstekaRegistracije}"></DatePicker>
                 <Button Text="Pick Photo"
                  Clicked="OnPickPhotoButtonClicked" />
 
-                <Button Command="{Binding SaveCommand}" Margin="0,0,0,0" Text="Dodaj"></Button>
+                <Button Command="{Binding SaveCommand}" Margin="0,0,0,0" Text="Spremi"></Button>
             </StackLayout>
         </StackLayout>
     </ContentPage.Content>
