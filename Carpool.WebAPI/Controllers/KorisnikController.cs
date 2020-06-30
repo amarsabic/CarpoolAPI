@@ -41,12 +41,10 @@ namespace Carpool.WebAPI.Controllers
             return _korisnikService.Insert(request);
         }
 
-
         [HttpPut("{id}")]
         public Model.Korisnik Update(int id, KorisnikInsertRequest request)
         {
             return _korisnikService.Update(id, request);
         }
-
     }
 }

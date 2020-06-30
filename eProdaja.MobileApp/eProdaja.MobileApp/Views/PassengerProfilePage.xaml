@@ -16,7 +16,7 @@
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.Content>
-        <StackLayout HorizontalOptions="CenterAndExpand">
+        <StackLayout Padding="10">
             <Frame  CornerRadius="100"
                                        Padding="0"
                                        IsClippedToBounds="True"
@@ -25,16 +25,36 @@
                                       >
                 <Image Source="{Binding Slika, Converter={StaticResource imgConv}}"></Image>
             </Frame>
+          
             <Label TextColor="Blue" HorizontalTextAlignment="Center" Text="Odjavi se">
                 <Label.GestureRecognizers>
                     <TapGestureRecognizer Command="{Binding LogoutCommand}"/>
                 </Label.GestureRecognizers>
             </Label>
-            <StackLayout Orientation="Horizontal">
-                <Label HorizontalTextAlignment="Center"  FontSize="Medium" Text="Dobrodošli, "></Label>
-                <Label HorizontalTextAlignment="Center"  FontSize="Medium" Text="{Binding KorisnickoIme}"></Label>
-            </StackLayout>
+
             <Button IsVisible="{Binding IsVozac}" Text="Postani vozač" Command="{Binding AddVozacCommand}"></Button>
+            <Entry Placeholder="Ime" Text="{Binding Ime}"></Entry>
+            <Entry Placeholder="Prezime" Text="{Binding Prezime}"></Entry>
+            <Entry Placeholder="Email" Text="{Binding Email}"></Entry>
+            <Entry Placeholder="Telefon" Text="{Binding Telefon}"></Entry>
+            <Picker Title="Grad"
+                        ItemsSource="{Binding Gradovi}"
+                        ItemDisplayBinding="{Binding Naziv}"
+                        SelectedItem="{Binding SelectedGrad}"
+                        ></Picker>
+            <DatePicker Date="{Binding Datum}" MinimumDate="01/01/1950" MaximumDate="01/01/2020"></DatePicker>
+            <Button Text="Promijeni sliku profila"
+                 Clicked="OnPickPhotoButtonClicked" />
+            <Button Command="{Binding EditCommand}" 
+                        Text="Spremi izmjene"
+                        FontAttributes="Bold"></Button>
+
+            <Entry Margin="0, 30, 0, 0" Placeholder="Stara lozinka" IsPassword="True" Text="{Binding StaraLozinka}"></Entry>
+            <Entry Placeholder="Nova lozinka" Text="{Binding Lozinka}" IsPassword="True"></Entry>
+            <Entry Placeholder="Potvrda lozinke" Text="{Binding LozinkaPotvrda}" IsPassword="True"></Entry>
+            <Button Command="{Binding UpdatePasswordCommand}" 
+                        Text="Promijeni šifru"
+                        FontAttributes="Bold"></Button>
         </StackLayout>
      </ContentPage.Content>
 </ContentPage>

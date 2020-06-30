@@ -24,12 +24,11 @@
                                 d:Text="{Binding .}"
                                 LineBreakMode="NoWrap" 
                                 Style="{DynamicResource ListItemTextStyle}" 
-                                FontSize="16" />
-                                <Label Text="{Binding KratkiOpis}" 
+                                FontSize="18" />
+                                <Label  Text="{Binding KratkiOpis}" 
                                 d:Text="Item descripton"
-                                LineBreakMode="NoWrap"
                                 Style="{DynamicResource ListItemDetailTextStyle}"
-                                FontSize="13" />
+                                FontSize="15" />
                             </StackLayout>
                         </ViewCell>
                     </DataTemplate>

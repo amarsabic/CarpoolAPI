@@ -127,19 +127,55 @@ namespace Carpool.WebAPI.Services
         {
             var entity = _context.Korisnici.Find(id);
 
-            _mapper.Map(request, entity);
+            if ((!string.IsNullOrWhiteSpace(request.Password))){
 
-            if (!string.IsNullOrWhiteSpace(request.Password))
-            {
                 if (request.Password != request.PasswordConfirmation)
                 {
                     throw new UserException("Passwordi se ne slazu");
                 }
+
+                var korisnik = _context.Korisnici.Find(int.Parse(_httpContext.GetUserId()));
+
+                var noviHash = GenerateHash(korisnik.LozinkaSalt, request.OldPassword);
+
+                if (noviHash == korisnik.LozinkaHash)
+                {
+                    korisnik.LozinkaSalt = GenerateSalt();
+                    korisnik.LozinkaHash = GenerateHash(korisnik.LozinkaSalt, request.Password);
+                    _context.SaveChanges();
+                    return _mapper.Map<Model.Korisnik>(request);
+
+                }
+                throw new UserException("Unijeli se pogrešnu lozinku.");
             }
-            //todo update password
+
+            _mapper.Map(request, entity);
+
             _context.SaveChanges();
 
             return _mapper.Map<Model.Korisnik>(entity);
+        }
+
+        private void UpdatePassword(KorisnikInsertRequest request)
+        {
+            if (request.Password != request.PasswordConfirmation)
+            {
+                throw new UserException("Passwordi se ne slazu");
+            }
+
+            var korisnik = _context.Korisnici.Find(int.Parse(_httpContext.GetUserId()));
+
+            var noviHash = GenerateHash(korisnik.LozinkaSalt, request.OldPassword);
+
+            if (noviHash == korisnik.LozinkaHash)
+            {
+                korisnik.LozinkaSalt = GenerateSalt();
+                korisnik.LozinkaHash = GenerateHash(korisnik.LozinkaSalt, request.Password);
+                _context.SaveChanges();
+                return;
+            }
+    
+            throw new UserException("Unijeli se pogrešnu lozinku.");
         }
     }
 }

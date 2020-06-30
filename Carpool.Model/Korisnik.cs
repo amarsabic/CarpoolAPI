@@ -14,6 +14,8 @@ namespace Carpool.Model
         public string KorisnickoIme { get; set; }
         public bool IsVozac { get; set; }
         public byte[] Slika { get; set; }
+        public DateTime DatumRodjenja { get; set; }
+        public int GradID { get; set; }
         public ICollection<KorisniciUloge> KorisniciUloge { get; set; }
     }
 }
