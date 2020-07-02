@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:viewModel="clr-namespace:eProdaja.MobileApp.ViewModels"
+             mc:Ignorable="d"
+             x:Class="eProdaja.MobileApp.Views.AddRidePage">
+    <ContentPage.BindingContext>
+        <viewModel:AddRideViewModel/>
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <StackLayout Padding="10">
+
+            <Picker Title="Polazište"
+                        ItemsSource="{Binding Gradovi}"
+                        ItemDisplayBinding="{Binding Naziv}"
+                        SelectedItem="{Binding SelectedPolazak}"
+                        ></Picker>
+            <Picker Title="Odredište"
+                        ItemsSource="{Binding Gradovi}"
+                        ItemDisplayBinding="{Binding Naziv}"
+                        SelectedItem="{Binding SelectedOdrediste}"
+                        ></Picker>
+            <Picker Title="Usputni gradovi"
+                        ItemsSource="{Binding UsputniGradovi}"
+                        ItemDisplayBinding="{Binding Naziv}"
+                        SelectedItem="{Binding SelectedUsputni}"
+                        ></Picker>
+            <ListView IsVisible="{Binding CheckListBool}" ItemSelected="UsputniClicked" ItemsSource="{Binding SelectedGradovi}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Padding="5">
+                                <Label Text="{Binding Naziv}"></Label>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <Label Text="Slobodna mjesta"></Label>
+            <Label Text="{Binding SlobodnaMjesta}"></Label>
+            <Stepper Value="{Binding SlobodnaMjesta}" Minimum="1" Maximum="6"></Stepper>
+            <Entry Placeholder="Puna cijena" Text="{Binding PunaCijena}"></Entry>
+            <Label Text="Datum polaska"></Label>
+            <DatePicker Date="{Binding DatumPolaska}" MinimumDate="{Binding MinimumDate}"></DatePicker>
+            <Label Text="Vrijeme polaska"></Label>
+            <TimePicker Time="{Binding VrijemePolaska}"></TimePicker>
+          
+
+            <Picker Title="Automobil"
+                        ItemsSource="{Binding Automobili}"
+                        ItemDisplayBinding="{Binding NazivModel}"
+                        SelectedItem="{Binding SelectedAutomobil}"
+                        ></Picker>
+
+
+            <Button Command="{Binding PublishCommand}" Margin="0,0,0,0" Text="Objavi"></Button>
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

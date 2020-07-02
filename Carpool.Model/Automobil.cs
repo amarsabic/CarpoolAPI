@@ -9,6 +9,7 @@ namespace Carpool.Model
         public int AutomobilID { get; set; }
         public string Naziv { get; set; }
         public string Model { get; set; }
+        public string NazivModel { get { return Naziv + " " + Model; } }
         public string Godiste { get; set; }
         public string BrojRegOznaka { get; set; }
         public DateTime DatumIstekaRegistracije { get; set; }

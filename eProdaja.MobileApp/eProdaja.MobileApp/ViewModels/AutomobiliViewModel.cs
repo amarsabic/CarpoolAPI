@@ -19,13 +19,13 @@ namespace eProdaja.MobileApp.ViewModels
         {
             InitCommand = new Command(async () => await Init());
             DodajCommand = new Command(async () => await Dodaj());
-            CarTappedCommand = new Command(async () => await CarTapped());
+            //CarTappedCommand = new Command(async () => await CarTapped());
         }
         public ObservableCollection<Automobil> AutomobilList { get; set; } = new ObservableCollection<Automobil>();
 
         public ICommand InitCommand { get; set; }
         public ICommand DodajCommand { get; set; }
-        public ICommand CarTappedCommand { get; set; }
+        //public ICommand CarTappedCommand { get; set; }
 
         public async Task Dodaj()
         {
@@ -40,11 +40,6 @@ namespace eProdaja.MobileApp.ViewModels
                 await Application.Current.MainPage.Navigation.PushAsync(new AddVozacPage());
             }
         } 
-        public async Task CarTapped()
-        {
-            var x = 0;
-        }
-
         public async Task Init()
         {
             var searchByVozac = new AutomobilSearchRequest

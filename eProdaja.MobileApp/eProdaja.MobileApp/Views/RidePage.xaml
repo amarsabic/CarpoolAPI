@@ -6,10 +6,37 @@
              mc:Ignorable="d"
              x:Class="eProdaja.MobileApp.Views.RidePage">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+        <StackLayout Padding="10">
+           
+            <Picker Title="Grad1"
+                        ItemsSource="{Binding Gradovi}"
+                        ItemDisplayBinding="{Binding Naziv}"
+                        SelectedItem="{Binding Polaziste}"
+                        ></Picker>
+            <Picker Title="Grad2"
+                        ItemsSource="{Binding Gradovi}"
+                        ItemDisplayBinding="{Binding Naziv}"
+                        SelectedItem="{Binding Odrediste}"
+                        ></Picker>
+            <Picker Title="GradUsputni"
+                        ItemsSource="{Binding Gradovi}"
+                        ItemDisplayBinding="{Binding Naziv}"
+                        SelectedItem="{Binding UsputniGrad}"
+                        ></Picker>
+            <Entry Placeholder="Slobodna mjesta" Text="{Binding Email}"></Entry>
+            
+            <DatePicker Date="{Binding Datum}" MaximumDate="01/01/2020"></DatePicker>
+            <DatePicker Date="{Binding Datum}" MaximumDate="01/01/2020"></DatePicker>
+
+            <Picker Title="Automobil"
+                        ItemsSource="{Binding Automobili}"
+                        ItemDisplayBinding="{Binding Naziv}"
+                        SelectedItem="{Binding Automobil}"
+                        ></Picker>
+
+          
+            <Button Command="{Binding PublishCommand}" Margin="0,0,0,0" Text="Objavi"></Button>
+            
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
