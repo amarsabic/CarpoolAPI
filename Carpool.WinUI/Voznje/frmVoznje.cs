@@ -132,7 +132,7 @@ namespace Carpool.WinUI.Voznje
             request.DatumPolaska = dtmPolazak.Value;
             request.VrijemePolaska = dtmVrijeme.Value;
             request.IsAktivna = true;
-            request.VozacID = 15; //promijeniti na ID vozaca koji kreira voznju
+            //request.VozacID = 15; //promijeniti na ID vozaca koji kreira voznju
             request.PunaCijena = int.Parse(txtCijena.Text);
             request.SlobodnaMjesta = int.Parse(txtMjesta.Text);
 

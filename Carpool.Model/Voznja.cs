@@ -16,6 +16,6 @@ namespace Carpool.Model
         public int AutomobilID { get; set; }
         public int GradPolaskaID { get; set; }
         public int GradDestinacijaID { get; set; }
-        public List<UsputniGradovi> UsputniGradovi { get; set; }
+        public List<int> UsputniGradoviInt { get; set; }
     }
 }

@@ -15,6 +15,7 @@ namespace eProdaja.MobileApp.ViewModels
     {
         private readonly APIService _gradovi = new APIService("Grad");
         private readonly APIService _automobili = new APIService("Automobil");
+        private readonly APIService _voznja = new APIService("Voznja");
         public AddRideViewModel()
         {
             LoadCommand = new Command(async () => await LoadGradovi());
@@ -24,7 +25,7 @@ namespace eProdaja.MobileApp.ViewModels
         }
 
         ObservableCollection<Grad> _Gradovi = new ObservableCollection<Grad>();
-        ObservableCollection<UsputniGradovi> _SelectedGradovi = new ObservableCollection<UsputniGradovi>();
+        ObservableCollection<Grad> _SelectedGradovi = new ObservableCollection<Grad>();
         ObservableCollection<Grad> _UsputniGradovi = new ObservableCollection<Grad>();
         ObservableCollection<Automobil> _Automobili = new ObservableCollection<Automobil>();
 
@@ -36,7 +37,7 @@ namespace eProdaja.MobileApp.ViewModels
         }
 
         public decimal _punaCijena;
-        public decimal _PunaCijena
+        public decimal PunaCijena
         {
             get { return _punaCijena; }
             set { SetProperty(ref _punaCijena, value); }
@@ -78,13 +79,13 @@ namespace eProdaja.MobileApp.ViewModels
             get { return _UsputniGradovi; }
             set { SetProperty(ref _UsputniGradovi, value); }
         }
-        public ObservableCollection<UsputniGradovi> SelectedGradovi
+        public ObservableCollection<Grad> SelectedGradovi
         {
             get { return _SelectedGradovi; }
             set { SetProperty(ref _SelectedGradovi, value);}
         }
-        private UsputniGradovi _selectedUsputni;
-        public UsputniGradovi SelectedUsputni
+        private Grad _selectedUsputni;
+        public Grad SelectedUsputni
         {
             get { return _selectedUsputni; }
             set { SetProperty(ref _selectedUsputni, value);
@@ -143,13 +144,27 @@ namespace eProdaja.MobileApp.ViewModels
                 GradDestinacijaID=SelectedOdrediste.GradID,
                 GradPolaskaID=SelectedPolazak.GradID,
                 IsAktivna=true,
-                VrijemePolaska=VrijemePolaska
-           
+                VrijemePolaska=VrijemePolaska,
+                PunaCijena=PunaCijena,
+                SlobodnaMjesta=SlobodnaMjesta       
             };
 
             foreach (var selektirani in SelectedGradovi)
             {
-                voznja.UsputniGradovi.Add(selektirani);
+                voznja.UsputniGradovi.Add(new Grad { 
+                    GradID=selektirani.GradID,
+                    Naziv=selektirani.Naziv
+                });
+            }
+
+            try
+            {
+                await _voznja.Insert<Voznja>(voznja);
+                await Application.Current.MainPage.DisplayAlert("Carpool", "Uspješno objavljena vožnja", "OK");
+                await Application.Current.MainPage.Navigation.PushModalAsync(new RouteCitiesModalPage());
+            }
+            catch (Exception)
+            {
             }
         }
         public async Task DeleteUsputni(int gradId)
