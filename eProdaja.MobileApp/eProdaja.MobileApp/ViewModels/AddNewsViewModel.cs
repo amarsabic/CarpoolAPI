@@ -98,7 +98,7 @@ namespace eProdaja.MobileApp.ViewModels
                 }
     
                 obavijestID = ObavijestiID;
-                vozacID = o.VozacID;
+                vozacID = o.KorisnikID;
             }
             catch (Exception err)
             {

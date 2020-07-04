@@ -12,6 +12,7 @@ namespace eProdaja.MobileApp
     {
         public static string Username { get; set; }
         public static string Password { get; set; }
+        public static bool IsVozac { get; set; }
 
 
         private string _route = null;
@@ -40,6 +41,23 @@ namespace eProdaja.MobileApp
                     url += "?";
                     url += await search.ToQueryString();
                 }
+                return await url.WithBasicAuth(Username, Password).GetJsonAsync<T>();
+            }
+            catch (FlurlHttpException ex)
+            {
+                if (ex.Call.HttpStatus == System.Net.HttpStatusCode.Unauthorized)
+                {
+                    await Application.Current.MainPage.DisplayAlert("Greška", "Niste authentificirani", "OK");
+                }
+                throw;
+            }
+        }
+        public async Task<T> Auth<T>()
+        {
+            var url = $"{_apiUrl}/{_route}";
+
+            try
+            {
                 return await url.WithBasicAuth(Username, Password).GetJsonAsync<T>();
             }
             catch (FlurlHttpException ex)

@@ -22,6 +22,13 @@ namespace eProdaja.MobileApp.ViewModels
 
         int? automobilID;
 
+        DateTime _minDatum;
+        public DateTime MinDatum
+        {
+            get { return _minDatum = DateTime.Now; }
+            set { SetProperty(ref _minDatum, value); }
+        }
+
         string _naziv = string.Empty;
         public string Naziv
         {

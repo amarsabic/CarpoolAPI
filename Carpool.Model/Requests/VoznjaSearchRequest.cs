@@ -8,5 +8,6 @@ namespace Carpool.Model.Requests
     {
         public int? GradPolaskaID { get; set; }
         public int? GradDestinacijaID { get; set; }
+        public bool IsVozac { get; set; } = false;
     }
 }

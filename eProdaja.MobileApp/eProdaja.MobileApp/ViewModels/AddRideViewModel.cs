@@ -161,7 +161,7 @@ namespace eProdaja.MobileApp.ViewModels
             {
                 await _voznja.Insert<Voznja>(voznja);
                 await Application.Current.MainPage.DisplayAlert("Carpool", "Uspješno objavljena vožnja", "OK");
-                await Application.Current.MainPage.Navigation.PushModalAsync(new RouteCitiesModalPage());
+                await Application.Current.MainPage.Navigation.PopAsync();
             }
             catch (Exception)
             {
@@ -186,7 +186,8 @@ namespace eProdaja.MobileApp.ViewModels
         {
             var searchByVozac = new AutomobilSearchRequest
             {
-                IsVozac = true
+                IsVozac = true,
+                ProvjeraAktivnosti=true
             };
             var list = await _automobili.Get<List<Automobil>>(searchByVozac);
 

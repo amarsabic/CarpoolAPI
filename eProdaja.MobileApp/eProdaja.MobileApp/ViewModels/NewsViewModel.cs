@@ -19,9 +19,17 @@ namespace eProdaja.MobileApp.ViewModels
         {
             InitCommand = new Command(async () => await Init());
             DodajCommand = new Command(async () => await Dodaj());
+            MojeObavijestiCommand = new Command(async () => await MojeObavijesti());
         }
         public ObservableCollection<Obavijesti> ObavijestiList { get; set; } = new ObservableCollection<Obavijesti>();
         public ObservableCollection<TipObavijesti> TipObavijestiList { get; set; } = new ObservableCollection<TipObavijesti>();
+
+        public bool _mojeObavijestiBool = false;
+        public bool MojeObavijestiBool
+        {
+            get { return _mojeObavijestiBool; }
+            set { SetProperty(ref _mojeObavijestiBool, value); }
+        }
 
         TipObavijesti _selectedTipObavijesti = null;
         public TipObavijesti SelectedTipObavijesti
@@ -39,6 +47,23 @@ namespace eProdaja.MobileApp.ViewModels
 
         public ICommand InitCommand { get; set; }
         public ICommand DodajCommand { get; set; }
+        public ICommand MojeObavijestiCommand { get; set; }
+
+        public async Task MojeObavijesti()
+        {
+            ObavijestiSearchRequest search = new ObavijestiSearchRequest();
+
+            search.IsKorisnik = true;
+
+            var list = await _obavijesti.Get<List<Obavijesti>>(search);
+
+            ObavijestiList.Clear();
+            foreach (var obavijest in list)
+            {
+                ObavijestiList.Add(obavijest);
+            }
+            MojeObavijestiBool = true;
+        }
 
         public async Task Dodaj()
         {
@@ -49,7 +74,7 @@ namespace eProdaja.MobileApp.ViewModels
         {
             ObavijestiSearchRequest search = new ObavijestiSearchRequest();
 
-            search.IsKorisnik = true;
+            //search.IsKorisnik = true;
 
             if (TipObavijestiList.Count == 0)
             {
@@ -78,6 +103,7 @@ namespace eProdaja.MobileApp.ViewModels
                 {
                     ObavijestiList.Add(obavijest);
                 }
+                MojeObavijestiBool = false;
             }
             else
             {
@@ -93,6 +119,7 @@ namespace eProdaja.MobileApp.ViewModels
                 {
                     ObavijestiList.Add(obavijest);
                 }
+                MojeObavijestiBool = false;
             }
         }
     }

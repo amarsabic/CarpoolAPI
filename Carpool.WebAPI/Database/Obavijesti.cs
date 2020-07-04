@@ -15,7 +15,7 @@ namespace Carpool.WebAPI.Database
         public int TipObavijestiID { get; set; }
         public TipObavijesti TipObavijesti { get; set; }
 
-        public int VozacID { get; set; }
-        public Vozac Vozac { get; set; }
+        public int KorisnikID { get; set; }
+        public Korisnik Korisnik { get; set; }
     }
 }

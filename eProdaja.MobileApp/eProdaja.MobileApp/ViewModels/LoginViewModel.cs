@@ -10,7 +10,7 @@ namespace eProdaja.MobileApp.ViewModels
 {
     public class LoginViewModel : BaseViewModel
     {
-        private readonly APIService _korisnik = new APIService("Korisnik");
+        private readonly APIService _korisnik = new APIService("Korisnik/Auth");
   
         public LoginViewModel()
         {
@@ -45,7 +45,11 @@ namespace eProdaja.MobileApp.ViewModels
 
             try
             {
-                await _korisnik.Get<dynamic>(null);
+                var user = await _korisnik.Auth<Carpool.Model.Korisnik>();
+                if (user!=null)
+                {
+                    APIService.IsVozac = user.IsVozac;
+                }
                 Application.Current.MainPage = new NavigationPage(new WelcomePage());
             }
             catch (Exception)

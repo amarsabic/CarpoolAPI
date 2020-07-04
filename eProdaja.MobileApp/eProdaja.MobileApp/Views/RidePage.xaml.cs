@@ -1,4 +1,5 @@
-﻿using System;
+﻿using eProdaja.MobileApp.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,9 +13,17 @@ namespace eProdaja.MobileApp.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class RidePage : ContentPage
     {
+        private RidePageViewModel model = null;
         public RidePage()
         {
             InitializeComponent();
+            BindingContext = model = new RidePageViewModel();
+        }
+
+        protected async override void OnAppearing()
+        {
+            base.OnAppearing();
+            await model.Load();
         }
     }
 }

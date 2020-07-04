@@ -12,7 +12,7 @@ namespace Carpool.Model
         public DateTime DatumVrijemeObjave { get; set; }
         public int TipObavijestiID { get; set; }
         public string NazivTipa { get; set; }
-        public int VozacID { get; set; }
+        public int KorisnikID { get; set; }
         public string KorisnickoIme { get; set; }
     }
 }

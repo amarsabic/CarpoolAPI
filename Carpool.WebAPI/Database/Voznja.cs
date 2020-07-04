@@ -21,9 +21,9 @@ namespace Carpool.WebAPI.Database
         public Automobil Automobil { get; set; }
 
         public int GradPolaskaID { get; set; }
-        public Grad GradPolaska { get; set; }
+        public virtual Grad GradPolaska { get; set; }
         public int GradDestinacijaID { get; set; }
-        public Grad GradDestinacija { get; set; }
+        public virtual Grad GradDestinacija { get; set; }
 
         public List<UsputniGradovi> UsputniGradovi { get; set; }
         public List<Rezervacija> Rezervacije { get; set; }

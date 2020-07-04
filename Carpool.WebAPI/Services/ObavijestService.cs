@@ -40,7 +40,7 @@ namespace Carpool.WebAPI.Services
             }
             if (request.IsKorisnik)
             {
-                query = query.Where(x => x.VozacID==userId);
+                query = query.Where(x => x.KorisnikID==userId);
             }
 
             var result = query.ToList();
@@ -51,13 +51,13 @@ namespace Carpool.WebAPI.Services
                 list.Add(new Model.Obavijesti
                 {
                     DatumVrijemeObjave = item.DatumVrijemeObjave,
-                    KorisnickoIme = _context.Korisnici.Where(k=>k.KorisnikID==item.VozacID).Select(k=>k.KorisnickoIme).FirstOrDefault(),
+                    KorisnickoIme = _context.Korisnici.Where(k=>k.KorisnikID==item.KorisnikID).Select(k=>k.KorisnickoIme).FirstOrDefault(),
                     KratkiOpis = item.KratkiOpis,
                     Naslov = item.Naslov,
                     TipObavijestiID = item.TipObavijestiID,
                     NazivTipa = _context.TipObavijesti.Where(t=>t.TipObavijestiID==item.TipObavijestiID).Select(t=>t.NazivTipa).FirstOrDefault(),
                     ObavijestiID = item.ObavijestiID,
-                    VozacID = item.VozacID
+                    KorisnikID = item.KorisnikID
                 });
             }
 
@@ -69,7 +69,7 @@ namespace Carpool.WebAPI.Services
             var userId = _httpContext.GetUserId();
 
             var entity = _mapper.Map<Database.Obavijesti>(request);
-            entity.VozacID = int.Parse(userId);
+            entity.KorisnikID = int.Parse(userId);
             entity.DatumVrijemeObjave = DateTime.Now;
             
 

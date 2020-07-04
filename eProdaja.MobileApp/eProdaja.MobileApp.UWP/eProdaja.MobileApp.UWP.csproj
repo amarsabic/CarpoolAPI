@@ -109,6 +109,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
     <Content Include="icons8-add-100.png" />
+    <Content Include="icons8-arrow-64.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="icons8-car-50.png" />
     <Content Include="icons8-home-50.png" />
     <Content Include="icons8-news-100.png" />

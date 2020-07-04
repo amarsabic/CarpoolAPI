@@ -14,8 +14,12 @@
             <Picker ItemsSource="{Binding TipObavijestiList}"
                     ItemDisplayBinding="{Binding NazivTipa}"
                     SelectedItem="{Binding SelectedTipObavijesti}"></Picker>
-            <Button Text="Dodaj obavijest" Command="{Binding DodajCommand}"></Button>
-            <ListView  ItemSelected="NewsClicked" ItemsSource="{Binding ObavijestiList}">
+            <StackLayout Orientation="Horizontal" Padding="5" HorizontalOptions="CenterAndExpand">
+                <Button Text="Dodaj obavijest" Command="{Binding DodajCommand}"></Button>
+                <Button Text="Moje obavijesti" Command="{Binding MojeObavijestiCommand}"></Button>
+            </StackLayout>
+           
+            <ListView ItemSelected="NewsClicked" ItemsSource="{Binding ObavijestiList}">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
@@ -24,11 +28,16 @@
                                 d:Text="{Binding .}"
                                 LineBreakMode="NoWrap" 
                                 Style="{DynamicResource ListItemTextStyle}" 
-                                FontSize="18" />
+                                FontSize="20" />
                                 <Label  Text="{Binding KratkiOpis}" 
                                 d:Text="Item descripton"
                                 Style="{DynamicResource ListItemDetailTextStyle}"
                                 FontSize="15" />
+                                <Label  Text="{Binding KorisnickoIme}" 
+                                d:Text="Item descripton"
+                                Style="{DynamicResource ListItemDetailTextStyle}"
+                                FontSize="15"
+                                       FontAttributes="Bold"/>
                             </StackLayout>
                         </ViewCell>
                     </DataTemplate>

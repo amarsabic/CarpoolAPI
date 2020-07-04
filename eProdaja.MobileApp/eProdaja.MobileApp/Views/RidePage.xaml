@@ -7,36 +7,28 @@
              x:Class="eProdaja.MobileApp.Views.RidePage">
     <ContentPage.Content>
         <StackLayout Padding="10">
-           
-            <Picker Title="Grad1"
-                        ItemsSource="{Binding Gradovi}"
-                        ItemDisplayBinding="{Binding Naziv}"
-                        SelectedItem="{Binding Polaziste}"
-                        ></Picker>
-            <Picker Title="Grad2"
-                        ItemsSource="{Binding Gradovi}"
-                        ItemDisplayBinding="{Binding Naziv}"
-                        SelectedItem="{Binding Odrediste}"
-                        ></Picker>
-            <Picker Title="GradUsputni"
-                        ItemsSource="{Binding Gradovi}"
-                        ItemDisplayBinding="{Binding Naziv}"
-                        SelectedItem="{Binding UsputniGrad}"
-                        ></Picker>
-            <Entry Placeholder="Slobodna mjesta" Text="{Binding Email}"></Entry>
-            
-            <DatePicker Date="{Binding Datum}" MaximumDate="01/01/2020"></DatePicker>
-            <DatePicker Date="{Binding Datum}" MaximumDate="01/01/2020"></DatePicker>
-
-            <Picker Title="Automobil"
-                        ItemsSource="{Binding Automobili}"
-                        ItemDisplayBinding="{Binding Naziv}"
-                        SelectedItem="{Binding Automobil}"
-                        ></Picker>
-
-          
-            <Button Command="{Binding PublishCommand}" Margin="0,0,0,0" Text="Objavi"></Button>
-            
+            <Button Margin="50, 20, 50, 0" Command="{Binding DodajCommand}" IsVisible="{Binding IsVisible}" Text="Dodaj vožnju"></Button>
+            <ListView ItemsSource="{Binding VoznjeList}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Margin="50, 20, 50, 20">
+                                <StackLayout>
+                                    <StackLayout  Orientation="Horizontal">
+                                        <Label Text="{Binding GradPolaska}"></Label>
+                                        <Image WidthRequest="30" HeightRequest="30" Source="icons8-arrow-64.png"></Image>
+                                        <Label Text="{Binding GradDestinacija}"></Label>
+                                    </StackLayout>
+                                    <StackLayout>
+                                        <Label Text="{Binding PunaCijena}"></Label>
+                                        <Label Text="{Binding KorisnickoIme}"></Label>
+                                    </StackLayout>
+                                </StackLayout>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

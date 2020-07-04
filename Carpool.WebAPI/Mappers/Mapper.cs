@@ -31,6 +31,8 @@ namespace Carpool.WebAPI.Mappers
             CreateMap<Database.Vozac, Model.Vozac>();
             CreateMap<Database.Vozac, Model.Vozac>().ReverseMap();
             CreateMap<Database.Vozac, VozacUpsertRequest>().ReverseMap();
+            CreateMap<Database.UsputniGradovi, Model.UsputniGradovi>().ReverseMap();
+            CreateMap<Database.UsputniGradovi, UsputniGradoviUpsertRequest>().ReverseMap();
         }
     }
 }

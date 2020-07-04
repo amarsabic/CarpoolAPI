@@ -28,6 +28,12 @@ namespace Carpool.WebAPI.Controllers
             return _korisnikService.Get(request);
         }
 
+        [HttpGet("Auth")]
+        public ActionResult<Model.Korisnik> Auth()
+        {
+            return _korisnikService.Auth();
+        }
+
         [HttpGet("{id}")]
         public Model.Korisnik GetById(int id)
         {

@@ -86,6 +86,21 @@ namespace Carpool.WebAPI.Services
 
             return _mapper.Map<List<Model.Korisnik>>(list);
         }
+        public Model.Korisnik Auth()
+        {
+            var userId = int.Parse(_httpContext.GetUserId());
+
+            if (userId != 0)
+            {
+                var korisnik = _context.Korisnici.Find(userId);
+                return _mapper.Map<Model.Korisnik>(korisnik);
+            }
+            else
+            {
+                var korisnik = _context.Korisnici.Find(userId);
+                return _mapper.Map<Model.Korisnik>(korisnik);
+            }
+        }
 
         public Model.Korisnik GetById(int id)
         {

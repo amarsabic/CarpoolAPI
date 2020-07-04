@@ -11,5 +11,6 @@ namespace Carpool.Model.Requests
         public string Godiste { get; set; }
 
         public bool IsVozac { get; set; }
+        public bool ProvjeraAktivnosti { get; set; }
     }
 }

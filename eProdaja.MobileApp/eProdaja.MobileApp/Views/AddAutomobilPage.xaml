@@ -32,7 +32,8 @@
                 <Entry Placeholder="Model" Text="{Binding Model}"></Entry>
                 <Entry Placeholder="Godina proizvodnje" Text="{Binding Godiste}"></Entry>
                 <Entry Placeholder="Broj registarskih oznaka" Text="{Binding BrojRegOznaka}"></Entry>
-                <DatePicker Date="{Binding DatumIstekaRegistracije}"></DatePicker>
+                <Label Text="Datum isteka registracije"></Label>
+                <DatePicker Date="{Binding DatumIstekaRegistracije}" MinimumDate="{Binding MinDatum}"></DatePicker>
                 <Button Text="Pick Photo"
                  Clicked="OnPickPhotoButtonClicked" />
 
