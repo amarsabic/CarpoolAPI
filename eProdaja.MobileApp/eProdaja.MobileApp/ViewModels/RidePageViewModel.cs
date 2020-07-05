@@ -20,17 +20,9 @@ namespace eProdaja.MobileApp.ViewModels
         public RidePageViewModel()
         {
             LoadCommand = new Command(async () => await Load());
-            //if (APIService.IsVozac)
-            //{
-            //    DodajCommand = new Command(async () => await Dodaj());
-
-            //}
-            //else
-            //{
-            //    DodajCommand = new Command(async () => await Dodaj2());
-
-            //}
             DodajCommand = new Command(async () => await Dodaj());
+            MojeVoznjeCommand = new Command(async () => await MojeVoznje());
+            PrikaziSveCommand = new Command(async () => await Load());
         }
 
         public ObservableCollection<Voznja> VoznjeList { get; set; } = new ObservableCollection<Voznja>();
@@ -40,28 +32,19 @@ namespace eProdaja.MobileApp.ViewModels
             get { return APIService.IsVozac; }
         }
 
-        public ICommand LoadCommand { get; set; }
-        public ICommand DodajCommand { get; set; }
-        public async Task Dodaj()
+        public bool _mojeVoznjeBool = false;
+        public bool MojeVoznjeBool
         {
-            AutomobilSearchRequest search = new AutomobilSearchRequest
-            {
-                IsVozac=true
-            };
-            var auto = await _automobil.Get<List<Automobil>>(search);
-            if (auto.Count != 0)
-            {
-                await Application.Current.MainPage.Navigation.PushAsync(new AddRidePage());
-            }
-            else
-            {
-                await Application.Current.MainPage.DisplayAlert("Carpool", "Trenutno nemate dodane automobile", "OK");
-                await Application.Current.MainPage.Navigation.PushAsync(new AddAutomobilPage(null));
-            }
-          
+            get { return _mojeVoznjeBool; }
+            set { SetProperty(ref _mojeVoznjeBool, value); }
         }
 
-        public async Task Load()
+        public ICommand LoadCommand { get; set; }
+        public ICommand DodajCommand { get; set; }
+        public ICommand MojeVoznjeCommand { get; set; }
+        public ICommand PrikaziSveCommand { get; set; }
+
+        public async Task MojeVoznje()
         {
             try
             {
@@ -72,11 +55,60 @@ namespace eProdaja.MobileApp.ViewModels
 
                 var model = await _voznja.Get<List<Voznja>>(search);
 
+                if (model.Count == 0)
+                {
+                    await Application.Current.MainPage.DisplayAlert("Carpool", "Trenutno nemate aktivnih vožnji", "OK");
+                }
+
                 VoznjeList.Clear();
                 foreach (var voznja in model)
                 {
                     VoznjeList.Add(voznja);
                 }
+                MojeVoznjeBool = true;
+
+            }
+            catch (Exception)
+            {
+
+            }
+        }
+        public async Task Dodaj()
+        {
+            AutomobilSearchRequest search = new AutomobilSearchRequest
+            {
+                IsVozac=true,
+                ProvjeraAktivnosti=true
+            };
+            var auto = await _automobil.Get<List<Automobil>>(search);
+            if (auto.Count != 0)
+            {
+                await Application.Current.MainPage.Navigation.PushAsync(new AddRidePage(null));
+            }
+            else
+            {
+                await Application.Current.MainPage.DisplayAlert("Carpool", "Trenutno nemate dodane automobile", "OK");
+                await Application.Current.MainPage.Navigation.PushAsync(new AddAutomobilPage(null));
+            } 
+        }
+
+        public async Task Load()
+        {
+            try
+            {
+                var model = await _voznja.Get<List<Voznja>>(null);
+
+                if (model.Count == 0)
+                {
+                    await Application.Current.MainPage.DisplayAlert("Carpool", "Trenutno nema aktivnih vožnji", "OK");
+                }
+
+                VoznjeList.Clear();
+                foreach (var voznja in model)
+                {
+                    VoznjeList.Add(voznja);
+                }
+                MojeVoznjeBool = false;
             }
             catch (Exception)
             {

@@ -25,5 +25,17 @@ namespace eProdaja.MobileApp.Views
             base.OnAppearing();
             await model.Load();
         }
+
+        private async void VoznjaClicked(object sender, SelectedItemChangedEventArgs e)
+        {
+            if (model.MojeVoznjeBool)
+            {
+                await Navigation.PushAsync(new AddRidePage(((Carpool.Model.Voznja)e.SelectedItem).VoznjaID));
+            }
+            else
+            {
+                await Navigation.PushAsync(new RideDetailsPage(((Carpool.Model.Voznja)e.SelectedItem).VoznjaID)));
+            }
+        }
     }
 }

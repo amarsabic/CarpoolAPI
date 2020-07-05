@@ -11,8 +11,8 @@ namespace Carpool.WebAPI.Database
         public int GradPoRedu { get; set; }
         public decimal CijenaUsputni { get; set; }
         public int VoznjaID { get; set; }
-        public virtual Voznja Voznja { get; set; }
+        public Voznja Voznja { get; set; }
         public int GradID { get; set; }
-        public virtual Grad Grad { get; set; }
+        public Grad Grad { get; set; }
     }
 }

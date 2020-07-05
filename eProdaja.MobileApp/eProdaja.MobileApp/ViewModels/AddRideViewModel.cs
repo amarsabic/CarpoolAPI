@@ -22,6 +22,8 @@ namespace eProdaja.MobileApp.ViewModels
             LoadAutomobiliCommand = new Command(async () => await LoadAutomobili());
             DeleteUsputniCommand = new Command(async (param) => await DeleteUsputni((int)param));
             SaveRideCommand = new Command(async () => await SaveRide());
+            InitCommand = new Command(async (param) => await Init((int)param));
+            DeleteRideCommand = new Command(async () => await DeleteRide());
         }
 
         ObservableCollection<Grad> _Gradovi = new ObservableCollection<Grad>();
@@ -30,6 +32,14 @@ namespace eProdaja.MobileApp.ViewModels
         ObservableCollection<Automobil> _Automobili = new ObservableCollection<Automobil>();
 
         int _slobodnaMjesta;
+        int? voznjaID;
+
+        public bool _IsVisibleUkloni = false;
+        public bool IsVisibleUkloni
+        {
+            get { return _IsVisibleUkloni; }
+            set { SetProperty(ref _IsVisibleUkloni, value); }
+        }
         public int SlobodnaMjesta
         {
             get { return _slobodnaMjesta; }
@@ -128,11 +138,78 @@ namespace eProdaja.MobileApp.ViewModels
             get { return _selectedAutomobil; }
             set { SetProperty(ref _selectedAutomobil, value); }
         }
-
+ 
         public ICommand LoadCommand { get; set; }
         public ICommand LoadAutomobiliCommand { get; set; }
         public ICommand DeleteUsputniCommand { get; set; }
         public ICommand SaveRideCommand { get; set; }
+        public ICommand InitCommand { get; set; }
+        public ICommand DeleteRideCommand { get; set; }
+
+        public async Task DeleteRide()
+        {
+            try
+            {
+                await _voznja.Delete<Voznja>((int)voznjaID);
+                await Application.Current.MainPage.DisplayAlert("Carpool", "Uspješno obrisana vožnja", "OK");
+                await Application.Current.MainPage.Navigation.PopAsync();
+            }
+            catch (Exception)
+            {
+            }
+        }
+        public async Task Init(int voznjaId)
+        {
+            try
+            {
+                var v = await _voznja.GetById<Voznja>(voznjaId);
+                foreach (var polaziste in _Gradovi)
+                {
+                    if (polaziste.GradID == v.GradPolaskaID)
+                    {
+                        SelectedPolazak = polaziste;
+                    }
+                }
+                foreach (var odrediste in _Gradovi)
+                {
+                    if (odrediste.GradID == v.GradDestinacijaID)
+                    {
+                        SelectedOdrediste = odrediste;
+                    }
+                }
+        
+                foreach (var usputni in v.UsputniGradoviE)
+                {
+                    SelectedGradovi.Add(new Grad
+                    {
+                        GradID=usputni.GradID,
+                        Naziv=usputni.Grad.Naziv
+                    });
+                   CheckListBool = true;
+                }
+
+                SlobodnaMjesta = v.SlobodnaMjesta;
+                PunaCijena = v.PunaCijena;
+                DatumPolaska = v.DatumPolaska;
+                VrijemePolaska = v.VrijemePolaska;
+                foreach (var auto in Automobili)
+                {
+                    if(auto.AutomobilID == v.AutomobilID)
+                    {
+                        SelectedAutomobil = auto;
+                    }
+                }
+
+                voznjaID = voznjaId;
+                _IsVisibleUkloni = true;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
 
         public async Task SaveRide()
         {
@@ -146,25 +223,40 @@ namespace eProdaja.MobileApp.ViewModels
                 IsAktivna=true,
                 VrijemePolaska=VrijemePolaska,
                 PunaCijena=PunaCijena,
-                SlobodnaMjesta=SlobodnaMjesta       
+                SlobodnaMjesta=SlobodnaMjesta
             };
 
             foreach (var selektirani in SelectedGradovi)
             {
-                voznja.UsputniGradovi.Add(new Grad { 
+                voznja.UsputniGradoviGrad.Add(new Grad { 
                     GradID=selektirani.GradID,
                     Naziv=selektirani.Naziv
                 });
             }
 
-            try
+            if (voznjaID == null)
             {
-                await _voznja.Insert<Voznja>(voznja);
-                await Application.Current.MainPage.DisplayAlert("Carpool", "Uspješno objavljena vožnja", "OK");
-                await Application.Current.MainPage.Navigation.PopAsync();
+                try
+                {
+                    await _voznja.Insert<Voznja>(voznja);
+                    await Application.Current.MainPage.DisplayAlert("Carpool", "Uspješno objavljena vožnja", "OK");
+                    await Application.Current.MainPage.Navigation.PopAsync();
+                }
+                catch (Exception er)
+                {
+                }
             }
-            catch (Exception)
+            else
             {
+                try
+                {
+                    await _voznja.Update<Voznja>(voznjaID, voznja);
+                    await Application.Current.MainPage.DisplayAlert("Carpool", "Uspješno promijenjeni podaci", "OK");
+                    await Application.Current.MainPage.Navigation.PopAsync();
+                }
+                catch (Exception)
+                {
+                }
             }
         }
         public async Task DeleteUsputni(int gradId)
@@ -180,23 +272,23 @@ namespace eProdaja.MobileApp.ViewModels
                     return;
                 }
             }
-        }
-
+        } 
+    
         public async Task LoadAutomobili()
         {
             var searchByVozac = new AutomobilSearchRequest
             {
-                IsVozac = true,
-                ProvjeraAktivnosti=true
+                IsVozac = true
             };
-            var list = await _automobili.Get<List<Automobil>>(searchByVozac);
-
-            //exception nema automobil
-            if (list.Count == 0)
+            if (voznjaID == null)
             {
-                await Application.Current.MainPage.DisplayAlert("Carpool", "Trenutno nemate dodane automobile", "OK");
-                //pop async kad se napravi page 
+                searchByVozac.ProvjeraAktivnosti = true;
             }
+            else
+            {
+                searchByVozac.ProvjeraAktivnosti = false;
+            }
+            var list = await _automobili.Get<List<Automobil>>(searchByVozac);
 
             _Automobili.Clear();
             foreach (var automobil in list)

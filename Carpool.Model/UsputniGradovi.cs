@@ -12,6 +12,6 @@ namespace Carpool.Model
         public int VoznjaID { get; set; }
         public Voznja Voznja { get; set; }
         public int GradID { get; set; }
-        public Grad Grad { get; set; }
+        public virtual Grad Grad { get; set; }
     }
 }

@@ -19,8 +19,8 @@ namespace Carpool.WebAPI.Mappers
             CreateMap<Database.Automobil, AutomobilInsertRequest>().ReverseMap();
             CreateMap<Database.Grad, Model.Grad>();
             CreateMap<Database.Voznja, Model.Voznja>().ReverseMap();
-            CreateMap<VoznjaUpsertRequest, Database.Voznja>();
-            CreateMap<VoznjaUpsertRequest, Model.Voznja>();
+            CreateMap<Database.Voznja, VoznjaUpsertRequest>().ReverseMap();
+            CreateMap<Model.Voznja, VoznjaUpsertRequest>().ReverseMap();
             CreateMap<Database.Uloge, Model.Uloge>();
             CreateMap<Database.KorisniciUloge, Model.KorisniciUloge>().ReverseMap();
             CreateMap<Database.KorisniciUloge, Model.KorisniciUloge>();

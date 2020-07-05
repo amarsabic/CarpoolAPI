@@ -7,6 +7,12 @@ namespace Carpool.WebAPI.Database
 {
     public class Voznja
     {
+        public Voznja()
+        {
+            UsputniGradovi = new HashSet<UsputniGradovi>();
+            Rezervacije = new HashSet<Rezervacija>();
+            Ocjene = new HashSet<Ocjene>();
+        }
         public int VoznjaID { get; set; }
         public DateTime DatumPolaska { get; set; }
         public DateTime VrijemePolaska { get; set; }
@@ -25,8 +31,8 @@ namespace Carpool.WebAPI.Database
         public int GradDestinacijaID { get; set; }
         public virtual Grad GradDestinacija { get; set; }
 
-        public List<UsputniGradovi> UsputniGradovi { get; set; }
-        public List<Rezervacija> Rezervacije { get; set; }
-        public List<Ocjene> Ocjene { get; set; }
+        public ICollection<UsputniGradovi> UsputniGradovi { get; set; }
+        public ICollection<Rezervacija> Rezervacije { get; set; }
+        public ICollection<Ocjene> Ocjene { get; set; }
     }
 }

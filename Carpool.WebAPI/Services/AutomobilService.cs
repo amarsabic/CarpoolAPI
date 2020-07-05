@@ -19,7 +19,6 @@ namespace Carpool.WebAPI.Services
             _httpContext = httpContext;
         }
 
-
         public override List<Model.Automobil> Get(AutomobilSearchRequest request)
         {
             var userId = _httpContext.GetUserId();

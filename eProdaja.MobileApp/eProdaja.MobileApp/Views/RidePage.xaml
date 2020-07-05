@@ -7,21 +7,25 @@
              x:Class="eProdaja.MobileApp.Views.RidePage">
     <ContentPage.Content>
         <StackLayout Padding="10">
-            <Button Margin="50, 20, 50, 0" Command="{Binding DodajCommand}" IsVisible="{Binding IsVisible}" Text="Dodaj vožnju"></Button>
-            <ListView ItemsSource="{Binding VoznjeList}">
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                <Button  Command="{Binding DodajCommand}" IsVisible="{Binding IsVisible}" Text="Dodaj vožnju"></Button>
+                <Button  Command="{Binding MojeVoznjeCommand}" IsVisible="{Binding IsVisible}" Text="Moje vožnje"></Button>
+                <Button  Command="{Binding PrikaziSveCommand}" IsVisible="{Binding IsVisible}" Text="Prikaži sve"></Button>
+            </StackLayout>
+            <ListView ItemSelected="VoznjaClicked" ItemsSource="{Binding VoznjeList}">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
                             <StackLayout Margin="50, 20, 50, 20">
-                                <StackLayout>
-                                    <StackLayout  Orientation="Horizontal">
-                                        <Label Text="{Binding GradPolaska}"></Label>
+                                <StackLayout HorizontalOptions="CenterAndExpand">
+                                    <StackLayout Orientation="Horizontal">
+                                        <Label FontAttributes="Bold" FontSize="20" Text="{Binding GradPolaska}"></Label>
                                         <Image WidthRequest="30" HeightRequest="30" Source="icons8-arrow-64.png"></Image>
-                                        <Label Text="{Binding GradDestinacija}"></Label>
+                                        <Label FontAttributes="Bold" FontSize="20" Text="{Binding GradDestinacija}"></Label>
                                     </StackLayout>
                                     <StackLayout>
-                                        <Label Text="{Binding PunaCijena}"></Label>
-                                        <Label Text="{Binding KorisnickoIme}"></Label>
+                                        <Label FontAttributes="Bold" FontSize="15" Text="{Binding PunaCijenaPrikaz}"></Label>
+                                        <Label FontSize="12" FontAttributes="Italic" Text="{Binding KorisnickoImePrikaz}"></Label>
                                     </StackLayout>
                                 </StackLayout>
                             </StackLayout>
