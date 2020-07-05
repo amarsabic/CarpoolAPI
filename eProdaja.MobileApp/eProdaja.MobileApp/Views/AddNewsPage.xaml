@@ -6,7 +6,7 @@
              mc:Ignorable="d"
              x:Class="eProdaja.MobileApp.Views.AddNewsPage">
     <ContentPage.Content>
-        <StackLayout  Padding="20">
+        <StackLayout  Padding="20" Margin="20">
             <StackLayout Spacing="0">
                 <Label FontSize="30" Text="CAR"/>
                 <Label FontSize="30" Text="POOL"/>

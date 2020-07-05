@@ -10,7 +10,7 @@
         <viewModel:AddRideViewModel/>
     </ContentPage.BindingContext>
     <ContentPage.Content>
-        <StackLayout Padding="10">
+        <StackLayout Padding="5" Margin="30">
 
             <Picker Title="Polazište"
                         ItemsSource="{Binding Gradovi}"

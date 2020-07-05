@@ -34,7 +34,7 @@ namespace eProdaja.MobileApp.Views
             }
             else
             {
-                await Navigation.PushAsync(new RideDetailsPage(((Carpool.Model.Voznja)e.SelectedItem).VoznjaID)));
+                await Navigation.PushAsync(new RideDetailsPage(((Carpool.Model.Voznja)e.SelectedItem).VoznjaID));
             }
         }
     }

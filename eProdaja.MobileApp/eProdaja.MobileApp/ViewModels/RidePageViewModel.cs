@@ -39,6 +39,7 @@ namespace eProdaja.MobileApp.ViewModels
             set { SetProperty(ref _mojeVoznjeBool, value); }
         }
 
+
         public ICommand LoadCommand { get; set; }
         public ICommand DodajCommand { get; set; }
         public ICommand MojeVoznjeCommand { get; set; }

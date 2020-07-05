@@ -144,6 +144,11 @@ namespace Carpool.WebAPI.Services
                     Voznja = _mapper.Map<Model.Voznja>(y.Voznja),
                     VoznjaID = y.VoznjaID
                 }).ToList(),
+                UsputniGradoviGrad=item.UsputniGradovi.Select(x=> new Model.Grad
+                {
+                    GradID=x.GradID,
+                    Naziv=_context.Gradovi.Where(g=>g.GradID==x.GradID).Select(g=>g.Naziv).FirstOrDefault()
+                }).ToList(),
                 UsputniGradoviNaziv = item.UsputniGradovi.Select(u => u.Grad.Naziv).ToList()
             }).FirstOrDefault();
 

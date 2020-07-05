@@ -16,7 +16,7 @@
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.Content>
-        <StackLayout Padding="10">
+        <StackLayout Padding="10" Margin="30">
             <Frame  CornerRadius="100"
                                        Padding="0"
                                        IsClippedToBounds="True"
