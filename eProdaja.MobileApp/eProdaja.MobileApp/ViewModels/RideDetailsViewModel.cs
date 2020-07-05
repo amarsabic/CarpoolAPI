@@ -11,7 +11,7 @@ using Xamarin.Forms;
 
 namespace eProdaja.MobileApp.ViewModels
 {
-    public class RideDetailsViewModel:BaseViewModel
+    public class RideDetailsViewModel : BaseViewModel
     {
         private readonly APIService _automobili = new APIService("Automobil");
         private readonly APIService _voznja = new APIService("Voznja");
@@ -108,9 +108,13 @@ namespace eProdaja.MobileApp.ViewModels
                     VoznjaID = voznjaID,
                     UsputniGradID = usputniGradID
                 };
-                await _rezervacija.Insert<Rezervacija>(request);
-                await Application.Current.MainPage.DisplayAlert("Carpool", "Uspješna rezervacija", "OK");
-                await Application.Current.MainPage.Navigation.PushModalAsync(new PaymentPage(voznjaID));
+                var x = await _rezervacija.Insert<Rezervacija>(request);
+                if (x != null)
+                {
+                    await Application.Current.MainPage.DisplayAlert("Carpool", "Uspješna rezervacija", "OK");
+                    await Application.Current.MainPage.Navigation.PushModalAsync(new PaymentPage(voznjaID));
+                }
+
             }
             catch (Exception)
             {
@@ -124,11 +128,14 @@ namespace eProdaja.MobileApp.ViewModels
                 RezervacijaUpsertRequest request = new RezervacijaUpsertRequest
                 {
                     VoznjaID = voznjaID
-                    
+
                 };
-                await _rezervacija.Insert<Rezervacija>(request);
-                await Application.Current.MainPage.DisplayAlert("Carpool", "Uspješna rezervacija", "OK");
-                await Application.Current.MainPage.Navigation.PushModalAsync(new PaymentPage(voznjaID));
+                var x = await _rezervacija.Insert<Rezervacija>(request);
+                if (x != null)
+                {
+                    await Application.Current.MainPage.DisplayAlert("Carpool", "Uspješna rezervacija", "OK");
+                    await Application.Current.MainPage.Navigation.PushModalAsync(new PaymentPage(voznjaID));
+                }
             }
             catch (Exception)
             {

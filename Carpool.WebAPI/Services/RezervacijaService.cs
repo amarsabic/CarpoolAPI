@@ -20,6 +20,49 @@ namespace Carpool.WebAPI.Services
             _httpContext = httpContext;
         }
 
+        public override Model.Rezervacija Delete(int id)
+        {
+            var entity = _context.Rezervacije.Find(id);
+            var voznja = _context.Voznje.Find(entity.VoznjaID);
+            voznja.SlobodnaMjesta++;
+            _context.Remove(entity);
+
+            _context.SaveChanges();
+
+            return _mapper.Map<Model.Rezervacija>(entity);
+        }
+
+        public override List<Model.Rezervacija> Get(RezervacijaSearchRequest search)
+        {
+            var query = _context.Set<Database.Rezervacija>().AsQueryable();
+
+            if (search.ByVoznjaId)
+            {
+                query = query.Where(x => x.VoznjaID == search.VoznjaID);
+            }
+
+            var result = query.Select(item => new Model.Rezervacija
+            {
+                DatumRezervacije=item.DatumRezervacije,
+                KorisnickoIme=item.Korisnik.KorisnickoIme,
+                UsputniGradNaziv=item.UsputniGrad.Grad.Naziv,
+                RezervacijaID=item.RezervacijaID
+            }).ToList();
+
+            return _mapper.Map<List<Model.Rezervacija>>(result);
+        }
+        public override Model.Rezervacija GetById(int id)
+        {
+            var model = _context.Rezervacije.Where(r => r.VoznjaID == id).Select(r => new Model.Rezervacija
+            {
+               DatumRezervacije=r.DatumRezervacije,
+               KorisnickoIme=r.Korisnik.KorisnickoIme,
+               UsputniGradNaziv=r.UsputniGrad.Grad.Naziv
+            }).FirstOrDefault();
+
+            return _mapper.Map<Model.Rezervacija>(model);
+        }
+
         public override Model.Rezervacija Insert(RezervacijaUpsertRequest request)
         {
             var userId = int.Parse(_httpContext.GetUserId());

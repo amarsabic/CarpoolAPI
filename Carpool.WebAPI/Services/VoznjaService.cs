@@ -175,9 +175,20 @@ namespace Carpool.WebAPI.Services
             } 
             if (search.PosljednjeVoznje)
             {
-                query = query.Take(5).OrderByDescending(x=>x.DatumObjave);
+                query = query.OrderByDescending(x=>x.DatumObjave).Take(3);
             }
-            //query = query.OrderBy(x => x.DatumObjave);
+            else
+            {
+                query = query.OrderByDescending(x => x.DatumObjave);
+            }
+
+            if (search.SearchFromHomePage)
+            {
+                query = query.Where(x => (x.GradPolaskaID==search.GradPolaskaID && x.GradDestinacijaID==search.GradDestinacijaID) || (x.UsputniGradovi.Any(u=>u.GradID==search.GradDestinacijaID) && x.GradPolaskaID == search.GradPolaskaID));
+
+                //|| (x.UsputniGradovi.Any(a=>a.GradID == search.GradDestinacijaID) && x.GradPolaskaID==search.GradPolaskaID))
+            }
+
 
             var result = query.Select(item => new Model.Voznja
             {

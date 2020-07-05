@@ -11,5 +11,9 @@ namespace Carpool.Model.Requests
         public bool IsVozac { get; set; } = false;
         public bool IsSlobodnaMjesta { get; set; } = false;
         public bool PosljednjeVoznje { get; set; } = false;
+        public bool SearchFromHomePage { get; set; } = false;
+
+        public DateTime DatumPolaska { get; set; }
+        public DateTime VrijemePolaska { get; set; }
     }
 }

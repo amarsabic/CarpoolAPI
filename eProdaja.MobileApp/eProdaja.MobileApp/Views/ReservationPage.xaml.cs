@@ -21,5 +21,11 @@ namespace eProdaja.MobileApp.Views
             BindingContext = model = new ReservationViewModel();
             VoznjaID = voznjaId;
         }
+
+        protected async override void OnAppearing()
+        {
+            base.OnAppearing();
+            await model.LoadRezervacije(VoznjaID);
+        }
     }
 }

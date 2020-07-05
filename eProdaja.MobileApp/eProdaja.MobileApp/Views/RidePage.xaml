@@ -12,12 +12,13 @@
                 <Button  Command="{Binding MojeVoznjeCommand}" IsVisible="{Binding IsVisible}" Text="Moje vožnje"></Button>
                 <Button  Command="{Binding PrikaziSveCommand}" IsVisible="{Binding IsVisible}" Text="Prikaži sve"></Button>
             </StackLayout>
+    
             <ListView ItemSelected="VoznjaClicked" ItemsSource="{Binding VoznjeList}">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
                             <StackLayout Margin="0, 20, 0, 30">
-                                <StackLayout HorizontalOptions="CenterAndExpand">
+                                <StackLayout HorizontalOptions="Start">
                                     <StackLayout Orientation="Horizontal">
                                         <Label FontAttributes="Bold" FontSize="20" Text="{Binding GradPolaska}"></Label>
                                         <Image WidthRequest="30" HeightRequest="30" Source="icons8-arrow-64.png"></Image>
@@ -29,7 +30,6 @@
                                             <Label FontSize="12" FontAttributes="Bold" Text="{Binding KorisnickoImePrikaz}"></Label>
                                             <Label FontSize="12" FontAttributes="Italic" Text="{Binding DatumObjave}"></Label>
                                         </StackLayout>
-                                     
                                     </StackLayout>
                                 </StackLayout>
                             </StackLayout>

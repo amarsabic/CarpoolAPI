@@ -23,6 +23,7 @@ namespace eProdaja.MobileApp.Views
         protected async override void OnAppearing()
         {
             base.OnAppearing();
+            await model.LoadGradovi();
             await model.Last5();
         }
 

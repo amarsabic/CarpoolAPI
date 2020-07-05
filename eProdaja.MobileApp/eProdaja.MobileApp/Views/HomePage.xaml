@@ -7,13 +7,55 @@
              x:Class="eProdaja.MobileApp.Views.HomePage">
     <ContentPage.Content>
         <StackLayout Padding="10">
-            <Label Margin="0, 20,0,0" Text="Posljednjih 5" FontAttributes="Bold" FontSize="20" HorizontalOptions="CenterAndExpand"></Label>
+            <StackLayout Padding="5">
+                <Picker Title="Polazište"
+                        ItemsSource="{Binding Gradovi}"
+                        ItemDisplayBinding="{Binding Naziv}"
+                        SelectedItem="{Binding SelectedPolazak}"
+                        ></Picker>
+                <Picker Title="Odredište"
+                        ItemsSource="{Binding Gradovi}"
+                        ItemDisplayBinding="{Binding Naziv}"
+                        SelectedItem="{Binding SelectedOdrediste}"
+                        ></Picker>
+                <Label Text="Datum polaska"></Label>
+                <DatePicker Date="{Binding DatumPolaskaProvjera}" MinimumDate="{Binding MinimumDate}"></DatePicker>
+            </StackLayout>
+            <Button Command="{Binding SearchRideCommand}" Margin="0,0,0,0" Text="Traži"></Button>
+
+            <Label IsVisible="{Binding SearchListBool}" Margin="0, 20,0,0" Text="Rezultati pretrage" FontAttributes="Bold" FontSize="20" HorizontalOptions="CenterAndExpand"></Label>
+            <ListView IsVisible="{Binding SearchListBool}" ItemSelected="VoznjaClicked" ItemsSource="{Binding SearchList}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Margin="0, 20, 0, 30">
+                                <StackLayout HorizontalOptions="Start">
+                                    <StackLayout Orientation="Horizontal">
+                                        <Label FontAttributes="Bold" FontSize="20" Text="{Binding GradPolaska}"></Label>
+                                        <Image WidthRequest="30" HeightRequest="30" Source="icons8-arrow-64.png"></Image>
+                                        <Label FontAttributes="Bold" FontSize="20" Text="{Binding GradDestinacija}"></Label>
+                                    </StackLayout>
+                                    <StackLayout>
+                                        <Label FontAttributes="Bold" FontSize="15" Text="{Binding PunaCijenaPrikaz}"></Label>
+                                        <StackLayout Orientation="Horizontal">
+                                            <Label FontSize="12" FontAttributes="Bold" Text="{Binding KorisnickoImePrikaz}"></Label>
+                                            <Label FontSize="12" FontAttributes="Italic" Text="{Binding DatumObjave}"></Label>
+                                        </StackLayout>
+                                    </StackLayout>
+                                </StackLayout>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            
+            <Label Margin="0, 20,0,0" Text="Nove vožnje" FontAttributes="Bold" FontSize="20" HorizontalOptions="CenterAndExpand"></Label>
             <ListView ItemSelected="VoznjaClicked" ItemsSource="{Binding VoznjeList}">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
                             <StackLayout Margin="0, 20, 0, 30">
-                                <StackLayout HorizontalOptions="CenterAndExpand">
+                                <StackLayout HorizontalOptions="Start">
                                     <StackLayout Orientation="Horizontal">
                                         <Label FontAttributes="Bold" FontSize="20" Text="{Binding GradPolaska}"></Label>
                                         <Image WidthRequest="30" HeightRequest="30" Source="icons8-arrow-64.png"></Image>
@@ -33,6 +75,7 @@
                 </ListView.ItemTemplate>
             </ListView>
             <Label Margin="0, 20,0,0" Text="Preporučeno za Vas" FontAttributes="Bold" FontSize="20" HorizontalOptions="CenterAndExpand"></Label>
+            
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

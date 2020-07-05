@@ -1,10 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+<ContentPage 
+    Title="Pregled rezervacija"
+    xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:converters="clr-namespace:eProdaja.MobileApp.Converters"
              mc:Ignorable="d"
+              x:Name="RideDetailsPageName"
              x:Class="eProdaja.MobileApp.Views.ReservationPage">
     <ContentPage.Resources>
         <ResourceDictionary>
@@ -12,17 +15,37 @@
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.Content>
-        <StackLayout>
-            <Frame CornerRadius="20"
+        <StackLayout Padding="10">
+            <StackLayout Margin="50, 30, 50, 0">
+                <Frame CornerRadius="20"
                                        Padding="0"
                                        IsClippedToBounds="True">
-                <Image Source="{Binding Slika, Converter={StaticResource imgConv}}"></Image>
-            </Frame>
-            <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
-                <Label FontAttributes="Bold" FontSize="20" Text="{Binding GradPolaska}"></Label>
-                <Image WidthRequest="30" HeightRequest="30" Source="icons8-arrow-64.png"></Image>
-                <Label FontAttributes="Bold" FontSize="20" Text="{Binding GradDestinacija}"></Label>
+                    <Image Source="{Binding Slika, Converter={StaticResource imgConv}}"></Image>
+                </Frame>
+                <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                    <Label FontAttributes="Bold" FontSize="20" Text="{Binding GradPolaska}"></Label>
+                    <Image WidthRequest="30" HeightRequest="30" Source="icons8-arrow-64.png"></Image>
+                    <Label FontAttributes="Bold" FontSize="20" Text="{Binding GradDestinacija}"></Label>
+                </StackLayout>
             </StackLayout>
+
+            <ListView ItemsSource="{Binding Rezervacije}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Margin="0, 20, 0, 30">
+                                <StackLayout HorizontalOptions="Start" Orientation="Horizontal">
+                                    <Label FontSize="14" FontAttributes="Italic" Text="Korisnik"></Label>
+                                    <Label  FontSize="14" FontAttributes="Bold" Text="{Binding KorisnickoIme}"></Label>
+                                    <Label  FontSize="14"  Text="je rezervisao vožnju"></Label>
+                                    <Label  FontSize="14" Text="{Binding DatumRezervacije}"></Label>
+                                    <Button Command="{Binding  BindingContext.DeleteRezervacijaCommand, Source={x:Reference RideDetailsPageName}}"  CommandParameter="{Binding RezervacijaID}" HorizontalOptions="End" Text="Rezerviši"></Button>
+                                </StackLayout>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

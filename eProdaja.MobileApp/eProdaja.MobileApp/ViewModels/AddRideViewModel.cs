@@ -24,6 +24,7 @@ namespace eProdaja.MobileApp.ViewModels
             SaveRideCommand = new Command(async () => await SaveRide());
             InitCommand = new Command(async (param) => await Init((int)param));
             DeleteRideCommand = new Command(async () => await DeleteRide());
+            ViewReservationsCommand = new Command(async () => await ViewReservations());
         }
 
         ObservableCollection<Grad> _Gradovi = new ObservableCollection<Grad>();
@@ -40,6 +41,8 @@ namespace eProdaja.MobileApp.ViewModels
             get { return _IsVisibleUkloni; }
             set { SetProperty(ref _IsVisibleUkloni, value); }
         }
+
+
         public int SlobodnaMjesta
         {
             get { return _slobodnaMjesta; }
@@ -145,18 +148,16 @@ namespace eProdaja.MobileApp.ViewModels
         public ICommand SaveRideCommand { get; set; }
         public ICommand InitCommand { get; set; }
         public ICommand DeleteRideCommand { get; set; }
+        public ICommand ViewReservationsCommand { get; set; }
+
+        public async Task ViewReservations()
+        {
+            await Application.Current.MainPage.Navigation.PushAsync(new ReservationPage((int)voznjaID));
+        }
 
         public async Task DeleteRide()
         {
-            try
-            {
-                await _voznja.Delete<Voznja>((int)voznjaID);
-                await Application.Current.MainPage.DisplayAlert("Carpool", "Uspješno obrisana vožnja", "OK");
-                await Application.Current.MainPage.Navigation.PopAsync();
-            }
-            catch (Exception)
-            {
-            }
+            await Application.Current.MainPage.Navigation.PushAsync(new ReservationPage((int)voznjaID));
         }
         public async Task Init(int voznjaId)
         {
@@ -201,7 +202,8 @@ namespace eProdaja.MobileApp.ViewModels
                 }
 
                 voznjaID = voznjaId;
-                _IsVisibleUkloni = true;
+                IsVisibleUkloni = true;
+               
             }
             catch (Exception)
             {

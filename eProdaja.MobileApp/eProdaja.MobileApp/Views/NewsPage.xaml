@@ -28,16 +28,29 @@
                                 d:Text="{Binding .}"
                                 LineBreakMode="NoWrap" 
                                 Style="{DynamicResource ListItemTextStyle}" 
-                                FontSize="20" />
+                                FontSize="17" />
                                 <Label  Text="{Binding KratkiOpis}" 
                                 d:Text="Item descripton"
                                 Style="{DynamicResource ListItemDetailTextStyle}"
-                                FontSize="15" />
-                                <Label  Text="{Binding KorisnickoIme}" 
+                                FontSize="13" />
+                                <StackLayout Orientation="Horizontal">
+                                    <Label  Text="Objavio/la" 
                                 d:Text="Item descripton"
                                 Style="{DynamicResource ListItemDetailTextStyle}"
-                                FontSize="15"
+                                FontSize="11"
+                                       FontAttributes="Italic"/>
+                                    <Label  Text="{Binding KorisnickoIme}" 
+                                d:Text="Item descripton"
+                                Style="{DynamicResource ListItemDetailTextStyle}"
+                                FontSize="11"
                                        FontAttributes="Bold"/>
+                                    <Label  Text="{Binding DatumVrijemeObjave}" 
+                                d:Text="Item descripton"
+                                Style="{DynamicResource ListItemDetailTextStyle}"
+                                FontSize="11"
+                                       FontAttributes="Italic"/>
+                                </StackLayout>
+                               
                             </StackLayout>
                         </ViewCell>
                     </DataTemplate>
