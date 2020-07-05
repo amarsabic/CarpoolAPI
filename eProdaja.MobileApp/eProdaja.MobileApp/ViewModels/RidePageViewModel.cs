@@ -23,6 +23,7 @@ namespace eProdaja.MobileApp.ViewModels
             DodajCommand = new Command(async () => await Dodaj());
             MojeVoznjeCommand = new Command(async () => await MojeVoznje());
             PrikaziSveCommand = new Command(async () => await Load());
+            Last5Command = new Command(async () => await Last5());
         }
 
         public ObservableCollection<Voznja> VoznjeList { get; set; } = new ObservableCollection<Voznja>();
@@ -44,7 +45,31 @@ namespace eProdaja.MobileApp.ViewModels
         public ICommand DodajCommand { get; set; }
         public ICommand MojeVoznjeCommand { get; set; }
         public ICommand PrikaziSveCommand { get; set; }
+        public ICommand Last5Command { get; set; }
 
+        public async Task Last5()
+        {
+            try
+            {
+                VoznjaSearchRequest search = new VoznjaSearchRequest
+                {
+                   PosljednjeVoznje=true,
+                   IsSlobodnaMjesta=true
+                };
+
+                var model = await _voznja.Get<List<Voznja>>(search);
+
+                VoznjeList.Clear();
+                foreach (var voznja in model)
+                {
+                    VoznjeList.Add(voznja);
+                }
+            }
+            catch (Exception)
+            {
+
+            }
+        }
         public async Task MojeVoznje()
         {
             try
@@ -97,7 +122,11 @@ namespace eProdaja.MobileApp.ViewModels
         {
             try
             {
-                var model = await _voznja.Get<List<Voznja>>(null);
+                VoznjaSearchRequest req = new VoznjaSearchRequest
+                {
+                    IsSlobodnaMjesta=true
+                };
+                var model = await _voznja.Get<List<Voznja>>(req);
 
                 if (model.Count == 0)
                 {

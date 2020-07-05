@@ -8,6 +8,7 @@
   <ItemGroup>
     <PackageReference Include="Flurl" Version="2.8.1" />
     <PackageReference Include="Flurl.Http" Version="2.4.1" />
+    <PackageReference Include="Stripe.net" Version="37.15.1" />
     <PackageReference Include="Xamarin.Forms" Version="4.2.0.709249" />  
     <PackageReference Include="Xamarin.Essentials" Version="1.2.0" />
   </ItemGroup>
@@ -35,6 +36,9 @@
     <EmbeddedResource Update="Views\DriverProfilePage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Update="Views\HomePage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="Views\InfoAutomobilPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
@@ -47,7 +51,13 @@
     <EmbeddedResource Update="Views\PassengerProfilePage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Update="Views\PaymentPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="Views\RegisterPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\ReservationPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\RideDetailsPage.xaml">

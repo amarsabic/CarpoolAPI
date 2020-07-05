@@ -10,9 +10,9 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Carpool.WebAPI.Controllers
 {
-    public class VoznjaController : BaseCRUDController<Voznja, VoznjaSearchRequest, VoznjaUspertRequest, VoznjaUspertRequest>
+    public class RezervacijaController : BaseCRUDController<Rezervacija, RezervacijaSearchRequest, RezervacijaUpsertRequest, RezervacijaUpsertRequest>
     {
-        public VoznjaController(ICRUDService<Voznja, VoznjaSearchRequest, VoznjaUspertRequest, VoznjaUspertRequest> service) : base(service)
+        public RezervacijaController(ICRUDService<Rezervacija, RezervacijaSearchRequest, RezervacijaUpsertRequest, RezervacijaUpsertRequest> service) : base(service)
         {
         }
     }

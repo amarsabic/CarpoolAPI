@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+     NavigationPage.HasBackButton="False"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:converters="clr-namespace:eProdaja.MobileApp.Converters"
+             mc:Ignorable="d"
+             x:Class="eProdaja.MobileApp.Views.PaymentPage">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:ImageConverter x:Key="imgConv"></converters:ImageConverter>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <StackLayout Padding="20" Margin="20" >
+            <StackLayout Orientation="Horizontal">
+                <Label FontAttributes="Italic" Text="Vožnja od korisnika"></Label>
+                <Label FontAttributes="Bold" Text="{Binding KorisnickoIme}"></Label>
+            </StackLayout>
+            <Frame CornerRadius="20"
+                                       Padding="0"
+                                       IsClippedToBounds="True">
+                <Image Source="{Binding Slika, Converter={StaticResource imgConv}}"></Image>
+            </Frame>
+            <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                <Label FontAttributes="Bold" FontSize="20" Text="{Binding GradPolaska}"></Label>
+                <Image WidthRequest="30" HeightRequest="30" Source="icons8-arrow-64.png"></Image>
+                <Label FontAttributes="Bold" FontSize="20" Text="{Binding GradDestinacija}"></Label>
+            </StackLayout>
+            <StackLayout Margin="50, 20, 50, 0">
+                <StackLayout>
+                    <Entry Text="{Binding CreditCardNumber}" Placeholder="Enter your credit card number"></Entry>
+                    <StackLayout Orientation="Horizontal">
+                        <Entry Text="{Binding ExpiryYear}" Placeholder="Expiry year"></Entry>
+                        <Entry Text="{Binding ExpiryMonth}" Placeholder="Expiry month"></Entry>
+                        <Entry Text="{Binding CVC}" Placeholder="CVC"></Entry>
+                    </StackLayout>
+                </StackLayout>
+            </StackLayout>
+            <Button Command="{Binding PayCommand}" Margin="80,20,80,0" Text="Plati"></Button>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

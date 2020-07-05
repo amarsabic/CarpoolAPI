@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace Carpool.WebAPI.Services
 {
-    public class VoznjaService : BaseCRUDService<Model.Voznja, VoznjaSearchRequest, Database.Voznja, VoznjaUpsertRequest, VoznjaUpsertRequest>
+    public class VoznjaService : BaseCRUDService<Model.Voznja, VoznjaSearchRequest, Database.Voznja, VoznjaUspertRequest, VoznjaUspertRequest>
     {
         private readonly IHttpContextAccessor _httpContext;
         public VoznjaService(CarpoolContext context, IMapper mapper, IHttpContextAccessor httpContext) : base(context, mapper)
@@ -20,7 +20,7 @@ namespace Carpool.WebAPI.Services
             _httpContext = httpContext;
         }
 
-        public override Model.Voznja Update(int id, VoznjaUpsertRequest request)
+        public override Model.Voznja Update(int id, VoznjaUspertRequest request)
         {
             var entity = _context.Voznje.Find(id);
 
@@ -76,7 +76,7 @@ namespace Carpool.WebAPI.Services
             return _mapper.Map<Model.Voznja>(entity);
         }
 
-        public override Model.Voznja Insert(VoznjaUpsertRequest request)
+        public override Model.Voznja Insert(VoznjaUspertRequest request)
         {
             var userId = int.Parse(_httpContext.GetUserId());
 
@@ -169,7 +169,15 @@ namespace Carpool.WebAPI.Services
             {
                 query = query.Where(x => x.VozacID == userId);
             }
-            query = query.OrderBy(x => x.DatumObjave);
+            if (search.IsSlobodnaMjesta)
+            {
+                query = query.Where(x => x.SlobodnaMjesta != 0);
+            } 
+            if (search.PosljednjeVoznje)
+            {
+                query = query.Take(5).OrderByDescending(x=>x.DatumObjave);
+            }
+            //query = query.OrderBy(x => x.DatumObjave);
 
             var result = query.Select(item => new Model.Voznja
             {

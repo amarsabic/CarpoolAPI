@@ -1,7 +1,9 @@
 ﻿using Carpool.Model;
 using Flurl.Http;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
@@ -51,6 +53,35 @@ namespace eProdaja.MobileApp
                 }
                 throw;
             }
+        }
+        public async Task<bool> Payment(PaymentModel model)
+        {
+
+            HttpClient client = new HttpClient();
+            var x =  await client.PostAsync(_apiUrl+"/Payment",
+                                   new StringContent(JsonConvert.SerializeObject(model),
+                                                     Encoding.UTF8,
+                                                     "application/json"));
+            //var url = $"{_apiUrl}/{_route}";
+
+            return true;
+            //try
+            //{
+            //    if (search != null)
+            //    {
+            //        url += "?";
+            //        url += await search.ToQueryString();
+            //    }
+            //    return await url.WithBasicAuth(Username, Password).GetJsonAsync<T>();
+            //}
+            //catch (FlurlHttpException ex)
+            //{
+            //    if (ex.Call.HttpStatus == System.Net.HttpStatusCode.Unauthorized)
+            //    {
+            //        await Application.Current.MainPage.DisplayAlert("Greška", "Niste authentificirani", "OK");
+            //    }
+            //    throw;
+            //}
         }
         public async Task<T> Auth<T>()
         {
@@ -144,6 +175,13 @@ namespace eProdaja.MobileApp
             }
 
         }
+    }
+
+    public class PaymentModel
+    {
+
+        public decimal Amount { get; set; }
+        public string Token { get; set; }
     }
 }
 

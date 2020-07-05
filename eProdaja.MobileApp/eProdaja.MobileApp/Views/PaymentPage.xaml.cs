@@ -11,25 +11,26 @@ using Xamarin.Forms.Xaml;
 namespace eProdaja.MobileApp.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class RideDetailsPage : ContentPage
+    public partial class PaymentPage : ContentPage
     {
-        private RideDetailsViewModel model = null;
+        private PaymentViewModel model = null;
         private int VoznjaID;
-        public RideDetailsPage(int voznjaId)
+        public PaymentPage(int voznjaId)
         {
             InitializeComponent();
-            BindingContext = model = new RideDetailsViewModel();
+            BindingContext = model = new PaymentViewModel();
             VoznjaID = voznjaId;
         }
 
         protected async override void OnAppearing()
         {
+            base.OnAppearing();
             await model.Init(VoznjaID);
         }
 
-        private async void RouteCityReservation(object sender, SelectedItemChangedEventArgs e)
+        protected override bool OnBackButtonPressed()
         {
-            await model.RouteCityReservation(((Carpool.Model.Grad)e.SelectedItem).GradID);
+            return true;
         }
     }
 }

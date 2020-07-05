@@ -1,4 +1,6 @@
 ﻿using Carpool.Model;
+using Carpool.Model.Requests;
+using eProdaja.MobileApp.Views;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -13,12 +15,17 @@ namespace eProdaja.MobileApp.ViewModels
     {
         private readonly APIService _automobili = new APIService("Automobil");
         private readonly APIService _voznja = new APIService("Voznja");
+        private readonly APIService _rezervacija = new APIService("Rezervacija");
         public RideDetailsViewModel()
         {
             InitCommand = new Command(async (param) => await Init((int)param));
+            MainReservationCommand = new Command(async () => await MainReservation());
+            RouteCityReservationCommand = new Command(async (param) => await RouteCityReservation((int)param));
         }
 
         ObservableCollection<Grad> _UsputniGradovi = new ObservableCollection<Grad>();
+
+        public int voznjaID;
 
         public ObservableCollection<Grad> UsputniGradovi
         {
@@ -90,6 +97,44 @@ namespace eProdaja.MobileApp.ViewModels
             set { SetProperty(ref _vrijemePolaska, value); }
         }
         public ICommand InitCommand { get; set; }
+        public ICommand MainReservationCommand { get; set; }
+        public ICommand RouteCityReservationCommand { get; set; }
+        public async Task RouteCityReservation(int usputniGradID)
+        {
+            try
+            {
+                RezervacijaUpsertRequest request = new RezervacijaUpsertRequest
+                {
+                    VoznjaID = voznjaID,
+                    UsputniGradID = usputniGradID
+                };
+                await _rezervacija.Insert<Rezervacija>(request);
+                await Application.Current.MainPage.DisplayAlert("Carpool", "Uspješna rezervacija", "OK");
+                await Application.Current.MainPage.Navigation.PushModalAsync(new PaymentPage(voznjaID));
+            }
+            catch (Exception)
+            {
+
+            }
+        }
+        public async Task MainReservation()
+        {
+            try
+            {
+                RezervacijaUpsertRequest request = new RezervacijaUpsertRequest
+                {
+                    VoznjaID = voznjaID
+                    
+                };
+                await _rezervacija.Insert<Rezervacija>(request);
+                await Application.Current.MainPage.DisplayAlert("Carpool", "Uspješna rezervacija", "OK");
+                await Application.Current.MainPage.Navigation.PushModalAsync(new PaymentPage(voznjaID));
+            }
+            catch (Exception)
+            {
+
+            }
+        }
 
         public async Task Init(int voznjaId)
         {
@@ -109,6 +154,8 @@ namespace eProdaja.MobileApp.ViewModels
                 VrijemePolaska = v.VrijemePolaska.ToShortTimeString();
                 PunaCijenaPrikaz = v.PunaCijenaPrikaz;
                 DatumObjave = v.DatumObjave.ToShortDateString();
+
+                voznjaID = v.VoznjaID;
                 foreach (var item in v.UsputniGradoviGrad)
                 {
                     UsputniGradovi.Add(item);

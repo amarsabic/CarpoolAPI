@@ -28,6 +28,7 @@ namespace Carpool.WebAPI.Database
         public DbSet<Korisnik> Korisnici { get; set; }
         public DbSet<KorisniciUloge> KorisniciUloge { get; set; }
         public DbSet<Uloge> Uloge { get; set; }
+        public DbSet<PaymentModel> PaymentModels { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {

@@ -105,7 +105,7 @@ namespace Carpool.WinUI.Voznje
 
         private async void btnSacuvaj_Click(object sender, EventArgs e)
         {
-            VoznjaUpsertRequest request = new VoznjaUpsertRequest();
+            VoznjaUspertRequest request = new VoznjaUspertRequest();
 
             var idPolazak = cmbPolazak.SelectedValue;
 

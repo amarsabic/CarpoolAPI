@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="eProdaja.MobileApp.Views.HomePage">
+    <ContentPage.Content>
+        <StackLayout Padding="10">
+            <Label Margin="0, 20,0,0" Text="Posljednjih 5" FontAttributes="Bold" FontSize="20" HorizontalOptions="CenterAndExpand"></Label>
+            <ListView ItemSelected="VoznjaClicked" ItemsSource="{Binding VoznjeList}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Margin="0, 20, 0, 30">
+                                <StackLayout HorizontalOptions="CenterAndExpand">
+                                    <StackLayout Orientation="Horizontal">
+                                        <Label FontAttributes="Bold" FontSize="20" Text="{Binding GradPolaska}"></Label>
+                                        <Image WidthRequest="30" HeightRequest="30" Source="icons8-arrow-64.png"></Image>
+                                        <Label FontAttributes="Bold" FontSize="20" Text="{Binding GradDestinacija}"></Label>
+                                    </StackLayout>
+                                    <StackLayout>
+                                        <Label FontAttributes="Bold" FontSize="15" Text="{Binding PunaCijenaPrikaz}"></Label>
+                                        <StackLayout Orientation="Horizontal">
+                                            <Label FontSize="12" FontAttributes="Bold" Text="{Binding KorisnickoImePrikaz}"></Label>
+                                            <Label FontSize="12" FontAttributes="Italic" Text="{Binding DatumObjave}"></Label>
+                                        </StackLayout>
+                                    </StackLayout>
+                                </StackLayout>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <Label Margin="0, 20,0,0" Text="Preporučeno za Vas" FontAttributes="Bold" FontSize="20" HorizontalOptions="CenterAndExpand"></Label>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

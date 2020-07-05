@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Carpool.Model.Requests
 {
-    public class VoznjaUpsertRequest
+    public class VoznjaUspertRequest
     {
         public DateTime DatumPolaska { get; set; }
         public DateTime VrijemePolaska { get; set; }

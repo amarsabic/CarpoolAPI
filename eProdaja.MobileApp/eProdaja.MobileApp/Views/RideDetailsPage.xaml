@@ -5,6 +5,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:converters="clr-namespace:eProdaja.MobileApp.Converters"
              mc:Ignorable="d"
+              x:Name="RideDetailsPageName"
              x:Class="eProdaja.MobileApp.Views.RideDetailsPage">
     <ContentPage.Resources>
         <ResourceDictionary>
@@ -44,16 +45,16 @@
                 <Label Text="Slobodna mjesta:"></Label>
                 <Label FontAttributes="Bold" Text="{Binding SlobodnaMjesta}"></Label>
             </StackLayout>
-            <Button  Command="{Binding RezervisiCommand}" Text="Rezerviši"></Button>
+            <Button  Command="{Binding MainReservationCommand}" Text="Rezerviši"></Button>
             <Label FontAttributes="Italic" FontSize="18" Text="Usputni gradovi:"></Label>
-            <ListView ItemsSource="{Binding UsputniGradovi}" HorizontalOptions="CenterAndExpand">
+            <ListView  ItemsSource="{Binding UsputniGradovi}" HorizontalOptions="CenterAndExpand">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
                             <StackLayout Padding="5">
                                 <StackLayout Orientation="Horizontal">
                                     <Label FontAttributes="Bold" FontSize="17" Text="{Binding Naziv}"></Label>
-                                    <Button  Command="{Binding RezervisiCommand}" Text="Rezerviši"></Button>
+                                    <Button Command="{Binding  BindingContext.RouteCityReservationCommand, Source={x:Reference RideDetailsPageName}}"  CommandParameter="{Binding GradID}" HorizontalOptions="End" Text="Rezerviši"></Button>
                                 </StackLayout>
                             </StackLayout>
                         </ViewCell>

@@ -213,7 +213,7 @@ namespace eProdaja.MobileApp.ViewModels
 
         public async Task SaveRide()
         {
-            VoznjaUpsertRequest voznja = new VoznjaUpsertRequest
+            VoznjaUspertRequest voznja = new VoznjaUspertRequest
             {
                 AutomobilID=SelectedAutomobil.AutomobilID,
                 DatumObjave=DateTime.Now,

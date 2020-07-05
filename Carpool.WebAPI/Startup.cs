@@ -87,7 +87,8 @@ namespace Carpool.WebAPI
 
             services.AddScoped<IService<Model.TipObavijesti, object>, BaseService<Model.TipObavijesti, object, TipObavijesti>>();
             services.AddHttpContextAccessor();
-            services.AddScoped<ICRUDService<Model.Voznja, VoznjaSearchRequest, VoznjaUpsertRequest, VoznjaUpsertRequest>, VoznjaService>();
+            services.AddScoped<ICRUDService<Model.Voznja, VoznjaSearchRequest, VoznjaUspertRequest, VoznjaUspertRequest>, VoznjaService>();
+            services.AddScoped<ICRUDService<Model.Rezervacija, RezervacijaSearchRequest, RezervacijaUpsertRequest, RezervacijaUpsertRequest>, RezervacijaService>();
             services.AddScoped<ICRUDService<Model.UsputniGradovi, UsputniGradoviSearchRequest, UsputniGradoviUpsertRequest, UsputniGradoviUpsertRequest>, UsputniGradoviService>();
 
             services.AddAutoMapper(typeof(Startup));

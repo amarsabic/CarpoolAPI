@@ -11,7 +11,7 @@
              x:Class="eProdaja.MobileApp.Views.WelcomePage">
     <!--Pages can be added as references or inline-->
     
-    <local:PassengerProfilePage Title="Početna" IconImageSource="icons8-home-50.png"></local:PassengerProfilePage>
+    <local:HomePage Title="Početna" IconImageSource="icons8-home-50.png"></local:HomePage>
     <local:PassengerProfilePage Title="Profil" IconImageSource="icons8-user-male-50.png"></local:PassengerProfilePage>
     <local:AutomobiliPage Title="Automobili" IconImageSource="icons8-car-50.png"></local:AutomobiliPage>
     <local:NewsPage Title="Obavijesti" IconImageSource="icons8-news-50.png"></local:NewsPage>
