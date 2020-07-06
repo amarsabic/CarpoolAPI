@@ -26,7 +26,7 @@ namespace Carpool.WebAPI.Services
             if (request.ZavrsiVoznju)
             {
                 entity.IsAktivna = false;
-                //_context.SaveChanges();
+                _context.SaveChanges();
                 return _mapper.Map<Model.Voznja>(entity);
             }
 
@@ -67,6 +67,13 @@ namespace Carpool.WebAPI.Services
 
             var auto = _context.Autmobili.Find(entity.AutomobilID);
             auto.IsAktivan = false;
+
+
+            var rezervacije = _context.Rezervacije.Where(u => u.VoznjaID == id).ToList();
+            foreach (var item in rezervacije)
+            {
+                _context.Rezervacije.Remove(item);
+            }
 
             var usputniGradovi = _context.UsputniGradovi.Where(u => u.VoznjaID == id).ToList();
             foreach (var item in usputniGradovi)
@@ -178,6 +185,10 @@ namespace Carpool.WebAPI.Services
             if (search.IsZavrsena)
             {
                 query = query.Where(x => x.VozacID == userId && x.IsAktivna==false);
+            }
+            if(search.IsVozacZavrsene)
+            {
+                query = query.Where(x => x.VozacID == search.VozacID && x.IsAktivna == false);
             }
             if (search.IsSlobodnaMjesta)
             {

@@ -31,6 +31,7 @@ namespace Carpool.WinUI.Korisnici
 
             var result = await _apiService.Get<List<Model.Korisnik>>(search);
 
+            dgvKorisnici.AutoGenerateColumns = false;
             dgvKorisnici.DataSource = result;
         }
 
@@ -40,6 +41,11 @@ namespace Carpool.WinUI.Korisnici
 
             frmDodaj frm = new frmDodaj(int.Parse(id.ToString()));
             frm.Show();
+        }
+
+        private void frmKorisnici_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -45,8 +45,10 @@ namespace Carpool.WinUI
                     Properties.Settings.Default.passUser = "";
                     Properties.Settings.Default.Save();
                 }
+     
                 frmIndex frm = new frmIndex();
                 frm.Show();
+            
             }
             catch (Exception ex)
             {

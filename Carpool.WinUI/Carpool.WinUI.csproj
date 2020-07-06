@@ -240,6 +240,24 @@
     <Reference Include="Microsoft.OpenApi, Version=1.1.4.0, Culture=neutral, PublicKeyToken=3f5743946376f042, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.OpenApi.1.1.4\lib\net46\Microsoft.OpenApi.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.140.1000.523\lib\net40\Microsoft.ReportViewer.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.DataVisualization, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.140.1000.523\lib\net40\Microsoft.ReportViewer.DataVisualization.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.Design, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.140.1000.523\lib\net40\Microsoft.ReportViewer.Design.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.ProcessingObjectModel, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.140.1000.523\lib\net40\Microsoft.ReportViewer.ProcessingObjectModel.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.140.1000.523\lib\net40\Microsoft.ReportViewer.WinForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.Types, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.SqlServer.Types.14.0.314.76\lib\net40\Microsoft.SqlServer.Types.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Win32.Registry, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Win32.Registry.4.5.0\lib\net461\Microsoft.Win32.Registry.dll</HintPath>
     </Reference>
@@ -474,6 +492,17 @@
     <Compile Include="frmLogin.Designer.cs">
       <DependentUpon>frmLogin.cs</DependentUpon>
     </Compile>
+    <Compile Include="Izvještaji\DSCARPOOL.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DSCARPOOL.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Izvještaji\frmVoznjeReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Izvještaji\frmVoznjeReport.Designer.cs">
+      <DependentUpon>frmVoznjeReport.cs</DependentUpon>
+    </Compile>
     <Compile Include="Korisnici\frmDodaj.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -500,11 +529,18 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SqlServerTypes\Loader.cs" />
     <Compile Include="Voznje\frmVoznje.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Voznje\frmVoznje.Designer.cs">
       <DependentUpon>frmVoznje.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Voznje\frmUkloni.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Voznje\frmUkloni.Designer.cs">
+      <DependentUpon>frmUkloni.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Automobili\frmAutomobili.resx">
       <DependentUpon>frmAutomobili.cs</DependentUpon>
@@ -518,6 +554,10 @@
     <EmbeddedResource Include="frmLogin.resx">
       <DependentUpon>frmLogin.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Izvještaji\frmVoznjeReport.resx">
+      <DependentUpon>frmVoznjeReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Izvještaji\rptVoznje.rdlc" />
     <EmbeddedResource Include="Korisnici\frmDodaj.resx">
       <DependentUpon>frmDodaj.cs</DependentUpon>
     </EmbeddedResource>
@@ -543,6 +583,20 @@
     <EmbeddedResource Include="Voznje\frmVoznje.resx">
       <DependentUpon>frmVoznje.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Voznje\frmUkloni.resx">
+      <DependentUpon>frmUkloni.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="Izvještaji\DSCARPOOL.xsc">
+      <DependentUpon>DSCARPOOL.xsd</DependentUpon>
+    </None>
+    <None Include="Izvještaji\DSCARPOOL.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DSCARPOOL.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Izvještaji\DSCARPOOL.xss">
+      <DependentUpon>DSCARPOOL.xsd</DependentUpon>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>PublicSettingsSingleFileGenerator</Generator>
@@ -567,7 +621,21 @@
     <Analyzer Include="..\packages\Microsoft.CodeAnalysis.Analyzers.1.1.0\analyzers\dotnet\cs\Microsoft.CodeAnalysis.Analyzers.dll" />
     <Analyzer Include="..\packages\Microsoft.CodeAnalysis.Analyzers.1.1.0\analyzers\dotnet\cs\Microsoft.CodeAnalysis.CSharp.Analyzers.dll" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="SqlServerTypes\readme.htm" />
+    <Content Include="SqlServerTypes\x64\msvcr120.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x64\SqlServerSpatial140.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x86\msvcr120.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x86\SqlServerSpatial140.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

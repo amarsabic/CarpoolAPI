@@ -12,6 +12,22 @@ namespace Carpool.Model
         public DateTime DatumObjave { get; set; }
         public int SlobodnaMjesta { get; set; }
         public decimal PunaCijena { get; set; }
+
+        public string DatumPolaskaString
+        {
+            get
+            {
+                return DatumPolaska.ToShortDateString();
+            }
+        }
+
+        public string VrijemePolaskaString
+        {
+            get
+            {
+                return DatumPolaska.ToShortTimeString();
+            }
+        }
         public string PunaCijenaPrikaz
         {
             get

@@ -32,6 +32,12 @@
             this.dgvKorisnici = new System.Windows.Forms.DataGridView();
             this.btnPrikazi = new System.Windows.Forms.Button();
             this.txtPretraga = new System.Windows.Forms.TextBox();
+            this.KorisnikID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Ime = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Prezime = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.KorisnickoIme = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Email = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.IsVozac = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvKorisnici)).BeginInit();
             this.SuspendLayout();
@@ -51,6 +57,13 @@
             this.dgvKorisnici.AllowUserToAddRows = false;
             this.dgvKorisnici.AllowUserToDeleteRows = false;
             this.dgvKorisnici.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvKorisnici.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.KorisnikID,
+            this.Ime,
+            this.Prezime,
+            this.KorisnickoIme,
+            this.Email,
+            this.IsVozac});
             this.dgvKorisnici.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvKorisnici.Location = new System.Drawing.Point(3, 16);
             this.dgvKorisnici.Name = "dgvKorisnici";
@@ -77,6 +90,49 @@
             this.txtPretraga.Size = new System.Drawing.Size(250, 20);
             this.txtPretraga.TabIndex = 2;
             // 
+            // KorisnikID
+            // 
+            this.KorisnikID.DataPropertyName = "KorisnikID";
+            this.KorisnikID.HeaderText = "KorisnikID";
+            this.KorisnikID.Name = "KorisnikID";
+            this.KorisnikID.ReadOnly = true;
+            this.KorisnikID.Visible = false;
+            // 
+            // Ime
+            // 
+            this.Ime.DataPropertyName = "Ime";
+            this.Ime.HeaderText = "Ime";
+            this.Ime.Name = "Ime";
+            this.Ime.ReadOnly = true;
+            // 
+            // Prezime
+            // 
+            this.Prezime.DataPropertyName = "Prezime";
+            this.Prezime.HeaderText = "Prezime";
+            this.Prezime.Name = "Prezime";
+            this.Prezime.ReadOnly = true;
+            // 
+            // KorisnickoIme
+            // 
+            this.KorisnickoIme.DataPropertyName = "KorisnickoIme";
+            this.KorisnickoIme.HeaderText = "Korisničko ime";
+            this.KorisnickoIme.Name = "KorisnickoIme";
+            this.KorisnickoIme.ReadOnly = true;
+            // 
+            // Email
+            // 
+            this.Email.DataPropertyName = "Email";
+            this.Email.HeaderText = "Email";
+            this.Email.Name = "Email";
+            this.Email.ReadOnly = true;
+            // 
+            // IsVozac
+            // 
+            this.IsVozac.DataPropertyName = "IsVozac";
+            this.IsVozac.HeaderText = "Vozač";
+            this.IsVozac.Name = "IsVozac";
+            this.IsVozac.ReadOnly = true;
+            // 
             // frmKorisnici
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -88,6 +144,7 @@
             this.Name = "frmKorisnici";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "frmKorisnici";
+            this.Load += new System.EventHandler(this.frmKorisnici_Load);
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvKorisnici)).EndInit();
             this.ResumeLayout(false);
@@ -101,5 +158,11 @@
         private System.Windows.Forms.DataGridView dgvKorisnici;
         private System.Windows.Forms.Button btnPrikazi;
         private System.Windows.Forms.TextBox txtPretraga;
+        private System.Windows.Forms.DataGridViewTextBoxColumn KorisnikID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Ime;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Prezime;
+        private System.Windows.Forms.DataGridViewTextBoxColumn KorisnickoIme;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Email;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn IsVozac;
     }
 }

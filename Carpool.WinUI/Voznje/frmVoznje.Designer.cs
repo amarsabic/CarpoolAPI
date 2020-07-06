@@ -32,19 +32,19 @@
             this.label2 = new System.Windows.Forms.Label();
             this.cmbPolazak = new System.Windows.Forms.ComboBox();
             this.cmbDestinacija = new System.Windows.Forms.ComboBox();
-            this.cmbAutomobil = new System.Windows.Forms.ComboBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.dtmPolazak = new System.Windows.Forms.DateTimePicker();
-            this.dtmVrijeme = new System.Windows.Forms.DateTimePicker();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.txtMjesta = new System.Windows.Forms.TextBox();
-            this.btnSacuvaj = new System.Windows.Forms.Button();
-            this.txtCijena = new System.Windows.Forms.TextBox();
-            this.label8 = new System.Windows.Forms.Label();
             this.dgvVoznje = new System.Windows.Forms.DataGridView();
+            this.btnPretragaDestinacije = new System.Windows.Forms.Button();
+            this.VoznjaID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.GradPolaska = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.GradDestinacija = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.KorisnickoIme = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.AutomobilNazivModel = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DatumPolaskaString = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.VrijemePolaskaString = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DatumObjave = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PunaCijenaPrikaz = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.IsAktivna = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvVoznje)).BeginInit();
             this.SuspendLayout();
             // 
@@ -73,7 +73,6 @@
             this.cmbPolazak.Name = "cmbPolazak";
             this.cmbPolazak.Size = new System.Drawing.Size(194, 21);
             this.cmbPolazak.TabIndex = 4;
-            this.cmbPolazak.SelectedIndexChanged += new System.EventHandler(this.cmbPolazak_SelectedIndexChanged);
             // 
             // cmbDestinacija
             // 
@@ -83,55 +82,6 @@
             this.cmbDestinacija.Size = new System.Drawing.Size(194, 21);
             this.cmbDestinacija.TabIndex = 5;
             // 
-            // cmbAutomobil
-            // 
-            this.cmbAutomobil.FormattingEnabled = true;
-            this.cmbAutomobil.Location = new System.Drawing.Point(25, 162);
-            this.cmbAutomobil.Name = "cmbAutomobil";
-            this.cmbAutomobil.Size = new System.Drawing.Size(194, 21);
-            this.cmbAutomobil.TabIndex = 7;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(22, 146);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(53, 13);
-            this.label3.TabIndex = 6;
-            this.label3.Text = "Automobil";
-            // 
-            // dtmPolazak
-            // 
-            this.dtmPolazak.Location = new System.Drawing.Point(25, 106);
-            this.dtmPolazak.Name = "dtmPolazak";
-            this.dtmPolazak.Size = new System.Drawing.Size(194, 20);
-            this.dtmPolazak.TabIndex = 8;
-            // 
-            // dtmVrijeme
-            // 
-            this.dtmVrijeme.Location = new System.Drawing.Point(269, 106);
-            this.dtmVrijeme.Name = "dtmVrijeme";
-            this.dtmVrijeme.Size = new System.Drawing.Size(78, 20);
-            this.dtmVrijeme.TabIndex = 9;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(22, 90);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(78, 13);
-            this.label4.TabIndex = 10;
-            this.label4.Text = "Datum polaska";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(266, 90);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(81, 13);
-            this.label5.TabIndex = 11;
-            this.label5.Text = "Vrijeme polaska";
-            // 
             // label6
             // 
             this.label6.AutoSize = true;
@@ -140,74 +90,123 @@
             this.label6.Size = new System.Drawing.Size(0, 13);
             this.label6.TabIndex = 12;
             // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(266, 146);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(85, 13);
-            this.label7.TabIndex = 14;
-            this.label7.Text = "Slobodna mjesta";
-            // 
-            // txtMjesta
-            // 
-            this.txtMjesta.Location = new System.Drawing.Point(269, 162);
-            this.txtMjesta.Name = "txtMjesta";
-            this.txtMjesta.Size = new System.Drawing.Size(78, 20);
-            this.txtMjesta.TabIndex = 15;
-            // 
-            // btnSacuvaj
-            // 
-            this.btnSacuvaj.Location = new System.Drawing.Point(369, 153);
-            this.btnSacuvaj.Name = "btnSacuvaj";
-            this.btnSacuvaj.Size = new System.Drawing.Size(105, 37);
-            this.btnSacuvaj.TabIndex = 16;
-            this.btnSacuvaj.Text = "Sačuvaj";
-            this.btnSacuvaj.UseVisualStyleBackColor = true;
-            this.btnSacuvaj.Click += new System.EventHandler(this.btnSacuvaj_Click);
-            // 
-            // txtCijena
-            // 
-            this.txtCijena.Location = new System.Drawing.Point(385, 109);
-            this.txtCijena.Name = "txtCijena";
-            this.txtCijena.Size = new System.Drawing.Size(78, 20);
-            this.txtCijena.TabIndex = 18;
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(382, 93);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(36, 13);
-            this.label8.TabIndex = 17;
-            this.label8.Text = "Cijena";
-            // 
             // dgvVoznje
             // 
+            this.dgvVoznje.AllowUserToAddRows = false;
+            this.dgvVoznje.AllowUserToDeleteRows = false;
             this.dgvVoznje.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvVoznje.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.VoznjaID,
+            this.GradPolaska,
+            this.GradDestinacija,
+            this.KorisnickoIme,
+            this.AutomobilNazivModel,
+            this.DatumPolaskaString,
+            this.VrijemePolaskaString,
+            this.DatumObjave,
+            this.PunaCijenaPrikaz,
+            this.IsAktivna});
             this.dgvVoznje.Location = new System.Drawing.Point(12, 248);
             this.dgvVoznje.Name = "dgvVoznje";
+            this.dgvVoznje.ReadOnly = true;
+            this.dgvVoznje.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvVoznje.Size = new System.Drawing.Size(1190, 443);
             this.dgvVoznje.TabIndex = 19;
+            this.dgvVoznje.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.dgvVoznje_MouseDoubleClick);
+            // 
+            // btnPretragaDestinacije
+            // 
+            this.btnPretragaDestinacije.Location = new System.Drawing.Point(486, 52);
+            this.btnPretragaDestinacije.Name = "btnPretragaDestinacije";
+            this.btnPretragaDestinacije.Size = new System.Drawing.Size(101, 23);
+            this.btnPretragaDestinacije.TabIndex = 20;
+            this.btnPretragaDestinacije.Text = "Traži destinaciju";
+            this.btnPretragaDestinacije.UseVisualStyleBackColor = true;
+            this.btnPretragaDestinacije.Click += new System.EventHandler(this.btnPretragaDestinacije_Click);
+            // 
+            // VoznjaID
+            // 
+            this.VoznjaID.DataPropertyName = "VoznjaID";
+            this.VoznjaID.HeaderText = "VoznjaID";
+            this.VoznjaID.Name = "VoznjaID";
+            this.VoznjaID.ReadOnly = true;
+            this.VoznjaID.Visible = false;
+            // 
+            // GradPolaska
+            // 
+            this.GradPolaska.DataPropertyName = "GradPolaska";
+            this.GradPolaska.HeaderText = "Polazak";
+            this.GradPolaska.Name = "GradPolaska";
+            this.GradPolaska.ReadOnly = true;
+            // 
+            // GradDestinacija
+            // 
+            this.GradDestinacija.DataPropertyName = "GradDestinacija";
+            this.GradDestinacija.HeaderText = "Destinacija";
+            this.GradDestinacija.Name = "GradDestinacija";
+            this.GradDestinacija.ReadOnly = true;
+            // 
+            // KorisnickoIme
+            // 
+            this.KorisnickoIme.DataPropertyName = "KorisnickoIme";
+            this.KorisnickoIme.HeaderText = "Korisnik";
+            this.KorisnickoIme.Name = "KorisnickoIme";
+            this.KorisnickoIme.ReadOnly = true;
+            this.KorisnickoIme.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.KorisnickoIme.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // AutomobilNazivModel
+            // 
+            this.AutomobilNazivModel.DataPropertyName = "AutomobilNazivModel";
+            this.AutomobilNazivModel.HeaderText = "Automobil";
+            this.AutomobilNazivModel.Name = "AutomobilNazivModel";
+            this.AutomobilNazivModel.ReadOnly = true;
+            this.AutomobilNazivModel.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.AutomobilNazivModel.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // DatumPolaskaString
+            // 
+            this.DatumPolaskaString.DataPropertyName = "DatumPolaskaString";
+            this.DatumPolaskaString.HeaderText = "Datum polaska";
+            this.DatumPolaskaString.Name = "DatumPolaskaString";
+            this.DatumPolaskaString.ReadOnly = true;
+            // 
+            // VrijemePolaskaString
+            // 
+            this.VrijemePolaskaString.DataPropertyName = "VrijemePolaskaString";
+            this.VrijemePolaskaString.HeaderText = "Vrijeme";
+            this.VrijemePolaskaString.Name = "VrijemePolaskaString";
+            this.VrijemePolaskaString.ReadOnly = true;
+            // 
+            // DatumObjave
+            // 
+            this.DatumObjave.DataPropertyName = "DatumObjave";
+            this.DatumObjave.HeaderText = "Objavljeno";
+            this.DatumObjave.Name = "DatumObjave";
+            this.DatumObjave.ReadOnly = true;
+            // 
+            // PunaCijenaPrikaz
+            // 
+            this.PunaCijenaPrikaz.DataPropertyName = "PunaCijenaPrikaz";
+            this.PunaCijenaPrikaz.HeaderText = "Cijena";
+            this.PunaCijenaPrikaz.Name = "PunaCijenaPrikaz";
+            this.PunaCijenaPrikaz.ReadOnly = true;
+            // 
+            // IsAktivna
+            // 
+            this.IsAktivna.DataPropertyName = "IsAktivna";
+            this.IsAktivna.HeaderText = "Aktivna";
+            this.IsAktivna.Name = "IsAktivna";
+            this.IsAktivna.ReadOnly = true;
             // 
             // frmVoznje
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1214, 703);
+            this.Controls.Add(this.btnPretragaDestinacije);
             this.Controls.Add(this.dgvVoznje);
-            this.Controls.Add(this.txtCijena);
-            this.Controls.Add(this.label8);
-            this.Controls.Add(this.btnSacuvaj);
-            this.Controls.Add(this.txtMjesta);
-            this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.dtmVrijeme);
-            this.Controls.Add(this.dtmPolazak);
-            this.Controls.Add(this.cmbAutomobil);
-            this.Controls.Add(this.label3);
             this.Controls.Add(this.cmbDestinacija);
             this.Controls.Add(this.cmbPolazak);
             this.Controls.Add(this.label2);
@@ -227,18 +226,18 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ComboBox cmbPolazak;
         private System.Windows.Forms.ComboBox cmbDestinacija;
-        private System.Windows.Forms.ComboBox cmbAutomobil;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.DateTimePicker dtmPolazak;
-        private System.Windows.Forms.DateTimePicker dtmVrijeme;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox txtMjesta;
-        private System.Windows.Forms.Button btnSacuvaj;
-        private System.Windows.Forms.TextBox txtCijena;
-        private System.Windows.Forms.Label label8;
         private System.Windows.Forms.DataGridView dgvVoznje;
+        private System.Windows.Forms.Button btnPretragaDestinacije;
+        private System.Windows.Forms.DataGridViewTextBoxColumn VoznjaID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn GradPolaska;
+        private System.Windows.Forms.DataGridViewTextBoxColumn GradDestinacija;
+        private System.Windows.Forms.DataGridViewTextBoxColumn KorisnickoIme;
+        private System.Windows.Forms.DataGridViewTextBoxColumn AutomobilNazivModel;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DatumPolaskaString;
+        private System.Windows.Forms.DataGridViewTextBoxColumn VrijemePolaskaString;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DatumObjave;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PunaCijenaPrikaz;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn IsAktivna;
     }
 }

@@ -192,5 +192,14 @@ namespace Carpool.WebAPI.Services
     
             throw new UserException("Unijeli se pogrešnu lozinku.");
         }
+
+        public Model.Korisnik Delete(int id)
+        {
+            var korisnik = _context.Korisnici.Find(id);
+            _context.Korisnici.Remove(korisnik);
+            _context.SaveChanges();
+
+            return _mapper.Map<Model.Korisnik>(korisnik);
+        }
     }
 }

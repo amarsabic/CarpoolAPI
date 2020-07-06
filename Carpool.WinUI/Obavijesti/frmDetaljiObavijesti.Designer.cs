@@ -37,9 +37,6 @@
             this.NazivTipa = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DatumVrijemeObjave = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.KorisnickoIme = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.VozacID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ObavijestiID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TipObavijestiID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvObavijestiList)).BeginInit();
             this.SuspendLayout();
             // 
@@ -53,10 +50,7 @@
             this.KratkiOpis,
             this.NazivTipa,
             this.DatumVrijemeObjave,
-            this.KorisnickoIme,
-            this.VozacID,
-            this.ObavijestiID,
-            this.TipObavijestiID});
+            this.KorisnickoIme});
             this.dgvObavijestiList.Location = new System.Drawing.Point(12, 188);
             this.dgvObavijestiList.Name = "dgvObavijestiList";
             this.dgvObavijestiList.ReadOnly = true;
@@ -125,30 +119,6 @@
             this.KorisnickoIme.Name = "KorisnickoIme";
             this.KorisnickoIme.ReadOnly = true;
             // 
-            // VozacID
-            // 
-            this.VozacID.DataPropertyName = "VozacID";
-            this.VozacID.HeaderText = "Column1";
-            this.VozacID.Name = "VozacID";
-            this.VozacID.ReadOnly = true;
-            this.VozacID.Visible = false;
-            // 
-            // ObavijestiID
-            // 
-            this.ObavijestiID.DataPropertyName = "ObavijestiID";
-            this.ObavijestiID.HeaderText = "Column1";
-            this.ObavijestiID.Name = "ObavijestiID";
-            this.ObavijestiID.ReadOnly = true;
-            this.ObavijestiID.Visible = false;
-            // 
-            // TipObavijestiID
-            // 
-            this.TipObavijestiID.DataPropertyName = "TipObavijestiID";
-            this.TipObavijestiID.HeaderText = "Column1";
-            this.TipObavijestiID.Name = "TipObavijestiID";
-            this.TipObavijestiID.ReadOnly = true;
-            this.TipObavijestiID.Visible = false;
-            // 
             // frmDetaljiObavijesti
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -178,8 +148,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn NazivTipa;
         private System.Windows.Forms.DataGridViewTextBoxColumn DatumVrijemeObjave;
         private System.Windows.Forms.DataGridViewTextBoxColumn KorisnickoIme;
-        private System.Windows.Forms.DataGridViewTextBoxColumn VozacID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ObavijestiID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TipObavijestiID;
     }
 }

@@ -43,6 +43,7 @@
             this.btnDodajSliku = new System.Windows.Forms.Button();
             this.pictureBox = new System.Windows.Forms.PictureBox();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.btnObrisi = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
             this.SuspendLayout();
             // 
@@ -167,11 +168,22 @@
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
             // 
+            // btnObrisi
+            // 
+            this.btnObrisi.Location = new System.Drawing.Point(673, 397);
+            this.btnObrisi.Name = "btnObrisi";
+            this.btnObrisi.Size = new System.Drawing.Size(75, 23);
+            this.btnObrisi.TabIndex = 14;
+            this.btnObrisi.Text = "Obriši";
+            this.btnObrisi.UseVisualStyleBackColor = true;
+            this.btnObrisi.Click += new System.EventHandler(this.btnObrisi_Click);
+            // 
             // frmDodajAutomobil
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btnObrisi);
             this.Controls.Add(this.pictureBox);
             this.Controls.Add(this.btnDodajSliku);
             this.Controls.Add(this.label6);
@@ -212,5 +224,6 @@
         private System.Windows.Forms.Button btnDodajSliku;
         private System.Windows.Forms.PictureBox pictureBox;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
+        private System.Windows.Forms.Button btnObrisi;
     }
 }

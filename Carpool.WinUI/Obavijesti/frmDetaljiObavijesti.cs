@@ -23,6 +23,7 @@ namespace Carpool.WinUI.Obavijesti
         {
             var list = await _obavijestiService.Get<List<Model.Obavijesti>>(null);
 
+            dgvObavijestiList.AutoGenerateColumns = false;
             dgvObavijestiList.DataSource = list;
         }
 
@@ -41,7 +42,7 @@ namespace Carpool.WinUI.Obavijesti
             };
 
             var list = await _obavijestiService.Get<List<Model.Obavijesti>>(request);
-
+            dgvObavijestiList.AutoGenerateColumns = false;
             dgvObavijestiList.DataSource = list;
         }
     }

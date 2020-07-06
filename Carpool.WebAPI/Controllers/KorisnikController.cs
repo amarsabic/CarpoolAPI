@@ -52,5 +52,11 @@ namespace Carpool.WebAPI.Controllers
         {
             return _korisnikService.Update(id, request);
         }
+
+        [HttpDelete("{id}")]
+        public Model.Korisnik Delete(int id)
+        {
+            return _korisnikService.Delete(id);
+        }
     }
 }

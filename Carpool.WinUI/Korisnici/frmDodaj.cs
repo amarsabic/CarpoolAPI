@@ -1,4 +1,5 @@
 ﻿using Carpool.Model.Requests;
+using Carpool.WinUI.Izvještaji;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -38,8 +39,8 @@ namespace Carpool.WinUI.Korisnici
                     Ime = txtIme.Text,
                     Prezime = txtPrezime.Text,
                     KorisnickoIme = txtKorisnickoIme.Text,
-                    Password = txtPassword.Text,
-                    PasswordConfirmation = txtPasswordPotvrda.Text,
+                    Password = txtPass.Text,
+                    PasswordConfirmation = txtPassPotvrda.Text,
                     Uloge=roleList
                 };
 
@@ -64,6 +65,8 @@ namespace Carpool.WinUI.Korisnici
                 {
                     MessageBox.Show("Uspješno izvršeno");
                 }
+
+                this.Close();
             }
         }
 
@@ -159,6 +162,56 @@ namespace Carpool.WinUI.Korisnici
             {
                 errorProvider.SetError(txtKorisnickoIme, null);
             }
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private async void btnUpdatePassword_Click(object sender, EventArgs e)
+        {
+            var request = new KorisnikInsertRequest
+            {
+                Password = txtPasswordNovi.Text,
+                PasswordConfirmation = txtPotvrda.Text,
+                OldPassword = txtPasswordStari.Text
+            };
+
+            try
+            {
+                await _apiService.Update<Model.Korisnik>(_id.Value, request);
+                MessageBox.Show("Uspješno izvršeno");
+
+                this.Close();
+            }
+            catch (Exception)
+            {
+
+            }
+
+
+        }
+
+        private async void btnObrisiKorisnika_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                await _apiService.Delete<Model.Korisnik>(_id.Value);
+                MessageBox.Show("Uspješno obrisan korisnik");
+
+                this.Close();
+            }
+            catch (Exception)
+            {
+
+            }
+        }
+
+        private void btnPrint_Click(object sender, EventArgs e)
+        {
+            frmVoznjeReport frm = new frmVoznjeReport(_id);
+            frm.Show();
         }
     }
 }

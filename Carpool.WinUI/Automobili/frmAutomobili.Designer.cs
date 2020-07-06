@@ -32,10 +32,12 @@
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.btnPretraga = new System.Windows.Forms.Button();
             this.AutomobilID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Slika = new System.Windows.Forms.DataGridViewImageColumn();
             this.Naziv = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Model = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Slika = new System.Windows.Forms.DataGridViewImageColumn();
-            this.SlikaThumb = new System.Windows.Forms.DataGridViewImageColumn();
+            this.Godiste = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Registracija = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DatumIsteka = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAutomobili)).BeginInit();
             this.SuspendLayout();
             // 
@@ -46,10 +48,12 @@
             this.dgvAutomobili.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvAutomobili.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.AutomobilID,
+            this.Slika,
             this.Naziv,
             this.Model,
-            this.Slika,
-            this.SlikaThumb});
+            this.Godiste,
+            this.Registracija,
+            this.DatumIsteka});
             this.dgvAutomobili.Location = new System.Drawing.Point(13, 103);
             this.dgvAutomobili.Name = "dgvAutomobili";
             this.dgvAutomobili.ReadOnly = true;
@@ -83,6 +87,16 @@
             this.AutomobilID.Name = "AutomobilID";
             this.AutomobilID.ReadOnly = true;
             // 
+            // Slika
+            // 
+            this.Slika.DataPropertyName = "Slika";
+            this.Slika.HeaderText = "Slika";
+            this.Slika.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.Slika.Name = "Slika";
+            this.Slika.ReadOnly = true;
+            this.Slika.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Slika.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
             // Naziv
             // 
             this.Naziv.DataPropertyName = "Naziv";
@@ -97,23 +111,26 @@
             this.Model.Name = "Model";
             this.Model.ReadOnly = true;
             // 
-            // Slika
+            // Godiste
             // 
-            this.Slika.DataPropertyName = "Slika";
-            this.Slika.HeaderText = "Slika";
-            this.Slika.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
-            this.Slika.Name = "Slika";
-            this.Slika.ReadOnly = true;
-            this.Slika.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Slika.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.Godiste.DataPropertyName = "Godiste";
+            this.Godiste.HeaderText = "Godište";
+            this.Godiste.Name = "Godiste";
+            this.Godiste.ReadOnly = true;
             // 
-            // SlikaThumb
+            // Registracija
             // 
-            this.SlikaThumb.DataPropertyName = "SlikaThumb";
-            this.SlikaThumb.HeaderText = "SlikaThumb";
-            this.SlikaThumb.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
-            this.SlikaThumb.Name = "SlikaThumb";
-            this.SlikaThumb.ReadOnly = true;
+            this.Registracija.DataPropertyName = "BrojRegOznaka";
+            this.Registracija.HeaderText = "Registracija";
+            this.Registracija.Name = "Registracija";
+            this.Registracija.ReadOnly = true;
+            // 
+            // DatumIsteka
+            // 
+            this.DatumIsteka.DataPropertyName = "DatumIstekaRegistracije";
+            this.DatumIsteka.HeaderText = "Datum isteka";
+            this.DatumIsteka.Name = "DatumIsteka";
+            this.DatumIsteka.ReadOnly = true;
             // 
             // frmAutomobili
             // 
@@ -137,9 +154,11 @@
         private System.Windows.Forms.TextBox txtSearch;
         private System.Windows.Forms.Button btnPretraga;
         private System.Windows.Forms.DataGridViewTextBoxColumn AutomobilID;
+        private System.Windows.Forms.DataGridViewImageColumn Slika;
         private System.Windows.Forms.DataGridViewTextBoxColumn Naziv;
         private System.Windows.Forms.DataGridViewTextBoxColumn Model;
-        private System.Windows.Forms.DataGridViewImageColumn Slika;
-        private System.Windows.Forms.DataGridViewImageColumn SlikaThumb;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Godiste;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Registracija;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DatumIsteka;
     }
 }

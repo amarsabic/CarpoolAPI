@@ -75,5 +75,23 @@ namespace Carpool.WinUI.Automobili
                 pictureBox.Image = image;
             }
         }
+
+        private async void btnObrisi_Click(object sender, EventArgs e)
+        {
+            try
+            {
+               var auto = await _apiService.Delete<Model.Automobil>((int)_id);
+                if (auto != null)
+                {
+                    MessageBox.Show("Uspješno obrisan automobil");
+                }
+             
+                this.Close();
+            }
+            catch (Exception)
+            {
+
+            }
+        }
     }
 }

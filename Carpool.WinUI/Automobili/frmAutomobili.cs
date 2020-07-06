@@ -37,6 +37,7 @@ namespace Carpool.WinUI.Automobili
 
             var result = await _apiService.Get<List<Model.Automobil>>(search);
 
+            dgvAutomobili.AutoGenerateColumns = false;
             dgvAutomobili.DataSource = result;
         }
     }

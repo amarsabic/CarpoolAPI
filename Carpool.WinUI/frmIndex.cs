@@ -1,4 +1,5 @@
 ﻿using Carpool.WinUI.Automobili;
+using Carpool.WinUI.Izvještaji;
 using Carpool.WinUI.Korisnici;
 using Carpool.WinUI.Obavijesti;
 using Carpool.WinUI.Voznje;
@@ -153,6 +154,11 @@ namespace Carpool.WinUI
             frm.MdiParent = this;
             frm.WindowState = FormWindowState.Maximized;
             frm.Show();
+        }
+
+        private void frmIndex_Load(object sender, EventArgs e)
+        {
+            
         }
     }
 }

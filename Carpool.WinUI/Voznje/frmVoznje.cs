@@ -27,13 +27,14 @@ namespace Carpool.WinUI.Voznje
 
         private async void frmVoznje_Load(object sender, EventArgs e)
         {
-            dtmVrijeme.Format = DateTimePickerFormat.Custom;
-            dtmVrijeme.CustomFormat = "HH:mm";
-            dtmVrijeme.ShowUpDown = true;
+            //dtmVrijeme.Format = DateTimePickerFormat.Custom;
+            //dtmVrijeme.CustomFormat = "HH:mm";
+            //dtmVrijeme.ShowUpDown = true;
 
             await LoadPolazak();
             await LoadDestinacija();
             await LoadAutomobili();
+            await LoadVoznje();
         }
 
         private async Task LoadPolazak()
@@ -77,69 +78,27 @@ namespace Carpool.WinUI.Voznje
             var result = await _automobiliDVA.Get<List<AutomobilCombo>>(null);
             result.Insert(0, new AutomobilCombo());
 
-            cmbAutomobil.DataSource = result;
+            //cmbAutomobil.DataSource = result;
 
-            cmbAutomobil.DisplayMember = "NazivModel";
-            cmbAutomobil.ValueMember = "AutomobilID";
+            //cmbAutomobil.DisplayMember = "NazivModel";
+            //cmbAutomobil.ValueMember = "AutomobilID";
         }
 
-        private async void cmbPolazak_SelectedIndexChanged(object sender, EventArgs e)
+     
+
+        private async Task LoadVoznje()
         {
-            var idObj = cmbPolazak.SelectedValue;
-
-            if(int.TryParse(idObj.ToString(), out int id))
+            VoznjaSearchRequest search = new VoznjaSearchRequest
             {
-                await LoadVoznje(id);
-            }
-        }
+               IsSlobodnaMjesta=true
+            };
 
-        private async Task LoadVoznje(int polazakId)
-        {
-            var result = await _voznje.Get<List<Model.Voznja>>(new VoznjaSearchRequest
-            {
-                GradPolaskaID = polazakId
-            });
+            var result = await _voznje.Get<List<Model.Voznja>>(search);
 
+            dgvVoznje.AutoGenerateColumns = false;
             dgvVoznje.DataSource = result;
         }
 
-        private async void btnSacuvaj_Click(object sender, EventArgs e)
-        {
-            VoznjaUspertRequest request = new VoznjaUspertRequest();
-
-            var idPolazak = cmbPolazak.SelectedValue;
-
-            if (int.TryParse(idPolazak.ToString(), out int polazakId))
-            {
-                request.GradPolaskaID = polazakId;
-            }
-
-            var idDestinacija = cmbDestinacija.SelectedValue;
-
-            if (int.TryParse(idDestinacija.ToString(), out int destinacijaId))
-            {
-                request.GradDestinacijaID = destinacijaId;
-            }
-
-            var idAutomobil = cmbAutomobil.SelectedValue;
-
-            if (int.TryParse(idAutomobil.ToString(), out int automobilId))
-            {
-                request.AutomobilID = automobilId;
-            }
-
-            request.DatumObjave = DateTime.Now;
-            request.DatumPolaska = dtmPolazak.Value;
-            request.VrijemePolaska = dtmVrijeme.Value;
-            request.IsAktivna = true;
-            //request.VozacID = 15; //promijeniti na ID vozaca koji kreira voznju
-            request.PunaCijena = int.Parse(txtCijena.Text);
-            request.SlobodnaMjesta = int.Parse(txtMjesta.Text);
-
-           await _voznje.Insert<Model.Automobil>(request);
-
-            MessageBox.Show("Uspješno dodavanje");
-        }
 
         private void btnJson_Click(object sender, EventArgs e)
         {
@@ -165,6 +124,47 @@ namespace Carpool.WinUI.Voznje
         {
             public string name;
             public string country;
+        }
+
+        private async void btnPretragaDestinacije_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                VoznjaSearchRequest search = new VoznjaSearchRequest
+                {
+                    SearchFromHomePage = true
+                };
+
+                var idPolazak = cmbPolazak.SelectedValue;
+
+                if (int.TryParse(idPolazak.ToString(), out int IDpolazak))
+                {
+                    search.GradPolaskaID = IDpolazak;
+                }
+                var idDestinacija = cmbDestinacija.SelectedValue;
+
+                if (int.TryParse(idDestinacija.ToString(), out int IDdestinacija))
+                {
+                    search.GradDestinacijaID = IDdestinacija;
+                }
+
+                var result = await _voznje.Get<List<Model.Voznja>>(search);
+
+                dgvVoznje.AutoGenerateColumns = false;
+                dgvVoznje.DataSource = result;
+            }
+            catch (Exception)
+            {
+
+            }
+        }
+
+        private void dgvVoznje_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            var voznjaId = int.Parse(dgvVoznje.SelectedRows[0].Cells[0].Value.ToString());
+
+           frmUkloni frm = new frmUkloni(voznjaId);
+           frm.Show(); 
         }
     }
 }

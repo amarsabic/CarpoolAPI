@@ -35,9 +35,9 @@
             this.dodajNovogKorisnikaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.automobiliToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.listaAutomobilaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.dodajAutomobilToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.voznjeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.obavijestiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.izvještajiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             this.menuStrip.SuspendLayout();
             this.SuspendLayout();
@@ -48,7 +48,8 @@
             this.korisniciToolStripMenuItem,
             this.automobiliToolStripMenuItem,
             this.voznjeToolStripMenuItem,
-            this.obavijestiToolStripMenuItem});
+            this.obavijestiToolStripMenuItem,
+            this.izvještajiToolStripMenuItem});
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.Name = "menuStrip";
             this.menuStrip.Size = new System.Drawing.Size(998, 24);
@@ -81,8 +82,7 @@
             // automobiliToolStripMenuItem
             // 
             this.automobiliToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.listaAutomobilaToolStripMenuItem,
-            this.dodajAutomobilToolStripMenuItem});
+            this.listaAutomobilaToolStripMenuItem});
             this.automobiliToolStripMenuItem.Name = "automobiliToolStripMenuItem";
             this.automobiliToolStripMenuItem.Size = new System.Drawing.Size(79, 20);
             this.automobiliToolStripMenuItem.Text = "Automobili";
@@ -90,16 +90,9 @@
             // listaAutomobilaToolStripMenuItem
             // 
             this.listaAutomobilaToolStripMenuItem.Name = "listaAutomobilaToolStripMenuItem";
-            this.listaAutomobilaToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
+            this.listaAutomobilaToolStripMenuItem.Size = new System.Drawing.Size(162, 22);
             this.listaAutomobilaToolStripMenuItem.Text = "Lista automobila";
             this.listaAutomobilaToolStripMenuItem.Click += new System.EventHandler(this.listaAutomobilaToolStripMenuItem_Click);
-            // 
-            // dodajAutomobilToolStripMenuItem
-            // 
-            this.dodajAutomobilToolStripMenuItem.Name = "dodajAutomobilToolStripMenuItem";
-            this.dodajAutomobilToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
-            this.dodajAutomobilToolStripMenuItem.Text = "Dodaj automobil";
-            this.dodajAutomobilToolStripMenuItem.Click += new System.EventHandler(this.dodajAutomobilToolStripMenuItem_Click);
             // 
             // voznjeToolStripMenuItem
             // 
@@ -115,6 +108,12 @@
             this.obavijestiToolStripMenuItem.Text = "Obavijesti";
             this.obavijestiToolStripMenuItem.Click += new System.EventHandler(this.obavijestiToolStripMenuItem_Click);
             // 
+            // izvještajiToolStripMenuItem
+            // 
+            this.izvještajiToolStripMenuItem.Name = "izvještajiToolStripMenuItem";
+            this.izvještajiToolStripMenuItem.Size = new System.Drawing.Size(63, 20);
+            this.izvještajiToolStripMenuItem.Text = "Izvještaji";
+            // 
             // frmIndex
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -127,6 +126,7 @@
             this.Name = "frmIndex";
             this.Text = "frmIndex";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Load += new System.EventHandler(this.frmIndex_Load);
             this.menuStrip.ResumeLayout(false);
             this.menuStrip.PerformLayout();
             this.ResumeLayout(false);
@@ -143,9 +143,9 @@
         private System.Windows.Forms.ToolStripMenuItem dodajNovogKorisnikaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem automobiliToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem listaAutomobilaToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem dodajAutomobilToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem voznjeToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem obavijestiToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem izvještajiToolStripMenuItem;
     }
 }
 

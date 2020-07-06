@@ -8,6 +8,6 @@ namespace Carpool.WebAPI.Database
     public class TipOcjene
     { 
         public int TipOcjeneID { get; set; }
-        public string Naziv { get; set; }
+        public int Ocjena { get; set; }
     }
 }

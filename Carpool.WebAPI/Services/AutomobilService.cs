@@ -2,6 +2,7 @@
 using Carpool.Model;
 using Carpool.Model.Requests;
 using Carpool.WebAPI.Database;
+using Carpool.WebAPI.Exceptions;
 using Carpool.WebAPI.Helpers;
 using Microsoft.AspNetCore.Http;
 using System;
@@ -17,6 +18,23 @@ namespace Carpool.WebAPI.Services
         public AutomobilService(CarpoolContext context, IMapper mapper, IHttpContextAccessor httpContext) : base(context, mapper)
         {
             _httpContext = httpContext;
+        }
+
+        public override Model.Automobil Delete(int id)
+        {
+
+            var entity = _context.Autmobili.Find(id);
+            var voznje = _context.Voznje.Where(v => v.AutomobilID == id && v.IsAktivna).ToList();
+            if (voznje.Count == 0)
+            {
+                _context.Autmobili.Remove(entity);
+                _context.SaveChanges();
+                return _mapper.Map<Model.Automobil>(entity);
+            }
+            else
+            {
+                throw new UserException("Vozilo trenutno u vožnji");
+            }
         }
 
         public override List<Model.Automobil> Get(AutomobilSearchRequest request)
@@ -39,11 +57,11 @@ namespace Carpool.WebAPI.Services
             }
             if (request.IsVozac)
             {
-                query = query.Where(x => x.VozacID==int.Parse(userId));
+                query = query.Where(x => x.VozacID == int.Parse(userId));
             }
             if (request.ProvjeraAktivnosti)
             {
-                query = query.Where(x=> !x.IsAktivan);
+                query = query.Where(x => !x.IsAktivan);
             }
             var result = query.ToList();
 

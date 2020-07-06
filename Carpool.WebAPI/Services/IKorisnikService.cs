@@ -1,4 +1,5 @@
-﻿using Carpool.Model.Requests;
+﻿using Carpool.Model;
+using Carpool.Model.Requests;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,6 +19,6 @@ namespace Carpool.WebAPI.Services
 
         Model.Korisnik Authenticiraj(string username, string pass);
         Model.Korisnik Auth();
-
+        Korisnik Delete(int id);
     }
 }
