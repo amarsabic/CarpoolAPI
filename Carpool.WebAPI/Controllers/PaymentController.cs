@@ -13,6 +13,7 @@ namespace Carpool.WebAPI.Controllers
     [ApiController]
     public class PaymentController : ControllerBase
     {
+        [HttpPost]
         public IActionResult Post([FromBody]PaymentModel payment)
         {
             // You can optionally create a customer first, and attached this to the CustomerId

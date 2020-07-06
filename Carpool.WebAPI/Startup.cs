@@ -94,9 +94,10 @@ namespace Carpool.WebAPI
             services.AddAutoMapper(typeof(Startup));
 
 
+
             services.AddDbContext<CarpoolContext>(options =>
                 options.UseSqlServer(
-                    Configuration.GetConnectionString("DefaultConnection")));
+                    Configuration.GetConnectionString("Carpool")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
