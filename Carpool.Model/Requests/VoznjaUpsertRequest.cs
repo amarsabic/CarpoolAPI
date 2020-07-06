@@ -12,6 +12,7 @@ namespace Carpool.Model.Requests
         public int SlobodnaMjesta { get; set; }
         public decimal PunaCijena { get; set; }
         public bool IsAktivna { get; set; }
+        public bool ZavrsiVoznju { get; set; } = false;
         public int AutomobilID { get; set; }
         public int GradPolaskaID { get; set; }
         public int GradDestinacijaID { get; set; }

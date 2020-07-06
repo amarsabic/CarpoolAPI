@@ -8,9 +8,10 @@
     <ContentPage.Content>
         <StackLayout Padding="10">
             <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
-                <Button  Command="{Binding DodajCommand}" IsVisible="{Binding IsVisible}" Text="Dodaj vožnju"></Button>
-                <Button  Command="{Binding MojeVoznjeCommand}" IsVisible="{Binding IsVisible}" Text="Moje vožnje"></Button>
-                <Button  Command="{Binding PrikaziSveCommand}" IsVisible="{Binding IsVisible}" Text="Prikaži sve"></Button>
+                <Button  Command="{Binding DodajCommand}" IsVisible="{Binding IsVisible}" Text="Dodaj"></Button>
+                <Button  Command="{Binding MojeVoznjeCommand}" IsVisible="{Binding IsVisible}" Text="Moje"></Button>
+                <Button  Command="{Binding SveCommand}" IsVisible="{Binding IsVisible}" Text="Prikaži sve"></Button>
+                <Button  Command="{Binding ZavrseneCommand}" IsVisible="{Binding IsVisible}" Text="Završene"></Button>
             </StackLayout>
     
             <ListView ItemSelected="VoznjaClicked" ItemsSource="{Binding VoznjeList}">

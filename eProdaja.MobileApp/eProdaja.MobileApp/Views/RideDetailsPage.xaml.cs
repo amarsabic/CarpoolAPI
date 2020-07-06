@@ -14,8 +14,8 @@ namespace eProdaja.MobileApp.Views
     public partial class RideDetailsPage : ContentPage
     {
         private RideDetailsViewModel model = null;
-        private int VoznjaID;
-        public RideDetailsPage(int voznjaId)
+        private int? VoznjaID;
+        public RideDetailsPage(int? voznjaId)
         {
             InitializeComponent();
             BindingContext = model = new RideDetailsViewModel();
@@ -24,7 +24,7 @@ namespace eProdaja.MobileApp.Views
 
         protected async override void OnAppearing()
         {
-            await model.Init(VoznjaID);
+            await model.Init((int)VoznjaID);
         }
 
         private async void RouteCityReservation(object sender, SelectedItemChangedEventArgs e)

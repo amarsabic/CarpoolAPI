@@ -26,6 +26,9 @@ namespace eProdaja.MobileApp.ViewModels
             PrikaziSveCommand = new Command(async () => await Load());
             Last5Command = new Command(async () => await Last5());
             SearchRideCommand = new Command(async () => await SearchRide());
+            ZavrseneCommand = new Command(async () => await Zavrsene());
+            SveCommand = new Command(async () => await Sve());
+
         }
 
         public ObservableCollection<Voznja> VoznjeList { get; set; } = new ObservableCollection<Voznja>();
@@ -67,8 +70,22 @@ namespace eProdaja.MobileApp.ViewModels
         {
             get { return _mojeVoznjeBool; }
             set { SetProperty(ref _mojeVoznjeBool, value); }
+        } 
+        
+        public bool _sveVoznje = false;
+        public bool SveVoznjeBool
+        {
+            get { return _sveVoznje; }
+            set { SetProperty(ref _sveVoznje, value); }
         }
 
+        public bool _zavrseneVoznje = false;
+        public bool ZavrseneVoznje
+        {
+            get { return _zavrseneVoznje; }
+            set { SetProperty(ref _zavrseneVoznje, value); }
+        }
+    
         private Grad _selectedGradPolaska;
         public Grad SelectedPolazak
         {
@@ -91,7 +108,37 @@ namespace eProdaja.MobileApp.ViewModels
         public ICommand PrikaziSveCommand { get; set; }
         public ICommand Last5Command { get; set; }
         public ICommand SearchRideCommand { get; set; }
+        public ICommand ZavrseneCommand { get; set; }
+        public ICommand SveCommand { get; set; }
 
+        public async Task Zavrsene()
+        {
+            try
+            {
+                VoznjaSearchRequest search = new VoznjaSearchRequest
+                {
+                    IsZavrsena=true
+                };
+
+                var model = await _voznja.Get<List<Voznja>>(search);
+
+                if (model.Count == 0)
+                {
+                    await Application.Current.MainPage.DisplayAlert("Carpool", "Trenutno nemate završenih vožnji", "OK");
+                    return;
+                }
+                ZavrseneVoznje = true;
+                VoznjeList.Clear();
+                foreach (var voznja in model)
+                {
+                    VoznjeList.Add(voznja);
+                }
+            }
+            catch (Exception)
+            {
+
+            }
+        }
         public async Task SearchRide()
         {
             try
@@ -152,6 +199,7 @@ namespace eProdaja.MobileApp.ViewModels
 
                 var model = await _voznja.Get<List<Voznja>>(search);
 
+            
                 VoznjeList.Clear();
                 foreach (var voznja in model)
                 {
@@ -179,6 +227,7 @@ namespace eProdaja.MobileApp.ViewModels
                     await Application.Current.MainPage.DisplayAlert("Carpool", "Trenutno nemate aktivnih vožnji", "OK");
                 }
                 MojeVoznjeBool = true;
+                SveVoznjeBool = false;
 
                 VoznjeList.Clear();
                 foreach (var voznja in model)
@@ -209,7 +258,34 @@ namespace eProdaja.MobileApp.ViewModels
                 await Application.Current.MainPage.Navigation.PushAsync(new AddAutomobilPage(null));
             }
         }
+        public async Task Sve()
+        {
+            try
+            {
+                VoznjaSearchRequest req = new VoznjaSearchRequest
+                {
+                    IsSlobodnaMjesta = true
+                };
+                var model = await _voznja.Get<List<Voznja>>(req);
 
+                if (model.Count == 0)
+                {
+                    await Application.Current.MainPage.DisplayAlert("Carpool", "Trenutno nema aktivnih vožnji", "OK");
+                }
+                MojeVoznjeBool = false;
+                SveVoznjeBool = true;
+
+                VoznjeList.Clear();
+                foreach (var voznja in model)
+                {
+                    VoznjeList.Add(voznja);
+                }
+            }
+            catch (Exception)
+            {
+
+            }
+        }
         public async Task Load()
         {
             try

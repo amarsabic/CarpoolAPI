@@ -32,7 +32,7 @@ namespace eProdaja.MobileApp.Views
             {
                 await Navigation.PushAsync(new AddRidePage(((Carpool.Model.Voznja)e.SelectedItem).VoznjaID));
             }
-            else
+            if (model.SveVoznjeBool)
             {
                 await Navigation.PushAsync(new RideDetailsPage(((Carpool.Model.Voznja)e.SelectedItem).VoznjaID));
             }

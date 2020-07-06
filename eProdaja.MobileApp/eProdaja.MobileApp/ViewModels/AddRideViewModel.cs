@@ -25,6 +25,7 @@ namespace eProdaja.MobileApp.ViewModels
             InitCommand = new Command(async (param) => await Init((int)param));
             DeleteRideCommand = new Command(async () => await DeleteRide());
             ViewReservationsCommand = new Command(async () => await ViewReservations());
+            ZavrsiCommand = new Command(async () => await Zavrsi());
         }
 
         ObservableCollection<Grad> _Gradovi = new ObservableCollection<Grad>();
@@ -149,7 +150,29 @@ namespace eProdaja.MobileApp.ViewModels
         public ICommand InitCommand { get; set; }
         public ICommand DeleteRideCommand { get; set; }
         public ICommand ViewReservationsCommand { get; set; }
+        public ICommand ZavrsiCommand { get; set; }
 
+
+        public async Task Zavrsi()
+        {
+            VoznjaUspertRequest request = new VoznjaUspertRequest
+            {
+                IsAktivna=false,
+                ZavrsiVoznju=true
+            };
+
+            try
+            {
+               var v = await _voznja.Update<Voznja>(voznjaID,request);
+                v.IsAktivna=false;
+
+                await Application.Current.MainPage.DisplayAlert("Carpool", "Uspješno završena vožnja", "OK");
+                await Application.Current.MainPage.Navigation.PopAsync();
+            }
+            catch (Exception)
+            {
+            }
+        }
         public async Task ViewReservations()
         {
             await Application.Current.MainPage.Navigation.PushAsync(new ReservationPage((int)voznjaID));

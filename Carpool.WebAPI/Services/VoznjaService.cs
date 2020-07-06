@@ -23,6 +23,12 @@ namespace Carpool.WebAPI.Services
         public override Model.Voznja Update(int id, VoznjaUspertRequest request)
         {
             var entity = _context.Voznje.Find(id);
+            if (request.ZavrsiVoznju)
+            {
+                entity.IsAktivna = false;
+                //_context.SaveChanges();
+                return _mapper.Map<Model.Voznja>(entity);
+            }
 
             if (entity.AutomobilID != request.AutomobilID)
             {
@@ -167,25 +173,31 @@ namespace Carpool.WebAPI.Services
             }
             if (search.IsVozac)
             {
-                query = query.Where(x => x.VozacID == userId);
+                query = query.Where(x => x.VozacID == userId && x.IsAktivna == true);
+            }
+            if (search.IsZavrsena)
+            {
+                query = query.Where(x => x.VozacID == userId && x.IsAktivna==false);
             }
             if (search.IsSlobodnaMjesta)
             {
-                query = query.Where(x => x.SlobodnaMjesta != 0);
+                query = query.Where(x => x.SlobodnaMjesta != 0 && x.IsAktivna == true);
             } 
             if (search.PosljednjeVoznje)
             {
                 query = query.OrderByDescending(x=>x.DatumObjave).Take(3);
+             
             }
             else
             {
                 query = query.OrderByDescending(x => x.DatumObjave);
+               
             }
 
             if (search.SearchFromHomePage)
             {
                 query = query.Where(x => (x.GradPolaskaID==search.GradPolaskaID && x.GradDestinacijaID==search.GradDestinacijaID) || (x.UsputniGradovi.Any(u=>u.GradID==search.GradDestinacijaID) && x.GradPolaskaID == search.GradPolaskaID));
-
+                query = query.Where(x => x.IsAktivna);
                 //|| (x.UsputniGradovi.Any(a=>a.GradID == search.GradDestinacijaID) && x.GradPolaskaID==search.GradPolaskaID))
             }
 
