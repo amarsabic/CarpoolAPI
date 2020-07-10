@@ -43,8 +43,13 @@ namespace eProdaja.MobileApp.ViewModels
 
             try
             {
-                await _vozac.Insert<Vozac>(request);
+                var vozac = await _vozac.Insert<Vozac>(request);
                 await Application.Current.MainPage.DisplayAlert("Carpool", "Postali ste vozač!", "OK");
+
+                if (vozac != null)
+                {
+                    APIService.IsVozac = true;
+                }
 
                 await Application.Current.MainPage.Navigation.PopAsync();
             }

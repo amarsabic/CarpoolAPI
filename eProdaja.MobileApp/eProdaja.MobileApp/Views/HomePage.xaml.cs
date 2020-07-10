@@ -25,6 +25,7 @@ namespace eProdaja.MobileApp.Views
             base.OnAppearing();
             await model.LoadGradovi();
             await model.Last5();
+            await model.Recommended();
         }
 
         private async void VoznjaClicked(object sender, SelectedItemChangedEventArgs e)

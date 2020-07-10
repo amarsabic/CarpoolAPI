@@ -3,8 +3,11 @@ using Carpool.Model;
 using Carpool.Model.Requests;
 using Carpool.WebAPI.Database;
 using Carpool.WebAPI.Helpers;
+using Carpool.WebAPI.ML;
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.ML;
+using Microsoft.ML.Trainers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,8 +15,12 @@ using System.Threading.Tasks;
 
 namespace Carpool.WebAPI.Services
 {
-    public class VoznjaService : BaseCRUDService<Model.Voznja, VoznjaSearchRequest, Database.Voznja, VoznjaUspertRequest, VoznjaUspertRequest>
+    public class VoznjaService : BaseCRUDService<Model.Voznja, VoznjaSearchRequest, Database.Voznja, VoznjaUspertRequest, VoznjaUspertRequest>, IVoznjaService
     {
+        //STEP 1: Create MLContext to be shared across the model creation workflow objects 
+     
+        static ITransformer model = null;
+
         private readonly IHttpContextAccessor _httpContext;
         public VoznjaService(CarpoolContext context, IMapper mapper, IHttpContextAccessor httpContext) : base(context, mapper)
         {
@@ -118,11 +125,11 @@ namespace Carpool.WebAPI.Services
             var model = _mapper.Map<Model.Voznja>(entity);
             model.UsputniGradoviE = entity.UsputniGradovi.Where(x => x.VoznjaID == entity.VoznjaID).Select(x => new Model.UsputniGradovi
             {
-                UsputniGradoviID=x.UsputniGradoviID,
-                VoznjaID=x.VoznjaID,
-                CijenaUsputni=x.CijenaUsputni,
-                GradID=x.GradID,
-                GradPoRedu=x.GradPoRedu
+                UsputniGradoviID = x.UsputniGradoviID,
+                VoznjaID = x.VoznjaID,
+                CijenaUsputni = x.CijenaUsputni,
+                GradID = x.GradID,
+                GradPoRedu = x.GradPoRedu
             }).ToList();
 
             return model;
@@ -157,10 +164,10 @@ namespace Carpool.WebAPI.Services
                     Voznja = _mapper.Map<Model.Voznja>(y.Voznja),
                     VoznjaID = y.VoznjaID
                 }).ToList(),
-                UsputniGradoviGrad=item.UsputniGradovi.Select(x=> new Model.Grad
+                UsputniGradoviGrad = item.UsputniGradovi.Select(x => new Model.Grad
                 {
-                    GradID=x.GradID,
-                    Naziv=_context.Gradovi.Where(g=>g.GradID==x.GradID).Select(g=>g.Naziv).FirstOrDefault()
+                    GradID = x.GradID,
+                    Naziv = _context.Gradovi.Where(g => g.GradID == x.GradID).Select(g => g.Naziv).FirstOrDefault()
                 }).ToList(),
                 UsputniGradoviNaziv = item.UsputniGradovi.Select(u => u.Grad.Naziv).ToList()
             }).FirstOrDefault();
@@ -184,30 +191,35 @@ namespace Carpool.WebAPI.Services
             }
             if (search.IsZavrsena)
             {
-                query = query.Where(x => x.VozacID == userId && x.IsAktivna==false);
+                query = query.Where(x => x.VozacID == userId && x.IsAktivna == false);
             }
-            if(search.IsVozacZavrsene)
+            if (search.IsVozacZavrsene)
             {
                 query = query.Where(x => x.VozacID == search.VozacID && x.IsAktivna == false);
             }
             if (search.IsSlobodnaMjesta)
             {
                 query = query.Where(x => x.SlobodnaMjesta != 0 && x.IsAktivna == true);
-            } 
+            }
+            if (search.Recommended)
+            {
+                return Recommend(userId);
+              
+            }
             if (search.PosljednjeVoznje)
             {
-                query = query.OrderByDescending(x=>x.DatumObjave).Take(3);
-             
+                query = query.OrderByDescending(x => x.DatumObjave).Take(3);
+
             }
             else
             {
                 query = query.OrderByDescending(x => x.DatumObjave);
-               
+
             }
 
             if (search.SearchFromHomePage)
             {
-                query = query.Where(x => (x.GradPolaskaID==search.GradPolaskaID && x.GradDestinacijaID==search.GradDestinacijaID) || (x.UsputniGradovi.Any(u=>u.GradID==search.GradDestinacijaID) && x.GradPolaskaID == search.GradPolaskaID));
+                query = query.Where(x => (x.GradPolaskaID == search.GradPolaskaID && x.GradDestinacijaID == search.GradDestinacijaID) || (x.UsputniGradovi.Any(u => u.GradID == search.GradDestinacijaID) && x.GradPolaskaID == search.GradPolaskaID));
                 query = query.Where(x => x.IsAktivna);
                 //|| (x.UsputniGradovi.Any(a=>a.GradID == search.GradDestinacijaID) && x.GradPolaskaID==search.GradPolaskaID))
             }
@@ -229,6 +241,107 @@ namespace Carpool.WebAPI.Services
             }).ToList();
 
             return _mapper.Map<List<Model.Voznja>>(result);
+        }
+
+        public List<Model.Voznja> Recommend(int id) //korisnikId
+        {
+            MLContext mlContext = new MLContext();
+
+            //STEP 2: Read the trained data using TextLoader by defining the schema for reading the product co-purchase dataset
+            //        Do remember to replace amazon0302.txt with dataset from https://snap.stanford.edu/data/amazon0302.html
+
+
+            var tmpVoznje = _context.Voznje.Include("Rezervacije").Where(v => !v.IsAktivna).ToList(); //sve zavrsene voznje i njihove rezervacije
+
+                var data = new List<ProductEntry>();
+                foreach (var x in tmpVoznje)
+                {
+                    if (x.Rezervacije.Count > 1)
+                    {
+                        var distinctRezervacijaId = x.Rezervacije.Select(y => y.KorisnikID).ToList();
+
+                        distinctRezervacijaId.ForEach(y =>
+                        {
+                            var relatedRezervacija = x.Rezervacije.Where(z => z.KorisnikID != y).ToList();
+
+                            relatedRezervacija.ForEach(z =>
+                            {
+                                data.Add(new ProductEntry() { ProductID = (uint)y, CoPurchaseProductID = (uint)z.KorisnikID }); // iz rezervacija na voznji su bili i ovi korisnici
+                            });
+                        });
+                    }
+                }
+
+                var traindata = mlContext.Data.LoadFromEnumerable(data);
+
+                //STEP 3: Your data is already encoded so all you need to do is specify options for MatrxiFactorizationTrainer with a few extra hyperparameters
+                //        LossFunction, Alpa, Lambda and a few others like K and C as shown below and call the trainer. 
+                MatrixFactorizationTrainer.Options options = new MatrixFactorizationTrainer.Options();
+                options.MatrixColumnIndexColumnName = nameof(ProductEntry.ProductID);
+                options.MatrixRowIndexColumnName = nameof(ProductEntry.CoPurchaseProductID);
+                options.LabelColumnName = "Label";
+                options.LossFunction = MatrixFactorizationTrainer.LossFunctionType.SquareLossOneClass;
+                options.Alpha = 0.01;
+                options.Lambda = 0.025;
+                // For better results use the following parameters
+                //options.K = 100;
+                options.C = 0.00001;
+
+                //Step 4: Call the MatrixFactorization trainer by passing options.
+                var est = mlContext.Recommendation().Trainers.MatrixFactorization(options);
+
+
+                //STEP 5: Train the model fitting to the DataSet
+                //Please add Amazon0302.txt dataset from https://snap.stanford.edu/data/amazon0302.html to Data folder if FileNotFoundException is thrown.
+                ITransformer model = est.Fit(traindata);
+
+
+
+                //STEP 6: Create prediction engine and predict the score for Product 63 being co-purchased with Product 3.
+                //        The higher the score the higher the probability for this particular productID being co-purchased 
+
+                // var allVoznje = _context.Voznje.Include("Rezervacije").Where(v => v.IsAktivna && v.Rezervacije.Any(r=>r.KorisnikID!=id)).ToList(); //sve aktivne voznje i njihove rezervacije bez korisnika logiranog
+                var allVoznje = _context.Korisnici.Where(k => k.KorisnikID != id);
+                var predictionResult = new List<Tuple<Database.Korisnik, float>>();
+
+                foreach (var item in allVoznje)
+                {
+                    var predictionengine = mlContext.Model.CreatePredictionEngine<ProductEntry, Copurchase_prediction>(model);
+                    var prediction = predictionengine.Predict(
+                                             new ProductEntry()
+                                             {
+                                                 ProductID = (uint)id,
+                                                 CoPurchaseProductID = (uint)item.KorisnikID
+                                             });
+
+                    predictionResult.Add(new Tuple<Database.Korisnik, float>(item, prediction.Score));
+                }
+                // var selectKorisnik = predictionResult.OrderByDescending(x => x.Item2).Select(x => x.Item1).Take(3).ToList();
+
+                var finalResult = predictionResult.OrderByDescending(x => x.Item2).Select(x => x.Item1).Take(3).ToList();
+
+                var final = new List<Model.Voznja>();
+                foreach (var korisnik in finalResult)
+                {
+                    var voznja = _context.Voznje.Include("Rezervacije").Where(v => v.IsAktivna && v.Rezervacije.Any(r => r.KorisnikID == korisnik.KorisnikID)).Select(item => new Model.Voznja
+                    {
+                        AutomobilNazivModel = item.Automobil.Naziv + " " + item.Automobil.Model,
+                        DatumObjave = item.DatumObjave,
+                        DatumPolaska = item.DatumPolaska,
+                        GradPolaska = item.GradPolaska.Naziv,
+                        GradDestinacija = item.GradDestinacija.Naziv,
+                        IsAktivna = item.IsAktivna,
+                        KorisnickoIme = item.Vozac.Korisnik.KorisnickoIme,
+                        PunaCijena = item.PunaCijena,
+                        SlobodnaMjesta = item.SlobodnaMjesta,
+                        VrijemePolaska = item.VrijemePolaska,
+                        VoznjaID = item.VoznjaID
+                    }).FirstOrDefault();
+
+                    final.Add(voznja);
+                }
+
+                return _mapper.Map<List<Model.Voznja>>(final);
         }
     }
 }

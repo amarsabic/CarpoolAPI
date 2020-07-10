@@ -9,7 +9,6 @@ namespace Carpool.Model.Requests
         public string Naziv { get; set; }
         public string Model { get; set; }
         public string Godiste { get; set; }
-
         public bool IsVozac { get; set; }
         public bool ProvjeraAktivnosti { get; set; }
     }
