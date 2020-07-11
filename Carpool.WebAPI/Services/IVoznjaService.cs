@@ -9,6 +9,6 @@ namespace Carpool.WebAPI.Services
 {
     public interface IVoznjaService: ICRUDService<Model.Voznja, VoznjaSearchRequest, VoznjaUspertRequest, VoznjaUspertRequest>
     {
-        List<Model.Voznja> Recommend(int id);
+        List<Model.Voznja> Recommend();
     }
 }

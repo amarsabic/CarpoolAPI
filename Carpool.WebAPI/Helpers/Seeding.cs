@@ -63,6 +63,7 @@ namespace Carpool.WebAPI.Helpers
                     new Korisnik { Ime="Emrah", Prezime="Okic", GradID=2, KorisnickoIme="mobileVozac2", LozinkaHash =passHash ,LozinkaSalt = salt },
                     new Korisnik { Ime="Admin", Prezime="Admin", GradID=2, KorisnickoIme="admin", LozinkaHash =passHash ,LozinkaSalt = salt },
                     new Korisnik { Ime="Dzenan", Prezime="Ordagic", GradID=2, KorisnickoIme="mobileKorisnik", LozinkaHash =passHash ,LozinkaSalt = salt },
+                    new Korisnik { Ime="Korisnik", Prezime="Korisnik", GradID=2, KorisnickoIme="mobileKorisnik2", LozinkaHash =passHash ,LozinkaSalt = salt },
                 };
 
                 foreach (var item in tip)
@@ -116,8 +117,8 @@ namespace Carpool.WebAPI.Helpers
 
                 var automobili = new List<Automobil>
                 {
-                    new Automobil {BrojRegOznaka="212321312", Godiste="2020", Model="A180", Naziv="Mercedes", Slika=slika, SlikaThumb=slika, IsAktivan=false, VozacID=1},
-                    new Automobil {BrojRegOznaka="212321312", Godiste="2020", Model="A180", Naziv="Mercedes", Slika=slika, SlikaThumb=slika, IsAktivan=false, VozacID=2}
+                    new Automobil {BrojRegOznaka="212321312", Godiste="2020", Model="A180", Naziv="Mercedes", Slika=slika, SlikaThumb=slika, IsAktivan=false, VozacID=4},
+                    new Automobil {BrojRegOznaka="212321312", Godiste="2020", Model="A180", Naziv="Mercedes", Slika=slika, SlikaThumb=slika, IsAktivan=false, VozacID=5}
                 };
                 foreach (var item in automobili)
                 {
@@ -130,7 +131,7 @@ namespace Carpool.WebAPI.Helpers
 
                 var tip = new List<Voznja>
                 {
-                    new Voznja {VozacID=1, AutomobilID =1, DatumObjave=DateTime.Now, DatumPolaska=new DateTime(2021,2,3), VrijemePolaska=new DateTime(2021,2,3).AddHours(2),
+                    new Voznja {VozacID=4, AutomobilID =1, DatumObjave=DateTime.Now, DatumPolaska=new DateTime(2021,2,3), VrijemePolaska=new DateTime(2021,2,3).AddHours(2),
                                     GradDestinacijaID=1, GradPolaskaID=2, IsAktivna=true, PunaCijena=(decimal)25.00, SlobodnaMjesta =3, UsputniGradovi = new List<UsputniGradovi>{
                                         new UsputniGradovi
                                         {
@@ -139,7 +140,7 @@ namespace Carpool.WebAPI.Helpers
                                         }
                                     },
                     },
-                       new Voznja {VozacID=2, AutomobilID =2, DatumObjave=DateTime.Now, DatumPolaska=new DateTime(2021,2,3), VrijemePolaska=new DateTime(2021,2,3).AddHours(2),
+                       new Voznja {VozacID=5, AutomobilID =2, DatumObjave=DateTime.Now, DatumPolaska=new DateTime(2021,2,3), VrijemePolaska=new DateTime(2021,2,3).AddHours(2),
                                     GradDestinacijaID=2, GradPolaskaID=3, IsAktivna=true, PunaCijena=(decimal)25.00, SlobodnaMjesta=3, UsputniGradovi = new List<UsputniGradovi>{
                                         new UsputniGradovi
                                         {

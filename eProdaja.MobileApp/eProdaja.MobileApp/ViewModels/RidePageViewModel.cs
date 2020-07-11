@@ -323,12 +323,7 @@ namespace eProdaja.MobileApp.ViewModels
         {
             try
             {
-                VoznjaSearchRequest rec = new VoznjaSearchRequest
-                {
-                    Recommended = true
-                };
-
-                var recommended = await _voznja.Get<List<Voznja>>(rec);
+                var recommended = await _voznja.Recommend<List<Voznja>>();
                 PreporuceneList.Clear();
                 foreach (var item in recommended)
                 {

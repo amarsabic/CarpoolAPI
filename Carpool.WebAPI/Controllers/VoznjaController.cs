@@ -18,10 +18,10 @@ namespace Carpool.WebAPI.Controllers
         }
 
         [AllowAnonymous]
-        [HttpGet("{id}/recommend")]
-        public List<Model.Voznja> Recommend(int id)
+        [HttpGet("recommend")]
+        public List<Model.Voznja> Recommend()
         {
-            return (_service as IVoznjaService).Recommend(id);
+            return (_service as IVoznjaService).Recommend();
         }
     }
 }

@@ -2,6 +2,7 @@
 using Carpool.Model;
 using Carpool.Model.Requests;
 using Carpool.WebAPI.Database;
+using Carpool.WebAPI.Exceptions;
 using Carpool.WebAPI.Helpers;
 using Carpool.WebAPI.ML;
 using Microsoft.AspNetCore.Http;
@@ -18,7 +19,7 @@ namespace Carpool.WebAPI.Services
     public class VoznjaService : BaseCRUDService<Model.Voznja, VoznjaSearchRequest, Database.Voznja, VoznjaUspertRequest, VoznjaUspertRequest>, IVoznjaService
     {
         //STEP 1: Create MLContext to be shared across the model creation workflow objects 
-     
+        
         static ITransformer model = null;
 
         private readonly IHttpContextAccessor _httpContext;
@@ -201,11 +202,7 @@ namespace Carpool.WebAPI.Services
             {
                 query = query.Where(x => x.SlobodnaMjesta != 0 && x.IsAktivna == true);
             }
-            if (search.Recommended)
-            {
-                return Recommend(userId);
-              
-            }
+        
             if (search.PosljednjeVoznje)
             {
                 query = query.OrderByDescending(x => x.DatumObjave).Take(3);
@@ -243,9 +240,11 @@ namespace Carpool.WebAPI.Services
             return _mapper.Map<List<Model.Voznja>>(result);
         }
 
-        public List<Model.Voznja> Recommend(int id) //korisnikId
+        public List<Model.Voznja> Recommend() //korisnikId
         {
             MLContext mlContext = new MLContext();
+            var id = int.Parse(_httpContext.GetUserId());
+
 
             //STEP 2: Read the trained data using TextLoader by defining the schema for reading the product co-purchase dataset
             //        Do remember to replace amazon0302.txt with dataset from https://snap.stanford.edu/data/amazon0302.html
@@ -272,6 +271,11 @@ namespace Carpool.WebAPI.Services
                     }
                 }
 
+            if (data.Count() == 0)
+            {
+                throw new UserException("Trenutno nema dovoljno podataka za preporuku!.");
+            }
+
                 var traindata = mlContext.Data.LoadFromEnumerable(data);
 
                 //STEP 3: Your data is already encoded so all you need to do is specify options for MatrxiFactorizationTrainer with a few extra hyperparameters
@@ -295,8 +299,7 @@ namespace Carpool.WebAPI.Services
                 //Please add Amazon0302.txt dataset from https://snap.stanford.edu/data/amazon0302.html to Data folder if FileNotFoundException is thrown.
                 ITransformer model = est.Fit(traindata);
 
-
-
+          
                 //STEP 6: Create prediction engine and predict the score for Product 63 being co-purchased with Product 3.
                 //        The higher the score the higher the probability for this particular productID being co-purchased 
 
