@@ -102,8 +102,8 @@ namespace Carpool.WebAPI.Helpers
             {
                 var tip = new List<Vozac>
                 {
-                    new Vozac {VozacID=2, BrVozackeDozvole="213213213", DatumIstekaVozackeDozvole=new DateTime(2021,2,3)},
-                    new Vozac {VozacID=1, BrVozackeDozvole="323232322", DatumIstekaVozackeDozvole=new DateTime(2021,2,3)}
+                    new Vozac {VozacID=4, BrVozackeDozvole="213213213", DatumIstekaVozackeDozvole=new DateTime(2021,2,3)},
+                    new Vozac {VozacID=5, BrVozackeDozvole="323232322", DatumIstekaVozackeDozvole=new DateTime(2021,2,3)}
                 };
                 foreach (var item in tip)
                 {
