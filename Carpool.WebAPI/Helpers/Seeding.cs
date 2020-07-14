@@ -128,10 +128,11 @@ namespace Carpool.WebAPI.Helpers
             }
             if (context.Voznje.Count() == 0)
             {
-
+                TimeSpan time = new TimeSpan(12, 30, 00);
+                var timeString = time.ToString("HH:mm");
                 var tip = new List<Voznja>
                 {
-                    new Voznja {VozacID=4, AutomobilID =1, DatumObjave=DateTime.Now, DatumPolaska=new DateTime(2021,2,3), VrijemePolaska=new DateTime(2021,2,3).AddHours(2),
+                    new Voznja {VozacID=4, AutomobilID =1, DatumObjave=DateTime.Now, DatumPolaska=new DateTime(2021,2,3), VrijemePolaska=timeString,
                                     GradDestinacijaID=1, GradPolaskaID=2, IsAktivna=true, PunaCijena=(decimal)25.00, SlobodnaMjesta =3, UsputniGradovi = new List<UsputniGradovi>{
                                         new UsputniGradovi
                                         {
@@ -140,7 +141,7 @@ namespace Carpool.WebAPI.Helpers
                                         }
                                     },
                     },
-                       new Voznja {VozacID=5, AutomobilID =2, DatumObjave=DateTime.Now, DatumPolaska=new DateTime(2021,2,3), VrijemePolaska=new DateTime(2021,2,3).AddHours(2),
+                       new Voznja {VozacID=5, AutomobilID =2, DatumObjave=DateTime.Now, DatumPolaska=new DateTime(2021,2,3), VrijemePolaska=timeString,
                                     GradDestinacijaID=2, GradPolaskaID=3, IsAktivna=true, PunaCijena=(decimal)25.00, SlobodnaMjesta=3, UsputniGradovi = new List<UsputniGradovi>{
                                         new UsputniGradovi
                                         {

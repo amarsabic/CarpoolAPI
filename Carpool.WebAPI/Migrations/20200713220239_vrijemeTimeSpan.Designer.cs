@@ -4,14 +4,16 @@ using Carpool.WebAPI.Database;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Carpool.WebAPI.Migrations
 {
     [DbContext(typeof(CarpoolContext))]
-    partial class CarpoolContextModelSnapshot : ModelSnapshot
+    [Migration("20200713220239_vrijemeTimeSpan")]
+    partial class vrijemeTimeSpan
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -422,8 +424,8 @@ namespace Carpool.WebAPI.Migrations
                     b.Property<int>("VozacID")
                         .HasColumnType("int");
 
-                    b.Property<string>("VrijemePolaska")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<TimeSpan>("VrijemePolaska")
+                        .HasColumnType("time");
 
                     b.HasKey("VoznjaID");
 
