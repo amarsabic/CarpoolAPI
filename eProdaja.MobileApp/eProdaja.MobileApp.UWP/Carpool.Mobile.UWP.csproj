@@ -170,9 +170,9 @@
     <PackageReference Include="Xamarin.Essentials" Version="1.2.0" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\eProdaja.MobileApp\eProdaja.MobileApp.csproj">
-      <Project>{6346AAEA-7C4C-499E-9280-83E484CC993B}</Project>
-      <Name>eProdaja.MobileApp</Name>
+    <ProjectReference Include="..\eProdaja.MobileApp\Carpool.Mobile.csproj">
+      <Project>{A4257689-B435-4DF4-B6B2-B3FBC4598570}</Project>
+      <Name>Carpool.Mobile</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">

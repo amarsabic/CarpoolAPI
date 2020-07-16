@@ -158,14 +158,10 @@ namespace eProdaja.MobileApp.ViewModels
                 Email = Email,
                 KorisnickoIme = KorisnickoIme,
                 GradID = SelectedGrad.GradID,
-                //  Password = Lozinka,
-                //  PasswordConfirmation = LozinkaPotvrda,
                 BrojTelefona = Telefon,
                 Slika = Slika,
                 SlikaThumb = Slika,
                 DatumRodjenja = Datum
-
-                //PASSWORD??????
             };
 
             try
