@@ -17,15 +17,15 @@
     </ContentPage.Resources>
     <ContentPage.Content>
         <StackLayout Padding="10" Margin="30">
-            <Frame  CornerRadius="100"
+            <Frame                     CornerRadius="100"
                                        Padding="0"
                                        IsClippedToBounds="True"
                                        HeightRequest="200"
                                        WidthRequest="200"
-                                      >
+                                       HorizontalOptions="Center">
                 <Image Source="{Binding Slika, Converter={StaticResource imgConv}}"></Image>
             </Frame>
-          
+
             <Label TextColor="Blue" HorizontalTextAlignment="Center" Text="Odjavi se">
                 <Label.GestureRecognizers>
                     <TapGestureRecognizer Command="{Binding LogoutCommand}"/>

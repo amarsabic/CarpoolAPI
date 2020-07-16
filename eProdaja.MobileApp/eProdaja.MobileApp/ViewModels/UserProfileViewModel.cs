@@ -138,8 +138,10 @@ namespace eProdaja.MobileApp.ViewModels
             {
                 await _korisnik.Update<Korisnik>(korisnikId, request);
                 await Application.Current.MainPage.DisplayAlert("OK", "Uspješna izmjena podataka", "OK");
-
+             
                 Lozinka = StaraLozinka = LozinkaPotvrda = "";
+
+                Application.Current.MainPage = new NavigationPage(new LoginPage());
             }
             catch (Exception)
             {

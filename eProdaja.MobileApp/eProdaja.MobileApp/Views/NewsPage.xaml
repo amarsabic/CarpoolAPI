@@ -15,8 +15,9 @@
                     ItemDisplayBinding="{Binding NazivTipa}"
                     SelectedItem="{Binding SelectedTipObavijesti}"></Picker>
             <StackLayout Orientation="Horizontal" Padding="5" HorizontalOptions="CenterAndExpand">
-                <Button Text="Dodaj obavijest" Command="{Binding DodajCommand}"></Button>
-                <Button Text="Moje obavijesti" Command="{Binding MojeObavijestiCommand}"></Button>
+                <Button Text="Prikaži sve" Command="{Binding PrikaziSveCommand}"></Button>
+                <Button Text="Dodaj" Command="{Binding DodajCommand}"></Button>
+                <Button Text="Moje" Command="{Binding MojeObavijestiCommand}"></Button>
             </StackLayout>
            
             <ListView ItemSelected="NewsClicked" ItemsSource="{Binding ObavijestiList}">
@@ -50,7 +51,6 @@
                                 FontSize="11"
                                        FontAttributes="Italic"/>
                                 </StackLayout>
-                               
                             </StackLayout>
                         </ViewCell>
                     </DataTemplate>

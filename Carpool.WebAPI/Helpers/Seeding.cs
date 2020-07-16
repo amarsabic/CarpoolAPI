@@ -129,7 +129,7 @@ namespace Carpool.WebAPI.Helpers
             if (context.Voznje.Count() == 0)
             {
                 TimeSpan time = new TimeSpan(12, 30, 00);
-                var timeString = time.ToString("HH:mm");
+                var timeString = time.ToString("hh\\:mm");
                 var tip = new List<Voznja>
                 {
                     new Voznja {VozacID=4, AutomobilID =1, DatumObjave=DateTime.Now, DatumPolaska=new DateTime(2021,2,3), VrijemePolaska=timeString,

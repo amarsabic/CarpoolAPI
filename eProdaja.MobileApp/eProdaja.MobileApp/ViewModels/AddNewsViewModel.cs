@@ -54,8 +54,8 @@ namespace eProdaja.MobileApp.ViewModels
             set { SetProperty(ref _selectedTip, value); }
         }
 
-        DateTime _datum = DateTime.MaxValue;
-        public DateTime DatumVrijemeObajve
+        DateTime _datum;
+        public DateTime DatumVrijemeObjave
         {
             get { return _datum; }
             set { SetProperty(ref _datum, value); }
@@ -96,7 +96,7 @@ namespace eProdaja.MobileApp.ViewModels
                         SelectedTip = tip;
                     }
                 }
-    
+                DatumVrijemeObjave = o.DatumVrijemeObjave;
                 obavijestID = ObavijestiID;
                 vozacID = o.KorisnikID;
             }
@@ -113,7 +113,7 @@ namespace eProdaja.MobileApp.ViewModels
             {
                 Naslov = Naslov,
                 KratkiOpis = KratkiOpis,
-                DatumVrijemeObjave = DatumVrijemeObajve,
+                DatumVrijemeObjave = DatumVrijemeObjave,
                 TipObavijestiID = SelectedTip.TipObavijestiID,
                 VozacID = vozacID
             };

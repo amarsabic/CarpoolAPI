@@ -138,7 +138,8 @@ namespace eProdaja.MobileApp.ViewModels
                 PasswordConfirmation = LozinkaPotvrda,
                 BrojTelefona= Telefon,
                 Slika=Slika,
-                SlikaThumb=SlikaThumb
+                SlikaThumb=SlikaThumb,
+                DatumRodjenja=Datum
             };
 
             try

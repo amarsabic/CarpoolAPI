@@ -20,6 +20,7 @@ namespace eProdaja.MobileApp.ViewModels
             InitCommand = new Command(async () => await Init());
             DodajCommand = new Command(async () => await Dodaj());
             MojeObavijestiCommand = new Command(async () => await MojeObavijesti());
+            PrikaziSveCommand = new Command(async () => await PrikaziSve());
         }
         public ObservableCollection<Obavijesti> ObavijestiList { get; set; } = new ObservableCollection<Obavijesti>();
         public ObservableCollection<TipObavijesti> TipObavijestiList { get; set; } = new ObservableCollection<TipObavijesti>();
@@ -48,6 +49,21 @@ namespace eProdaja.MobileApp.ViewModels
         public ICommand InitCommand { get; set; }
         public ICommand DodajCommand { get; set; }
         public ICommand MojeObavijestiCommand { get; set; }
+        public ICommand PrikaziSveCommand { get; set; }
+
+        public async Task PrikaziSve()
+        {
+            ObavijestiSearchRequest search = new ObavijestiSearchRequest();
+
+            var list = await _obavijesti.Get<List<Obavijesti>>(search);
+
+            ObavijestiList.Clear();
+            foreach (var obavijest in list)
+            {
+                ObavijestiList.Add(obavijest);
+            }
+            MojeObavijestiBool = false;
+        }
 
         public async Task MojeObavijesti()
         {
