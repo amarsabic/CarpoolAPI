@@ -28,10 +28,12 @@ namespace eProdaja.MobileApp.ViewModels
             SearchRideCommand = new Command(async () => await SearchRide());
             ZavrseneCommand = new Command(async () => await Zavrsene());
             SveCommand = new Command(async () => await Sve());
+            RecommendedCommand = new Command(async () => await Recommended());
 
         }
 
         public ObservableCollection<Voznja> VoznjeList { get; set; } = new ObservableCollection<Voznja>();
+        public ObservableCollection<Voznja> PreporuceneList { get; set; } = new ObservableCollection<Voznja>();
         public ObservableCollection<Voznja> SearchList { get; set; } = new ObservableCollection<Voznja>();
         public ObservableCollection<Grad> _Gradovi = new ObservableCollection<Grad>();
 
@@ -60,9 +62,11 @@ namespace eProdaja.MobileApp.ViewModels
             get { return _datumPolaska; }
             set { SetProperty(ref _datumPolaska, value); }
         }
+        bool _isVisible;
         public bool IsVisible
         {
-            get { return APIService.IsVozac; }
+            get { return _isVisible; }
+            set { SetProperty(ref _isVisible, value); }
         }
 
         public bool _mojeVoznjeBool = false;
@@ -102,6 +106,7 @@ namespace eProdaja.MobileApp.ViewModels
 
 
         public ICommand LoadCommand { get; set; }
+        public ICommand RecommendedCommand { get; set; }
         public ICommand LoadGradoviCommand { get; set; }
         public ICommand DodajCommand { get; set; }
         public ICommand MojeVoznjeCommand { get; set; }
@@ -148,7 +153,7 @@ namespace eProdaja.MobileApp.ViewModels
                     SearchFromHomePage = true,
                     GradDestinacijaID=SelectedOdrediste.GradID,
                     GradPolaskaID=SelectedPolazak.GradID,
-                    DatumPolaska= DatumPolaskaProvjera,
+                    DatumPolaska= DatumPolaskaProvjera
                 };
 
                 var model = await _voznja.Get<List<Voznja>>(search);
@@ -184,8 +189,6 @@ namespace eProdaja.MobileApp.ViewModels
                 _Gradovi.Add(grad);
             }
         }
-
-
 
         public async Task Last5()
         {
@@ -302,10 +305,29 @@ namespace eProdaja.MobileApp.ViewModels
                 }
                 MojeVoznjeBool = false;
 
+                IsVisible = APIService.IsVozac;
+
                 VoznjeList.Clear();
                 foreach (var voznja in model)
                 {
                     VoznjeList.Add(voznja);
+                }
+            }
+            catch (Exception)
+            {
+
+            }
+        }
+
+        public async Task Recommended()
+        {
+            try
+            {
+                var recommended = await _voznja.Recommend<List<Voznja>>();
+                PreporuceneList.Clear();
+                foreach (var item in recommended)
+                {
+                    PreporuceneList.Add(item);
                 }
             }
             catch (Exception)

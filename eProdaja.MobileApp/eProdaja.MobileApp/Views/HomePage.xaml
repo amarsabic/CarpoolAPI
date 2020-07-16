@@ -74,8 +74,32 @@
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
-            <Label Margin="0, 20,0,0" Text="Preporučeno za Vas" FontAttributes="Bold" FontSize="20" HorizontalOptions="CenterAndExpand"></Label>
             
+            <Label Margin="0, 20,0,0" Text="Preporučeno za Vas" FontAttributes="Bold" FontSize="20" HorizontalOptions="CenterAndExpand"></Label>
+            <ListView ItemSelected="VoznjaClicked" ItemsSource="{Binding PreporuceneList}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Margin="0, 20, 0, 30">
+                                <StackLayout HorizontalOptions="Start">
+                                    <StackLayout Orientation="Horizontal">
+                                        <Label FontAttributes="Bold" FontSize="20" Text="{Binding GradPolaska}"></Label>
+                                        <Image WidthRequest="30" HeightRequest="30" Source="icons8-arrow-64.png"></Image>
+                                        <Label FontAttributes="Bold" FontSize="20" Text="{Binding GradDestinacija}"></Label>
+                                    </StackLayout>
+                                    <StackLayout>
+                                        <Label FontAttributes="Bold" FontSize="15" Text="{Binding PunaCijenaPrikaz}"></Label>
+                                        <StackLayout Orientation="Horizontal">
+                                            <Label FontSize="12" FontAttributes="Bold" Text="{Binding KorisnickoImePrikaz}"></Label>
+                                            <Label FontSize="12" FontAttributes="Italic" Text="{Binding DatumObjave}"></Label>
+                                        </StackLayout>
+                                    </StackLayout>
+                                </StackLayout>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

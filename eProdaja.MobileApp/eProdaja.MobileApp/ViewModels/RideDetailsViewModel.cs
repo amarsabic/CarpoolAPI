@@ -158,7 +158,7 @@ namespace eProdaja.MobileApp.ViewModels
                 SlobodnaMjesta = v.SlobodnaMjesta;
                 PunaCijena = v.PunaCijena;
                 DatumPolaska = v.DatumPolaska.ToShortDateString();
-                VrijemePolaska = v.VrijemePolaska.ToShortTimeString();
+                VrijemePolaska = v.VrijemePolaska;
                 PunaCijenaPrikaz = v.PunaCijenaPrikaz;
                 DatumObjave = v.DatumObjave.ToShortDateString();
 

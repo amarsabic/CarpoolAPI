@@ -39,7 +39,7 @@
                                     <Label  FontSize="14" FontAttributes="Bold" Text="{Binding KorisnickoIme}"></Label>
                                     <Label  FontSize="14"  Text="je rezervisao vožnju"></Label>
                                     <Label  FontSize="14" Text="{Binding DatumRezervacije}"></Label>
-                                    <Button Command="{Binding  BindingContext.DeleteRezervacijaCommand, Source={x:Reference RideDetailsPageName}}"  CommandParameter="{Binding RezervacijaID}" HorizontalOptions="End" Text="Rezerviši"></Button>
+                                    <Button Command="{Binding  BindingContext.DeleteRezervacijaCommand, Source={x:Reference RideDetailsPageName}}"  CommandParameter="{Binding RezervacijaID}" HorizontalOptions="End" Text="Ukloni"></Button>
                                 </StackLayout>
                             </StackLayout>
                         </ViewCell>

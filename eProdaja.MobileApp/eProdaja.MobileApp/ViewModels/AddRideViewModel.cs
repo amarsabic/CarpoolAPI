@@ -70,8 +70,8 @@ namespace eProdaja.MobileApp.ViewModels
             get { return _datumPolaska; }
             set { SetProperty(ref _datumPolaska, value); }
         }
-        DateTime _vrijemePolaska;
-        public DateTime VrijemePolaska
+        TimeSpan _vrijemePolaska;
+        public TimeSpan VrijemePolaska
         {
             get { return _vrijemePolaska; }
             set { SetProperty(ref _vrijemePolaska, value); }
@@ -212,10 +212,16 @@ namespace eProdaja.MobileApp.ViewModels
                    CheckListBool = true;
                 }
 
+                string parseTime = v.VrijemePolaska;
+                var hours = Int32.Parse(parseTime.Split('.')[0]);
+                var minutes = Int32.Parse(parseTime.Split('.')[1]);
+
+                var ts = new TimeSpan(hours, minutes, 0);
+
                 SlobodnaMjesta = v.SlobodnaMjesta;
                 PunaCijena = v.PunaCijena;
                 DatumPolaska = v.DatumPolaska;
-                VrijemePolaska = v.VrijemePolaska;
+                VrijemePolaska = ts;
                 foreach (var auto in Automobili)
                 {
                     if(auto.AutomobilID == v.AutomobilID)
@@ -238,6 +244,8 @@ namespace eProdaja.MobileApp.ViewModels
 
         public async Task SaveRide()
         {
+            var vrijemeString = VrijemePolaska.ToString("hh\\:mm");
+
             VoznjaUspertRequest voznja = new VoznjaUspertRequest
             {
                 AutomobilID=SelectedAutomobil.AutomobilID,
@@ -246,7 +254,7 @@ namespace eProdaja.MobileApp.ViewModels
                 GradDestinacijaID=SelectedOdrediste.GradID,
                 GradPolaskaID=SelectedPolazak.GradID,
                 IsAktivna=true,
-                VrijemePolaska=VrijemePolaska,
+                VrijemePolaska= vrijemeString,
                 PunaCijena=PunaCijena,
                 SlobodnaMjesta=SlobodnaMjesta
             };

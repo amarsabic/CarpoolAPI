@@ -54,6 +54,25 @@ namespace eProdaja.MobileApp
                 throw;
             }
         }
+
+        public async Task<T> Recommend<T>()
+        {
+            var url = $"{_apiUrl}/{_route}/{"recommend"}";
+
+            try
+            {
+                return await url.WithBasicAuth(Username, Password).GetJsonAsync<T>();
+            }
+            catch (FlurlHttpException ex)
+            {
+                if (ex.Call.HttpStatus == System.Net.HttpStatusCode.Unauthorized)
+                {
+                    await Application.Current.MainPage.DisplayAlert("Greška", "Niste authentificirani", "OK");
+                }
+                throw;
+            }
+        }
+
         public async Task<bool> Payment(PaymentModel model)
         {
 
@@ -62,26 +81,8 @@ namespace eProdaja.MobileApp
                                    new StringContent(JsonConvert.SerializeObject(model),
                                                      Encoding.UTF8,
                                                      "application/json"));
-            //var url = $"{_apiUrl}/{_route}";
 
             return true;
-            //try
-            //{
-            //    if (search != null)
-            //    {
-            //        url += "?";
-            //        url += await search.ToQueryString();
-            //    }
-            //    return await url.WithBasicAuth(Username, Password).GetJsonAsync<T>();
-            //}
-            //catch (FlurlHttpException ex)
-            //{
-            //    if (ex.Call.HttpStatus == System.Net.HttpStatusCode.Unauthorized)
-            //    {
-            //        await Application.Current.MainPage.DisplayAlert("Greška", "Niste authentificirani", "OK");
-            //    }
-            //    throw;
-            //}
         }
         public async Task<T> Auth<T>()
         {

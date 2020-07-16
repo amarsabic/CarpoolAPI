@@ -8,7 +8,7 @@ namespace Carpool.Model
     {
         public int VoznjaID { get; set; }
         public DateTime DatumPolaska { get; set; }
-        public DateTime VrijemePolaska { get; set; }
+        public string VrijemePolaska { get; set; }
         public DateTime DatumObjave { get; set; }
         public int SlobodnaMjesta { get; set; }
         public decimal PunaCijena { get; set; }

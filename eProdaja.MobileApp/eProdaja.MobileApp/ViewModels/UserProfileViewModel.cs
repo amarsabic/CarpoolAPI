@@ -218,7 +218,7 @@ namespace eProdaja.MobileApp.ViewModels
                     }
                 }
 
-                IsVozac = !k.IsVozac;
+                IsVozac = !APIService.IsVozac;
                 korisnikId = k.KorisnikID;
             }
             catch (Exception er)

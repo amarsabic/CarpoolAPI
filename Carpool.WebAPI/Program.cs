@@ -17,16 +17,18 @@ namespace Carpool.WebAPI
     {
         public static void Main(string[] args)
         {
-            var hosts = CreateHostBuilder(args).Build();
+            CreateHostBuilder(args).Build().Run();
 
-            using (var scope = hosts.Services.CreateScope())
-            {
-                var service = scope.ServiceProvider.GetRequiredService<CarpoolContext>();
-                service.Database.Migrate();
-                Seeding.SeedDatabase(service);
-            }
+            //var hosts = CreateHostBuilder(args).Build();
 
-            hosts.Run();
+            //using (var scope = hosts.Services.CreateScope())
+            //{
+            //    var service = scope.ServiceProvider.GetRequiredService<CarpoolContext>();
+            //    service.Database.Migrate();
+            //    Seeding.SeedDatabase(service);
+            //}
+
+            //hosts.Run();
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
