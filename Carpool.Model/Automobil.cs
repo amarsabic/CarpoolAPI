@@ -12,6 +12,7 @@ namespace Carpool.Model
         public string NazivModel { get { return Naziv + " " + Model; } }
         public string Godiste { get; set; }
         public string BrojRegOznaka { get; set; }
+        public bool IsAktivan { get; set; }
         public DateTime DatumIstekaRegistracije { get; set; }
         public byte[] Slika { get; set; }
         public byte[] SlikaThumb { get; set; }

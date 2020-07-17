@@ -44,6 +44,10 @@ namespace Carpool.WebAPI.Services
                 stariAuto.IsAktivan = false;
 
                 var noviAuto = _context.Autmobili.Find(request.AutomobilID);
+                //if (noviAuto.IsAktivan)
+                //{
+                //    throw new UserException("Odabrani automobil " + noviAuto.Naziv+" "+noviAuto.Model+" je trenutno zauzet!");
+                //}
                 noviAuto.IsAktivan = true;
             }
 
@@ -198,6 +202,10 @@ namespace Carpool.WebAPI.Services
             {
                 query = query.Where(x => x.VozacID == search.VozacID && x.IsAktivna == false);
             }
+            if (search?.VozacID!=null)
+            {
+                query = query.Where(x => x.VozacID==search.VozacID);
+            }
             if (search.IsSlobodnaMjesta)
             {
                 query = query.Where(x => x.SlobodnaMjesta != 0 && x.IsAktivna == true);
@@ -218,7 +226,6 @@ namespace Carpool.WebAPI.Services
             {
                 query = query.Where(x => (x.GradPolaskaID == search.GradPolaskaID && x.GradDestinacijaID == search.GradDestinacijaID) || (x.UsputniGradovi.Any(u => u.GradID == search.GradDestinacijaID) && x.GradPolaskaID == search.GradPolaskaID));
                 query = query.Where(x => x.IsAktivna);
-                //|| (x.UsputniGradovi.Any(a=>a.GradID == search.GradDestinacijaID) && x.GradPolaskaID==search.GradPolaskaID))
             }
 
 
@@ -303,7 +310,8 @@ namespace Carpool.WebAPI.Services
                 //STEP 6: Create prediction engine and predict the score for Product 63 being co-purchased with Product 3.
                 //        The higher the score the higher the probability for this particular productID being co-purchased 
 
-                // var allVoznje = _context.Voznje.Include("Rezervacije").Where(v => v.IsAktivna && v.Rezervacije.Any(r=>r.KorisnikID!=id)).ToList(); //sve aktivne voznje i njihove rezervacije bez korisnika logiranog
+            
+
                 var allVoznje = _context.Korisnici.Where(k => k.KorisnikID != id);
                 var predictionResult = new List<Tuple<Database.Korisnik, float>>();
 
@@ -319,7 +327,7 @@ namespace Carpool.WebAPI.Services
 
                     predictionResult.Add(new Tuple<Database.Korisnik, float>(item, prediction.Score));
                 }
-                // var selectKorisnik = predictionResult.OrderByDescending(x => x.Item2).Select(x => x.Item1).Take(3).ToList();
+               
 
                 var finalResult = predictionResult.OrderByDescending(x => x.Item2).Select(x => x.Item1).Take(3).ToList();
 

@@ -115,7 +115,7 @@
             // KorisnickoIme
             // 
             this.KorisnickoIme.DataPropertyName = "KorisnickoIme";
-            this.KorisnickoIme.HeaderText = "Vozač";
+            this.KorisnickoIme.HeaderText = "Korisnik";
             this.KorisnickoIme.Name = "KorisnickoIme";
             this.KorisnickoIme.ReadOnly = true;
             // 

@@ -166,5 +166,44 @@ namespace Carpool.WinUI.Voznje
            frmUkloni frm = new frmUkloni(voznjaId);
            frm.Show(); 
         }
+
+        private async void btnZavrsene_Click(object sender, EventArgs e)
+        {
+            VoznjaSearchRequest search = new VoznjaSearchRequest
+            {
+                IsZavrsena = true
+            };
+
+            var result = await _voznje.Get<List<Model.Voznja>>(search);
+
+            dgvVoznje.AutoGenerateColumns = false;
+            dgvVoznje.DataSource = result;
+        }
+
+        private async void btnAktivne_Click(object sender, EventArgs e)
+        {
+            VoznjaSearchRequest search = new VoznjaSearchRequest
+            {
+                IsSlobodnaMjesta = true
+            };
+
+            var result = await _voznje.Get<List<Model.Voznja>>(search);
+
+            dgvVoznje.AutoGenerateColumns = false;
+            dgvVoznje.DataSource = result;
+        }
+
+        private async void btnPretragaKorisnika_Click(object sender, EventArgs e)
+        {
+            VoznjaSearchRequest search = new VoznjaSearchRequest
+            {
+               VozacID=int.Parse(txtKorisnik.Text)
+            };
+
+            var result = await _voznje.Get<List<Model.Voznja>>(search);
+
+            dgvVoznje.AutoGenerateColumns = false;
+            dgvVoznje.DataSource = result;
+        }
     }
 }

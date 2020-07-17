@@ -25,12 +25,12 @@ namespace eProdaja.MobileApp.Views
         protected async override void OnAppearing()
         {
             base.OnAppearing();
-            await model.LoadAutomobili();
+            await model.LoadAutomobili(false);
             await model.LoadGradovi();
             if (VoznjaID != null)
             {
+                await model.LoadAutomobili(true);
                 await model.Init((int)VoznjaID);
-                await model.LoadAutomobili();
             }
 
         }

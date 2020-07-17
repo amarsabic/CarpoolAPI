@@ -96,7 +96,6 @@
             this.KorisnikID.HeaderText = "KorisnikID";
             this.KorisnikID.Name = "KorisnikID";
             this.KorisnikID.ReadOnly = true;
-            this.KorisnikID.Visible = false;
             // 
             // Ime
             // 

@@ -19,7 +19,7 @@ namespace eProdaja.MobileApp.ViewModels
         public AddRideViewModel()
         {
             LoadCommand = new Command(async () => await LoadGradovi());
-            LoadAutomobiliCommand = new Command(async () => await LoadAutomobili());
+            LoadAutomobiliCommand = new Command(async (param) => await LoadAutomobili((bool)param));
             DeleteUsputniCommand = new Command(async (param) => await DeleteUsputni((int)param));
             SaveRideCommand = new Command(async () => await SaveRide());
             InitCommand = new Command(async (param) => await Init((int)param));
@@ -32,6 +32,7 @@ namespace eProdaja.MobileApp.ViewModels
         ObservableCollection<Grad> _SelectedGradovi = new ObservableCollection<Grad>();
         ObservableCollection<Grad> _UsputniGradovi = new ObservableCollection<Grad>();
         ObservableCollection<Automobil> _Automobili = new ObservableCollection<Automobil>();
+  
 
         int _slobodnaMjesta;
         int? voznjaID;
@@ -136,6 +137,13 @@ namespace eProdaja.MobileApp.ViewModels
             set { SetProperty(ref _Automobili, value); }
         }
 
+        private Automobil _selectedAutomobilProvjera;
+        public Automobil SelectedAutomobilProvjera
+        {
+            get { return _selectedAutomobilProvjera; }
+            set { SetProperty(ref _selectedAutomobilProvjera, value); }
+        }
+
         private Automobil _selectedAutomobil;
         public Automobil SelectedAutomobil
         {
@@ -213,11 +221,9 @@ namespace eProdaja.MobileApp.ViewModels
                 }
 
                 string parseTime = v.VrijemePolaska;
-                var hours = Int32.Parse(parseTime.Split('.')[0]);
-                var minutes = Int32.Parse(parseTime.Split('.')[1]);
 
-                var ts = new TimeSpan(hours, minutes, 0);
-
+                var ts = TimeSpan.Parse(parseTime);
+               
                 SlobodnaMjesta = v.SlobodnaMjesta;
                 PunaCijena = v.PunaCijena;
                 DatumPolaska = v.DatumPolaska;
@@ -227,6 +233,7 @@ namespace eProdaja.MobileApp.ViewModels
                     if(auto.AutomobilID == v.AutomobilID)
                     {
                         SelectedAutomobil = auto;
+                        SelectedAutomobilProvjera = auto;
                     }
                 }
 
@@ -283,6 +290,15 @@ namespace eProdaja.MobileApp.ViewModels
             {
                 try
                 {
+                    if (SelectedAutomobil != SelectedAutomobilProvjera)
+                    {
+                        var aktivnost = await _automobili.GetById<Automobil>(SelectedAutomobil.AutomobilID);
+                        if (aktivnost.IsAktivan)
+                        {
+                            await Application.Current.MainPage.DisplayAlert("Carpool", "Odabrani automobil " + aktivnost.Naziv + " " + aktivnost.Model + " je trenutno zauzet!", "OK");
+                            return;
+                        }
+                    }
                     await _voznja.Update<Voznja>(voznjaID, voznja);
                     await Application.Current.MainPage.DisplayAlert("Carpool", "Uspješno promijenjeni podaci", "OK");
                     await Application.Current.MainPage.Navigation.PopAsync();
@@ -307,20 +323,17 @@ namespace eProdaja.MobileApp.ViewModels
             }
         } 
     
-        public async Task LoadAutomobili()
+        public async Task LoadAutomobili(bool provjera)
         {
             var searchByVozac = new AutomobilSearchRequest
             {
                 IsVozac = true
             };
-            if (voznjaID == null)
+            if (!provjera)
             {
                 searchByVozac.ProvjeraAktivnosti = true;
             }
-            else
-            {
-                searchByVozac.ProvjeraAktivnosti = false;
-            }
+           
             var list = await _automobili.Get<List<Automobil>>(searchByVozac);
 
             _Automobili.Clear();
