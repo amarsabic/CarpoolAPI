@@ -1,6 +1,6 @@
-﻿namespace Carpool.WinUI.Voznje
+﻿namespace Carpool.WinUI.Rezervacije
 {
-    partial class frmUkloni
+    partial class frmUkloniRezervaciju
     {
         /// <summary>
         /// Required designer variable.
@@ -29,39 +29,26 @@
         private void InitializeComponent()
         {
             this.btnUkloni = new System.Windows.Forms.Button();
-            this.btnPregledRez = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnUkloni
             // 
-            this.btnUkloni.Location = new System.Drawing.Point(52, 57);
+            this.btnUkloni.Location = new System.Drawing.Point(64, 44);
             this.btnUkloni.Name = "btnUkloni";
-            this.btnUkloni.Size = new System.Drawing.Size(148, 23);
+            this.btnUkloni.Size = new System.Drawing.Size(142, 23);
             this.btnUkloni.TabIndex = 0;
-            this.btnUkloni.Text = "Ukloni vožnju";
+            this.btnUkloni.Text = "Ukloni rezervaciju";
             this.btnUkloni.UseVisualStyleBackColor = true;
             this.btnUkloni.Click += new System.EventHandler(this.btnUkloni_Click);
             // 
-            // btnPregledRez
-            // 
-            this.btnPregledRez.Location = new System.Drawing.Point(52, 28);
-            this.btnPregledRez.Name = "btnPregledRez";
-            this.btnPregledRez.Size = new System.Drawing.Size(148, 23);
-            this.btnPregledRez.TabIndex = 1;
-            this.btnPregledRez.Text = "Pregled rezervacija";
-            this.btnPregledRez.UseVisualStyleBackColor = true;
-            this.btnPregledRez.Click += new System.EventHandler(this.btnPregledRez_Click);
-            // 
-            // frmUkloni
+            // frmUkloniRezervaciju
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(250, 110);
-            this.Controls.Add(this.btnPregledRez);
+            this.ClientSize = new System.Drawing.Size(256, 122);
             this.Controls.Add(this.btnUkloni);
-            this.Name = "frmUkloni";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Ukloni";
+            this.Name = "frmUkloniRezervaciju";
+            this.Text = "frmUkloniRezervaciju";
             this.ResumeLayout(false);
 
         }
@@ -69,6 +56,5 @@
         #endregion
 
         private System.Windows.Forms.Button btnUkloni;
-        private System.Windows.Forms.Button btnPregledRez;
     }
 }

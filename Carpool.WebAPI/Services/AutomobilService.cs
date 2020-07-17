@@ -59,6 +59,10 @@ namespace Carpool.WebAPI.Services
             {
                 query = query.Where(x => x.VozacID == int.Parse(userId));
             }
+            if (request.PretragaPoVozacID)
+            {
+                query = query.Where(x => x.VozacID == request.VozacID);
+            }
             if (request.ProvjeraAktivnosti)
             {
                 query = query.Where(x => !x.IsAktivan);

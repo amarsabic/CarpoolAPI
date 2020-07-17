@@ -2,6 +2,7 @@
 using Carpool.WinUI.Izvještaji;
 using Carpool.WinUI.Korisnici;
 using Carpool.WinUI.Obavijesti;
+using Carpool.WinUI.Rezervacije;
 using Carpool.WinUI.Voznje;
 using System;
 using System.Collections.Generic;
@@ -156,9 +157,12 @@ namespace Carpool.WinUI
             frm.Show();
         }
 
-        private void frmIndex_Load(object sender, EventArgs e)
+        private void rezervacijeToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            
+            frmRezervacije frm = new frmRezervacije(null);
+            frm.MdiParent = this;
+            frm.WindowState = FormWindowState.Maximized;
+            frm.Show();
         }
     }
 }

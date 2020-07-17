@@ -13,6 +13,8 @@ namespace Carpool.Model
         public string KorisnickoIme { get; set; }
         public int? UsputniGradId { get; set; }
         public string UsputniGradNaziv { get; set; }
+        public string GradPolaska { get; set; }
+        public string GradDestinacija { get; set; }
         public string OpisPrtljaga { get; set; }
     }
 }

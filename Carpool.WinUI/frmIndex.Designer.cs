@@ -37,8 +37,8 @@
             this.listaAutomobilaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.voznjeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.obavijestiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.izvještajiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
+            this.rezervacijeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -49,7 +49,7 @@
             this.automobiliToolStripMenuItem,
             this.voznjeToolStripMenuItem,
             this.obavijestiToolStripMenuItem,
-            this.izvještajiToolStripMenuItem});
+            this.rezervacijeToolStripMenuItem});
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.Name = "menuStrip";
             this.menuStrip.Size = new System.Drawing.Size(998, 24);
@@ -108,11 +108,12 @@
             this.obavijestiToolStripMenuItem.Text = "Obavijesti";
             this.obavijestiToolStripMenuItem.Click += new System.EventHandler(this.obavijestiToolStripMenuItem_Click);
             // 
-            // izvještajiToolStripMenuItem
+            // rezervacijeToolStripMenuItem
             // 
-            this.izvještajiToolStripMenuItem.Name = "izvještajiToolStripMenuItem";
-            this.izvještajiToolStripMenuItem.Size = new System.Drawing.Size(63, 20);
-            this.izvještajiToolStripMenuItem.Text = "Izvještaji";
+            this.rezervacijeToolStripMenuItem.Name = "rezervacijeToolStripMenuItem";
+            this.rezervacijeToolStripMenuItem.Size = new System.Drawing.Size(77, 20);
+            this.rezervacijeToolStripMenuItem.Text = "Rezervacije";
+            this.rezervacijeToolStripMenuItem.Click += new System.EventHandler(this.rezervacijeToolStripMenuItem_Click);
             // 
             // frmIndex
             // 
@@ -126,7 +127,6 @@
             this.Name = "frmIndex";
             this.Text = "frmIndex";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            this.Load += new System.EventHandler(this.frmIndex_Load);
             this.menuStrip.ResumeLayout(false);
             this.menuStrip.PerformLayout();
             this.ResumeLayout(false);
@@ -145,7 +145,7 @@
         private System.Windows.Forms.ToolStripMenuItem listaAutomobilaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem voznjeToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem obavijestiToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem izvještajiToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem rezervacijeToolStripMenuItem;
     }
 }
 

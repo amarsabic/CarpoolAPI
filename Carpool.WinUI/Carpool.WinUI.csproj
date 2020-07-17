@@ -529,6 +529,18 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Rezervacije\frmRezervacije.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Rezervacije\frmRezervacije.Designer.cs">
+      <DependentUpon>frmRezervacije.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Rezervacije\frmUkloniRezervaciju.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Rezervacije\frmUkloniRezervaciju.Designer.cs">
+      <DependentUpon>frmUkloniRezervaciju.cs</DependentUpon>
+    </Compile>
     <Compile Include="SqlServerTypes\Loader.cs" />
     <Compile Include="Voznje\frmVoznje.cs">
       <SubType>Form</SubType>
@@ -580,6 +592,12 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Rezervacije\frmRezervacije.resx">
+      <DependentUpon>frmRezervacije.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Rezervacije\frmUkloniRezervaciju.resx">
+      <DependentUpon>frmUkloniRezervaciju.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Voznje\frmVoznje.resx">
       <DependentUpon>frmVoznje.cs</DependentUpon>
     </EmbeddedResource>

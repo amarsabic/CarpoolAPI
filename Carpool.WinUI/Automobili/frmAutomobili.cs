@@ -40,5 +40,19 @@ namespace Carpool.WinUI.Automobili
             dgvAutomobili.AutoGenerateColumns = false;
             dgvAutomobili.DataSource = result;
         }
+
+        private async void btnPretragaKorisnika_Click(object sender, EventArgs e)
+        {
+            AutomobilSearchRequest search = new AutomobilSearchRequest
+            {
+                VozacID = int.Parse(txtKorisnik.Text),
+                PretragaPoVozacID=true
+            };
+
+            var result = await _apiService.Get<List<Model.Automobil>>(search);
+
+            dgvAutomobili.AutoGenerateColumns = false;
+            dgvAutomobili.DataSource = result;
+        }
     }
 }

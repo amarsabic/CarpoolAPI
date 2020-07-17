@@ -43,10 +43,13 @@ namespace Carpool.WebAPI.Services
 
             var result = query.Select(item => new Model.Rezervacija
             {
-                DatumRezervacije=item.DatumRezervacije,
-                KorisnickoIme=item.Korisnik.KorisnickoIme,
-                UsputniGradNaziv=item.UsputniGrad.Grad.Naziv,
-                RezervacijaID=item.RezervacijaID
+                DatumRezervacije = item.DatumRezervacije,
+                KorisnickoIme = item.Korisnik.KorisnickoIme,
+                UsputniGradNaziv = item.UsputniGrad.Grad.Naziv,
+                RezervacijaID = item.RezervacijaID,
+                GradPolaska = _context.Voznje.Where(v => v.VoznjaID == item.VoznjaID).Select(v => v.GradPolaska.Naziv).FirstOrDefault(),
+                GradDestinacija = _context.Voznje.Where(v => v.VoznjaID == item.VoznjaID).Select(v => v.GradDestinacija.Naziv).FirstOrDefault(),
+                VoznjaID=item.VoznjaID
             }).ToList();
 
             return _mapper.Map<List<Model.Rezervacija>>(result);

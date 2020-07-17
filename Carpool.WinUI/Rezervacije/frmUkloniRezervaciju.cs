@@ -1,5 +1,4 @@
-﻿using Carpool.WinUI.Rezervacije;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -9,36 +8,31 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Carpool.WinUI.Voznje
+namespace Carpool.WinUI.Rezervacije
 {
-    public partial class frmUkloni : Form
+    public partial class frmUkloniRezervaciju : Form
     {
-        private readonly APIService _voznja = new APIService("Voznja");
+        private readonly APIService _rezervacija = new APIService("Rezervacija");
 
         private int _id;
-        public frmUkloni(int voznjaId)
+        public frmUkloniRezervaciju(int rezervacijaId)
         {
             InitializeComponent();
-            _id = voznjaId;
+            _id = rezervacijaId;
         }
 
         private async void btnUkloni_Click(object sender, EventArgs e)
         {
             try
             {
-                await _voznja.Delete<Model.Voznja>(_id);
+                await _rezervacija.Delete<Model.Rezervacija>(_id);
+                this.Close();
                 MessageBox.Show("Uspješno izvršeno");
                 this.Close();
             }
             catch (Exception)
             {
             }
-        }
-
-        private void btnPregledRez_Click(object sender, EventArgs e)
-        {
-            frmRezervacije frm = new frmRezervacije(_id);
-            frm.Show();
         }
     }
 }

@@ -280,7 +280,7 @@ namespace Carpool.WebAPI.Services
 
             if (data.Count() == 0)
             {
-                throw new UserException("Trenutno nema dovoljno podataka za preporuku!.");
+                return new List<Model.Voznja>();
             }
 
                 var traindata = mlContext.Data.LoadFromEnumerable(data);
