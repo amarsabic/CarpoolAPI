@@ -47,5 +47,18 @@ namespace Carpool.WinUI.Korisnici
         {
 
         }
+
+        private async void btnPrikaziAdmine_Click(object sender, EventArgs e)
+        {
+            var search = new KorisniciSearchRequest()
+            {
+                IsAdmin = true
+            };
+
+            var result = await _apiService.Get<List<Model.Korisnik>>(search);
+
+            dgvKorisnici.AutoGenerateColumns = false;
+            dgvKorisnici.DataSource = result;
+        }
     }
 }

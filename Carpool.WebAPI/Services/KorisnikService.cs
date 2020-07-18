@@ -81,7 +81,10 @@ namespace Carpool.WebAPI.Services
             {
                 query = query.Where(x=>x.KorisnikID==userId);
             }
-
+            if (request.IsAdmin)
+            {
+                //query = query.Where(x => x.KorisniciUloge.Any(c=>x.KorisnikID));
+            }
             var list = query.ToList();
 
             return _mapper.Map<List<Model.Korisnik>>(list);
@@ -131,11 +134,51 @@ namespace Carpool.WebAPI.Services
             entity.LozinkaHash = GenerateHash(entity.LozinkaSalt, request.Password);
             entity.IsVozac = false;
 
-
             _context.Korisnici.Add(entity);
             _context.SaveChanges();
 
-            return _mapper.Map<Model.Korisnik>(entity);
+            if (request.Uloge.Count != 0)
+            {
+                foreach (var uloga in request.Uloge)
+                {
+                    entity.KorisniciUloge.Add(new Database.KorisniciUloge
+                    {
+                        KorisnikId = entity.KorisnikID,
+                        DatumIzmjene = DateTime.Now,
+                        UlogaId = uloga
+                    });
+                }
+            }
+
+            _context.SaveChanges();
+
+            var model = new Model.Korisnik
+            {
+                KorisnikID=entity.KorisnikID,
+                BrojTelefona= entity.BrojTelefona,
+                DatumRodjenja= entity.DatumRodjenja,
+                Email=entity.Email,
+                GradID=entity.GradID,
+                Ime=entity.Ime,
+                IsVozac=entity.IsVozac,
+                KorisnickoIme=entity.KorisnickoIme,
+                Prezime=entity.Prezime,
+                Slika=entity.Slika
+            };
+
+            model.KorisniciUloge = new List<Model.KorisniciUloge>();
+            foreach (var item in entity.KorisniciUloge)
+            {
+                model.KorisniciUloge.Add(new Model.KorisniciUloge
+                {
+                    DatumIzmjene=item.DatumIzmjene,
+                    KorisnikId=item.KorisnikId,
+                    KorisnikUlogaId=item.KorisnikUlogaId,
+                    UlogaId=item.UlogaId
+                });
+            }
+         
+            return model;
         }
 
         public Model.Korisnik Update(int id, KorisnikInsertRequest request)
