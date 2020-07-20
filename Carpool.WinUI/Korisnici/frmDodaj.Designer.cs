@@ -58,6 +58,7 @@
             this.label12 = new System.Windows.Forms.Label();
             this.txtPass = new System.Windows.Forms.TextBox();
             this.btnPrint = new System.Windows.Forms.Button();
+            this.dtmDatumRodjenja = new System.Windows.Forms.DateTimePicker();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             this.SuspendLayout();
             // 
@@ -149,7 +150,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(22, 341);
+            this.label6.Location = new System.Drawing.Point(22, 377);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(76, 13);
             this.label6.TabIndex = 11;
@@ -157,7 +158,7 @@
             // 
             // txtPasswordStari
             // 
-            this.txtPasswordStari.Location = new System.Drawing.Point(25, 357);
+            this.txtPasswordStari.Location = new System.Drawing.Point(25, 393);
             this.txtPasswordStari.Name = "txtPasswordStari";
             this.txtPasswordStari.PasswordChar = '*';
             this.txtPasswordStari.Size = new System.Drawing.Size(195, 20);
@@ -166,7 +167,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(255, 341);
+            this.label7.Location = new System.Drawing.Point(255, 377);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(77, 13);
             this.label7.TabIndex = 13;
@@ -174,9 +175,9 @@
             // 
             // btnSpremi
             // 
-            this.btnSpremi.Location = new System.Drawing.Point(158, 293);
+            this.btnSpremi.Location = new System.Drawing.Point(289, 293);
             this.btnSpremi.Name = "btnSpremi";
-            this.btnSpremi.Size = new System.Drawing.Size(132, 21);
+            this.btnSpremi.Size = new System.Drawing.Size(139, 40);
             this.btnSpremi.TabIndex = 14;
             this.btnSpremi.Text = "Spremi";
             this.btnSpremi.UseVisualStyleBackColor = true;
@@ -197,7 +198,7 @@
             // 
             // txtPasswordNovi
             // 
-            this.txtPasswordNovi.Location = new System.Drawing.Point(258, 357);
+            this.txtPasswordNovi.Location = new System.Drawing.Point(258, 393);
             this.txtPasswordNovi.Name = "txtPasswordNovi";
             this.txtPasswordNovi.PasswordChar = '*';
             this.txtPasswordNovi.Size = new System.Drawing.Size(195, 20);
@@ -231,7 +232,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(22, 396);
+            this.label10.Location = new System.Drawing.Point(22, 420);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(98, 13);
             this.label10.TabIndex = 21;
@@ -239,7 +240,7 @@
             // 
             // txtPotvrda
             // 
-            this.txtPotvrda.Location = new System.Drawing.Point(25, 412);
+            this.txtPotvrda.Location = new System.Drawing.Point(25, 436);
             this.txtPotvrda.Name = "txtPotvrda";
             this.txtPotvrda.PasswordChar = '*';
             this.txtPotvrda.Size = new System.Drawing.Size(195, 20);
@@ -248,7 +249,7 @@
             // 
             // btnUpdatePassword
             // 
-            this.btnUpdatePassword.Location = new System.Drawing.Point(258, 411);
+            this.btnUpdatePassword.Location = new System.Drawing.Point(258, 436);
             this.btnUpdatePassword.Name = "btnUpdatePassword";
             this.btnUpdatePassword.Size = new System.Drawing.Size(132, 21);
             this.btnUpdatePassword.TabIndex = 22;
@@ -310,11 +311,19 @@
             this.btnPrint.UseVisualStyleBackColor = true;
             this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click);
             // 
+            // dtmDatumRodjenja
+            // 
+            this.dtmDatumRodjenja.Location = new System.Drawing.Point(25, 303);
+            this.dtmDatumRodjenja.Name = "dtmDatumRodjenja";
+            this.dtmDatumRodjenja.Size = new System.Drawing.Size(200, 20);
+            this.dtmDatumRodjenja.TabIndex = 29;
+            // 
             // frmDodaj
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(490, 526);
+            this.Controls.Add(this.dtmDatumRodjenja);
             this.Controls.Add(this.btnPrint);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.txtPassPotvrda);
@@ -384,5 +393,6 @@
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.TextBox txtPass;
         private System.Windows.Forms.Button btnPrint;
+        private System.Windows.Forms.DateTimePicker dtmDatumRodjenja;
     }
 }

@@ -83,7 +83,7 @@ namespace Carpool.WebAPI.Services
             }
             if (request.IsAdmin)
             {
-                //query = query.Where(x => x.KorisniciUloge.Any(c=>x.KorisnikID));
+                query = query.Where(x => x.KorisniciUloge.Any(c=>c.KorisnikId==x.KorisnikID));
             }
             var list = query.ToList();
 

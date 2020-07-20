@@ -111,7 +111,6 @@ namespace eProdaja.MobileApp.ViewModels
                 var x = await _rezervacija.Insert<Rezervacija>(request);
                 if (x != null)
                 {
-                    await Application.Current.MainPage.DisplayAlert("Carpool", "Uspješna rezervacija", "OK");
                     await Application.Current.MainPage.Navigation.PushModalAsync(new PaymentPage(voznjaID));
                 }
 
@@ -132,8 +131,7 @@ namespace eProdaja.MobileApp.ViewModels
                 };
                 var x = await _rezervacija.Insert<Rezervacija>(request);
                 if (x != null)
-                {
-                    await Application.Current.MainPage.DisplayAlert("Carpool", "Uspješna rezervacija", "OK");
+                { 
                     await Application.Current.MainPage.Navigation.PushModalAsync(new PaymentPage(voznjaID));
                 }
             }

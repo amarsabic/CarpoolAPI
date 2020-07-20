@@ -41,7 +41,8 @@ namespace Carpool.WinUI.Korisnici
                     KorisnickoIme = txtKorisnickoIme.Text,
                     Password = txtPass.Text,
                     PasswordConfirmation = txtPassPotvrda.Text,
-                    Uloge=roleList
+                    Uloge=roleList,
+                    DatumRodjenja=dtmDatumRodjenja.Value
                 };
 
                 var idGrad = cmbGrad.SelectedValue;

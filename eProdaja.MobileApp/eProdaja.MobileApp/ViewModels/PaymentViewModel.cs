@@ -108,6 +108,7 @@ namespace eProdaja.MobileApp.ViewModels
                 Token = stripeTokenId
             });
 
+            await Xamarin.Forms.Application.Current.MainPage.DisplayAlert("Carpool", "Uspješna transakcija", "OK");
             await Xamarin.Forms.Application.Current.MainPage.Navigation.PopModalAsync();
             await Xamarin.Forms.Application.Current.MainPage.Navigation.PopAsync();
         }
