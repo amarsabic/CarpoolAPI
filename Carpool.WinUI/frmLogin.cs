@@ -32,7 +32,6 @@ namespace Carpool.WinUI
                 APIService.Username = txtKorisnickoIme.Text;
                 APIService.Password = txtPassword.Text;
 
-                await _service.Get<dynamic>(null);
                 if (cbRemember.Checked)
                 {
                     Properties.Settings.Default.userName = txtKorisnickoIme.Text;

@@ -120,7 +120,6 @@ namespace Carpool.WinUI
                 MessageBox.Show(stringBuilder.ToString(), "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return default(T);
             }
-
         }
     }
 }
