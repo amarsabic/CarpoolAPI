@@ -16,4 +16,5 @@
     <local:AutomobiliPage Title="Automobili" IconImageSource="icons8-car-50.png"></local:AutomobiliPage>
     <local:NewsPage Title="Obavijesti" IconImageSource="icons8-news-50.png"></local:NewsPage>
     <local:RidePage Title="Vožnje" IconImageSource="icons8-vanpool-50.png"></local:RidePage>
+    <local:TravelPage Title="Putovanja" IconImageSource="icons8-place-marker-50.png"></local:TravelPage>
 </TabbedPage>

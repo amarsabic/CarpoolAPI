@@ -12,6 +12,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Include="bin\Debug\netcoreapp3.0\script.sql" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="7.0.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.0.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.3">
@@ -29,6 +33,12 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Carpool.Model\Carpool.Model.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="script.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>

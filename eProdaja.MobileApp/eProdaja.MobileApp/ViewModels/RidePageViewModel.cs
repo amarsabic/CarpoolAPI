@@ -29,7 +29,6 @@ namespace eProdaja.MobileApp.ViewModels
             ZavrseneCommand = new Command(async () => await Zavrsene());
             SveCommand = new Command(async () => await Sve());
             RecommendedCommand = new Command(async () => await Recommended());
-
         }
 
         public ObservableCollection<Voznja> VoznjeList { get; set; } = new ObservableCollection<Voznja>();
@@ -122,7 +121,7 @@ namespace eProdaja.MobileApp.ViewModels
             {
                 VoznjaSearchRequest search = new VoznjaSearchRequest
                 {
-                    IsZavrsena=true
+                    IsVozacZavrsene=true
                 };
 
                 var model = await _voznja.Get<List<Voznja>>(search);

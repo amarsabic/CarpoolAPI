@@ -17,7 +17,7 @@ namespace Carpool.WebAPI
     {
         public static void Main(string[] args)
         {
-            CreateHostBuilder(args).Build().Run();
+           // CreateHostBuilder(args).Build().Run();
 
             //var hosts = CreateHostBuilder(args).Build();
 
@@ -29,6 +29,15 @@ namespace Carpool.WebAPI
             //}
 
             //hosts.Run();
+
+            var hosts = CreateHostBuilder(args).Build();
+            using (var scope = hosts.Services.CreateScope())
+            {
+                var service = scope.ServiceProvider.GetRequiredService<CarpoolContext>();
+                service.Database.Migrate();
+            }
+
+            hosts.Run();
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>

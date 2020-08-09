@@ -334,7 +334,7 @@ namespace Carpool.WebAPI.Services
                 var final = new List<Model.Voznja>();
                 foreach (var korisnik in finalResult)
                 {
-                    var voznja = _context.Voznje.Include("Rezervacije").Where(v => v.IsAktivna && v.Rezervacije.Any(r => r.KorisnikID == korisnik.KorisnikID)).Select(item => new Model.Voznja
+                    var voznja = _context.Voznje.Include("Rezervacije").Where(v => v.IsAktivna && v.VozacID != id && v.Rezervacije.Any(r => r.KorisnikID == korisnik.KorisnikID)).Select(item => new Model.Voznja
                     {
                         AutomobilNazivModel = item.Automobil.Naziv + " " + item.Automobil.Model,
                         DatumObjave = item.DatumObjave,

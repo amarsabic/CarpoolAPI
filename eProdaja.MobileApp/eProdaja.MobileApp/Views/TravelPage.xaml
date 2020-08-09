@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="eProdaja.MobileApp.Views.TravelPage">
+    <ContentPage.Content>
+        <StackLayout Padding="10">
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                <Button  Command="{Binding AktivnaCommand}" Text="Aktivno"></Button>
+                <Button  Command="{Binding ZavrsenaCommand}" Text="Završeno"></Button>
+            </StackLayout>
+
+            <ListView ItemSelected="RezervacijaClicked" ItemsSource="{Binding _RezervacijeList}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Margin="0, 20, 0, 30">
+                                <StackLayout HorizontalOptions="Start">
+                                    <StackLayout Orientation="Horizontal">
+                                        <Label FontAttributes="Bold" FontSize="20" Text="{Binding GradPolaska}"></Label>
+                                        <Image WidthRequest="30" HeightRequest="30" Source="icons8-arrow-64.png"></Image>
+                                        <Label FontAttributes="Bold" FontSize="20" Text="{Binding GradDestinacija}"></Label>
+                                    </StackLayout>
+                                    <StackLayout>
+                                        <StackLayout Orientation="Horizontal">
+                                            <Label FontSize="12" FontAttributes="Bold" Text="{Binding KorisnickoIme}"></Label>
+                                            <Label FontSize="12" FontAttributes="Italic" Text="{Binding DatumRezervacije}"></Label>
+                                        </StackLayout>
+                                        <Label FontAttributes="Italic" FontSize="15" Text="{Binding UsputniGradNaziv}"></Label>
+                                    </StackLayout>
+                                </StackLayout>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

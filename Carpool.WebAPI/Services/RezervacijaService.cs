@@ -34,13 +34,30 @@ namespace Carpool.WebAPI.Services
 
         public override List<Model.Rezervacija> Get(RezervacijaSearchRequest search)
         {
+            var userId = int.Parse(_httpContext.GetUserId());
+
             var query = _context.Set<Database.Rezervacija>().AsQueryable();
 
             if (search.ByVoznjaId)
             {
                 query = query.Where(x => x.VoznjaID == search.VoznjaID);
             }
-
+            if (search.UserActive)
+            {
+                query = query.Where(x => x.KorisnikID == userId && x.Voznja.IsAktivna);
+            }
+            if (search.UserNonActive)
+            {
+                query = query.Where(x => x.KorisnikID == userId && !x.Voznja.IsAktivna);
+            } 
+            if (search.UserAll)
+            {
+                query = query.Where(x => x.KorisnikID == userId);
+            }
+            if (search.ByVoznjaUserId)
+            {
+                query = query.Where(x => x.KorisnikID == userId && x.VoznjaID == search.VoznjaID);
+            }
             var result = query.Select(item => new Model.Rezervacija
             {
                 DatumRezervacije = item.DatumRezervacije,
@@ -56,11 +73,12 @@ namespace Carpool.WebAPI.Services
         }
         public override Model.Rezervacija GetById(int id)
         {
-            var model = _context.Rezervacije.Where(r => r.VoznjaID == id).Select(r => new Model.Rezervacija
+            var model = _context.Rezervacije.Where(r => r.RezervacijaID == id).Select(r => new Model.Rezervacija
             {
                DatumRezervacije=r.DatumRezervacije,
                KorisnickoIme=r.Korisnik.KorisnickoIme,
-               UsputniGradNaziv=r.UsputniGrad.Grad.Naziv
+               UsputniGradNaziv=r.UsputniGrad.Grad.Naziv,
+               VoznjaID=r.VoznjaID
             }).FirstOrDefault();
 
             return _mapper.Map<Model.Rezervacija>(model);
