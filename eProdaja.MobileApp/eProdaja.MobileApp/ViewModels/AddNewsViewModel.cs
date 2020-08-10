@@ -18,10 +18,10 @@ namespace eProdaja.MobileApp.ViewModels
 
         public AddNewsViewModel()
         {
-            SaveCommand = new Command(async() => await Save());
-            LoadCommand = new Command(async() => await LoadTipovi());
-            InitCommand = new Command(async(param) => await Init((int)param));
-            DeleteCommand = new Command(async() => await Ukloni());
+            SaveCommand = new Command(async () => await Save());
+            LoadCommand = new Command(async () => await LoadTipovi());
+            InitCommand = new Command(async (param) => await Init((int)param));
+            DeleteCommand = new Command(async () => await Ukloni());
         }
 
         int? obavijestID;
@@ -85,7 +85,7 @@ namespace eProdaja.MobileApp.ViewModels
         {
             try
             {
-               var o = await _obavijestiService.GetById<Obavijesti>(ObavijestiID);
+                var o = await _obavijestiService.GetById<Obavijesti>(ObavijestiID);
 
                 Naslov = o.Naslov;
                 KratkiOpis = o.KratkiOpis;
@@ -149,12 +149,13 @@ namespace eProdaja.MobileApp.ViewModels
         public async Task LoadTipovi()
         {
             var result = await _tipObavijestiService.Get<List<TipObavijesti>>(null);
-       
-                _tipovi.Clear();
-                foreach (var tip in result)
-                {
-                    _tipovi.Add(tip);
-                }
+
+            _tipovi.Clear();
+            foreach (var tip in result)
+            {
+                _tipovi.Add(tip);
+                SelectedTip = tip;
+            }
         }
     }
 }

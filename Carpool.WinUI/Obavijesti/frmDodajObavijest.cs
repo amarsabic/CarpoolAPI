@@ -25,18 +25,25 @@ namespace Carpool.WinUI.Obavijesti
             ObavijestiUpsertRequest request = new ObavijestiUpsertRequest();
 
             var idTip = cmbTipObavijesti.SelectedValue;
-            if (int.TryParse(idTip.ToString(), out int tipId))
+            if (idTip != null)
             {
-                request.TipObavijestiID = tipId;
+                if (int.TryParse(idTip.ToString(), out int tipId))
+                {
+                    request.TipObavijestiID = tipId;
+                }
+
+                request.DatumVrijemeObjave = DateTime.Now;
+                request.Naslov = txtNaslov.Text;
+                request.KratkiOpis = rtxtSadrzaj.Text;
+
+                await _obavijestiService.Insert<Model.Obavijesti>(request);
+
+                MessageBox.Show("Uspješno dodana obavijest");
             }
-
-            request.DatumVrijemeObjave = DateTime.Now;
-            request.Naslov = txtNaslov.Text;
-            request.KratkiOpis = rtxtSadrzaj.Text;
-
-            await _obavijestiService.Insert<Model.Obavijesti>(request);
-
-            MessageBox.Show("Uspješno dodana obavijest");
+            else
+            {
+                MessageBox.Show("Odaberite tip");
+            }
         }
 
         private async void frmDodaj_Load(object sender, EventArgs e)
@@ -47,8 +54,7 @@ namespace Carpool.WinUI.Obavijesti
         private async Task LoadTipove()
         {
             var result = await _tipObavijestiService.Get<List<Model.TipObavijesti>>(null);
-            result.Insert(0, new Model.TipObavijesti());
-
+         
             cmbTipObavijesti.DataSource = result;
 
             cmbTipObavijesti.DisplayMember = "NazivTipa";
