@@ -84,5 +84,24 @@ namespace Carpool.WebAPI.Services
 
             return _mapper.Map<Model.Automobil>(entity);
         }
+
+        public override Model.Automobil Update(int id, AutomobilInsertRequest request)
+        {
+            var entity = _context.Autmobili.Find(id);
+            _context.Autmobili.Attach(entity);
+            _context.Autmobili.Update(entity);
+
+            if (request.Slika == null)
+            {
+                request.Slika = entity.Slika;
+                request.SlikaThumb = entity.SlikaThumb;
+            }
+
+            _mapper.Map(request, entity);
+
+            _context.SaveChanges();
+
+            return _mapper.Map<Model.Automobil>(entity);
+        }
     }
 }

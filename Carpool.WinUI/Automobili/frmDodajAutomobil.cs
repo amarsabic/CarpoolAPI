@@ -46,7 +46,7 @@ namespace Carpool.WinUI.Automobili
             if (_id.HasValue)
             {
 
-                //await _apiService.Update<Model.Automobil>(_id, request);
+                await _apiService.Update<Model.Automobil>((int)_id, request);
             }
             else
             {
