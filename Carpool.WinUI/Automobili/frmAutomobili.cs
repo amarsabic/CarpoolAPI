@@ -19,7 +19,7 @@ namespace Carpool.WinUI.Automobili
             InitializeComponent();
         }
 
- 
+
         private void dgvAutomobili_DoubleClick(object sender, EventArgs e)
         {
             var id = dgvAutomobili.SelectedRows[0].Cells[0].Value;
@@ -43,16 +43,31 @@ namespace Carpool.WinUI.Automobili
 
         private async void btnPretragaKorisnika_Click(object sender, EventArgs e)
         {
-            AutomobilSearchRequest search = new AutomobilSearchRequest
+            if (string.IsNullOrWhiteSpace(txtKorisnik.Text))
             {
-                VozacID = int.Parse(txtKorisnik.Text),
-                PretragaPoVozacID=true
-            };
+                MessageBox.Show("Unesite ID vozača");
+            }
+            else if(!System.Text.RegularExpressions.Regex.IsMatch(txtKorisnik.Text, "^[0-9]*$"))
+            {
+                MessageBox.Show("ID mora biti broj");
+            }
+            else
+            {
+                AutomobilSearchRequest search = new AutomobilSearchRequest
+                {
+                    VozacID = int.Parse(txtKorisnik.Text),
+                    PretragaPoVozacID = true
+                };
 
-            var result = await _apiService.Get<List<Model.Automobil>>(search);
+                var result = await _apiService.Get<List<Model.Automobil>>(search);
+                if (result.Count() == 0)
+                {
+                    MessageBox.Show("Ne postoje automobili za traženog vozača!");
+                }
 
-            dgvAutomobili.AutoGenerateColumns = false;
-            dgvAutomobili.DataSource = result;
+                dgvAutomobili.AutoGenerateColumns = false;
+                dgvAutomobili.DataSource = result;
+            }
         }
     }
 }

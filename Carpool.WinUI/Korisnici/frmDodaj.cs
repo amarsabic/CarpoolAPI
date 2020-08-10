@@ -7,6 +7,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -29,7 +30,6 @@ namespace Carpool.WinUI.Korisnici
         {
             if (this.ValidateChildren())
             {
-
                 var roleList = clbUloge.CheckedItems.Cast<Model.Uloge>().Select(x => x.UlogaId).ToList();
 
                 var request = new KorisnikInsertRequest()
@@ -66,8 +66,6 @@ namespace Carpool.WinUI.Korisnici
                 {
                     MessageBox.Show("Uspješno izvršeno");
                 }
-
-                this.Close();
             }
         }
 
@@ -107,9 +105,10 @@ namespace Carpool.WinUI.Korisnici
 
         private void txtIme_Validating(object sender, CancelEventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(txtIme.Text))
+            if (string.IsNullOrWhiteSpace(txtIme.Text) && txtIme.Text.Length < 3)
             {
-                errorProvider.SetError(txtIme, Properties.Resources.Validation_RequiredField);
+                errorProvider.SetError(txtIme, Properties.Resources.Validation_RequiredField + "Minimalna dužina karaktera 3");
+                e.Cancel = true;
             }
             else
             {
@@ -119,9 +118,10 @@ namespace Carpool.WinUI.Korisnici
 
         private void txtPrezime_Validating(object sender, CancelEventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(txtPrezime.Text))
+            if (string.IsNullOrWhiteSpace(txtPrezime.Text) && txtPrezime.Text.Length < 3)
             {
-                errorProvider.SetError(txtPrezime, Properties.Resources.Validation_RequiredField);
+                errorProvider.SetError(txtPrezime, Properties.Resources.Validation_RequiredField + "Minimalna dužina karaktera 3");
+                e.Cancel = true;
             }
             else
             {
@@ -134,6 +134,11 @@ namespace Carpool.WinUI.Korisnici
             if (string.IsNullOrWhiteSpace(txtTelefon.Text))
             {
                 errorProvider.SetError(txtTelefon, Properties.Resources.Validation_RequiredField);
+                e.Cancel = true;
+            }
+            else if(!System.Text.RegularExpressions.Regex.IsMatch(txtTelefon.Text, "^[0-9]*$"))
+            {
+                errorProvider.SetError(txtTelefon, "Telefon može sadržavati samo brojeve");
             }
             else
             {
@@ -143,28 +148,24 @@ namespace Carpool.WinUI.Korisnici
 
         private void txtEmail_Validating(object sender, CancelEventArgs e)
         {
+            Regex regex = new Regex(@"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$");
+            Match match = regex.Match(txtEmail.Text);
+
             if (string.IsNullOrWhiteSpace(txtEmail.Text))
             {
                 errorProvider.SetError(txtEmail, Properties.Resources.Validation_RequiredField);
+                e.Cancel = true;
+            }
+            else if (!match.Success)
+            {
+                errorProvider.SetError(txtEmail, "Email mora biti u formatu mail@mail.com");
+                e.Cancel = true;
             }
             else
             {
                 errorProvider.SetError(txtEmail, null);
             }
         }
-
-        private void txtKorisnickoIme_Validating(object sender, CancelEventArgs e)
-        {
-            if (string.IsNullOrWhiteSpace(txtKorisnickoIme.Text) && txtKorisnickoIme.Text.Length < 3)
-            {
-                errorProvider.SetError(txtKorisnickoIme, Properties.Resources.Validation_RequiredField);
-            }
-            else
-            {
-                errorProvider.SetError(txtKorisnickoIme, null);
-            }
-        }
-
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
 
@@ -213,6 +214,24 @@ namespace Carpool.WinUI.Korisnici
         {
             frmVoznjeReport frm = new frmVoznjeReport(_id);
             frm.Show();
+        }
+
+        private void txtKorisnickoIme_Validating_1(object sender, CancelEventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txtKorisnickoIme.Text))
+            {
+                errorProvider.SetError(txtKorisnickoIme, Properties.Resources.Validation_RequiredField);
+                e.Cancel = true;
+            }
+            else if (txtKorisnickoIme.Text.Length < 4)
+            {
+                errorProvider.SetError(txtKorisnickoIme, "Korisničko ime mora sadržavati najmanje 4 karaktera");
+                e.Cancel = true;
+            }
+            else
+            {
+                errorProvider.SetError(txtKorisnickoIme, null);
+            }
         }
     }
 }

@@ -61,7 +61,7 @@ namespace Carpool.WinUI.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Mandatorno polje.
+        ///   Looks up a localized string similar to Obavezno polje.
         /// </summary>
         public static string Validation_RequiredField {
             get {

@@ -47,11 +47,48 @@ namespace Carpool.WinUI.Obavijesti
         private async Task LoadTipove()
         {
             var result = await _tipObavijestiService.Get<List<Model.TipObavijesti>>(null);
+            result.Insert(0, new Model.TipObavijesti());
 
             cmbTipObavijesti.DataSource = result;
 
             cmbTipObavijesti.DisplayMember = "NazivTipa";
             cmbTipObavijesti.ValueMember = "TipObavijestiID";
+        }
+
+        private void txtNaslov_Validating(object sender, CancelEventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txtNaslov.Text))
+            {
+                errorProvider.SetError(txtNaslov, Properties.Resources.Validation_RequiredField);
+                e.Cancel = true;
+            }
+            else if (txtNaslov.Text.Length < 5 || txtNaslov.Text.Length > 30)
+            {
+                errorProvider.SetError(txtNaslov, "Naslov mora sadržavati 5-30 karaktera");
+                e.Cancel = true;
+            }
+            else
+            {
+                errorProvider.SetError(txtNaslov, null);
+            }
+        }
+
+        private void rtxtSadrzaj_Validating(object sender, CancelEventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(rtxtSadrzaj.Text))
+            {
+                errorProvider.SetError(rtxtSadrzaj, Properties.Resources.Validation_RequiredField);
+                e.Cancel = true;
+            }
+            else if (rtxtSadrzaj.Text.Length < 30 || rtxtSadrzaj.Text.Length > 500)
+            {
+                errorProvider.SetError(rtxtSadrzaj, "Naslov mora sadržavati 30-500 karaktera");
+                e.Cancel = true;
+            }
+            else
+            {
+                errorProvider.SetError(rtxtSadrzaj, null);
+            }
         }
     }
 }

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.dgvAutomobili = new System.Windows.Forms.DataGridView();
             this.AutomobilID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Slika = new System.Windows.Forms.DataGridViewImageColumn();
@@ -42,7 +43,9 @@
             this.btnPretragaKorisnika = new System.Windows.Forms.Button();
             this.txtKorisnik = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dgvAutomobili)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             this.SuspendLayout();
             // 
             // dgvAutomobili
@@ -171,6 +174,10 @@
             this.label1.TabIndex = 29;
             this.label1.Text = "Pretraga po nazivu automobila";
             // 
+            // errorProvider
+            // 
+            this.errorProvider.ContainerControl = this;
+            // 
             // frmAutomobili
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -186,6 +193,7 @@
             this.Name = "frmAutomobili";
             this.Text = "Automobili";
             ((System.ComponentModel.ISupportInitialize)(this.dgvAutomobili)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -207,5 +215,6 @@
         private System.Windows.Forms.Button btnPretragaKorisnika;
         private System.Windows.Forms.TextBox txtKorisnik;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ErrorProvider errorProvider;
     }
 }

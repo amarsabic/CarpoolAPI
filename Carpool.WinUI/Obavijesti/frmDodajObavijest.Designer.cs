@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.label1 = new System.Windows.Forms.Label();
             this.txtNaslov = new System.Windows.Forms.TextBox();
             this.rtxtSadrzaj = new System.Windows.Forms.RichTextBox();
@@ -35,6 +36,8 @@
             this.cmbTipObavijesti = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.btnDodaj = new System.Windows.Forms.Button();
+            this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -52,6 +55,7 @@
             this.txtNaslov.Name = "txtNaslov";
             this.txtNaslov.Size = new System.Drawing.Size(218, 20);
             this.txtNaslov.TabIndex = 1;
+            this.txtNaslov.Validating += new System.ComponentModel.CancelEventHandler(this.txtNaslov_Validating);
             // 
             // rtxtSadrzaj
             // 
@@ -60,6 +64,7 @@
             this.rtxtSadrzaj.Size = new System.Drawing.Size(218, 96);
             this.rtxtSadrzaj.TabIndex = 2;
             this.rtxtSadrzaj.Text = "";
+            this.rtxtSadrzaj.Validating += new System.ComponentModel.CancelEventHandler(this.rtxtSadrzaj_Validating);
             // 
             // label2
             // 
@@ -97,7 +102,11 @@
             this.btnDodaj.UseVisualStyleBackColor = true;
             this.btnDodaj.Click += new System.EventHandler(this.btnDodaj_Click);
             // 
-            // frmDodaj
+            // errorProvider
+            // 
+            this.errorProvider.ContainerControl = this;
+            // 
+            // frmDodajObavijest
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -109,9 +118,10 @@
             this.Controls.Add(this.rtxtSadrzaj);
             this.Controls.Add(this.txtNaslov);
             this.Controls.Add(this.label1);
-            this.Name = "frmDodaj";
+            this.Name = "frmDodajObavijest";
             this.Text = "frmDodaj";
             this.Load += new System.EventHandler(this.frmDodaj_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -126,5 +136,6 @@
         private System.Windows.Forms.ComboBox cmbTipObavijesti;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button btnDodaj;
+        private System.Windows.Forms.ErrorProvider errorProvider;
     }
 }

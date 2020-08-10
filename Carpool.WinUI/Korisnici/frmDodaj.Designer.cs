@@ -146,6 +146,7 @@
             this.txtKorisnickoIme.Name = "txtKorisnickoIme";
             this.txtKorisnickoIme.Size = new System.Drawing.Size(195, 20);
             this.txtKorisnickoIme.TabIndex = 8;
+            this.txtKorisnickoIme.Validating += new System.ComponentModel.CancelEventHandler(this.txtKorisnickoIme_Validating_1);
             // 
             // label6
             // 
