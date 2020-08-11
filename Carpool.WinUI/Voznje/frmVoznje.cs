@@ -150,6 +150,11 @@ namespace Carpool.WinUI.Voznje
 
                 var result = await _voznje.Get<List<Model.Voznja>>(search);
 
+                if (result.Count() == 0)
+                {
+                    MessageBox.Show("Trenutno nema rezultata za traženu destinaciju");
+                }
+
                 dgvVoznje.AutoGenerateColumns = false;
                 dgvVoznje.DataSource = result;
             }
@@ -195,15 +200,26 @@ namespace Carpool.WinUI.Voznje
 
         private async void btnPretragaKorisnika_Click(object sender, EventArgs e)
         {
-            VoznjaSearchRequest search = new VoznjaSearchRequest
+            if (string.IsNullOrWhiteSpace(txtKorisnik.Text))
             {
-               VozacID=int.Parse(txtKorisnik.Text)
-            };
+                MessageBox.Show("Unesite ID vozača");
+            }
+            else if (!System.Text.RegularExpressions.Regex.IsMatch(txtKorisnik.Text, "^[0-9]*$"))
+            {
+                MessageBox.Show("ID mora biti broj");
+            }
+            else
+            {
+                VoznjaSearchRequest search = new VoznjaSearchRequest
+                {
+                    VozacID = int.Parse(txtKorisnik.Text)
+                };
 
-            var result = await _voznje.Get<List<Model.Voznja>>(search);
+                var result = await _voznje.Get<List<Model.Voznja>>(search);
 
-            dgvVoznje.AutoGenerateColumns = false;
-            dgvVoznje.DataSource = result;
+                dgvVoznje.AutoGenerateColumns = false;
+                dgvVoznje.DataSource = result;
+            }
         }
     }
 }

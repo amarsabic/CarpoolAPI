@@ -323,7 +323,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(490, 526);
+            this.ClientSize = new System.Drawing.Size(502, 589);
             this.Controls.Add(this.dtmDatumRodjenja);
             this.Controls.Add(this.btnPrint);
             this.Controls.Add(this.label11);
