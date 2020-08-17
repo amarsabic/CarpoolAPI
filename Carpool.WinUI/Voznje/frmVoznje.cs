@@ -217,8 +217,16 @@ namespace Carpool.WinUI.Voznje
 
                 var result = await _voznje.Get<List<Model.Voznja>>(search);
 
-                dgvVoznje.AutoGenerateColumns = false;
-                dgvVoznje.DataSource = result;
+                if (result.Count() > 0)
+                {
+                    dgvVoznje.AutoGenerateColumns = false;
+                    dgvVoznje.DataSource = result;
+                }
+                else
+                {
+                    MessageBox.Show("Ne postoji vozač sa traženim ID");
+                }
+               
             }
         }
     }

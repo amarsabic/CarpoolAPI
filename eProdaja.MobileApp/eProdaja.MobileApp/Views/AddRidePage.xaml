@@ -43,6 +43,7 @@
             <Label Text="Slobodna mjesta"></Label>
             <Label Text="{Binding SlobodnaMjesta}"></Label>
             <Stepper Value="{Binding SlobodnaMjesta}" Minimum="1" Maximum="6"></Stepper>
+            <Label Text="Cijena"></Label>
             <Entry Placeholder="Puna cijena" Text="{Binding PunaCijena}"></Entry>
             <Label Text="Datum polaska"></Label>
             <DatePicker Date="{Binding DatumPolaska}" MinimumDate="{Binding MinimumDate}"></DatePicker>

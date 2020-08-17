@@ -11,7 +11,7 @@ using Xamarin.Forms;
 
 namespace eProdaja.MobileApp.ViewModels
 {
-    public class AddRideViewModel:BaseViewModel
+    public class AddRideViewModel : BaseViewModel
     {
         private readonly APIService _gradovi = new APIService("Grad");
         private readonly APIService _automobili = new APIService("Automobil");
@@ -32,7 +32,7 @@ namespace eProdaja.MobileApp.ViewModels
         ObservableCollection<Grad> _SelectedGradovi = new ObservableCollection<Grad>();
         ObservableCollection<Grad> _UsputniGradovi = new ObservableCollection<Grad>();
         ObservableCollection<Automobil> _Automobili = new ObservableCollection<Automobil>();
-  
+
 
         int _slobodnaMjesta;
         int? voznjaID;
@@ -97,24 +97,26 @@ namespace eProdaja.MobileApp.ViewModels
         public ObservableCollection<Grad> SelectedGradovi
         {
             get { return _SelectedGradovi; }
-            set { SetProperty(ref _SelectedGradovi, value);}
+            set { SetProperty(ref _SelectedGradovi, value); }
         }
         private Grad _selectedUsputni;
         public Grad SelectedUsputni
         {
             get { return _selectedUsputni; }
-            set { SetProperty(ref _selectedUsputni, value);
+            set
+            {
+                SetProperty(ref _selectedUsputni, value);
                 foreach (var selektirani in SelectedGradovi)
                 {
-                    if(selektirani == SelectedUsputni)
+                    if (selektirani == SelectedUsputni)
                     {
-                       Application.Current.MainPage.DisplayAlert("Carpool", "Grad je već dodan!", "OK");
-                       return;
+                        Application.Current.MainPage.DisplayAlert("Carpool", "Grad je već dodan!", "OK");
+                        return;
                     }
                 }
                 _SelectedGradovi.Add(SelectedUsputni);
                 if (SelectedGradovi.Count != 0)
-                    CheckListBool=true;
+                    CheckListBool = true;
             }
         }
 
@@ -150,7 +152,7 @@ namespace eProdaja.MobileApp.ViewModels
             get { return _selectedAutomobil; }
             set { SetProperty(ref _selectedAutomobil, value); }
         }
- 
+
         public ICommand LoadCommand { get; set; }
         public ICommand LoadAutomobiliCommand { get; set; }
         public ICommand DeleteUsputniCommand { get; set; }
@@ -165,14 +167,14 @@ namespace eProdaja.MobileApp.ViewModels
         {
             VoznjaUspertRequest request = new VoznjaUspertRequest
             {
-                IsAktivna=false,
-                ZavrsiVoznju=true
+                IsAktivna = false,
+                ZavrsiVoznju = true
             };
 
             try
             {
-               var v = await _voznja.Update<Voznja>(voznjaID,request);
-                v.IsAktivna=false;
+                var v = await _voznja.Update<Voznja>(voznjaID, request);
+                v.IsAktivna = false;
 
                 await Application.Current.MainPage.DisplayAlert("Carpool", "Uspješno završena vožnja", "OK");
                 await Application.Current.MainPage.Navigation.PopAsync();
@@ -209,28 +211,28 @@ namespace eProdaja.MobileApp.ViewModels
                         SelectedOdrediste = odrediste;
                     }
                 }
-        
+
                 foreach (var usputni in v.UsputniGradoviE)
                 {
                     SelectedGradovi.Add(new Grad
                     {
-                        GradID=usputni.GradID,
-                        Naziv=usputni.Grad.Naziv
+                        GradID = usputni.GradID,
+                        Naziv = usputni.Grad.Naziv
                     });
-                   CheckListBool = true;
+                    CheckListBool = true;
                 }
 
                 string parseTime = v.VrijemePolaska;
 
                 var ts = TimeSpan.Parse(parseTime);
-               
+
                 SlobodnaMjesta = v.SlobodnaMjesta;
                 PunaCijena = v.PunaCijena;
                 DatumPolaska = v.DatumPolaska;
                 VrijemePolaska = ts;
                 foreach (var auto in Automobili)
                 {
-                    if(auto.AutomobilID == v.AutomobilID)
+                    if (auto.AutomobilID == v.AutomobilID)
                     {
                         SelectedAutomobil = auto;
                         SelectedAutomobilProvjera = auto;
@@ -239,7 +241,7 @@ namespace eProdaja.MobileApp.ViewModels
 
                 voznjaID = voznjaId;
                 IsVisibleUkloni = true;
-               
+
             }
             catch (Exception)
             {
@@ -248,29 +250,88 @@ namespace eProdaja.MobileApp.ViewModels
             }
         }
 
+        public bool CheckUsputni()
+        {
+            foreach (var usputni in SelectedGradovi)
+            {
+                if(SelectedPolazak==usputni || SelectedOdrediste == usputni)
+                    return true;
+            }
+            return false;
+        }
+
+        public bool Validate()
+        {
+            if (SelectedPolazak == null)
+            {
+                Application.Current.MainPage.DisplayAlert("Greška", "Odaberite polazište!", "OK");
+                return false;
+            }
+            else if (SelectedOdrediste == null)
+            {
+                Application.Current.MainPage.DisplayAlert("Greška", "Odaberite odredište!", "OK");
+                return false;
+            }
+            else if (SlobodnaMjesta == 0)
+            {
+                Application.Current.MainPage.DisplayAlert("Greška", "Unesite broj slobodnih mjesta!", "OK");
+                return false;
+            }
+            else if (PunaCijena == 0)
+            {
+                Application.Current.MainPage.DisplayAlert("Greška", "Unesite cijenu!", "OK");
+                return false;
+            }
+            else if (SelectedAutomobil == null)
+            {
+                Application.Current.MainPage.DisplayAlert("Greška", "Odaberite automobil!", "OK");
+                return false;
+            }
+            else if (SelectedPolazak==SelectedOdrediste)
+            {
+                Application.Current.MainPage.DisplayAlert("Greška", "Polazak i destinacija moraju biti različiti!", "OK");
+                return false;
+            }
+            else if (CheckUsputni())
+            {
+                Application.Current.MainPage.DisplayAlert("Greška", "Usputni gradovi ne mogu sadržavati polazak i destinaciju!", "OK");
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+
 
         public async Task SaveRide()
         {
+            if (!Validate())
+            {
+                return;
+            }
+
             var vrijemeString = VrijemePolaska.ToString("hh\\:mm");
 
             VoznjaUspertRequest voznja = new VoznjaUspertRequest
             {
-                AutomobilID=SelectedAutomobil.AutomobilID,
-                DatumObjave=DateTime.Now,
-                DatumPolaska=DatumPolaska,
-                GradDestinacijaID=SelectedOdrediste.GradID,
-                GradPolaskaID=SelectedPolazak.GradID,
-                IsAktivna=true,
-                VrijemePolaska= vrijemeString,
-                PunaCijena=PunaCijena,
-                SlobodnaMjesta=SlobodnaMjesta
+                AutomobilID = SelectedAutomobil.AutomobilID,
+                DatumObjave = DateTime.Now,
+                DatumPolaska = DatumPolaska,
+                GradDestinacijaID = SelectedOdrediste.GradID,
+                GradPolaskaID = SelectedPolazak.GradID,
+                IsAktivna = true,
+                VrijemePolaska = vrijemeString,
+                PunaCijena = PunaCijena,
+                SlobodnaMjesta = SlobodnaMjesta
             };
 
             foreach (var selektirani in SelectedGradovi)
             {
-                voznja.UsputniGradoviGrad.Add(new Grad { 
-                    GradID=selektirani.GradID,
-                    Naziv=selektirani.Naziv
+                voznja.UsputniGradoviGrad.Add(new Grad
+                {
+                    GradID = selektirani.GradID,
+                    Naziv = selektirani.Naziv
                 });
             }
 
@@ -321,8 +382,8 @@ namespace eProdaja.MobileApp.ViewModels
                     return;
                 }
             }
-        } 
-    
+        }
+
         public async Task LoadAutomobili(bool provjera)
         {
             var searchByVozac = new AutomobilSearchRequest
@@ -333,7 +394,7 @@ namespace eProdaja.MobileApp.ViewModels
             {
                 searchByVozac.ProvjeraAktivnosti = true;
             }
-           
+
             var list = await _automobili.Get<List<Automobil>>(searchByVozac);
 
             _Automobili.Clear();

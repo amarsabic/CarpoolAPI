@@ -39,7 +39,7 @@ namespace Carpool.WinUI
             {
                 if (ex.Call.HttpStatus == System.Net.HttpStatusCode.Unauthorized)
                 {
-                    MessageBox.Show("Niste authentificirani");
+                    MessageBox.Show("Pogrešan username ili password");
                 }
                 throw;
             }

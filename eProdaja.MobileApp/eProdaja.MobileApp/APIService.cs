@@ -49,7 +49,7 @@ namespace eProdaja.MobileApp
             {
                 if (ex.Call.HttpStatus == System.Net.HttpStatusCode.Unauthorized)
                 {
-                    await Application.Current.MainPage.DisplayAlert("Greška", "Niste authentificirani", "OK");
+                    await Application.Current.MainPage.DisplayAlert("Greška", "Pogrešan username ili password", "OK");
                 }
                 throw;
             }
@@ -67,7 +67,7 @@ namespace eProdaja.MobileApp
             {
                 if (ex.Call.HttpStatus == System.Net.HttpStatusCode.Unauthorized)
                 {
-                    await Application.Current.MainPage.DisplayAlert("Greška", "Niste authentificirani", "OK");
+                    await Application.Current.MainPage.DisplayAlert("Greška", "Pogrešan username ili password", "OK");
                 }
                 throw;
             }
@@ -96,7 +96,7 @@ namespace eProdaja.MobileApp
             {
                 if (ex.Call.HttpStatus == System.Net.HttpStatusCode.Unauthorized)
                 {
-                    await Application.Current.MainPage.DisplayAlert("Greška", "Niste authentificirani", "OK");
+                    await Application.Current.MainPage.DisplayAlert("Greška", "Pogrešan username ili password", "OK");
                 }
                 throw;
             }

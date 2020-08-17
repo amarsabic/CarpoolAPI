@@ -20,7 +20,7 @@ namespace Carpool.WebAPI.Filters
             }
             else
             {
-                context.ModelState.AddModelError("ERROR", "Greška na serveru");
+                context.ModelState.AddModelError("ERROR", "Greska na serveru");
                 context.HttpContext.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
             }
 

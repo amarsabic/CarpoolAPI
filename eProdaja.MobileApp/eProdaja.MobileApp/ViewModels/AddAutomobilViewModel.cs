@@ -4,6 +4,7 @@ using eProdaja.MobileApp.Views;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
@@ -99,8 +100,62 @@ namespace eProdaja.MobileApp.ViewModels
             }
         }
 
+        public bool Validate()
+        {
+
+            if (string.IsNullOrWhiteSpace(BrojRegOznaka) || string.IsNullOrWhiteSpace(Godiste) ||
+                string.IsNullOrWhiteSpace(Model) || string.IsNullOrWhiteSpace(Naziv))
+            {
+                Application.Current.MainPage.DisplayAlert("Greška", "Popunite sva polja!", "OK");
+                return false;
+            }
+            else if (Naziv.Length < 2)
+            {
+                Application.Current.MainPage.DisplayAlert("Greška", "Naziv mora sadržavati minimalno 2 karaktera!", "OK");
+                return false;
+            }
+            else if (!System.Text.RegularExpressions.Regex.IsMatch(Godiste, "^[0-9]*$"))
+            {
+                Application.Current.MainPage.DisplayAlert("Greška", "Godina može sadržavati samo brojeve!", "OK");
+                return false;
+            }
+            else if (Godiste.Length != 4)
+            {
+                Application.Current.MainPage.DisplayAlert("Greška", "Godina mora sadržavati 4 broja", "OK");
+                return false;
+            }
+            else if (!System.Text.RegularExpressions.Regex.IsMatch(BrojRegOznaka, "^[0-9]*$"))
+            {
+                Application.Current.MainPage.DisplayAlert("Greška", "Broj registracije može sadržavati samo brojeve!", "OK");
+                return false;
+            }
+            else if (BrojRegOznaka.Length != 13)
+            {
+                Application.Current.MainPage.DisplayAlert("Greška", "Telefon mora sadržavati 13 brojeva!", "OK");
+                return false;
+            }
+            else if (DatumIstekaRegistracije == null)
+            {
+                Application.Current.MainPage.DisplayAlert("Greška", "Odaberite datum isteka registracije!", "OK");
+                return false;
+            }
+            else if (Slika == null)
+            {
+                Application.Current.MainPage.DisplayAlert("Greška", "Obavezno dodavanje slike automobila!", "OK");
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+
         async Task Save()
         {
+            if (!Validate())
+            {
+                return;
+            }
             var model = new AutomobilInsertRequest
             {
                 BrojRegOznaka = BrojRegOznaka,

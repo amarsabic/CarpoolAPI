@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
@@ -22,7 +23,7 @@ namespace eProdaja.MobileApp.ViewModels
             RegisterCommand = new Command(async () => await Register());
             LoadCommand = new Command(async () => await LoadGradovi());
         }
-        bool _photoPicked=false;
+        bool _photoPicked = false;
         public bool PhotoPicked
         {
             get { return _photoPicked; }
@@ -58,7 +59,8 @@ namespace eProdaja.MobileApp.ViewModels
         public byte[] Slika
         {
             get { return _slika; }
-            set { 
+            set
+            {
                 SetProperty(ref _slika, value);
                 PhotoPicked = true;
             }
@@ -125,8 +127,72 @@ namespace eProdaja.MobileApp.ViewModels
 
         public ICommand RegisterCommand { get; set; }
 
+        public bool Validate()
+        {
+
+            Regex regex = new Regex(@"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$");
+            Match match = regex.Match(Email);
+
+            if (string.IsNullOrWhiteSpace(Ime) || string.IsNullOrWhiteSpace(Prezime) ||
+                string.IsNullOrWhiteSpace(Email) || string.IsNullOrWhiteSpace(KorisnickoIme) || string.IsNullOrWhiteSpace(Telefon) || string.IsNullOrWhiteSpace(Telefon) 
+                || string.IsNullOrWhiteSpace(Lozinka) || string.IsNullOrWhiteSpace(LozinkaPotvrda))
+            {
+                Application.Current.MainPage.DisplayAlert("Greška", "Popunite sva polja!", "OK");
+                return false;
+            }
+            else if (Ime.Length < 3)
+            {
+                Application.Current.MainPage.DisplayAlert("Greška", "Ime mora sadržavati minimalno 3 karaktera!", "OK");
+                return false;
+            }
+            else if (Prezime.Length < 2)
+            {
+                Application.Current.MainPage.DisplayAlert("Greška", "Prezime mora sadržavati minimalno 2 karaktera!", "OK");
+                return false;
+            }
+            else if (!match.Success)
+            {
+                Application.Current.MainPage.DisplayAlert("Greška", "Mail mora biti u formatu mail@mail.com!", "OK");
+                return false;
+            }
+            else if (KorisnickoIme.Length < 4)
+            {
+                Application.Current.MainPage.DisplayAlert("Greška", "Korisničko ime mora sadržavati minimalno 4 karaktera!", "OK");
+                return false;
+            }
+            else if (!System.Text.RegularExpressions.Regex.IsMatch(Telefon, "^[0-9]*$"))
+            {
+                Application.Current.MainPage.DisplayAlert("Greška", "Telefon može sadržavati samo brojeve!", "OK");
+                return false;
+            }
+            else if (Telefon.Length != 9)
+            {
+                Application.Current.MainPage.DisplayAlert("Greška", "Telefon mora sadržavati 9 brojeva!", "OK");
+                return false;
+            }
+            else if (SelectedGrad == null)
+            {
+                Application.Current.MainPage.DisplayAlert("Greška", "Odaberite grad!", "OK");
+                return false;
+            }
+            else if (Datum == null)
+            {
+                Application.Current.MainPage.DisplayAlert("Greška", "Odaberite datum!", "OK");
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+
         public async Task Register()
         {
+
+            if (!Validate())
+            {
+                return;
+            }
             var request = new KorisnikInsertRequest
             {
                 Ime = Ime,
@@ -136,10 +202,10 @@ namespace eProdaja.MobileApp.ViewModels
                 GradID = SelectedGrad.GradID,
                 Password = Lozinka,
                 PasswordConfirmation = LozinkaPotvrda,
-                BrojTelefona= Telefon,
-                Slika=Slika,
-                SlikaThumb=SlikaThumb,
-                DatumRodjenja=Datum
+                BrojTelefona = Telefon,
+                Slika = Slika,
+                SlikaThumb = SlikaThumb,
+                DatumRodjenja = Datum
             };
 
             try
@@ -152,7 +218,6 @@ namespace eProdaja.MobileApp.ViewModels
             {
 
             }
-
         }
     }
 }

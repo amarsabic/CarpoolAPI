@@ -12,7 +12,7 @@ namespace Carpool.WinUI
 {
     public partial class frmLogin : Form
     {
-        APIService _service = new APIService("Automobil");
+        APIService _service = new APIService("Korisnik");
         public frmLogin()
         {
             InitializeComponent();
@@ -44,7 +44,9 @@ namespace Carpool.WinUI
                     Properties.Settings.Default.passUser = "";
                     Properties.Settings.Default.Save();
                 }
-     
+
+                var user = await _service.Get<dynamic>(null);
+
                 frmIndex frm = new frmIndex();
                 frm.Show();
             

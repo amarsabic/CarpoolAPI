@@ -106,9 +106,37 @@ namespace eProdaja.MobileApp.ViewModels
             }
         }
 
-        async Task Save()
+        public bool Validate()
         {
 
+            if (string.IsNullOrWhiteSpace(Naslov) || string.IsNullOrWhiteSpace(KratkiOpis))
+            {
+                Application.Current.MainPage.DisplayAlert("Greška", "Popunite sva polja!", "OK");
+                return false;
+            }
+            else if (Naslov.Length < 5 || Naslov.Length > 30)
+            {
+                Application.Current.MainPage.DisplayAlert("Greška", "Naslov mora sadržavati 5-30 karaktera", "OK");
+                return false;
+            }
+            else if (KratkiOpis.Length < 30 || KratkiOpis.Length > 500)
+            {
+                Application.Current.MainPage.DisplayAlert("Greška", "Sadržaj mora sadržavati 30-500 karaktera", "OK");
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+
+
+        async Task Save()
+        {
+            if (!Validate())
+            {
+                return;
+            }
             var request = new ObavijestiUpsertRequest
             {
                 Naslov = Naslov,

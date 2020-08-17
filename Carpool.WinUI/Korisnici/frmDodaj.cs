@@ -191,8 +191,6 @@ namespace Carpool.WinUI.Korisnici
             {
 
             }
-
-
         }
 
         private async void btnObrisiKorisnika_Click(object sender, EventArgs e)

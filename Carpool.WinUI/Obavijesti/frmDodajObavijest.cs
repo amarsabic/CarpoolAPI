@@ -88,7 +88,7 @@ namespace Carpool.WinUI.Obavijesti
             }
             else if (rtxtSadrzaj.Text.Length < 30 || rtxtSadrzaj.Text.Length > 500)
             {
-                errorProvider.SetError(rtxtSadrzaj, "Naslov mora sadržavati 30-500 karaktera");
+                errorProvider.SetError(rtxtSadrzaj, "Sadržaj mora sadržavati 30-500 karaktera");
                 e.Cancel = true;
             }
             else
