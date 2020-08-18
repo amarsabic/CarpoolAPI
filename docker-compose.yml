@@ -5,7 +5,7 @@ services:
         build:
           context: .
         environment:
-            - ConnectionStrings:Carpool=Server=db,1433;Database=DockerTest2;User=sa;Password=MasterCoolOkPw52;
+            - ConnectionStrings:Carpool=Server=db,1433;Database=160287;User=sa;Password=MasterCoolOkPw52;
         ports:
             - "50552:50552"
         depends_on:
@@ -23,7 +23,7 @@ services:
             ACCEPT_EULA: "Y"
             MSSQL_PID: "Developer"
         ports:
-            - 1433:1433
+            - 1403:1433
         networks:
             - mynet
 networks:
