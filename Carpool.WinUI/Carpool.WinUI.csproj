@@ -492,10 +492,24 @@
     <Compile Include="frmLogin.Designer.cs">
       <DependentUpon>frmLogin.cs</DependentUpon>
     </Compile>
+    <Compile Include="Izvještaji\DSCARPOOL.cs">
+      <DependentUpon>DSCARPOOL.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Izvještaji\DSCARPOOL.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>DSCARPOOL.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Izvještaji\DSREZ.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DSREZ.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Izvještaji\frmRezervacijePrint.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Izvještaji\frmRezervacijePrint.Designer.cs">
+      <DependentUpon>frmRezervacijePrint.cs</DependentUpon>
     </Compile>
     <Compile Include="Izvještaji\frmVoznjeReport.cs">
       <SubType>Form</SubType>
@@ -566,9 +580,13 @@
     <EmbeddedResource Include="frmLogin.resx">
       <DependentUpon>frmLogin.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Izvještaji\frmRezervacijePrint.resx">
+      <DependentUpon>frmRezervacijePrint.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Izvještaji\frmVoznjeReport.resx">
       <DependentUpon>frmVoznjeReport.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Izvještaji\rptPrintRezervacija.rdlc" />
     <EmbeddedResource Include="Izvještaji\rptVoznje.rdlc" />
     <EmbeddedResource Include="Korisnici\frmDodaj.resx">
       <DependentUpon>frmDodaj.cs</DependentUpon>
@@ -614,6 +632,17 @@
     </None>
     <None Include="Izvještaji\DSCARPOOL.xss">
       <DependentUpon>DSCARPOOL.xsd</DependentUpon>
+    </None>
+    <None Include="Izvještaji\DSREZ.xsc">
+      <DependentUpon>DSREZ.xsd</DependentUpon>
+    </None>
+    <None Include="Izvještaji\DSREZ.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DSREZ.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Izvještaji\DSREZ.xss">
+      <DependentUpon>DSREZ.xsd</DependentUpon>
     </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

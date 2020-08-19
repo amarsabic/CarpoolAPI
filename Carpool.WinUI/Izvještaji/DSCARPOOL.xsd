@@ -12,13 +12,14 @@
   <xs:element name="DSCARPOOL" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="DSCARPOOL" msprop:Generator_UserDSName="DSCARPOOL">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="tblZavršene" msprop:Generator_TableClassName="tblZavršeneDataTable" msprop:Generator_TableVarName="tabletblZavršene" msprop:Generator_TablePropName="tblZavršene" msprop:Generator_RowDeletingName="tblZavršeneRowDeleting" msprop:Generator_RowChangingName="tblZavršeneRowChanging" msprop:Generator_RowEvHandlerName="tblZavršeneRowChangeEventHandler" msprop:Generator_RowDeletedName="tblZavršeneRowDeleted" msprop:Generator_UserTableName="tblZavršene" msprop:Generator_RowChangedName="tblZavršeneRowChanged" msprop:Generator_RowEvArgName="tblZavršeneRowChangeEvent" msprop:Generator_RowClassName="tblZavršeneRow">
+        <xs:element name="tblZavršene" msprop:Generator_TableClassName="tblZavršeneDataTable" msprop:Generator_TableVarName="tabletblZavršene" msprop:Generator_RowChangedName="tblZavršeneRowChanged" msprop:Generator_TablePropName="tblZavršene" msprop:Generator_RowDeletingName="tblZavršeneRowDeleting" msprop:Generator_RowChangingName="tblZavršeneRowChanging" msprop:Generator_RowEvHandlerName="tblZavršeneRowChangeEventHandler" msprop:Generator_RowDeletedName="tblZavršeneRowDeleted" msprop:Generator_RowClassName="tblZavršeneRow" msprop:Generator_UserTableName="tblZavršene" msprop:Generator_RowEvArgName="tblZavršeneRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Rb" msprop:Generator_ColumnVarNameInTable="columnRb" msprop:Generator_ColumnPropNameInRow="Rb" msprop:Generator_ColumnPropNameInTable="RbColumn" msprop:Generator_UserColumnName="Rb" type="xs:int" minOccurs="0" />
               <xs:element name="GradPolaska" msprop:Generator_ColumnVarNameInTable="columnGradPolaska" msprop:Generator_ColumnPropNameInRow="GradPolaska" msprop:Generator_ColumnPropNameInTable="GradPolaskaColumn" msprop:Generator_UserColumnName="GradPolaska" type="xs:string" minOccurs="0" />
               <xs:element name="GradDestinacija" msprop:Generator_ColumnVarNameInTable="columnGradDestinacija" msprop:Generator_ColumnPropNameInRow="GradDestinacija" msprop:Generator_ColumnPropNameInTable="GradDestinacijaColumn" msprop:Generator_UserColumnName="GradDestinacija" type="xs:string" minOccurs="0" />
               <xs:element name="AutomobilNaziv" msprop:Generator_ColumnVarNameInTable="columnAutomobilNaziv" msprop:Generator_ColumnPropNameInRow="AutomobilNaziv" msprop:Generator_ColumnPropNameInTable="AutomobilNazivColumn" msprop:Generator_UserColumnName="AutomobilNaziv" type="xs:string" minOccurs="0" />
+              <xs:element name="DatumObjave" msprop:Generator_ColumnVarNameInTable="columnDatumObjave" msprop:Generator_ColumnPropNameInRow="DatumObjave" msprop:Generator_ColumnPropNameInTable="DatumObjaveColumn" msprop:Generator_UserColumnName="DatumObjave" type="xs:string" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>

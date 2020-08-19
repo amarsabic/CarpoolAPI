@@ -20,17 +20,17 @@ namespace Carpool.WinUI.Izvještaji {
     [global::System.ComponentModel.DesignerCategoryAttribute("code")]
     [global::System.ComponentModel.ToolboxItem(true)]
     [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedDataSetSchema")]
-    [global::System.Xml.Serialization.XmlRootAttribute("DSCARPOOL")]
+    [global::System.Xml.Serialization.XmlRootAttribute("DSREZ")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.DataSet")]
-    public partial class DSCARPOOL : global::System.Data.DataSet {
+    public partial class DSREZ : global::System.Data.DataSet {
         
-        private tblZavršeneDataTable tabletblZavršene;
+        private TblRezervacijeDataTable tableTblRezervacije;
         
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        public DSCARPOOL() {
+        public DSREZ() {
             this.BeginInit();
             this.InitClass();
             global::System.ComponentModel.CollectionChangeEventHandler schemaChangedHandler = new global::System.ComponentModel.CollectionChangeEventHandler(this.SchemaChanged);
@@ -41,7 +41,7 @@ namespace Carpool.WinUI.Izvještaji {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        protected DSCARPOOL(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+        protected DSREZ(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                 base(info, context, false) {
             if ((this.IsBinarySerialized(info, context) == true)) {
                 this.InitVars(false);
@@ -54,8 +54,8 @@ namespace Carpool.WinUI.Izvještaji {
             if ((this.DetermineSchemaSerializationMode(info, context) == global::System.Data.SchemaSerializationMode.IncludeSchema)) {
                 global::System.Data.DataSet ds = new global::System.Data.DataSet();
                 ds.ReadXmlSchema(new global::System.Xml.XmlTextReader(new global::System.IO.StringReader(strSchema)));
-                if ((ds.Tables["tblZavršene"] != null)) {
-                    base.Tables.Add(new tblZavršeneDataTable(ds.Tables["tblZavršene"]));
+                if ((ds.Tables["TblRezervacije"] != null)) {
+                    base.Tables.Add(new TblRezervacijeDataTable(ds.Tables["TblRezervacije"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -79,9 +79,9 @@ namespace Carpool.WinUI.Izvještaji {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Browsable(false)]
         [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
-        public tblZavršeneDataTable tblZavršene {
+        public TblRezervacijeDataTable TblRezervacije {
             get {
-                return this.tabletblZavršene;
+                return this.tableTblRezervacije;
             }
         }
         
@@ -127,7 +127,7 @@ namespace Carpool.WinUI.Izvještaji {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         public override global::System.Data.DataSet Clone() {
-            DSCARPOOL cln = ((DSCARPOOL)(base.Clone()));
+            DSREZ cln = ((DSREZ)(base.Clone()));
             cln.InitVars();
             cln.SchemaSerializationMode = this.SchemaSerializationMode;
             return cln;
@@ -152,8 +152,8 @@ namespace Carpool.WinUI.Izvještaji {
                 this.Reset();
                 global::System.Data.DataSet ds = new global::System.Data.DataSet();
                 ds.ReadXml(reader);
-                if ((ds.Tables["tblZavršene"] != null)) {
-                    base.Tables.Add(new tblZavršeneDataTable(ds.Tables["tblZavršene"]));
+                if ((ds.Tables["TblRezervacije"] != null)) {
+                    base.Tables.Add(new TblRezervacijeDataTable(ds.Tables["TblRezervacije"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -188,10 +188,10 @@ namespace Carpool.WinUI.Izvještaji {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         internal void InitVars(bool initTable) {
-            this.tabletblZavršene = ((tblZavršeneDataTable)(base.Tables["tblZavršene"]));
+            this.tableTblRezervacije = ((TblRezervacijeDataTable)(base.Tables["TblRezervacije"]));
             if ((initTable == true)) {
-                if ((this.tabletblZavršene != null)) {
-                    this.tabletblZavršene.InitVars();
+                if ((this.tableTblRezervacije != null)) {
+                    this.tableTblRezervacije.InitVars();
                 }
             }
         }
@@ -199,18 +199,18 @@ namespace Carpool.WinUI.Izvještaji {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private void InitClass() {
-            this.DataSetName = "DSCARPOOL";
+            this.DataSetName = "DSREZ";
             this.Prefix = "";
-            this.Namespace = "http://tempuri.org/DSCARPOOL.xsd";
+            this.Namespace = "http://tempuri.org/DSREZ.xsd";
             this.EnforceConstraints = true;
             this.SchemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
-            this.tabletblZavršene = new tblZavršeneDataTable();
-            base.Tables.Add(this.tabletblZavršene);
+            this.tableTblRezervacije = new TblRezervacijeDataTable();
+            base.Tables.Add(this.tableTblRezervacije);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        private bool ShouldSerializetblZavršene() {
+        private bool ShouldSerializeTblRezervacije() {
             return false;
         }
         
@@ -225,7 +225,7 @@ namespace Carpool.WinUI.Izvještaji {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedDataSetSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
-            DSCARPOOL ds = new DSCARPOOL();
+            DSREZ ds = new DSREZ();
             global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
             global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
             global::System.Xml.Schema.XmlSchemaAny any = new global::System.Xml.Schema.XmlSchemaAny();
@@ -270,29 +270,27 @@ namespace Carpool.WinUI.Izvještaji {
         }
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        public delegate void tblZavršeneRowChangeEventHandler(object sender, tblZavršeneRowChangeEvent e);
+        public delegate void TblRezervacijeRowChangeEventHandler(object sender, TblRezervacijeRowChangeEvent e);
         
         /// <summary>
         ///Represents the strongly named DataTable class.
         ///</summary>
         [global::System.Serializable()]
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
-        public partial class tblZavršeneDataTable : global::System.Data.TypedTableBase<tblZavršeneRow> {
+        public partial class TblRezervacijeDataTable : global::System.Data.TypedTableBase<TblRezervacijeRow> {
             
-            private global::System.Data.DataColumn columnRb;
+            private global::System.Data.DataColumn columnRezervacijaId;
             
-            private global::System.Data.DataColumn columnGradPolaska;
+            private global::System.Data.DataColumn columnKorisnickoIme;
             
-            private global::System.Data.DataColumn columnGradDestinacija;
+            private global::System.Data.DataColumn columnDatumRezervacije;
             
-            private global::System.Data.DataColumn columnAutomobilNaziv;
-            
-            private global::System.Data.DataColumn columnDatumObjave;
+            private global::System.Data.DataColumn columnUsputniGradNaziv;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public tblZavršeneDataTable() {
-                this.TableName = "tblZavršene";
+            public TblRezervacijeDataTable() {
+                this.TableName = "TblRezervacije";
                 this.BeginInit();
                 this.InitClass();
                 this.EndInit();
@@ -300,7 +298,7 @@ namespace Carpool.WinUI.Izvještaji {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            internal tblZavršeneDataTable(global::System.Data.DataTable table) {
+            internal TblRezervacijeDataTable(global::System.Data.DataTable table) {
                 this.TableName = table.TableName;
                 if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
                     this.CaseSensitive = table.CaseSensitive;
@@ -317,48 +315,40 @@ namespace Carpool.WinUI.Izvještaji {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            protected tblZavršeneDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+            protected TblRezervacijeDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                     base(info, context) {
                 this.InitVars();
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn RbColumn {
+            public global::System.Data.DataColumn RezervacijaIdColumn {
                 get {
-                    return this.columnRb;
+                    return this.columnRezervacijaId;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn GradPolaskaColumn {
+            public global::System.Data.DataColumn KorisnickoImeColumn {
                 get {
-                    return this.columnGradPolaska;
+                    return this.columnKorisnickoIme;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn GradDestinacijaColumn {
+            public global::System.Data.DataColumn DatumRezervacijeColumn {
                 get {
-                    return this.columnGradDestinacija;
+                    return this.columnDatumRezervacije;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn AutomobilNazivColumn {
+            public global::System.Data.DataColumn UsputniGradNazivColumn {
                 get {
-                    return this.columnAutomobilNaziv;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn DatumObjaveColumn {
-                get {
-                    return this.columnDatumObjave;
+                    return this.columnUsputniGradNaziv;
                 }
             }
             
@@ -373,49 +363,48 @@ namespace Carpool.WinUI.Izvještaji {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public tblZavršeneRow this[int index] {
+            public TblRezervacijeRow this[int index] {
                 get {
-                    return ((tblZavršeneRow)(this.Rows[index]));
+                    return ((TblRezervacijeRow)(this.Rows[index]));
                 }
             }
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public event tblZavršeneRowChangeEventHandler tblZavršeneRowChanging;
+            public event TblRezervacijeRowChangeEventHandler TblRezervacijeRowChanging;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public event tblZavršeneRowChangeEventHandler tblZavršeneRowChanged;
+            public event TblRezervacijeRowChangeEventHandler TblRezervacijeRowChanged;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public event tblZavršeneRowChangeEventHandler tblZavršeneRowDeleting;
+            public event TblRezervacijeRowChangeEventHandler TblRezervacijeRowDeleting;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public event tblZavršeneRowChangeEventHandler tblZavršeneRowDeleted;
+            public event TblRezervacijeRowChangeEventHandler TblRezervacijeRowDeleted;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void AddtblZavršeneRow(tblZavršeneRow row) {
+            public void AddTblRezervacijeRow(TblRezervacijeRow row) {
                 this.Rows.Add(row);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public tblZavršeneRow AddtblZavršeneRow(int Rb, string GradPolaska, string GradDestinacija, string AutomobilNaziv, string DatumObjave) {
-                tblZavršeneRow rowtblZavršeneRow = ((tblZavršeneRow)(this.NewRow()));
+            public TblRezervacijeRow AddTblRezervacijeRow(int RezervacijaId, string KorisnickoIme, string DatumRezervacije, string UsputniGradNaziv) {
+                TblRezervacijeRow rowTblRezervacijeRow = ((TblRezervacijeRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
-                        Rb,
-                        GradPolaska,
-                        GradDestinacija,
-                        AutomobilNaziv,
-                        DatumObjave};
-                rowtblZavršeneRow.ItemArray = columnValuesArray;
-                this.Rows.Add(rowtblZavršeneRow);
-                return rowtblZavršeneRow;
+                        RezervacijaId,
+                        KorisnickoIme,
+                        DatumRezervacije,
+                        UsputniGradNaziv};
+                rowTblRezervacijeRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowTblRezervacijeRow);
+                return rowTblRezervacijeRow;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public override global::System.Data.DataTable Clone() {
-                tblZavršeneDataTable cln = ((tblZavršeneDataTable)(base.Clone()));
+                TblRezervacijeDataTable cln = ((TblRezervacijeDataTable)(base.Clone()));
                 cln.InitVars();
                 return cln;
             }
@@ -423,58 +412,55 @@ namespace Carpool.WinUI.Izvještaji {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override global::System.Data.DataTable CreateInstance() {
-                return new tblZavršeneDataTable();
+                return new TblRezervacijeDataTable();
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             internal void InitVars() {
-                this.columnRb = base.Columns["Rb"];
-                this.columnGradPolaska = base.Columns["GradPolaska"];
-                this.columnGradDestinacija = base.Columns["GradDestinacija"];
-                this.columnAutomobilNaziv = base.Columns["AutomobilNaziv"];
-                this.columnDatumObjave = base.Columns["DatumObjave"];
+                this.columnRezervacijaId = base.Columns["RezervacijaId"];
+                this.columnKorisnickoIme = base.Columns["KorisnickoIme"];
+                this.columnDatumRezervacije = base.Columns["DatumRezervacije"];
+                this.columnUsputniGradNaziv = base.Columns["UsputniGradNaziv"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             private void InitClass() {
-                this.columnRb = new global::System.Data.DataColumn("Rb", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnRb);
-                this.columnGradPolaska = new global::System.Data.DataColumn("GradPolaska", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnGradPolaska);
-                this.columnGradDestinacija = new global::System.Data.DataColumn("GradDestinacija", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnGradDestinacija);
-                this.columnAutomobilNaziv = new global::System.Data.DataColumn("AutomobilNaziv", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnAutomobilNaziv);
-                this.columnDatumObjave = new global::System.Data.DataColumn("DatumObjave", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnDatumObjave);
+                this.columnRezervacijaId = new global::System.Data.DataColumn("RezervacijaId", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnRezervacijaId);
+                this.columnKorisnickoIme = new global::System.Data.DataColumn("KorisnickoIme", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnKorisnickoIme);
+                this.columnDatumRezervacije = new global::System.Data.DataColumn("DatumRezervacije", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnDatumRezervacije);
+                this.columnUsputniGradNaziv = new global::System.Data.DataColumn("UsputniGradNaziv", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnUsputniGradNaziv);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public tblZavršeneRow NewtblZavršeneRow() {
-                return ((tblZavršeneRow)(this.NewRow()));
+            public TblRezervacijeRow NewTblRezervacijeRow() {
+                return ((TblRezervacijeRow)(this.NewRow()));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
-                return new tblZavršeneRow(builder);
+                return new TblRezervacijeRow(builder);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override global::System.Type GetRowType() {
-                return typeof(tblZavršeneRow);
+                return typeof(TblRezervacijeRow);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanged(e);
-                if ((this.tblZavršeneRowChanged != null)) {
-                    this.tblZavršeneRowChanged(this, new tblZavršeneRowChangeEvent(((tblZavršeneRow)(e.Row)), e.Action));
+                if ((this.TblRezervacijeRowChanged != null)) {
+                    this.TblRezervacijeRowChanged(this, new TblRezervacijeRowChangeEvent(((TblRezervacijeRow)(e.Row)), e.Action));
                 }
             }
             
@@ -482,8 +468,8 @@ namespace Carpool.WinUI.Izvještaji {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanging(e);
-                if ((this.tblZavršeneRowChanging != null)) {
-                    this.tblZavršeneRowChanging(this, new tblZavršeneRowChangeEvent(((tblZavršeneRow)(e.Row)), e.Action));
+                if ((this.TblRezervacijeRowChanging != null)) {
+                    this.TblRezervacijeRowChanging(this, new TblRezervacijeRowChangeEvent(((TblRezervacijeRow)(e.Row)), e.Action));
                 }
             }
             
@@ -491,8 +477,8 @@ namespace Carpool.WinUI.Izvještaji {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleted(e);
-                if ((this.tblZavršeneRowDeleted != null)) {
-                    this.tblZavršeneRowDeleted(this, new tblZavršeneRowChangeEvent(((tblZavršeneRow)(e.Row)), e.Action));
+                if ((this.TblRezervacijeRowDeleted != null)) {
+                    this.TblRezervacijeRowDeleted(this, new TblRezervacijeRowChangeEvent(((TblRezervacijeRow)(e.Row)), e.Action));
                 }
             }
             
@@ -500,14 +486,14 @@ namespace Carpool.WinUI.Izvještaji {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleting(e);
-                if ((this.tblZavršeneRowDeleting != null)) {
-                    this.tblZavršeneRowDeleting(this, new tblZavršeneRowChangeEvent(((tblZavršeneRow)(e.Row)), e.Action));
+                if ((this.TblRezervacijeRowDeleting != null)) {
+                    this.TblRezervacijeRowDeleting(this, new TblRezervacijeRowChangeEvent(((TblRezervacijeRow)(e.Row)), e.Action));
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void RemovetblZavršeneRow(tblZavršeneRow row) {
+            public void RemoveTblRezervacijeRow(TblRezervacijeRow row) {
                 this.Rows.Remove(row);
             }
             
@@ -516,7 +502,7 @@ namespace Carpool.WinUI.Izvještaji {
             public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                DSCARPOOL ds = new DSCARPOOL();
+                DSREZ ds = new DSREZ();
                 global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
                 any1.Namespace = "http://www.w3.org/2001/XMLSchema";
                 any1.MinOccurs = new decimal(0);
@@ -534,7 +520,7 @@ namespace Carpool.WinUI.Izvještaji {
                 type.Attributes.Add(attribute1);
                 global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
                 attribute2.Name = "tableTypeName";
-                attribute2.FixedValue = "tblZavršeneDataTable";
+                attribute2.FixedValue = "TblRezervacijeDataTable";
                 type.Attributes.Add(attribute2);
                 type.Particle = sequence;
                 global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
@@ -578,155 +564,127 @@ namespace Carpool.WinUI.Izvještaji {
         /// <summary>
         ///Represents strongly named DataRow class.
         ///</summary>
-        public partial class tblZavršeneRow : global::System.Data.DataRow {
+        public partial class TblRezervacijeRow : global::System.Data.DataRow {
             
-            private tblZavršeneDataTable tabletblZavršene;
+            private TblRezervacijeDataTable tableTblRezervacije;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            internal tblZavršeneRow(global::System.Data.DataRowBuilder rb) : 
+            internal TblRezervacijeRow(global::System.Data.DataRowBuilder rb) : 
                     base(rb) {
-                this.tabletblZavršene = ((tblZavršeneDataTable)(this.Table));
+                this.tableTblRezervacije = ((TblRezervacijeDataTable)(this.Table));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public int Rb {
+            public int RezervacijaId {
                 get {
                     try {
-                        return ((int)(this[this.tabletblZavršene.RbColumn]));
+                        return ((int)(this[this.tableTblRezervacije.RezervacijaIdColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Rb\' in table \'tblZavršene\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'RezervacijaId\' in table \'TblRezervacije\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tabletblZavršene.RbColumn] = value;
+                    this[this.tableTblRezervacije.RezervacijaIdColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public string GradPolaska {
+            public string KorisnickoIme {
                 get {
                     try {
-                        return ((string)(this[this.tabletblZavršene.GradPolaskaColumn]));
+                        return ((string)(this[this.tableTblRezervacije.KorisnickoImeColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'GradPolaska\' in table \'tblZavršene\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'KorisnickoIme\' in table \'TblRezervacije\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tabletblZavršene.GradPolaskaColumn] = value;
+                    this[this.tableTblRezervacije.KorisnickoImeColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public string GradDestinacija {
+            public string DatumRezervacije {
                 get {
                     try {
-                        return ((string)(this[this.tabletblZavršene.GradDestinacijaColumn]));
+                        return ((string)(this[this.tableTblRezervacije.DatumRezervacijeColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'GradDestinacija\' in table \'tblZavršene\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'DatumRezervacije\' in table \'TblRezervacije\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tabletblZavršene.GradDestinacijaColumn] = value;
+                    this[this.tableTblRezervacije.DatumRezervacijeColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public string AutomobilNaziv {
+            public string UsputniGradNaziv {
                 get {
                     try {
-                        return ((string)(this[this.tabletblZavršene.AutomobilNazivColumn]));
+                        return ((string)(this[this.tableTblRezervacije.UsputniGradNazivColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'AutomobilNaziv\' in table \'tblZavršene\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'UsputniGradNaziv\' in table \'TblRezervacije\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tabletblZavršene.AutomobilNazivColumn] = value;
+                    this[this.tableTblRezervacije.UsputniGradNazivColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public string DatumObjave {
-                get {
-                    try {
-                        return ((string)(this[this.tabletblZavršene.DatumObjaveColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'DatumObjave\' in table \'tblZavršene\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tabletblZavršene.DatumObjaveColumn] = value;
-                }
+            public bool IsRezervacijaIdNull() {
+                return this.IsNull(this.tableTblRezervacije.RezervacijaIdColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool IsRbNull() {
-                return this.IsNull(this.tabletblZavršene.RbColumn);
+            public void SetRezervacijaIdNull() {
+                this[this.tableTblRezervacije.RezervacijaIdColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void SetRbNull() {
-                this[this.tabletblZavršene.RbColumn] = global::System.Convert.DBNull;
+            public bool IsKorisnickoImeNull() {
+                return this.IsNull(this.tableTblRezervacije.KorisnickoImeColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool IsGradPolaskaNull() {
-                return this.IsNull(this.tabletblZavršene.GradPolaskaColumn);
+            public void SetKorisnickoImeNull() {
+                this[this.tableTblRezervacije.KorisnickoImeColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void SetGradPolaskaNull() {
-                this[this.tabletblZavršene.GradPolaskaColumn] = global::System.Convert.DBNull;
+            public bool IsDatumRezervacijeNull() {
+                return this.IsNull(this.tableTblRezervacije.DatumRezervacijeColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool IsGradDestinacijaNull() {
-                return this.IsNull(this.tabletblZavršene.GradDestinacijaColumn);
+            public void SetDatumRezervacijeNull() {
+                this[this.tableTblRezervacije.DatumRezervacijeColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void SetGradDestinacijaNull() {
-                this[this.tabletblZavršene.GradDestinacijaColumn] = global::System.Convert.DBNull;
+            public bool IsUsputniGradNazivNull() {
+                return this.IsNull(this.tableTblRezervacije.UsputniGradNazivColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool IsAutomobilNazivNull() {
-                return this.IsNull(this.tabletblZavršene.AutomobilNazivColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void SetAutomobilNazivNull() {
-                this[this.tabletblZavršene.AutomobilNazivColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool IsDatumObjaveNull() {
-                return this.IsNull(this.tabletblZavršene.DatumObjaveColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void SetDatumObjaveNull() {
-                this[this.tabletblZavršene.DatumObjaveColumn] = global::System.Convert.DBNull;
+            public void SetUsputniGradNazivNull() {
+                this[this.tableTblRezervacije.UsputniGradNazivColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -734,22 +692,22 @@ namespace Carpool.WinUI.Izvještaji {
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        public class tblZavršeneRowChangeEvent : global::System.EventArgs {
+        public class TblRezervacijeRowChangeEvent : global::System.EventArgs {
             
-            private tblZavršeneRow eventRow;
+            private TblRezervacijeRow eventRow;
             
             private global::System.Data.DataRowAction eventAction;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public tblZavršeneRowChangeEvent(tblZavršeneRow row, global::System.Data.DataRowAction action) {
+            public TblRezervacijeRowChangeEvent(TblRezervacijeRow row, global::System.Data.DataRowAction action) {
                 this.eventRow = row;
                 this.eventAction = action;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public tblZavršeneRow Row {
+            public TblRezervacijeRow Row {
                 get {
                     return this.eventRow;
                 }

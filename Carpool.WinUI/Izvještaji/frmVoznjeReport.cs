@@ -34,8 +34,8 @@ namespace Carpool.WinUI.Izvještaji
 
             VoznjaSearchRequest search = new VoznjaSearchRequest
             {
-               IsVozacZavrsene=true,
-               VozacID=id  
+                IsVozacZavrseneDesktop = true,
+                VozacID = id
             };
 
             var model = await _voznja.Get<List<Voznja>>(search);
@@ -48,6 +48,7 @@ namespace Carpool.WinUI.Izvještaji
                 red.AutomobilNaziv = zavrsena.AutomobilNazivModel;
                 red.GradDestinacija = zavrsena.GradDestinacija;
                 red.GradPolaska = zavrsena.GradPolaska;
+                red.DatumObjave = zavrsena.DatumObjave.ToShortDateString();
                 tbl.Rows.Add(red);
             }
 

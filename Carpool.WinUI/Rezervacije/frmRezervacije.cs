@@ -1,4 +1,5 @@
 ﻿using Carpool.Model.Requests;
+using Carpool.WinUI.Izvještaji;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -46,6 +47,12 @@ namespace Carpool.WinUI.Rezervacije
             var rezervacijaId = int.Parse(dgvRezervacije.SelectedRows[0].Cells[0].Value.ToString());
 
             frmUkloniRezervaciju frm = new frmUkloniRezervaciju(rezervacijaId);
+            frm.Show();
+        }
+
+        private void btnPrint_Click(object sender, EventArgs e)
+        {
+            frmRezervacijePrint frm = new frmRezervacijePrint(_id);
             frm.Show();
         }
     }

@@ -36,6 +36,7 @@
             this.GradPolaska = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.GradDestinacija = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.UsputniGradNaziv = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnPrint = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvRezervacije)).BeginInit();
             this.SuspendLayout();
             // 
@@ -109,11 +110,22 @@
             this.UsputniGradNaziv.Name = "UsputniGradNaziv";
             this.UsputniGradNaziv.ReadOnly = true;
             // 
+            // btnPrint
+            // 
+            this.btnPrint.Location = new System.Drawing.Point(1046, 108);
+            this.btnPrint.Name = "btnPrint";
+            this.btnPrint.Size = new System.Drawing.Size(118, 43);
+            this.btnPrint.TabIndex = 1;
+            this.btnPrint.Text = "Printaj rezervaciju";
+            this.btnPrint.UseVisualStyleBackColor = true;
+            this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click);
+            // 
             // frmRezervacije
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1176, 606);
+            this.Controls.Add(this.btnPrint);
             this.Controls.Add(this.dgvRezervacije);
             this.Name = "frmRezervacije";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -134,5 +146,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn GradPolaska;
         private System.Windows.Forms.DataGridViewTextBoxColumn GradDestinacija;
         private System.Windows.Forms.DataGridViewTextBoxColumn UsputniGradNaziv;
+        private System.Windows.Forms.Button btnPrint;
     }
 }

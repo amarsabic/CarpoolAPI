@@ -202,6 +202,10 @@ namespace Carpool.WebAPI.Services
             {
                 query = query.Where(x => x.VozacID == userId && x.IsAktivna == false);
             }
+            if (search.IsVozacZavrseneDesktop)
+            {
+                query = query.Where(x => x.VozacID == search.VozacID && x.IsAktivna == false);
+            }
             if (search?.VozacID!=null)
             {
                 query = query.Where(x => x.VozacID==search.VozacID);
