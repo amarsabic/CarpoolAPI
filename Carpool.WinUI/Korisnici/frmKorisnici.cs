@@ -61,5 +61,20 @@ namespace Carpool.WinUI.Korisnici
             dgvKorisnici.AutoGenerateColumns = false;
             dgvKorisnici.DataSource = result;
         }
+
+        private async void frmKorisnici_Load(object sender, EventArgs e)
+        {
+            var result = await _apiService.Get<List<Model.Korisnik>>(null);
+
+            if (result.Count() == 0)
+            {
+                MessageBox.Show("Trenutno nema traženih rezultata");
+            }
+            else
+            {
+                dgvKorisnici.AutoGenerateColumns = false;
+                dgvKorisnici.DataSource = result;
+            }
+        }
     }
 }

@@ -192,6 +192,7 @@
             this.Controls.Add(this.dgvAutomobili);
             this.Name = "frmAutomobili";
             this.Text = "Automobili";
+            this.Load += new System.EventHandler(this.frmAutomobili_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvAutomobili)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
             this.ResumeLayout(false);

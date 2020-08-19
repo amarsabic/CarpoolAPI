@@ -69,5 +69,19 @@ namespace Carpool.WinUI.Automobili
                 dgvAutomobili.DataSource = result;
             }
         }
+
+        private async void frmAutomobili_Load(object sender, EventArgs e)
+        {
+            var result = await _apiService.Get<List<Model.Automobil>>(null);
+            if (result.Count() != 0)
+            {
+                dgvAutomobili.AutoGenerateColumns = false;
+                dgvAutomobili.DataSource = result;
+            }
+            else
+            {
+                MessageBox.Show("Trenutno ne postoje automobili u bazi!");
+            }
+        }
     }
 }

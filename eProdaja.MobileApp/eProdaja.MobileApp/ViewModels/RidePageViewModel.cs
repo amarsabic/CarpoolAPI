@@ -151,8 +151,7 @@ namespace eProdaja.MobileApp.ViewModels
                 {
                     SearchFromHomePage = true,
                     GradDestinacijaID=SelectedOdrediste.GradID,
-                    GradPolaskaID=SelectedPolazak.GradID,
-                    DatumPolaska= DatumPolaskaProvjera
+                    GradPolaskaID=SelectedPolazak.GradID
                 };
 
                 var model = await _voznja.Get<List<Voznja>>(search);

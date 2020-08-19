@@ -40,7 +40,6 @@ namespace Carpool.WinUI.Voznje
         private async Task LoadPolazak()
         {
             var result = await _gradovi.Get<List<Model.Grad>>(null);
-            result.Insert(0, new Model.Grad());
 
             cmbPolazak.DataSource = result;
           
@@ -50,7 +49,6 @@ namespace Carpool.WinUI.Voznje
         private async Task LoadDestinacija()
         {
             var result = await _gradovi.Get<List<Model.Grad>>(null);
-            result.Insert(0, new Model.Grad());
 
             cmbDestinacija.DataSource = result;
 
@@ -83,9 +81,6 @@ namespace Carpool.WinUI.Voznje
             //cmbAutomobil.DisplayMember = "NazivModel";
             //cmbAutomobil.ValueMember = "AutomobilID";
         }
-
-     
-
         private async Task LoadVoznje()
         {
             VoznjaSearchRequest search = new VoznjaSearchRequest
@@ -136,18 +131,34 @@ namespace Carpool.WinUI.Voznje
                 };
 
                 var idPolazak = cmbPolazak.SelectedValue;
-
-                if (int.TryParse(idPolazak.ToString(), out int IDpolazak))
-                {
-                    search.GradPolaskaID = IDpolazak;
-                }
                 var idDestinacija = cmbDestinacija.SelectedValue;
 
-                if (int.TryParse(idDestinacija.ToString(), out int IDdestinacija))
+                if (idPolazak != null)
                 {
-                    search.GradDestinacijaID = IDdestinacija;
+                    if (int.TryParse(idPolazak.ToString(), out int IDpolazak))
+                    {
+                        search.GradPolaskaID = IDpolazak;
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Unesite grad polaska");
+                    return;
                 }
 
+                if (idDestinacija!=null)
+                {
+                    if (int.TryParse(idDestinacija.ToString(), out int IDdestinacija))
+                    {
+                        search.GradDestinacijaID = IDdestinacija;
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Unesite grad destinaciju");
+                    return;
+                }
+                
                 var result = await _voznje.Get<List<Model.Voznja>>(search);
 
                 if (result.Count() == 0)

@@ -124,14 +124,9 @@ namespace eProdaja.MobileApp.ViewModels
                 Application.Current.MainPage.DisplayAlert("Greška", "Godina mora sadržavati 4 broja", "OK");
                 return false;
             }
-            else if (!System.Text.RegularExpressions.Regex.IsMatch(BrojRegOznaka, "^[0-9]*$"))
+            else if (BrojRegOznaka.Length != 9)
             {
-                Application.Current.MainPage.DisplayAlert("Greška", "Broj registracije može sadržavati samo brojeve!", "OK");
-                return false;
-            }
-            else if (BrojRegOznaka.Length != 13)
-            {
-                Application.Current.MainPage.DisplayAlert("Greška", "Telefon mora sadržavati 13 brojeva!", "OK");
+                Application.Current.MainPage.DisplayAlert("Greška", "Broj registracije mora sadržavati 9 karaktera!", "OK");
                 return false;
             }
             else if (DatumIstekaRegistracije == null)
