@@ -61,6 +61,26 @@ namespace Carpool.WinUI.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap computer_icons_user_login_swiggy_png_clip_art {
+            get {
+                object obj = ResourceManager.GetObject("computer-icons-user-login-swiggy-png-clip-art", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap icons8_vanpool_96 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-vanpool-96", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Obavezno polje.
         /// </summary>
         public static string Validation_RequiredField {

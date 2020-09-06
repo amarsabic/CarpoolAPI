@@ -228,8 +228,10 @@ namespace Carpool.WebAPI.Services
 
             if (search.SearchFromHomePage)
             {
+                var searchDatum = search.DatumPolaska.Date;
                 query = query.Where(x => (x.GradPolaskaID == search.GradPolaskaID && x.GradDestinacijaID == search.GradDestinacijaID) || (x.UsputniGradovi.Any(u => u.GradID == search.GradDestinacijaID) && x.GradPolaskaID == search.GradPolaskaID));
                 query = query.Where(x => x.IsAktivna);
+                query = query.Where(x => x.DatumPolaska == searchDatum);
             }
 
 

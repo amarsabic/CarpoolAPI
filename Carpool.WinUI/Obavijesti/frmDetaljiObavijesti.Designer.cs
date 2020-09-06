@@ -52,10 +52,10 @@
             this.NazivTipa,
             this.DatumVrijemeObjave,
             this.KorisnickoIme});
-            this.dgvObavijestiList.Location = new System.Drawing.Point(12, 188);
+            this.dgvObavijestiList.Location = new System.Drawing.Point(12, 69);
             this.dgvObavijestiList.Name = "dgvObavijestiList";
             this.dgvObavijestiList.ReadOnly = true;
-            this.dgvObavijestiList.Size = new System.Drawing.Size(759, 250);
+            this.dgvObavijestiList.Size = new System.Drawing.Size(880, 331);
             this.dgvObavijestiList.TabIndex = 0;
             // 
             // Naslov
@@ -95,7 +95,7 @@
             // 
             // btnDodajObavijest
             // 
-            this.btnDodajObavijest.Location = new System.Drawing.Point(651, 150);
+            this.btnDodajObavijest.Location = new System.Drawing.Point(718, 22);
             this.btnDodajObavijest.Name = "btnDodajObavijest";
             this.btnDodajObavijest.Size = new System.Drawing.Size(120, 23);
             this.btnDodajObavijest.TabIndex = 1;
@@ -105,14 +105,14 @@
             // 
             // txtSearch
             // 
-            this.txtSearch.Location = new System.Drawing.Point(44, 130);
+            this.txtSearch.Location = new System.Drawing.Point(27, 25);
             this.txtSearch.Name = "txtSearch";
             this.txtSearch.Size = new System.Drawing.Size(164, 20);
             this.txtSearch.TabIndex = 2;
             // 
             // btnTrazi
             // 
-            this.btnTrazi.Location = new System.Drawing.Point(214, 128);
+            this.btnTrazi.Location = new System.Drawing.Point(206, 25);
             this.btnTrazi.Name = "btnTrazi";
             this.btnTrazi.Size = new System.Drawing.Size(75, 23);
             this.btnTrazi.TabIndex = 3;
@@ -122,7 +122,7 @@
             // 
             // btnPrikaziSve
             // 
-            this.btnPrikaziSve.Location = new System.Drawing.Point(549, 150);
+            this.btnPrikaziSve.Location = new System.Drawing.Point(596, 22);
             this.btnPrikaziSve.Name = "btnPrikaziSve";
             this.btnPrikaziSve.Size = new System.Drawing.Size(87, 23);
             this.btnPrikaziSve.TabIndex = 4;
@@ -134,7 +134,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(904, 409);
             this.Controls.Add(this.btnPrikaziSve);
             this.Controls.Add(this.btnTrazi);
             this.Controls.Add(this.txtSearch);

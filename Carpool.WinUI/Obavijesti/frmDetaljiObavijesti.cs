@@ -19,6 +19,7 @@ namespace Carpool.WinUI.Obavijesti
             InitializeComponent();
         }
 
+
         private async void frmDetaljiObavijesti_Load(object sender, EventArgs e)
         {
             var list = await _obavijestiService.Get<List<Model.Obavijesti>>(null);

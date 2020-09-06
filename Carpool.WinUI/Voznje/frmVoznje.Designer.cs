@@ -47,13 +47,15 @@
             this.btnPretragaDestinacije = new System.Windows.Forms.Button();
             this.btnAktivne = new System.Windows.Forms.Button();
             this.btnZavrsene = new System.Windows.Forms.Button();
+            this.dtmDatumPolaska = new System.Windows.Forms.DateTimePicker();
+            this.label3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvVoznje)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(22, 38);
+            this.label1.Location = new System.Drawing.Point(114, 36);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(70, 13);
             this.label1.TabIndex = 1;
@@ -62,7 +64,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(22, 84);
+            this.label2.Location = new System.Drawing.Point(114, 82);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(83, 13);
             this.label2.TabIndex = 3;
@@ -71,17 +73,17 @@
             // cmbPolazak
             // 
             this.cmbPolazak.FormattingEnabled = true;
-            this.cmbPolazak.Location = new System.Drawing.Point(25, 55);
+            this.cmbPolazak.Location = new System.Drawing.Point(117, 53);
             this.cmbPolazak.Name = "cmbPolazak";
-            this.cmbPolazak.Size = new System.Drawing.Size(194, 21);
+            this.cmbPolazak.Size = new System.Drawing.Size(265, 21);
             this.cmbPolazak.TabIndex = 4;
             // 
             // cmbDestinacija
             // 
             this.cmbDestinacija.FormattingEnabled = true;
-            this.cmbDestinacija.Location = new System.Drawing.Point(25, 100);
+            this.cmbDestinacija.Location = new System.Drawing.Point(117, 98);
             this.cmbDestinacija.Name = "cmbDestinacija";
-            this.cmbDestinacija.Size = new System.Drawing.Size(194, 21);
+            this.cmbDestinacija.Size = new System.Drawing.Size(265, 21);
             this.cmbDestinacija.TabIndex = 5;
             // 
             // label6
@@ -112,7 +114,7 @@
             this.dgvVoznje.Name = "dgvVoznje";
             this.dgvVoznje.ReadOnly = true;
             this.dgvVoznje.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvVoznje.Size = new System.Drawing.Size(1190, 443);
+            this.dgvVoznje.Size = new System.Drawing.Size(984, 443);
             this.dgvVoznje.TabIndex = 19;
             this.dgvVoznje.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.dgvVoznje_MouseDoubleClick);
             // 
@@ -193,19 +195,24 @@
             // 
             // btnPretragaDestinacije
             // 
-            this.btnPretragaDestinacije.Location = new System.Drawing.Point(68, 136);
+            this.btnPretragaDestinacije.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(136)))), ((int)(((byte)(169)))));
+            this.btnPretragaDestinacije.FlatAppearance.BorderSize = 0;
+            this.btnPretragaDestinacije.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPretragaDestinacije.ForeColor = System.Drawing.Color.Gainsboro;
+            this.btnPretragaDestinacije.Location = new System.Drawing.Point(188, 181);
             this.btnPretragaDestinacije.Name = "btnPretragaDestinacije";
-            this.btnPretragaDestinacije.Size = new System.Drawing.Size(101, 23);
+            this.btnPretragaDestinacije.Size = new System.Drawing.Size(121, 33);
             this.btnPretragaDestinacije.TabIndex = 20;
-            this.btnPretragaDestinacije.Text = "Traži ";
-            this.btnPretragaDestinacije.UseVisualStyleBackColor = true;
+            this.btnPretragaDestinacije.Text = "Pretraga";
+            this.btnPretragaDestinacije.UseVisualStyleBackColor = false;
             this.btnPretragaDestinacije.Click += new System.EventHandler(this.btnPretragaDestinacije_Click);
             // 
             // btnAktivne
             // 
-            this.btnAktivne.Location = new System.Drawing.Point(994, 205);
+            this.btnAktivne.FlatAppearance.BorderSize = 0;
+            this.btnAktivne.Location = new System.Drawing.Point(734, 197);
             this.btnAktivne.Name = "btnAktivne";
-            this.btnAktivne.Size = new System.Drawing.Size(101, 23);
+            this.btnAktivne.Size = new System.Drawing.Size(101, 31);
             this.btnAktivne.TabIndex = 21;
             this.btnAktivne.Text = "Aktivne vožnje";
             this.btnAktivne.UseVisualStyleBackColor = true;
@@ -213,19 +220,39 @@
             // 
             // btnZavrsene
             // 
-            this.btnZavrsene.Location = new System.Drawing.Point(1101, 205);
+            this.btnZavrsene.Location = new System.Drawing.Point(841, 197);
             this.btnZavrsene.Name = "btnZavrsene";
-            this.btnZavrsene.Size = new System.Drawing.Size(101, 23);
+            this.btnZavrsene.Size = new System.Drawing.Size(101, 31);
             this.btnZavrsene.TabIndex = 22;
             this.btnZavrsene.Text = "Završene vožnje";
             this.btnZavrsene.UseVisualStyleBackColor = true;
             this.btnZavrsene.Click += new System.EventHandler(this.btnZavrsene_Click);
             // 
+            // dtmDatumPolaska
+            // 
+            this.dtmDatumPolaska.Location = new System.Drawing.Point(117, 146);
+            this.dtmDatumPolaska.MinDate = new System.DateTime(2020, 9, 7, 0, 0, 0, 0);
+            this.dtmDatumPolaska.Name = "dtmDatumPolaska";
+            this.dtmDatumPolaska.Size = new System.Drawing.Size(265, 20);
+            this.dtmDatumPolaska.TabIndex = 23;
+            this.dtmDatumPolaska.Value = new System.DateTime(2020, 9, 7, 0, 0, 0, 0);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(114, 130);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(78, 13);
+            this.label3.TabIndex = 24;
+            this.label3.Text = "Datum polaska";
+            // 
             // frmVoznje
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1214, 703);
+            this.ClientSize = new System.Drawing.Size(996, 703);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.dtmDatumPolaska);
             this.Controls.Add(this.btnZavrsene);
             this.Controls.Add(this.btnAktivne);
             this.Controls.Add(this.btnPretragaDestinacije);
@@ -265,5 +292,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn DatumObjave;
         private System.Windows.Forms.DataGridViewTextBoxColumn PunaCijenaPrikaz;
         private System.Windows.Forms.DataGridViewCheckBoxColumn IsAktivna;
+        private System.Windows.Forms.DateTimePicker dtmDatumPolaska;
+        private System.Windows.Forms.Label label3;
     }
 }

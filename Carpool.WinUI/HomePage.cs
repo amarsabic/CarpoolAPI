@@ -107,7 +107,7 @@ namespace Carpool.WinUI
 
         private void btnObavijesti_Click(object sender, EventArgs e)
         {
-            frmDodajObavijest frm = new frmDodajObavijest();
+            frmDetaljiObavijesti frm = new frmDetaljiObavijesti();
             frm.TopLevel = false;
             OpenChildForm(frm, sender);
         }

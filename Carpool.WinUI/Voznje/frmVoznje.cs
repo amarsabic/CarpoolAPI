@@ -127,7 +127,8 @@ namespace Carpool.WinUI.Voznje
             {
                 VoznjaSearchRequest search = new VoznjaSearchRequest
                 {
-                    SearchFromHomePage = true
+                    SearchFromHomePage = true,
+                    DatumPolaska=dtmDatumPolaska.Value
                 };
 
                 var idPolazak = cmbPolazak.SelectedValue;
@@ -165,9 +166,11 @@ namespace Carpool.WinUI.Voznje
                 {
                     MessageBox.Show("Trenutno nema rezultata za traženu destinaciju");
                 }
-
-                dgvVoznje.AutoGenerateColumns = false;
-                dgvVoznje.DataSource = result;
+                else
+                {
+                    dgvVoznje.AutoGenerateColumns = false;
+                    dgvVoznje.DataSource = result;
+                }
             }
             catch (Exception)
             {
@@ -237,7 +240,7 @@ namespace Carpool.WinUI.Voznje
         //        {
         //            MessageBox.Show("Ne postoji vozač sa traženim ID");
         //        }
-               
+
         //    }
         //}
     }

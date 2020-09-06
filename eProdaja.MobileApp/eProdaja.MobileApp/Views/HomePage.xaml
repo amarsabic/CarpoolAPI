@@ -18,8 +18,8 @@
                         ItemDisplayBinding="{Binding Naziv}"
                         SelectedItem="{Binding SelectedOdrediste}"
                         ></Picker>
-                <!--<Label Text="Datum polaska"></Label>-->
-                <!--<DatePicker Date="{Binding DatumPolaskaProvjera}" MinimumDate="{Binding MinimumDate}"></DatePicker>-->
+                <Label Text="Datum polaska"></Label>
+                <DatePicker Date="{Binding DatumPolaskaProvjera}" MinimumDate="{Binding MinimumDate}"></DatePicker>
             </StackLayout>
             <Button Command="{Binding SearchRideCommand}" Margin="0,0,0,0" Text="Traži"></Button>
 
