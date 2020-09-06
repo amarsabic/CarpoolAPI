@@ -43,7 +43,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(184, 56);
+            this.label1.Location = new System.Drawing.Point(251, 67);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(40, 13);
             this.label1.TabIndex = 0;
@@ -51,17 +51,17 @@
             // 
             // txtNaslov
             // 
-            this.txtNaslov.Location = new System.Drawing.Point(187, 73);
+            this.txtNaslov.Location = new System.Drawing.Point(254, 84);
             this.txtNaslov.Name = "txtNaslov";
-            this.txtNaslov.Size = new System.Drawing.Size(218, 20);
+            this.txtNaslov.Size = new System.Drawing.Size(280, 20);
             this.txtNaslov.TabIndex = 1;
             this.txtNaslov.Validating += new System.ComponentModel.CancelEventHandler(this.txtNaslov_Validating);
             // 
             // rtxtSadrzaj
             // 
-            this.rtxtSadrzaj.Location = new System.Drawing.Point(187, 127);
+            this.rtxtSadrzaj.Location = new System.Drawing.Point(254, 138);
             this.rtxtSadrzaj.Name = "rtxtSadrzaj";
-            this.rtxtSadrzaj.Size = new System.Drawing.Size(218, 96);
+            this.rtxtSadrzaj.Size = new System.Drawing.Size(280, 112);
             this.rtxtSadrzaj.TabIndex = 2;
             this.rtxtSadrzaj.Text = "";
             this.rtxtSadrzaj.Validating += new System.ComponentModel.CancelEventHandler(this.rtxtSadrzaj_Validating);
@@ -69,7 +69,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(184, 111);
+            this.label2.Location = new System.Drawing.Point(251, 122);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(42, 13);
             this.label2.TabIndex = 3;
@@ -78,7 +78,7 @@
             // cmbTipObavijesti
             // 
             this.cmbTipObavijesti.FormattingEnabled = true;
-            this.cmbTipObavijesti.Location = new System.Drawing.Point(187, 258);
+            this.cmbTipObavijesti.Location = new System.Drawing.Point(254, 291);
             this.cmbTipObavijesti.Name = "cmbTipObavijesti";
             this.cmbTipObavijesti.Size = new System.Drawing.Size(121, 21);
             this.cmbTipObavijesti.TabIndex = 4;
@@ -86,7 +86,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(184, 242);
+            this.label3.Location = new System.Drawing.Point(251, 275);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(25, 13);
             this.label3.TabIndex = 5;
@@ -94,9 +94,9 @@
             // 
             // btnDodaj
             // 
-            this.btnDodaj.Location = new System.Drawing.Point(330, 297);
+            this.btnDodaj.Location = new System.Drawing.Point(453, 338);
             this.btnDodaj.Name = "btnDodaj";
-            this.btnDodaj.Size = new System.Drawing.Size(75, 23);
+            this.btnDodaj.Size = new System.Drawing.Size(81, 37);
             this.btnDodaj.TabIndex = 6;
             this.btnDodaj.Text = "Dodaj";
             this.btnDodaj.UseVisualStyleBackColor = true;
@@ -110,7 +110,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(615, 450);
+            this.ClientSize = new System.Drawing.Size(768, 450);
             this.Controls.Add(this.btnDodaj);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.cmbTipObavijesti);
@@ -119,7 +119,8 @@
             this.Controls.Add(this.txtNaslov);
             this.Controls.Add(this.label1);
             this.Name = "frmDodajObavijest";
-            this.Text = "frmDodaj";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Dodavanje obavijesti";
             this.Load += new System.EventHandler(this.frmDodaj_Load);
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
             this.ResumeLayout(false);

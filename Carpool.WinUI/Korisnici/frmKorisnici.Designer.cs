@@ -165,7 +165,7 @@
             this.Controls.Add(this.groupBox1);
             this.Name = "frmKorisnici";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "frmKorisnici";
+            this.Text = "Korisnici";
             this.Load += new System.EventHandler(this.frmKorisnici_Load);
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvKorisnici)).EndInit();

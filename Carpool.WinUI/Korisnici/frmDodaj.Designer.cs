@@ -355,7 +355,7 @@
             this.Controls.Add(this.txtIme);
             this.Name = "frmDodaj";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "frmDodaj";
+            this.Text = "Korisnici";
             this.Load += new System.EventHandler(this.frmDodaj_Load);
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
             this.ResumeLayout(false);

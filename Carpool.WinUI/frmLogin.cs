@@ -47,7 +47,8 @@ namespace Carpool.WinUI
 
                 var user = await _service.Get<dynamic>(null);
 
-                frmIndex frm = new frmIndex();
+                //frmIndex frm = new frmIndex();      
+                HomePage frm = new HomePage();
                 frm.Show();
             
             }

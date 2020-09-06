@@ -206,7 +206,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtNaziv);
             this.Name = "frmDodajAutomobil";
-            this.Text = "frmDodaj";
+            this.Text = "Dodavanje automobila";
             this.Load += new System.EventHandler(this.frmDodaj_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();

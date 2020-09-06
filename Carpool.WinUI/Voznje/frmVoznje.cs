@@ -209,36 +209,36 @@ namespace Carpool.WinUI.Voznje
             dgvVoznje.DataSource = result;
         }
 
-        private async void btnPretragaKorisnika_Click(object sender, EventArgs e)
-        {
-            if (string.IsNullOrWhiteSpace(txtKorisnik.Text))
-            {
-                MessageBox.Show("Unesite ID vozača");
-            }
-            else if (!System.Text.RegularExpressions.Regex.IsMatch(txtKorisnik.Text, "^[0-9]*$"))
-            {
-                MessageBox.Show("ID mora biti broj");
-            }
-            else
-            {
-                VoznjaSearchRequest search = new VoznjaSearchRequest
-                {
-                    VozacID = int.Parse(txtKorisnik.Text)
-                };
+        //private async void btnPretragaKorisnika_Click(object sender, EventArgs e)
+        //{
+        //    if (string.IsNullOrWhiteSpace(txtKorisnik.Text))
+        //    {
+        //        MessageBox.Show("Unesite ID vozača");
+        //    }
+        //    else if (!System.Text.RegularExpressions.Regex.IsMatch(txtKorisnik.Text, "^[0-9]*$"))
+        //    {
+        //        MessageBox.Show("ID mora biti broj");
+        //    }
+        //    else
+        //    {
+        //        VoznjaSearchRequest search = new VoznjaSearchRequest
+        //        {
+        //            VozacID = int.Parse(txtKorisnik.Text)
+        //        };
 
-                var result = await _voznje.Get<List<Model.Voznja>>(search);
+        //        var result = await _voznje.Get<List<Model.Voznja>>(search);
 
-                if (result.Count() > 0)
-                {
-                    dgvVoznje.AutoGenerateColumns = false;
-                    dgvVoznje.DataSource = result;
-                }
-                else
-                {
-                    MessageBox.Show("Ne postoji vozač sa traženim ID");
-                }
+        //        if (result.Count() > 0)
+        //        {
+        //            dgvVoznje.AutoGenerateColumns = false;
+        //            dgvVoznje.DataSource = result;
+        //        }
+        //        else
+        //        {
+        //            MessageBox.Show("Ne postoji vozač sa traženim ID");
+        //        }
                
-            }
-        }
+        //    }
+        //}
     }
 }

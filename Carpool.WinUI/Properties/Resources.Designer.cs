@@ -68,5 +68,15 @@ namespace Carpool.WinUI.Properties {
                 return ResourceManager.GetString("Validation_RequiredField", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap x_mark_24 {
+            get {
+                object obj = ResourceManager.GetObject("x-mark-24", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
     }
 }

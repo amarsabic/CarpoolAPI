@@ -141,7 +141,7 @@
             this.Controls.Add(this.btnDodajObavijest);
             this.Controls.Add(this.dgvObavijestiList);
             this.Name = "frmDetaljiObavijesti";
-            this.Text = "frmDetaljiObavijesti";
+            this.Text = "Obavijesti";
             this.Load += new System.EventHandler(this.frmDetaljiObavijesti_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvObavijestiList)).EndInit();
             this.ResumeLayout(false);

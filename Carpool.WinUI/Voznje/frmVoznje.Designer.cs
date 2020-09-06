@@ -34,12 +34,6 @@
             this.cmbDestinacija = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
             this.dgvVoznje = new System.Windows.Forms.DataGridView();
-            this.btnPretragaDestinacije = new System.Windows.Forms.Button();
-            this.btnAktivne = new System.Windows.Forms.Button();
-            this.btnZavrsene = new System.Windows.Forms.Button();
-            this.txtKorisnik = new System.Windows.Forms.TextBox();
-            this.btnPretragaKorisnika = new System.Windows.Forms.Button();
-            this.label3 = new System.Windows.Forms.Label();
             this.VoznjaID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.GradPolaska = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.GradDestinacija = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -50,6 +44,9 @@
             this.DatumObjave = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PunaCijenaPrikaz = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.IsAktivna = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.btnPretragaDestinacije = new System.Windows.Forms.Button();
+            this.btnAktivne = new System.Windows.Forms.Button();
+            this.btnZavrsene = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvVoznje)).BeginInit();
             this.SuspendLayout();
             // 
@@ -65,7 +62,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(23, 82);
+            this.label2.Location = new System.Drawing.Point(22, 84);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(83, 13);
             this.label2.TabIndex = 3;
@@ -82,7 +79,7 @@
             // cmbDestinacija
             // 
             this.cmbDestinacija.FormattingEnabled = true;
-            this.cmbDestinacija.Location = new System.Drawing.Point(26, 99);
+            this.cmbDestinacija.Location = new System.Drawing.Point(25, 100);
             this.cmbDestinacija.Name = "cmbDestinacija";
             this.cmbDestinacija.Size = new System.Drawing.Size(194, 21);
             this.cmbDestinacija.TabIndex = 5;
@@ -118,62 +115,6 @@
             this.dgvVoznje.Size = new System.Drawing.Size(1190, 443);
             this.dgvVoznje.TabIndex = 19;
             this.dgvVoznje.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.dgvVoznje_MouseDoubleClick);
-            // 
-            // btnPretragaDestinacije
-            // 
-            this.btnPretragaDestinacije.Location = new System.Drawing.Point(71, 136);
-            this.btnPretragaDestinacije.Name = "btnPretragaDestinacije";
-            this.btnPretragaDestinacije.Size = new System.Drawing.Size(101, 23);
-            this.btnPretragaDestinacije.TabIndex = 20;
-            this.btnPretragaDestinacije.Text = "Traži ";
-            this.btnPretragaDestinacije.UseVisualStyleBackColor = true;
-            this.btnPretragaDestinacije.Click += new System.EventHandler(this.btnPretragaDestinacije_Click);
-            // 
-            // btnAktivne
-            // 
-            this.btnAktivne.Location = new System.Drawing.Point(12, 205);
-            this.btnAktivne.Name = "btnAktivne";
-            this.btnAktivne.Size = new System.Drawing.Size(101, 23);
-            this.btnAktivne.TabIndex = 21;
-            this.btnAktivne.Text = "Aktivne vožnje";
-            this.btnAktivne.UseVisualStyleBackColor = true;
-            this.btnAktivne.Click += new System.EventHandler(this.btnAktivne_Click);
-            // 
-            // btnZavrsene
-            // 
-            this.btnZavrsene.Location = new System.Drawing.Point(119, 205);
-            this.btnZavrsene.Name = "btnZavrsene";
-            this.btnZavrsene.Size = new System.Drawing.Size(101, 23);
-            this.btnZavrsene.TabIndex = 22;
-            this.btnZavrsene.Text = "Završene vožnje";
-            this.btnZavrsene.UseVisualStyleBackColor = true;
-            this.btnZavrsene.Click += new System.EventHandler(this.btnZavrsene_Click);
-            // 
-            // txtKorisnik
-            // 
-            this.txtKorisnik.Location = new System.Drawing.Point(375, 56);
-            this.txtKorisnik.Name = "txtKorisnik";
-            this.txtKorisnik.Size = new System.Drawing.Size(194, 20);
-            this.txtKorisnik.TabIndex = 23;
-            // 
-            // btnPretragaKorisnika
-            // 
-            this.btnPretragaKorisnika.Location = new System.Drawing.Point(424, 82);
-            this.btnPretragaKorisnika.Name = "btnPretragaKorisnika";
-            this.btnPretragaKorisnika.Size = new System.Drawing.Size(101, 23);
-            this.btnPretragaKorisnika.TabIndex = 24;
-            this.btnPretragaKorisnika.Text = "Pretraži";
-            this.btnPretragaKorisnika.UseVisualStyleBackColor = true;
-            this.btnPretragaKorisnika.Click += new System.EventHandler(this.btnPretragaKorisnika_Click);
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(372, 38);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(48, 13);
-            this.label3.TabIndex = 25;
-            this.label3.Text = "VozačID";
             // 
             // VoznjaID
             // 
@@ -250,14 +191,41 @@
             this.IsAktivna.Name = "IsAktivna";
             this.IsAktivna.ReadOnly = true;
             // 
+            // btnPretragaDestinacije
+            // 
+            this.btnPretragaDestinacije.Location = new System.Drawing.Point(68, 136);
+            this.btnPretragaDestinacije.Name = "btnPretragaDestinacije";
+            this.btnPretragaDestinacije.Size = new System.Drawing.Size(101, 23);
+            this.btnPretragaDestinacije.TabIndex = 20;
+            this.btnPretragaDestinacije.Text = "Traži ";
+            this.btnPretragaDestinacije.UseVisualStyleBackColor = true;
+            this.btnPretragaDestinacije.Click += new System.EventHandler(this.btnPretragaDestinacije_Click);
+            // 
+            // btnAktivne
+            // 
+            this.btnAktivne.Location = new System.Drawing.Point(994, 205);
+            this.btnAktivne.Name = "btnAktivne";
+            this.btnAktivne.Size = new System.Drawing.Size(101, 23);
+            this.btnAktivne.TabIndex = 21;
+            this.btnAktivne.Text = "Aktivne vožnje";
+            this.btnAktivne.UseVisualStyleBackColor = true;
+            this.btnAktivne.Click += new System.EventHandler(this.btnAktivne_Click);
+            // 
+            // btnZavrsene
+            // 
+            this.btnZavrsene.Location = new System.Drawing.Point(1101, 205);
+            this.btnZavrsene.Name = "btnZavrsene";
+            this.btnZavrsene.Size = new System.Drawing.Size(101, 23);
+            this.btnZavrsene.TabIndex = 22;
+            this.btnZavrsene.Text = "Završene vožnje";
+            this.btnZavrsene.UseVisualStyleBackColor = true;
+            this.btnZavrsene.Click += new System.EventHandler(this.btnZavrsene_Click);
+            // 
             // frmVoznje
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1214, 703);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.btnPretragaKorisnika);
-            this.Controls.Add(this.txtKorisnik);
             this.Controls.Add(this.btnZavrsene);
             this.Controls.Add(this.btnAktivne);
             this.Controls.Add(this.btnPretragaDestinacije);
@@ -268,7 +236,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "frmVoznje";
-            this.Text = "frmVoznje";
+            this.Text = "Vožnje";
             this.Load += new System.EventHandler(this.frmVoznje_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvVoznje)).EndInit();
             this.ResumeLayout(false);
@@ -287,9 +255,6 @@
         private System.Windows.Forms.Button btnPretragaDestinacije;
         private System.Windows.Forms.Button btnAktivne;
         private System.Windows.Forms.Button btnZavrsene;
-        private System.Windows.Forms.TextBox txtKorisnik;
-        private System.Windows.Forms.Button btnPretragaKorisnika;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.DataGridViewTextBoxColumn VoznjaID;
         private System.Windows.Forms.DataGridViewTextBoxColumn GradPolaska;
         private System.Windows.Forms.DataGridViewTextBoxColumn GradDestinacija;
