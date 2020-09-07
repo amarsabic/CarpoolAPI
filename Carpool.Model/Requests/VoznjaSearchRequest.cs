@@ -13,6 +13,7 @@ namespace Carpool.Model.Requests
         public bool IsVozacZavrseneDesktop { get; set; } = false;
         public int? VozacID { get; set; }
         public bool IsZavrsena{ get; set; } = false;
+        public bool Aktivne { get; set; } = false;
         public bool IsSlobodnaMjesta { get; set; } = false;
         public bool PosljednjeVoznje { get; set; } = false;
         public bool SearchFromHomePage { get; set; } = false;

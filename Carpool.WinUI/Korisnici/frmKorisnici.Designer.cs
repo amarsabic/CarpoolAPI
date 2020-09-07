@@ -40,16 +40,18 @@
             this.txtPretraga = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.btnPrikaziAdmine = new System.Windows.Forms.Button();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvKorisnici)).BeginInit();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.dgvKorisnici);
-            this.groupBox1.Location = new System.Drawing.Point(2, 102);
+            this.groupBox1.Location = new System.Drawing.Point(42, 163);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(789, 343);
+            this.groupBox1.Size = new System.Drawing.Size(987, 343);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Korisnici";
@@ -66,12 +68,12 @@
             this.KorisnickoIme,
             this.Email,
             this.IsVozac});
-            this.dgvKorisnici.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvKorisnici.Dock = System.Windows.Forms.DockStyle.Top;
             this.dgvKorisnici.Location = new System.Drawing.Point(3, 16);
             this.dgvKorisnici.Name = "dgvKorisnici";
             this.dgvKorisnici.ReadOnly = true;
             this.dgvKorisnici.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvKorisnici.Size = new System.Drawing.Size(783, 324);
+            this.dgvKorisnici.Size = new System.Drawing.Size(981, 324);
             this.dgvKorisnici.TabIndex = 0;
             this.dgvKorisnici.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.dgvKorisnici_MouseDoubleClick);
             // 
@@ -119,7 +121,7 @@
             // 
             // btnPrikazi
             // 
-            this.btnPrikazi.Location = new System.Drawing.Point(12, 64);
+            this.btnPrikazi.Location = new System.Drawing.Point(42, 74);
             this.btnPrikazi.Name = "btnPrikazi";
             this.btnPrikazi.Size = new System.Drawing.Size(79, 20);
             this.btnPrikazi.TabIndex = 1;
@@ -129,7 +131,7 @@
             // 
             // txtPretraga
             // 
-            this.txtPretraga.Location = new System.Drawing.Point(12, 38);
+            this.txtPretraga.Location = new System.Drawing.Point(42, 51);
             this.txtPretraga.Name = "txtPretraga";
             this.txtPretraga.Size = new System.Drawing.Size(250, 20);
             this.txtPretraga.TabIndex = 2;
@@ -137,7 +139,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 19);
+            this.label1.Location = new System.Drawing.Point(39, 35);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(93, 13);
             this.label1.TabIndex = 3;
@@ -145,7 +147,7 @@
             // 
             // btnPrikaziAdmine
             // 
-            this.btnPrikaziAdmine.Location = new System.Drawing.Point(672, 64);
+            this.btnPrikaziAdmine.Location = new System.Drawing.Point(628, 68);
             this.btnPrikaziAdmine.Name = "btnPrikaziAdmine";
             this.btnPrikaziAdmine.Size = new System.Drawing.Size(100, 32);
             this.btnPrikaziAdmine.TabIndex = 4;
@@ -153,15 +155,24 @@
             this.btnPrikaziAdmine.UseVisualStyleBackColor = true;
             this.btnPrikaziAdmine.Click += new System.EventHandler(this.btnPrikaziAdmine_Click);
             // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.label1);
+            this.panel1.Controls.Add(this.btnPrikaziAdmine);
+            this.panel1.Controls.Add(this.btnPrikazi);
+            this.panel1.Controls.Add(this.txtPretraga);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(1203, 141);
+            this.panel1.TabIndex = 5;
+            // 
             // frmKorisnici
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.btnPrikaziAdmine);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.txtPretraga);
-            this.Controls.Add(this.btnPrikazi);
+            this.ClientSize = new System.Drawing.Size(1203, 653);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.groupBox1);
             this.Name = "frmKorisnici";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
@@ -169,8 +180,9 @@
             this.Load += new System.EventHandler(this.frmKorisnici_Load);
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvKorisnici)).EndInit();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -188,5 +200,6 @@
         private System.Windows.Forms.DataGridViewCheckBoxColumn IsVozac;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnPrikaziAdmine;
+        private System.Windows.Forms.Panel panel1;
     }
 }

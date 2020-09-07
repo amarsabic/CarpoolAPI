@@ -214,7 +214,11 @@ namespace Carpool.WebAPI.Services
             {
                 query = query.Where(x => x.SlobodnaMjesta != 0 && x.IsAktivna == true);
             }
-        
+            if (search.Aktivne)
+            {
+                query = query.Where(x => x.IsAktivna == true);
+            }
+
             if (search.PosljednjeVoznje)
             {
                 query = query.OrderByDescending(x => x.DatumObjave).Take(3);

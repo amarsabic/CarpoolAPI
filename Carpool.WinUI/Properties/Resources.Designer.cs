@@ -63,6 +63,36 @@ namespace Carpool.WinUI.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        public static System.Drawing.Bitmap car_3_128 {
+            get {
+                object obj = ResourceManager.GetObject("car-3-128", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap car_3_1281 {
+            get {
+                object obj = ResourceManager.GetObject("car-3-1281", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap car_3_64 {
+            get {
+                object obj = ResourceManager.GetObject("car-3-64", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         public static System.Drawing.Bitmap computer_icons_user_login_swiggy_png_clip_art {
             get {
                 object obj = ResourceManager.GetObject("computer-icons-user-login-swiggy-png-clip-art", resourceCulture);
@@ -73,9 +103,69 @@ namespace Carpool.WinUI.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        public static System.Drawing.Bitmap conference_128 {
+            get {
+                object obj = ResourceManager.GetObject("conference-128", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap icons8_vanpool_50 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-vanpool-50", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         public static System.Drawing.Bitmap icons8_vanpool_96 {
             get {
                 object obj = ResourceManager.GetObject("icons8-vanpool-96", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap pickup_car {
+            get {
+                object obj = ResourceManager.GetObject("pickup-car", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap pickup_car__1_ {
+            get {
+                object obj = ResourceManager.GetObject("pickup-car (1)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap pickup_car__2_ {
+            get {
+                object obj = ResourceManager.GetObject("pickup-car (2)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap pin_8_128 {
+            get {
+                object obj = ResourceManager.GetObject("pin-8-128", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

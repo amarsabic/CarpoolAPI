@@ -39,15 +39,34 @@
             this.btnAutomobili = new System.Windows.Forms.Button();
             this.btnObavijesti = new System.Windows.Forms.Button();
             this.panelTitleBar = new System.Windows.Forms.Panel();
+            this.btnMinimize = new System.Windows.Forms.Button();
+            this.btnMaximize = new System.Windows.Forms.Button();
+            this.btnClose = new System.Windows.Forms.Button();
             this.btnCloseChildForm = new System.Windows.Forms.Button();
             this.lblNaslov = new System.Windows.Forms.Label();
             this.panelDesktopPanel = new System.Windows.Forms.Panel();
-            this.btnClose = new System.Windows.Forms.Button();
-            this.btnMaximize = new System.Windows.Forms.Button();
-            this.btnMinimize = new System.Windows.Forms.Button();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.labelAutomobil = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.labelKorisnici = new System.Windows.Forms.Label();
+            this.panelAktivneVoznje = new System.Windows.Forms.Panel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.labelBrojAktivnihVoznji = new System.Windows.Forms.Label();
             this.panelMenu.SuspendLayout();
             this.panelLogo.SuspendLayout();
             this.panelTitleBar.SuspendLayout();
+            this.panelDesktopPanel.SuspendLayout();
+            this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
+            this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            this.panelAktivneVoznje.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // panelMenu
@@ -210,6 +229,51 @@
             this.panelTitleBar.TabIndex = 1;
             this.panelTitleBar.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panelTitleBar_MouseDown);
             // 
+            // btnMinimize
+            // 
+            this.btnMinimize.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnMinimize.FlatAppearance.BorderSize = 0;
+            this.btnMinimize.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnMinimize.Font = new System.Drawing.Font("Montserrat", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnMinimize.ForeColor = System.Drawing.Color.White;
+            this.btnMinimize.Location = new System.Drawing.Point(915, 8);
+            this.btnMinimize.Name = "btnMinimize";
+            this.btnMinimize.Size = new System.Drawing.Size(34, 41);
+            this.btnMinimize.TabIndex = 4;
+            this.btnMinimize.Text = "O";
+            this.btnMinimize.UseVisualStyleBackColor = true;
+            this.btnMinimize.Click += new System.EventHandler(this.btnMinimize_Click);
+            // 
+            // btnMaximize
+            // 
+            this.btnMaximize.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnMaximize.FlatAppearance.BorderSize = 0;
+            this.btnMaximize.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnMaximize.Font = new System.Drawing.Font("Montserrat", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnMaximize.ForeColor = System.Drawing.Color.White;
+            this.btnMaximize.Location = new System.Drawing.Point(942, 8);
+            this.btnMaximize.Name = "btnMaximize";
+            this.btnMaximize.Size = new System.Drawing.Size(34, 41);
+            this.btnMaximize.TabIndex = 3;
+            this.btnMaximize.Text = "O";
+            this.btnMaximize.UseVisualStyleBackColor = true;
+            this.btnMaximize.Click += new System.EventHandler(this.btnMaximize_Click);
+            // 
+            // btnClose
+            // 
+            this.btnClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnClose.FlatAppearance.BorderSize = 0;
+            this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnClose.Font = new System.Drawing.Font("Montserrat", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnClose.ForeColor = System.Drawing.Color.White;
+            this.btnClose.Location = new System.Drawing.Point(969, 8);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(34, 41);
+            this.btnClose.TabIndex = 2;
+            this.btnClose.Text = "O";
+            this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+            // 
             // btnCloseChildForm
             // 
             this.btnCloseChildForm.Dock = System.Windows.Forms.DockStyle.Left;
@@ -237,56 +301,140 @@
             // 
             // panelDesktopPanel
             // 
+            this.panelDesktopPanel.Controls.Add(this.panel2);
+            this.panelDesktopPanel.Controls.Add(this.panel1);
+            this.panelDesktopPanel.Controls.Add(this.panelAktivneVoznje);
             this.panelDesktopPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelDesktopPanel.Location = new System.Drawing.Point(260, 104);
             this.panelDesktopPanel.Name = "panelDesktopPanel";
             this.panelDesktopPanel.Size = new System.Drawing.Size(1006, 582);
             this.panelDesktopPanel.TabIndex = 2;
             // 
-            // btnClose
+            // panel2
             // 
-            this.btnClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnClose.FlatAppearance.BorderSize = 0;
-            this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnClose.Font = new System.Drawing.Font("Montserrat", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnClose.ForeColor = System.Drawing.Color.White;
-            this.btnClose.Location = new System.Drawing.Point(969, 8);
-            this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(34, 41);
-            this.btnClose.TabIndex = 2;
-            this.btnClose.Text = "O";
-            this.btnClose.UseVisualStyleBackColor = true;
-            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(126)))), ((int)(((byte)(34)))));
+            this.panel2.Controls.Add(this.pictureBox3);
+            this.panel2.Controls.Add(this.label8);
+            this.panel2.Controls.Add(this.labelAutomobil);
+            this.panel2.Location = new System.Drawing.Point(689, 35);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(280, 150);
+            this.panel2.TabIndex = 5;
             // 
-            // btnMaximize
+            // pictureBox3
             // 
-            this.btnMaximize.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnMaximize.FlatAppearance.BorderSize = 0;
-            this.btnMaximize.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnMaximize.Font = new System.Drawing.Font("Montserrat", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnMaximize.ForeColor = System.Drawing.Color.White;
-            this.btnMaximize.Location = new System.Drawing.Point(942, 8);
-            this.btnMaximize.Name = "btnMaximize";
-            this.btnMaximize.Size = new System.Drawing.Size(34, 41);
-            this.btnMaximize.TabIndex = 3;
-            this.btnMaximize.Text = "O";
-            this.btnMaximize.UseVisualStyleBackColor = true;
-            this.btnMaximize.Click += new System.EventHandler(this.btnMaximize_Click);
+            this.pictureBox3.Image = global::Carpool.WinUI.Properties.Resources.car_3_1281;
+            this.pictureBox3.Location = new System.Drawing.Point(126, 12);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(151, 123);
+            this.pictureBox3.TabIndex = 3;
+            this.pictureBox3.TabStop = false;
             // 
-            // btnMinimize
+            // label8
             // 
-            this.btnMinimize.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnMinimize.FlatAppearance.BorderSize = 0;
-            this.btnMinimize.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnMinimize.Font = new System.Drawing.Font("Montserrat", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnMinimize.ForeColor = System.Drawing.Color.White;
-            this.btnMinimize.Location = new System.Drawing.Point(915, 8);
-            this.btnMinimize.Name = "btnMinimize";
-            this.btnMinimize.Size = new System.Drawing.Size(34, 41);
-            this.btnMinimize.TabIndex = 4;
-            this.btnMinimize.Text = "O";
-            this.btnMinimize.UseVisualStyleBackColor = true;
-            this.btnMinimize.Click += new System.EventHandler(this.btnMinimize_Click);
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label8.Location = new System.Drawing.Point(14, 94);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(70, 15);
+            this.label8.TabIndex = 2;
+            this.label8.Text = "Automobila";
+            // 
+            // labelAutomobil
+            // 
+            this.labelAutomobil.AutoSize = true;
+            this.labelAutomobil.Font = new System.Drawing.Font("Segoe UI", 24.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelAutomobil.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.labelAutomobil.Location = new System.Drawing.Point(12, 42);
+            this.labelAutomobil.Name = "labelAutomobil";
+            this.labelAutomobil.Size = new System.Drawing.Size(58, 45);
+            this.labelAutomobil.TabIndex = 1;
+            this.labelAutomobil.Text = "23";
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(204)))), ((int)(((byte)(113)))));
+            this.panel1.Controls.Add(this.pictureBox2);
+            this.panel1.Controls.Add(this.label5);
+            this.panel1.Controls.Add(this.labelKorisnici);
+            this.panel1.Location = new System.Drawing.Point(361, 35);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(280, 150);
+            this.panel1.TabIndex = 4;
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = global::Carpool.WinUI.Properties.Resources.conference_128;
+            this.pictureBox2.Location = new System.Drawing.Point(123, 12);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(140, 128);
+            this.pictureBox2.TabIndex = 3;
+            this.pictureBox2.TabStop = false;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label5.Location = new System.Drawing.Point(17, 94);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(102, 15);
+            this.label5.TabIndex = 2;
+            this.label5.Text = "Aktivnih Korisnika";
+            // 
+            // labelKorisnici
+            // 
+            this.labelKorisnici.AutoSize = true;
+            this.labelKorisnici.Font = new System.Drawing.Font("Segoe UI", 24.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelKorisnici.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.labelKorisnici.Location = new System.Drawing.Point(12, 42);
+            this.labelKorisnici.Name = "labelKorisnici";
+            this.labelKorisnici.Size = new System.Drawing.Size(58, 45);
+            this.labelKorisnici.TabIndex = 1;
+            this.labelKorisnici.Text = "23";
+            // 
+            // panelAktivneVoznje
+            // 
+            this.panelAktivneVoznje.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.panelAktivneVoznje.Controls.Add(this.pictureBox1);
+            this.panelAktivneVoznje.Controls.Add(this.label4);
+            this.panelAktivneVoznje.Controls.Add(this.labelBrojAktivnihVoznji);
+            this.panelAktivneVoznje.Location = new System.Drawing.Point(47, 35);
+            this.panelAktivneVoznje.Name = "panelAktivneVoznje";
+            this.panelAktivneVoznje.Size = new System.Drawing.Size(280, 150);
+            this.panelAktivneVoznje.TabIndex = 0;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::Carpool.WinUI.Properties.Resources.pin_8_128;
+            this.pictureBox1.Location = new System.Drawing.Point(131, 8);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(137, 132);
+            this.pictureBox1.TabIndex = 3;
+            this.pictureBox1.TabStop = false;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label4.Location = new System.Drawing.Point(17, 94);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(85, 15);
+            this.label4.TabIndex = 2;
+            this.label4.Text = "Aktivnih Vožnji";
+            // 
+            // labelBrojAktivnihVoznji
+            // 
+            this.labelBrojAktivnihVoznji.AutoSize = true;
+            this.labelBrojAktivnihVoznji.Font = new System.Drawing.Font("Segoe UI", 24.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelBrojAktivnihVoznji.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.labelBrojAktivnihVoznji.Location = new System.Drawing.Point(12, 42);
+            this.labelBrojAktivnihVoznji.Name = "labelBrojAktivnihVoznji";
+            this.labelBrojAktivnihVoznji.Size = new System.Drawing.Size(58, 45);
+            this.labelBrojAktivnihVoznji.TabIndex = 1;
+            this.labelBrojAktivnihVoznji.Text = "23";
             // 
             // HomePage
             // 
@@ -303,6 +451,16 @@
             this.panelLogo.PerformLayout();
             this.panelTitleBar.ResumeLayout(false);
             this.panelTitleBar.PerformLayout();
+            this.panelDesktopPanel.ResumeLayout(false);
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            this.panelAktivneVoznje.ResumeLayout(false);
+            this.panelAktivneVoznje.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -325,5 +483,17 @@
         private System.Windows.Forms.Button btnMinimize;
         private System.Windows.Forms.Button btnMaximize;
         private System.Windows.Forms.Button btnClose;
+        private System.Windows.Forms.Panel panelAktivneVoznje;
+        private System.Windows.Forms.Label labelBrojAktivnihVoznji;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label labelKorisnici;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.PictureBox pictureBox3;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label labelAutomobil;
     }
 }

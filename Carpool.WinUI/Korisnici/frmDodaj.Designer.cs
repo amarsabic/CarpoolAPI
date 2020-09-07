@@ -39,8 +39,6 @@
             this.txtEmail = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.txtKorisnickoIme = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.txtPasswordStari = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.btnSpremi = new System.Windows.Forms.Button();
             this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
@@ -49,8 +47,6 @@
             this.clbUloge = new System.Windows.Forms.CheckedListBox();
             this.cmbGrad = new System.Windows.Forms.ComboBox();
             this.label9 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.txtPotvrda = new System.Windows.Forms.TextBox();
             this.btnUpdatePassword = new System.Windows.Forms.Button();
             this.btnObrisiKorisnika = new System.Windows.Forms.Button();
             this.label11 = new System.Windows.Forms.Label();
@@ -59,6 +55,10 @@
             this.txtPass = new System.Windows.Forms.TextBox();
             this.btnPrint = new System.Windows.Forms.Button();
             this.dtmDatumRodjenja = new System.Windows.Forms.DateTimePicker();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.txtPotvrda = new System.Windows.Forms.TextBox();
+            this.txtPasswordStari = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             this.SuspendLayout();
             // 
@@ -148,23 +148,6 @@
             this.txtKorisnickoIme.TabIndex = 8;
             this.txtKorisnickoIme.Validating += new System.ComponentModel.CancelEventHandler(this.txtKorisnickoIme_Validating_1);
             // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(22, 377);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(76, 13);
-            this.label6.TabIndex = 11;
-            this.label6.Text = "Stari password";
-            // 
-            // txtPasswordStari
-            // 
-            this.txtPasswordStari.Location = new System.Drawing.Point(25, 393);
-            this.txtPasswordStari.Name = "txtPasswordStari";
-            this.txtPasswordStari.PasswordChar = '*';
-            this.txtPasswordStari.Size = new System.Drawing.Size(195, 20);
-            this.txtPasswordStari.TabIndex = 10;
-            // 
             // label7
             // 
             this.label7.AutoSize = true;
@@ -229,24 +212,6 @@
             this.label9.Size = new System.Drawing.Size(33, 13);
             this.label9.TabIndex = 18;
             this.label9.Text = "Grad ";
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(22, 420);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(98, 13);
-            this.label10.TabIndex = 21;
-            this.label10.Text = "Potvrda passworda";
-            // 
-            // txtPotvrda
-            // 
-            this.txtPotvrda.Location = new System.Drawing.Point(25, 436);
-            this.txtPotvrda.Name = "txtPotvrda";
-            this.txtPotvrda.PasswordChar = '*';
-            this.txtPotvrda.Size = new System.Drawing.Size(195, 20);
-            this.txtPotvrda.TabIndex = 20;
-            this.txtPotvrda.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // btnUpdatePassword
             // 
@@ -319,6 +284,41 @@
             this.dtmDatumRodjenja.Size = new System.Drawing.Size(200, 20);
             this.dtmDatumRodjenja.TabIndex = 29;
             // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(22, 377);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(76, 13);
+            this.label6.TabIndex = 11;
+            this.label6.Text = "Stari password";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(22, 420);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(98, 13);
+            this.label10.TabIndex = 21;
+            this.label10.Text = "Potvrda passworda";
+            // 
+            // txtPotvrda
+            // 
+            this.txtPotvrda.Location = new System.Drawing.Point(25, 436);
+            this.txtPotvrda.Name = "txtPotvrda";
+            this.txtPotvrda.PasswordChar = '*';
+            this.txtPotvrda.Size = new System.Drawing.Size(195, 20);
+            this.txtPotvrda.TabIndex = 20;
+            this.txtPotvrda.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            // 
+            // txtPasswordStari
+            // 
+            this.txtPasswordStari.Location = new System.Drawing.Point(25, 393);
+            this.txtPasswordStari.Name = "txtPasswordStari";
+            this.txtPasswordStari.PasswordChar = '*';
+            this.txtPasswordStari.Size = new System.Drawing.Size(195, 20);
+            this.txtPasswordStari.TabIndex = 10;
+            // 
             // frmDodaj
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -375,8 +375,6 @@
         private System.Windows.Forms.TextBox txtEmail;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox txtKorisnickoIme;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox txtPasswordStari;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Button btnSpremi;
         private System.Windows.Forms.ErrorProvider errorProvider;
@@ -385,8 +383,6 @@
         private System.Windows.Forms.CheckedListBox clbUloge;
         private System.Windows.Forms.ComboBox cmbGrad;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.TextBox txtPotvrda;
         private System.Windows.Forms.Button btnUpdatePassword;
         private System.Windows.Forms.Button btnObrisiKorisnika;
         private System.Windows.Forms.Label label11;
@@ -395,5 +391,9 @@
         private System.Windows.Forms.TextBox txtPass;
         private System.Windows.Forms.Button btnPrint;
         private System.Windows.Forms.DateTimePicker dtmDatumRodjenja;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.TextBox txtPotvrda;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox txtPasswordStari;
     }
 }

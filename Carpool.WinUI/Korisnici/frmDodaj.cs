@@ -45,13 +45,21 @@ namespace Carpool.WinUI.Korisnici
                     DatumRodjenja=dtmDatumRodjenja.Value
                 };
 
+                if (cmbGrad.SelectedIndex==0)
+                {
+                    MessageBox.Show("Unesite grad");
+                    return;
+                }
+
                 var idGrad = cmbGrad.SelectedValue;
+               
 
                 if (int.TryParse(idGrad.ToString(), out int gradId))
                 {
                     request.GradID = gradId;
                 }
 
+             
                 Model.Korisnik entity = null;
                 if (_id.HasValue)
                 {
@@ -182,10 +190,12 @@ namespace Carpool.WinUI.Korisnici
 
             try
             {
-                await _apiService.Update<Model.Korisnik>(_id.Value, request);
-                MessageBox.Show("Uspješno izvršeno");
-
-                this.Close();
+                var result = await _apiService.Update<Model.Korisnik>(_id.Value, request);
+                if (result != null)
+                {
+                    MessageBox.Show("Uspješno izvršeno");
+                    Application.Restart();
+                }
             }
             catch (Exception)
             {

@@ -1,4 +1,5 @@
-﻿using Carpool.WinUI.Automobili;
+﻿using Carpool.Model.Requests;
+using Carpool.WinUI.Automobili;
 using Carpool.WinUI.Korisnici;
 using Carpool.WinUI.Obavijesti;
 using Carpool.WinUI.Rezervacije;
@@ -18,6 +19,10 @@ namespace Carpool.WinUI
 {
     public partial class HomePage : Form
     {
+        private readonly APIService _korisnici = new APIService("korisnik");
+        private readonly APIService _automobil = new APIService("automobil");
+        private readonly APIService _voznje = new APIService("voznja");
+
         private Button currentButton;
         //private Random random;
         //private int tempIndex;
@@ -28,12 +33,44 @@ namespace Carpool.WinUI
             btnCloseChildForm.Visible = false;
             this.Text = string.Empty;
             this.ControlBox = false;
+
+            GetBrojAktivnihVoznji();
+            GetBrojAutomobila();
+            GetBrojKorisnika();
         }
         //DRAG FORM
         [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
         private extern static void ReleaseCapture();
         [DllImport("user32.DLL", EntryPoint = "SendMessage")]
         private extern static void SendMessage(System.IntPtr hWnd, int wMsg, int wParam, int lParam);
+
+        private async void GetBrojAktivnihVoznji()
+        {
+            VoznjaSearchRequest search = new VoznjaSearchRequest
+            {
+                Aktivne=true
+            };
+            var getAktivne= await _voznje.Get<List<Model.Voznja>>(search);
+            int getBroj = getAktivne.Count();
+
+            labelBrojAktivnihVoznji.Text = getBroj.ToString();
+        }
+
+        private async void GetBrojAutomobila()
+        {
+            var getAutomobili = await _automobil.Get<List<Model.Automobil>>(null);
+            int getBroj = getAutomobili.Count();
+
+            labelAutomobil.Text = getBroj.ToString();
+        }
+
+        private async void GetBrojKorisnika()
+        {
+            var getKorisnici = await _korisnici.Get<List<Model.Korisnik>>(null);
+            int getBroj = getKorisnici.Count();
+
+            labelKorisnici.Text = getBroj.ToString();
+        }
 
         private Color SelectThemeColor()
         {
