@@ -76,5 +76,17 @@ namespace Carpool.WinUI.Korisnici
                 dgvKorisnici.DataSource = result;
             }
         }
+
+        private void btnDodaj_Click(object sender, EventArgs e)
+        {
+            frmDodaj frm = new frmDodaj();
+            frm.Show();
+        }
+
+        private void btnPassword_Click(object sender, EventArgs e)
+        {
+            frmPassword frm = new frmPassword();
+            frm.Show();
+        }
     }
 }
