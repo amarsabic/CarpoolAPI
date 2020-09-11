@@ -1,5 +1,6 @@
 ﻿using Carpool.Model.Requests;
 using Carpool.WinUI.Automobili;
+using Carpool.WinUI.Izvještaji;
 using Carpool.WinUI.Korisnici;
 using Carpool.WinUI.Obavijesti;
 using Carpool.WinUI.Rezervacije;
@@ -165,8 +166,9 @@ namespace Carpool.WinUI
 
         private void btnIzvjestaji_Click(object sender, EventArgs e)
         {
-            ActivateButton(sender);
-            //OpenChildForm(new Obavijesti.frmDodajObavijest(), sender);
+            frmReports frm = new frmReports();
+            frm.TopLevel = false;
+            OpenChildForm(frm, sender);
         }
 
         private void btnCloseChildForm_Click(object sender, EventArgs e)

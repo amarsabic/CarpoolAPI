@@ -63,39 +63,9 @@ namespace Carpool.WinUI.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        public static System.Drawing.Bitmap _52fb168f1bd3abf7e97a8e9bfdac331d_speed_car_logo_by_vexels {
-            get {
-                object obj = ResourceManager.GetObject("52fb168f1bd3abf7e97a8e9bfdac331d-speed-car-logo-by-vexels", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        public static System.Drawing.Bitmap car_3_128 {
-            get {
-                object obj = ResourceManager.GetObject("car-3-128", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
         public static System.Drawing.Bitmap car_3_1281 {
             get {
                 object obj = ResourceManager.GetObject("car-3-1281", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        public static System.Drawing.Bitmap car_3_64 {
-            get {
-                object obj = ResourceManager.GetObject("car-3-64", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -123,49 +93,9 @@ namespace Carpool.WinUI.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        public static System.Drawing.Bitmap icons8_vanpool_50 {
-            get {
-                object obj = ResourceManager.GetObject("icons8-vanpool-50", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
         public static System.Drawing.Bitmap icons8_vanpool_96 {
             get {
                 object obj = ResourceManager.GetObject("icons8-vanpool-96", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        public static System.Drawing.Bitmap pickup_car {
-            get {
-                object obj = ResourceManager.GetObject("pickup-car", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        public static System.Drawing.Bitmap pickup_car__1_ {
-            get {
-                object obj = ResourceManager.GetObject("pickup-car (1)", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        public static System.Drawing.Bitmap pickup_car__2_ {
-            get {
-                object obj = ResourceManager.GetObject("pickup-car (2)", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -183,29 +113,9 @@ namespace Carpool.WinUI.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        public static System.Drawing.Bitmap pngegg {
-            get {
-                object obj = ResourceManager.GetObject("pngegg", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
         public static System.Drawing.Bitmap rsz_1pngegg {
             get {
                 object obj = ResourceManager.GetObject("rsz_1pngegg", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        public static System.Drawing.Bitmap rsz_pngegg {
-            get {
-                object obj = ResourceManager.GetObject("rsz_pngegg", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
