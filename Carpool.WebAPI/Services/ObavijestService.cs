@@ -30,6 +30,10 @@ namespace Carpool.WebAPI.Services
             {
                 query = query.Where(x => x.Naslov.StartsWith(request.Naslov));
             }
+            if (!string.IsNullOrWhiteSpace(request?.KorisnikIme))
+            {
+                query = query.Where(x => x.Korisnik.KorisnickoIme.StartsWith(request.KorisnikIme));
+            }
             if (!string.IsNullOrWhiteSpace(request?.KratkiOpis))
             {
                 query = query.Where(x => x.KratkiOpis.StartsWith(request.KratkiOpis));

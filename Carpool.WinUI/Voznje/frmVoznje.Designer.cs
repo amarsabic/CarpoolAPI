@@ -209,23 +209,30 @@
             // 
             // btnAktivne
             // 
+            this.btnAktivne.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.btnAktivne.FlatAppearance.BorderSize = 0;
-            this.btnAktivne.Location = new System.Drawing.Point(734, 197);
+            this.btnAktivne.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAktivne.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnAktivne.Location = new System.Drawing.Point(720, 197);
             this.btnAktivne.Name = "btnAktivne";
             this.btnAktivne.Size = new System.Drawing.Size(101, 31);
             this.btnAktivne.TabIndex = 21;
             this.btnAktivne.Text = "Aktivne vožnje";
-            this.btnAktivne.UseVisualStyleBackColor = true;
+            this.btnAktivne.UseVisualStyleBackColor = false;
             this.btnAktivne.Click += new System.EventHandler(this.btnAktivne_Click);
             // 
             // btnZavrsene
             // 
+            this.btnZavrsene.BackColor = System.Drawing.Color.Red;
+            this.btnZavrsene.FlatAppearance.BorderSize = 0;
+            this.btnZavrsene.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnZavrsene.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.btnZavrsene.Location = new System.Drawing.Point(841, 197);
             this.btnZavrsene.Name = "btnZavrsene";
             this.btnZavrsene.Size = new System.Drawing.Size(101, 31);
             this.btnZavrsene.TabIndex = 22;
             this.btnZavrsene.Text = "Završene vožnje";
-            this.btnZavrsene.UseVisualStyleBackColor = true;
+            this.btnZavrsene.UseVisualStyleBackColor = false;
             this.btnZavrsene.Click += new System.EventHandler(this.btnZavrsene_Click);
             // 
             // dtmDatumPolaska

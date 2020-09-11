@@ -55,6 +55,10 @@ namespace Carpool.WebAPI.Services
             {
                 query = query.Where(x => x.Godiste.StartsWith(request.Godiste));
             }
+            if (!string.IsNullOrWhiteSpace(request?.BrojRegistracije))
+            {
+                query = query.Where(x => x.BrojRegOznaka==request.BrojRegistracije);
+            }
             if (request.IsVozac)
             {
                 query = query.Where(x => x.VozacID == int.Parse(userId));

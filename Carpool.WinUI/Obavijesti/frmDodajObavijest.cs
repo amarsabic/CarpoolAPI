@@ -35,10 +35,12 @@ namespace Carpool.WinUI.Obavijesti
                 request.DatumVrijemeObjave = DateTime.Now;
                 request.Naslov = txtNaslov.Text;
                 request.KratkiOpis = rtxtSadrzaj.Text;
+                 
 
                 await _obavijestiService.Insert<Model.Obavijesti>(request);
 
                 MessageBox.Show("Uspješno dodana obavijest");
+                this.Close();
             }
             else
             {

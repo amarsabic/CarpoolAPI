@@ -45,6 +45,7 @@
             this.btnCloseChildForm = new System.Windows.Forms.Button();
             this.lblNaslov = new System.Windows.Forms.Label();
             this.panelDesktopPanel = new System.Windows.Forms.Panel();
+            this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.label8 = new System.Windows.Forms.Label();
@@ -61,6 +62,7 @@
             this.panelLogo.SuspendLayout();
             this.panelTitleBar.SuspendLayout();
             this.panelDesktopPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.panel1.SuspendLayout();
@@ -301,6 +303,7 @@
             // 
             // panelDesktopPanel
             // 
+            this.panelDesktopPanel.Controls.Add(this.pictureBox4);
             this.panelDesktopPanel.Controls.Add(this.panel2);
             this.panelDesktopPanel.Controls.Add(this.panel1);
             this.panelDesktopPanel.Controls.Add(this.panelAktivneVoznje);
@@ -309,6 +312,15 @@
             this.panelDesktopPanel.Name = "panelDesktopPanel";
             this.panelDesktopPanel.Size = new System.Drawing.Size(1006, 582);
             this.panelDesktopPanel.TabIndex = 2;
+            // 
+            // pictureBox4
+            // 
+            this.pictureBox4.Image = global::Carpool.WinUI.Properties.Resources.rsz_1pngegg;
+            this.pictureBox4.Location = new System.Drawing.Point(335, 240);
+            this.pictureBox4.Name = "pictureBox4";
+            this.pictureBox4.Size = new System.Drawing.Size(332, 282);
+            this.pictureBox4.TabIndex = 6;
+            this.pictureBox4.TabStop = false;
             // 
             // panel2
             // 
@@ -400,7 +412,7 @@
             this.panelAktivneVoznje.Controls.Add(this.pictureBox1);
             this.panelAktivneVoznje.Controls.Add(this.label4);
             this.panelAktivneVoznje.Controls.Add(this.labelBrojAktivnihVoznji);
-            this.panelAktivneVoznje.Location = new System.Drawing.Point(47, 35);
+            this.panelAktivneVoznje.Location = new System.Drawing.Point(42, 25);
             this.panelAktivneVoznje.Name = "panelAktivneVoznje";
             this.panelAktivneVoznje.Size = new System.Drawing.Size(280, 150);
             this.panelAktivneVoznje.TabIndex = 0;
@@ -452,6 +464,7 @@
             this.panelTitleBar.ResumeLayout(false);
             this.panelTitleBar.PerformLayout();
             this.panelDesktopPanel.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
@@ -495,5 +508,6 @@
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label labelAutomobil;
+        private System.Windows.Forms.PictureBox pictureBox4;
     }
 }

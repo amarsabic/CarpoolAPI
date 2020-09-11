@@ -46,6 +46,8 @@
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.btnObrisi = new System.Windows.Forms.Button();
             this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
+            this.dtmDatumIstekaReg = new System.Windows.Forms.DateTimePicker();
+            this.label7 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             this.SuspendLayout();
@@ -124,18 +126,23 @@
             // 
             // btnSpremi
             // 
-            this.btnSpremi.Location = new System.Drawing.Point(73, 360);
+            this.btnSpremi.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(136)))), ((int)(((byte)(169)))));
+            this.btnSpremi.FlatAppearance.BorderSize = 0;
+            this.btnSpremi.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSpremi.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSpremi.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnSpremi.Location = new System.Drawing.Point(194, 332);
             this.btnSpremi.Name = "btnSpremi";
-            this.btnSpremi.Size = new System.Drawing.Size(90, 28);
+            this.btnSpremi.Size = new System.Drawing.Size(266, 28);
             this.btnSpremi.TabIndex = 9;
             this.btnSpremi.Text = "Spremi";
-            this.btnSpremi.UseVisualStyleBackColor = true;
+            this.btnSpremi.UseVisualStyleBackColor = false;
             this.btnSpremi.Click += new System.EventHandler(this.btnSpremi_Click);
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(23, 263);
+            this.label6.Location = new System.Drawing.Point(275, 261);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(30, 13);
             this.label6.TabIndex = 11;
@@ -143,24 +150,29 @@
             // 
             // txtSlika
             // 
-            this.txtSlika.Location = new System.Drawing.Point(26, 279);
+            this.txtSlika.Location = new System.Drawing.Point(278, 277);
             this.txtSlika.Name = "txtSlika";
-            this.txtSlika.Size = new System.Drawing.Size(203, 20);
+            this.txtSlika.Size = new System.Drawing.Size(242, 20);
             this.txtSlika.TabIndex = 10;
             // 
             // btnDodajSliku
             // 
-            this.btnDodajSliku.Location = new System.Drawing.Point(245, 279);
+            this.btnDodajSliku.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.btnDodajSliku.FlatAppearance.BorderSize = 0;
+            this.btnDodajSliku.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDodajSliku.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDodajSliku.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnDodajSliku.Location = new System.Drawing.Point(537, 277);
             this.btnDodajSliku.Name = "btnDodajSliku";
             this.btnDodajSliku.Size = new System.Drawing.Size(90, 22);
             this.btnDodajSliku.TabIndex = 12;
-            this.btnDodajSliku.Text = "Dodaj";
-            this.btnDodajSliku.UseVisualStyleBackColor = true;
+            this.btnDodajSliku.Text = "Dodaj sliku";
+            this.btnDodajSliku.UseVisualStyleBackColor = false;
             this.btnDodajSliku.Click += new System.EventHandler(this.btnDodajSliku_Click);
             // 
             // pictureBox
             // 
-            this.pictureBox.Location = new System.Drawing.Point(387, 39);
+            this.pictureBox.Location = new System.Drawing.Point(278, 70);
             this.pictureBox.Name = "pictureBox";
             this.pictureBox.Size = new System.Drawing.Size(349, 188);
             this.pictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -173,23 +185,47 @@
             // 
             // btnObrisi
             // 
-            this.btnObrisi.Location = new System.Drawing.Point(673, 397);
+            this.btnObrisi.BackColor = System.Drawing.Color.Red;
+            this.btnObrisi.FlatAppearance.BorderSize = 0;
+            this.btnObrisi.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnObrisi.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnObrisi.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnObrisi.Location = new System.Drawing.Point(194, 366);
             this.btnObrisi.Name = "btnObrisi";
-            this.btnObrisi.Size = new System.Drawing.Size(75, 23);
+            this.btnObrisi.Size = new System.Drawing.Size(266, 28);
             this.btnObrisi.TabIndex = 14;
             this.btnObrisi.Text = "Obriši";
-            this.btnObrisi.UseVisualStyleBackColor = true;
+            this.btnObrisi.UseVisualStyleBackColor = false;
             this.btnObrisi.Click += new System.EventHandler(this.btnObrisi_Click);
             // 
             // errorProvider
             // 
             this.errorProvider.ContainerControl = this;
             // 
+            // dtmDatumIstekaReg
+            // 
+            this.dtmDatumIstekaReg.Location = new System.Drawing.Point(26, 274);
+            this.dtmDatumIstekaReg.MinDate = new System.DateTime(2020, 9, 10, 0, 0, 0, 0);
+            this.dtmDatumIstekaReg.Name = "dtmDatumIstekaReg";
+            this.dtmDatumIstekaReg.Size = new System.Drawing.Size(203, 20);
+            this.dtmDatumIstekaReg.TabIndex = 15;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(23, 258);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(122, 13);
+            this.label7.TabIndex = 16;
+            this.label7.Text = "Datum isteka registracije";
+            // 
             // frmDodajAutomobil
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(660, 433);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.dtmDatumIstekaReg);
             this.Controls.Add(this.btnObrisi);
             this.Controls.Add(this.pictureBox);
             this.Controls.Add(this.btnDodajSliku);
@@ -234,5 +270,7 @@
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.Button btnObrisi;
         private System.Windows.Forms.ErrorProvider errorProvider;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.DateTimePicker dtmDatumIstekaReg;
     }
 }

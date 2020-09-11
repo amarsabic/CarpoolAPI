@@ -117,44 +117,56 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="computer-icons-user-login-swiggy-png-clip-art" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\computer-icons-user-login-swiggy-png-clip-art.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="x-mark-24" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\x-mark-24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="car-3-128" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\car-3-128.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="icons8-vanpool-96" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\icons8-vanpool-96.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="Validation_RequiredField" xml:space="preserve">
     <value>Obavezno polje</value>
   </data>
-  <data name="conference-128" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\conference-128.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="car-3-1281" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\car-3-1281.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="pickup-car" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\pickup-car.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="pickup-car (2)" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\pickup-car (2).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="pngegg" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\pngegg.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="pickup-car (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\pickup-car (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="icons8-vanpool-50" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\icons8-vanpool-50.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="computer-icons-user-login-swiggy-png-clip-art" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\computer-icons-user-login-swiggy-png-clip-art.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="car-3-64" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\car-3-64.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="car-3-128" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\car-3-128.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="x-mark-24" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\x-mark-24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="conference-128" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\conference-128.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="rsz_pngegg" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\rsz_pngegg.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="car-3-1281" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\car-3-1281.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="pickup-car (2)" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\pickup-car (2).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icons8-vanpool-96" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icons8-vanpool-96.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="52fb168f1bd3abf7e97a8e9bfdac331d-speed-car-logo-by-vexels" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\52fb168f1bd3abf7e97a8e9bfdac331d-speed-car-logo-by-vexels.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icons8-vanpool-50" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icons8-vanpool-50.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="pin-8-128" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\pin-8-128.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="rsz_1pngegg" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\rsz_1pngegg.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

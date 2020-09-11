@@ -63,6 +63,16 @@ namespace Carpool.WinUI.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        public static System.Drawing.Bitmap _52fb168f1bd3abf7e97a8e9bfdac331d_speed_car_logo_by_vexels {
+            get {
+                object obj = ResourceManager.GetObject("52fb168f1bd3abf7e97a8e9bfdac331d-speed-car-logo-by-vexels", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         public static System.Drawing.Bitmap car_3_128 {
             get {
                 object obj = ResourceManager.GetObject("car-3-128", resourceCulture);
@@ -166,6 +176,36 @@ namespace Carpool.WinUI.Properties {
         public static System.Drawing.Bitmap pin_8_128 {
             get {
                 object obj = ResourceManager.GetObject("pin-8-128", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap pngegg {
+            get {
+                object obj = ResourceManager.GetObject("pngegg", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap rsz_1pngegg {
+            get {
+                object obj = ResourceManager.GetObject("rsz_1pngegg", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap rsz_pngegg {
+            get {
+                object obj = ResourceManager.GetObject("rsz_pngegg", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

@@ -8,6 +8,8 @@ namespace Carpool.Model.Requests
     {
         public string Naslov { get; set; }
         public string KratkiOpis { get; set; }
+        public string KorisnikIme { get; set; }
+        public DateTime DatumObjave { get; set; }
         public int? TipObavijestiID { get; set; }
 
         public bool IsKorisnik { get; set; }

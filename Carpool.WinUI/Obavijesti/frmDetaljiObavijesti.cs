@@ -34,31 +34,32 @@ namespace Carpool.WinUI.Obavijesti
             frm.Show();
         }
 
-        private async void btnTrazi_Click(object sender, EventArgs e)
+        private async void btnPretraga_Click(object sender, EventArgs e)
         {
             ObavijestiSearchRequest request = new ObavijestiSearchRequest
             {
-                Naslov = txtSearch.Text
+                Naslov = txtSearch.Text,
+                KorisnikIme=txtKorisnik.Text
             };
 
             var list = await _obavijestiService.Get<List<Model.Obavijesti>>(request);
-            dgvObavijestiList.AutoGenerateColumns = false;
-            dgvObavijestiList.DataSource = list;
-        }
-
-        private async void btnPrikaziSve_Click(object sender, EventArgs e)
-        {
-            var list = await _obavijestiService.Get<List<Model.Obavijesti>>(null);
-           
-            if (list.Count() != 0)
+            if (list.Count() > 0)
             {
                 dgvObavijestiList.AutoGenerateColumns = false;
                 dgvObavijestiList.DataSource = list;
             }
             else
             {
-                MessageBox.Show("Trenutno ne postoje obavijesti!");
+                MessageBox.Show("Trenutno nema traženih rezultata!");
             }
+        }
+
+        private void dgvObavijestiList_DoubleClick(object sender, EventArgs e)
+        {
+            var id = dgvObavijestiList.SelectedRows[0].Cells[0].Value;
+
+            frmPregledObavijesti frm = new frmPregledObavijesti(int.Parse(id.ToString()));
+            frm.Show();
         }
     }
 }

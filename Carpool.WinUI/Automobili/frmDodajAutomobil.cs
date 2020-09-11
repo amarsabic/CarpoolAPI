@@ -22,6 +22,16 @@ namespace Carpool.WinUI.Automobili
             _id = id;
         }
 
+        public static Bitmap ByteToImage(byte[] blob)
+        {
+            MemoryStream mStream = new MemoryStream();
+            byte[] pData = blob;
+            mStream.Write(pData, 0, Convert.ToInt32(pData.Length));
+            Bitmap bm = new Bitmap(mStream, false);
+            mStream.Dispose();
+            return bm;
+        }
+
         private async void frmDodaj_Load(object sender, EventArgs e)
         {
             if (_id.HasValue)
@@ -32,6 +42,10 @@ namespace Carpool.WinUI.Automobili
                 txtModel.Text = result.Model;
                 txtRegOznake.Text = result.BrojRegOznaka;
                 txtGodiste.Text = result.Godiste;
+                dtmDatumIstekaReg.Value = result.DatumIstekaRegistracije;
+
+                pictureBox.Image = ByteToImage(result.Slika);
+                pictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
             }
         }
 
@@ -42,6 +56,7 @@ namespace Carpool.WinUI.Automobili
             request.Model = txtModel.Text;
             request.BrojRegOznaka = txtRegOznake.Text;
             request.Godiste = txtGodiste.Text;
+            request.DatumIstekaRegistracije = dtmDatumIstekaReg.Value;
          
             if (_id.HasValue)
             {
@@ -54,6 +69,7 @@ namespace Carpool.WinUI.Automobili
             }
 
             MessageBox.Show("Uspješno dodavanje");
+            this.Close();
         }
 
         private void btnDodajSliku_Click(object sender, EventArgs e)
