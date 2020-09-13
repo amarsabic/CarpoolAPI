@@ -34,6 +34,8 @@ namespace Carpool.WebAPI.Services
             if (request.ZavrsiVoznju)
             {
                 entity.IsAktivna = false;
+                var autoZavrsena = _context.Autmobili.Find(request.AutomobilID);
+                autoZavrsena.IsAktivan = false;
                 _context.SaveChanges();
                 return _mapper.Map<Model.Voznja>(entity);
             }
@@ -79,7 +81,6 @@ namespace Carpool.WebAPI.Services
 
             var auto = _context.Autmobili.Find(entity.AutomobilID);
             auto.IsAktivan = false;
-
 
             var rezervacije = _context.Rezervacije.Where(u => u.VoznjaID == id).ToList();
             foreach (var item in rezervacije)

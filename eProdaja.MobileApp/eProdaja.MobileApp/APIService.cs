@@ -15,6 +15,7 @@ namespace eProdaja.MobileApp
         public static string Username { get; set; }
         public static string Password { get; set; }
         public static bool IsVozac { get; set; }
+        public static int UserID { get; set; }
 
 
         private string _route = null;
@@ -83,6 +84,24 @@ namespace eProdaja.MobileApp
                                                      "application/json"));
 
             return true;
+        }
+
+        public async Task<T> GetLoggedUser<T>()
+        {
+            var url = $"{_apiUrl}/{_route}";
+
+            try
+            {
+                return await url.WithBasicAuth(Username, Password).GetJsonAsync<T>();
+            }
+            catch (FlurlHttpException ex)
+            {
+                if (ex.Call.HttpStatus == System.Net.HttpStatusCode.Unauthorized)
+                {
+                    await Application.Current.MainPage.DisplayAlert("Greška", "Pogrešan username ili password", "OK");
+                }
+                throw;
+            }
         }
         public async Task<T> Auth<T>()
         {

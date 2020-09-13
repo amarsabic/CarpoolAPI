@@ -88,6 +88,15 @@ namespace Carpool.WebAPI.Services
         {
             var userId = int.Parse(_httpContext.GetUserId());
 
+            var getRezervacije = _context.Rezervacije.Where(u => u.VoznjaID == request.VoznjaID);
+            foreach (var rez in getRezervacije)
+            {
+                if (rez.KorisnikID == userId)
+                {
+                    throw new UserException("Već ste napravili rezervaciju!");
+                }
+            }
+
             var vozacID = _context.Voznje.Where(v => v.VoznjaID == request.VoznjaID).Select(v => v.VozacID).FirstOrDefault();
             if (userId == vozacID)
             {

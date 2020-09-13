@@ -49,6 +49,7 @@ namespace eProdaja.MobileApp.ViewModels
                 if (user!=null)
                 {
                     APIService.IsVozac = user.IsVozac;
+                    APIService.UserID = user.KorisnikID;
                 }
                 Application.Current.MainPage = new NavigationPage(new WelcomePage());
             }

@@ -16,6 +16,7 @@ namespace Carpool.WinUI.Izvještaji
     public partial class frmReports : Form
     {
         private readonly APIService _voznje = new APIService("voznja");
+        private readonly APIService _rezervacije = new APIService("rezervacija");
         public frmReports()
         {
             InitializeComponent();
@@ -25,6 +26,12 @@ namespace Carpool.WinUI.Izvještaji
             public int Mjesec { get; set; }
             public string MjesecString { get; set; }
             public int VoznjaID { get; set; }
+        }
+
+        public class MjeseciRezervacije
+        {
+            public string MjesecString { get; set; }
+            public int RezervacijaID { get; set; }
         }
 
         private string PretvoriMjesece(int broj)
@@ -44,6 +51,59 @@ namespace Carpool.WinUI.Izvještaji
             if(broj==12) { mjesecString = "Decembar"; }
 
             return mjesecString;
+        }
+
+        private async void CreatePieChartReservations()
+        {
+            Func<ChartPoint, string> labelPoint = chartPoint =>
+                         string.Format("{0} ({1:P})", chartPoint.Y, chartPoint.Participation);
+
+            var rezervacije = await _rezervacije.Get<List<Model.Rezervacija>>(null);
+
+            List<MjeseciRezervacije> mjeseciRezervacijes = new List<MjeseciRezervacije>();
+            foreach (var item in rezervacije)
+            {
+                mjeseciRezervacijes.Add(new MjeseciRezervacije
+                { 
+                    MjesecString = PretvoriMjesece(item.DatumRezervacije.Month),
+                    RezervacijaID = item.RezervacijaID
+                });
+            }
+
+            var chartResult = mjeseciRezervacijes.GroupBy(x => x.MjesecString);
+            pieChart2.Series = new SeriesCollection();
+            int najveci = -1;
+            foreach (var result in chartResult)
+            {
+                if (result.Count() > najveci)
+                {
+                    najveci = result.Count();
+                    foreach (PieSeries series in pieChart2.Series)
+                    {
+                        series.PushOut = 0;
+                    }
+                    pieChart2.Series.Add(new PieSeries
+                    {
+                        Title = result.Key.ToString(),
+                        Values = new ChartValues<int> { result.Count() },
+                        DataLabels = true,
+                        PushOut = 15,
+                        LabelPoint = labelPoint
+                    });
+                }
+                else
+                {
+                    pieChart2.Series.Add(new PieSeries
+                    {
+                        Title = result.Key.ToString(),
+                        Values = new ChartValues<int> { result.Count() },
+                        DataLabels = true,
+                        LabelPoint = labelPoint
+                    });
+                }
+            }
+
+            pieChart2.LegendLocation = LegendLocation.Bottom;
         }
 
         private async void CreatePieChart()
@@ -103,6 +163,7 @@ namespace Carpool.WinUI.Izvještaji
         private void frmReports_Load(object sender, EventArgs e)
         {
             CreatePieChart();
+            CreatePieChartReservations();
         }
     }
 }

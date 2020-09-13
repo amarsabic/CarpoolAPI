@@ -91,13 +91,20 @@ namespace Carpool.WinUI.Korisnici
             if (_id.HasValue)
             {
                 var korisnik = await _apiService.GetById<Model.Korisnik>(_id);
-
-                txtIme.Text = korisnik.Ime;
-                txtPrezime.Text = korisnik.Prezime;
-                txtEmail.Text = korisnik.Email;
-                txtKorisnickoIme.Text = korisnik.KorisnickoIme;
-                txtTelefon.Text = korisnik.BrojTelefona;
-                dtmDatumRodjenja.Value = korisnik.DatumRodjenja;
+                if (korisnik != null)
+                {
+                    txtIme.Text = korisnik.Ime;
+                    txtPrezime.Text = korisnik.Prezime;
+                    txtEmail.Text = korisnik.Email;
+                    txtKorisnickoIme.Text = korisnik.KorisnickoIme;
+                    txtTelefon.Text = korisnik.BrojTelefona;
+                    dtmDatumRodjenja.Value = korisnik.DatumRodjenja;
+                }
+                else
+                {
+                    MessageBox.Show("Korisnik ne postoji ili je uklonjen!");
+                    return;
+                }  
             }
 
             await LoadUloge();

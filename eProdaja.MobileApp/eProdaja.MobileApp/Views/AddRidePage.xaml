@@ -58,7 +58,7 @@
                         ></Picker>
 
 
-            <Button IsVisible="{Binding IsVisibleUkloni}" Command="{Binding DeleteRideCommand}" Margin="0,0,0,0" Text="Ukloni"></Button>
+            <!--<Button IsVisible="{Binding IsVisibleUkloni}" Command="{Binding DeleteRideCommand}" Margin="0,0,0,0" Text="Ukloni"></Button>-->
             <Button IsVisible="{Binding IsVisibleUkloni}" Command="{Binding ViewReservationsCommand}" Margin="0,0,0,0" Text="Pregledaj rezervacije"></Button>
             <Button IsVisible="{Binding IsVisibleUkloni}" Command="{Binding ZavrsiCommand}" Margin="0,0,0,0" Text="Završi"></Button>
             <Button Command="{Binding SaveRideCommand}" Margin="0,0,0,0" Text="Sačuvaj"></Button>

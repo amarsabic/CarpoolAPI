@@ -42,12 +42,12 @@
                 <Label FontAttributes="Bold" Text="{Binding VrijemePolaska}"></Label>
             </StackLayout>
             <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
-                <Label Text="Slobodna mjesta:"></Label>
-                <Label FontAttributes="Bold" Text="{Binding SlobodnaMjesta}"></Label>
+                <Label Text="Slobodna mjesta:"  IsVisible="{Binding IsVisibleButton}"></Label>
+                <Label FontAttributes="Bold" Text="{Binding SlobodnaMjesta}" IsVisible="{Binding IsVisibleButton}"></Label>
             </StackLayout>
-            <Button  Command="{Binding MainReservationCommand}" Text="Rezerviši"></Button>
-            <Label FontAttributes="Italic" FontSize="18" Text="Usputni gradovi:"></Label>
-            <ListView  ItemsSource="{Binding UsputniGradovi}" HorizontalOptions="CenterAndExpand">
+            <Button Command="{Binding MainReservationCommand}" IsVisible="{Binding IsVisibleButton}" Text="Rezerviši"></Button>
+            <Label FontAttributes="Italic" FontSize="18" Text="Usputni gradovi:"  IsVisible="{Binding IsVisibleButton}"></Label>
+            <ListView  ItemsSource="{Binding UsputniGradovi}" IsVisible="{Binding IsVisibleButton}" HorizontalOptions="CenterAndExpand">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>

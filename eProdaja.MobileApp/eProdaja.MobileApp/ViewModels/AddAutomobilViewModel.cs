@@ -166,10 +166,13 @@ namespace eProdaja.MobileApp.ViewModels
 
                 try
                 {
-                    await _automobilService.Update<Automobil>(automobilID, model);
-                    await Application.Current.MainPage.DisplayAlert("Carpool", "Uspješna izmjena", "OK");
+                    var a = await _automobilService.Update<Automobil>(automobilID, model);
+                    if (a != null)
+                    {
+                        await Application.Current.MainPage.DisplayAlert("Carpool", "Uspješna izmjena", "OK");
 
-                    await Application.Current.MainPage.Navigation.PopAsync();
+                        await Application.Current.MainPage.Navigation.PopAsync();
+                    }
                 }
                 catch (Exception)
                 {
@@ -180,10 +183,13 @@ namespace eProdaja.MobileApp.ViewModels
             {
                 try
                 {
-                    await _automobilService.Insert<dynamic>(model);
-                    await Application.Current.MainPage.DisplayAlert("OK", "Uspješno dodavanje", "OK");
+                    var a = await _automobilService.Insert<Automobil>(model);
+                    if (a != null)
+                    {
+                        await Application.Current.MainPage.DisplayAlert("OK", "Uspješno dodavanje", "OK");
 
-                    await Application.Current.MainPage.Navigation.PopAsync();
+                        await Application.Current.MainPage.Navigation.PopAsync();
+                    }
                 }
                 catch (Exception)
                 {

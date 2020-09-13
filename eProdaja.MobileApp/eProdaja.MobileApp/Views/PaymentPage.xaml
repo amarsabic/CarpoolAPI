@@ -31,10 +31,10 @@
             </StackLayout>
             <StackLayout Margin="50, 20, 50, 0">
                 <StackLayout>
-                    <Entry Text="{Binding CreditCardNumber}" Placeholder="Enter your credit card number"></Entry>
+                    <Entry Text="{Binding CreditCardNumber}" Placeholder="4242424242424242"></Entry>
                     <StackLayout Orientation="Horizontal">
-                        <Entry Text="{Binding ExpiryYear}" Placeholder="Expiry year"></Entry>
-                        <Entry Text="{Binding ExpiryMonth}" Placeholder="Expiry month"></Entry>
+                        <Entry Text="{Binding ExpiryYear}" Placeholder="2020"></Entry>
+                        <Entry Text="{Binding ExpiryMonth}" Placeholder="9"></Entry>
                         <Entry Text="{Binding CVC}" Placeholder="CVC"></Entry>
                     </StackLayout>
                 </StackLayout>

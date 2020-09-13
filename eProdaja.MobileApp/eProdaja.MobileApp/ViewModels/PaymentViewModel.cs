@@ -99,18 +99,80 @@ namespace eProdaja.MobileApp.ViewModels
         public ICommand InitCommand { get; set; }
         public ICommand PayCommand { get; set; }
 
+        public bool Validate()
+        {
+
+            if (string.IsNullOrWhiteSpace(CreditCardNumber) || string.IsNullOrWhiteSpace(ExpiryYear) ||
+                string.IsNullOrWhiteSpace(ExpiryMonth) || string.IsNullOrWhiteSpace(CVC))
+            {
+                Xamarin.Forms.Application.Current.MainPage.DisplayAlert("Carpool", "Popunite sva polja!", "OK");
+                return false;
+            }
+            else if (CreditCardNumber.Length != 16)
+            {
+                Xamarin.Forms.Application.Current.MainPage.DisplayAlert("Carpool", "Broj kreditne kartice mora sadržavati 16 cifara!", "OK");
+                return false;
+            }
+            else if (!System.Text.RegularExpressions.Regex.IsMatch(CreditCardNumber, "^[0-9]*$"))
+            {
+                Xamarin.Forms.Application.Current.MainPage.DisplayAlert("Carpool", "Broj kreditne kartice sadrži samo brojeve!", "OK");
+                return false;
+            }
+            else if (!System.Text.RegularExpressions.Regex.IsMatch(ExpiryYear, "^[0-9]*$"))
+            {
+                Xamarin.Forms.Application.Current.MainPage.DisplayAlert("Carpool", "Godina sadrži samo brojeve!", "OK");
+                return false;
+            }
+            else if (ExpiryYear.Length != 4)
+            {
+                Xamarin.Forms.Application.Current.MainPage.DisplayAlert("Greška", "Godina mora sadržavati 4 broja", "OK");
+                return false;
+            }
+            else if (!System.Text.RegularExpressions.Regex.IsMatch(ExpiryMonth, "^[0-9]*$"))
+            {
+                Xamarin.Forms.Application.Current.MainPage.DisplayAlert("Carpool", "Mjesec sadrži samo brojeve!", "OK");
+                return false;
+            }
+            else if (ExpiryMonth.Length < 1 || ExpiryMonth.Length > 2)
+            {
+                Xamarin.Forms.Application.Current.MainPage.DisplayAlert("Carpool", "Unesite validan mjesec!", "OK");
+                return false;
+            }
+            else if (!System.Text.RegularExpressions.Regex.IsMatch(CVC, "^[0-9]*$"))
+            {
+                Xamarin.Forms.Application.Current.MainPage.DisplayAlert("Carpool", "CVC sadrži samo brojeve!", "OK");
+                return false;
+            }
+            else if (CVC.Length != 3)
+            {
+                Xamarin.Forms.Application.Current.MainPage.DisplayAlert("Carpool", "CVC sadrži tri cifre!", "OK");
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+
         public async Task Pay()
         {
-            var stripeTokenId = CreateToken(CreditCardNumber, ExpiryMonth, ExpiryYear, CVC);
-            var payment = await _voznja.Payment(new PaymentModel()
-            {
-                Amount = _punaCijena,
-                Token = stripeTokenId
-            });
+                try
+                {
+                    var stripeTokenId = CreateToken(CreditCardNumber, ExpiryMonth, ExpiryYear, CVC);
+                    var payment = await _voznja.Payment(new PaymentModel()
+                    {
+                        Amount = _punaCijena,
+                        Token = stripeTokenId
+                    });
 
-            await Xamarin.Forms.Application.Current.MainPage.DisplayAlert("Carpool", "Uspješna transakcija", "OK");
-            await Xamarin.Forms.Application.Current.MainPage.Navigation.PopModalAsync();
-            await Xamarin.Forms.Application.Current.MainPage.Navigation.PopAsync();
+                    await Xamarin.Forms.Application.Current.MainPage.DisplayAlert("Carpool", "Uspješna transakcija", "OK");
+                    await Xamarin.Forms.Application.Current.MainPage.Navigation.PopModalAsync();
+                    await Xamarin.Forms.Application.Current.MainPage.Navigation.PopAsync();
+                }
+                catch (Exception ex)
+                {
+                    await Xamarin.Forms.Application.Current.MainPage.DisplayAlert("Carpool", ex.Message, "OK");
+                }         
         }
 
         public string CreateToken(string cardNumber, string cardExpMonth, string cardExpYear, string cardCVC)
@@ -121,10 +183,10 @@ namespace eProdaja.MobileApp.ViewModels
             {
                 Card = new CreditCardOptions
                 {
-                    Number = "4242424242424242",
-                    ExpYear = 2021,
-                    ExpMonth = 7,
-                    Cvc = "123"
+                    Number = cardNumber,
+                    ExpYear = long.Parse(cardExpYear),
+                    ExpMonth = long.Parse(cardExpMonth),
+                    Cvc = cardCVC
                 }
             };
 

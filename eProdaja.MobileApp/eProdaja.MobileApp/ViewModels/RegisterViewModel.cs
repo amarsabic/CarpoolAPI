@@ -210,9 +210,12 @@ namespace eProdaja.MobileApp.ViewModels
 
             try
             {
-                await _korisnik.Insert<dynamic>(request);
-                await Application.Current.MainPage.DisplayAlert("OK", "Uspješna registracija", "OK");
-                await Application.Current.MainPage.Navigation.PopAsync();
+               var k = await _korisnik.Insert<Korisnik>(request);
+               if (k != null)
+                {
+                    await Application.Current.MainPage.DisplayAlert("OK", "Uspješna registracija", "OK");
+                    await Application.Current.MainPage.Navigation.PopAsync();
+                }
             }
             catch (Exception)
             {

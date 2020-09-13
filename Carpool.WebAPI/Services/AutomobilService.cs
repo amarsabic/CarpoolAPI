@@ -22,13 +22,43 @@ namespace Carpool.WebAPI.Services
 
         public override Model.Automobil Delete(int id)
         {
-
             var entity = _context.Autmobili.Find(id);
-            var voznje = _context.Voznje.Where(v => v.AutomobilID == id && v.IsAktivna).ToList();
-            if (voznje.Count == 0)
+
+            var voznjeAktivne = _context.Voznje.Where(v => v.AutomobilID == id && v.IsAktivna).ToList();
+            var voznjeZavrsene = _context.Voznje.Where(v => v.AutomobilID == id && !v.IsAktivna).ToList();
+
+            if (voznjeAktivne.Count == 0)
             {
+                if (voznjeZavrsene.Count > 0)
+                {
+                    foreach (var zavrsene in voznjeZavrsene)
+                    {
+                        var rezervacije = _context.Rezervacije.Where(u => u.VoznjaID == zavrsene.VoznjaID).ToList();
+                        if (rezervacije.Count() != 0)
+                        {
+                            foreach (var item in rezervacije)
+                            {
+                                _context.Rezervacije.Remove(item);
+                            }
+                        }
+
+                        var usputniGradovi = _context.UsputniGradovi.Where(u => u.VoznjaID == zavrsene.VoznjaID).ToList();
+                        if (usputniGradovi.Count() != 0)
+                        {
+                            foreach (var item in usputniGradovi)
+                            {
+                                _context.UsputniGradovi.Remove(item);
+                            }
+                        }
+
+                        _context.Voznje.Remove(zavrsene);
+                    }
+                }
+                _context.SaveChanges();
+
                 _context.Autmobili.Remove(entity);
                 _context.SaveChanges();
+
                 return _mapper.Map<Model.Automobil>(entity);
             }
             else
@@ -57,7 +87,7 @@ namespace Carpool.WebAPI.Services
             }
             if (!string.IsNullOrWhiteSpace(request?.BrojRegistracije))
             {
-                query = query.Where(x => x.BrojRegOznaka==request.BrojRegistracije);
+                query = query.Where(x => x.BrojRegOznaka == request.BrojRegistracije);
             }
             if (request.IsVozac)
             {
@@ -78,6 +108,13 @@ namespace Carpool.WebAPI.Services
         public override Model.Automobil Insert(AutomobilInsertRequest request)
         {
             var userId = _httpContext.GetUserId();
+
+            var getAll = _context.Autmobili.ToList();
+            foreach (var auto in getAll)
+            {
+                if (request.BrojRegOznaka == auto.BrojRegOznaka)
+                    throw new UserException("Broj registarskih oznaka već postoji!");
+            }
 
             var entity = _mapper.Map<Database.Automobil>(request);
             entity.VozacID = int.Parse(userId);

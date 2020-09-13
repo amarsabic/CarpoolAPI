@@ -21,6 +21,24 @@ namespace Carpool.WinUI
             _route = route;
         }
 
+        public async Task<T> Auth<T>()
+        {
+            var url = $"{Properties.Settings.Default.APIUrl}/{_route}";
+
+            try
+            {
+                return await url.WithBasicAuth(Username, Password).GetJsonAsync<T>();
+            }
+            catch (FlurlHttpException ex)
+            {
+                if (ex.Call.HttpStatus == System.Net.HttpStatusCode.Unauthorized)
+                {
+                    MessageBox.Show("Pogrešan username ili password");
+                }
+                throw;
+            }
+        }
+
         public async Task<T> Get<T>(object search)
         {
             var url = $"{Properties.Settings.Default.APIUrl}/{_route}";

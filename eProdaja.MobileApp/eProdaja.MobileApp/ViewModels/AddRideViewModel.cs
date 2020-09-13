@@ -168,7 +168,8 @@ namespace eProdaja.MobileApp.ViewModels
             VoznjaUspertRequest request = new VoznjaUspertRequest
             {
                 IsAktivna = false,
-                ZavrsiVoznju = true
+                ZavrsiVoznju = true,
+                AutomobilID=SelectedAutomobil.AutomobilID
             };
 
             try

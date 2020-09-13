@@ -79,11 +79,11 @@ namespace Carpool.WebAPI.Services
             }
             if (request.IsKorisnik)
             {
-                query = query.Where(x=>x.KorisnikID==userId);
+                query = query.Where(x => x.KorisnikID == userId);
             }
             if (request.IsAdmin)
             {
-                query = query.Where(x => x.KorisniciUloge.Any(c=>c.KorisnikId==x.KorisnikID));
+                query = query.Where(x => x.KorisniciUloge.Any(c => c.KorisnikId == x.KorisnikID));
             }
             var list = query.ToList();
 
@@ -123,6 +123,15 @@ namespace Carpool.WebAPI.Services
 
         public Model.Korisnik Insert(KorisnikInsertRequest request)
         {
+            var getAll = _context.Korisnici.ToList();
+            foreach (var k in getAll)
+            {
+                if (k.KorisnickoIme == request.KorisnickoIme)
+                    throw new UserException("Korisničko ime već postoji!");
+                if (k.Email == request.Email)
+                    throw new UserException("Već postoji profil registrovan na " + request.Email);
+            }
+
             var entity = _mapper.Map<Database.Korisnik>(request);
 
             if (request.Password != request.PasswordConfirmation)
@@ -154,16 +163,16 @@ namespace Carpool.WebAPI.Services
 
             var model = new Model.Korisnik
             {
-                KorisnikID=entity.KorisnikID,
-                BrojTelefona= entity.BrojTelefona,
-                DatumRodjenja= entity.DatumRodjenja,
-                Email=entity.Email,
-                GradID=entity.GradID,
-                Ime=entity.Ime,
-                IsVozac=entity.IsVozac,
-                KorisnickoIme=entity.KorisnickoIme,
-                Prezime=entity.Prezime,
-                Slika=entity.Slika
+                KorisnikID = entity.KorisnikID,
+                BrojTelefona = entity.BrojTelefona,
+                DatumRodjenja = entity.DatumRodjenja,
+                Email = entity.Email,
+                GradID = entity.GradID,
+                Ime = entity.Ime,
+                IsVozac = entity.IsVozac,
+                KorisnickoIme = entity.KorisnickoIme,
+                Prezime = entity.Prezime,
+                Slika = entity.Slika
             };
 
             model.KorisniciUloge = new List<Model.KorisniciUloge>();
@@ -171,13 +180,13 @@ namespace Carpool.WebAPI.Services
             {
                 model.KorisniciUloge.Add(new Model.KorisniciUloge
                 {
-                    DatumIzmjene=item.DatumIzmjene,
-                    KorisnikId=item.KorisnikId,
-                    KorisnikUlogaId=item.KorisnikUlogaId,
-                    UlogaId=item.UlogaId
+                    DatumIzmjene = item.DatumIzmjene,
+                    KorisnikId = item.KorisnikId,
+                    KorisnikUlogaId = item.KorisnikUlogaId,
+                    UlogaId = item.UlogaId
                 });
             }
-         
+
             return model;
         }
 
@@ -185,7 +194,8 @@ namespace Carpool.WebAPI.Services
         {
             var entity = _context.Korisnici.Find(id);
 
-            if ((!string.IsNullOrWhiteSpace(request.Password))){
+            if ((!string.IsNullOrWhiteSpace(request.Password)))
+            {
 
                 if (request.Password != request.PasswordConfirmation)
                 {
@@ -232,7 +242,7 @@ namespace Carpool.WebAPI.Services
                 _context.SaveChanges();
                 return;
             }
-    
+
             throw new UserException("Unijeli se pogrešnu lozinku.");
         }
 

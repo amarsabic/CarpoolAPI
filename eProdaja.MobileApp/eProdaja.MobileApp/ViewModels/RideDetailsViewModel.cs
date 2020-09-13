@@ -16,6 +16,7 @@ namespace eProdaja.MobileApp.ViewModels
         private readonly APIService _automobili = new APIService("Automobil");
         private readonly APIService _voznja = new APIService("Voznja");
         private readonly APIService _rezervacija = new APIService("Rezervacija");
+        private readonly APIService _korisnik = new APIService("Korisnik");
         public RideDetailsViewModel()
         {
             InitCommand = new Command(async (param) => await Init((int)param));
@@ -27,6 +28,13 @@ namespace eProdaja.MobileApp.ViewModels
 
         public int voznjaID;
 
+        bool _isVisible=true;
+        public bool IsVisibleButton
+        {
+            get { return _isVisible; }
+            set { SetProperty(ref _isVisible, value); }
+        } 
+       
         public ObservableCollection<Grad> UsputniGradovi
         {
             get { return _UsputniGradovi; }
@@ -145,7 +153,13 @@ namespace eProdaja.MobileApp.ViewModels
         {
             try
             {
+                
                 var v = await _voznja.GetById<Voznja>(voznjaId);
+
+                if (APIService.UserID == v.VozacID)
+                {
+                    IsVisibleButton = false;
+                }
 
                 var auto = await _automobili.GetById<Automobil>(v.AutomobilID);
                 Slika = auto.Slika;
