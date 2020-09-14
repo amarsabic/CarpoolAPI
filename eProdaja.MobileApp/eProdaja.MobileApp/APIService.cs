@@ -56,17 +56,12 @@ namespace eProdaja.MobileApp
             }
         }
 
-        public async Task<T> GetByKorisnik<T>(object search)
+        public async Task<T> GetByKorisnik<T>(int korisnik, int voznja)
         {
             var url = $"{_apiUrl}/{_route}/{"getbykorisnik"}";
-
             try
             {
-                if (search != null)
-                {
-                    url += "?";
-                    url += await search.ToQueryString();
-                }
+                url += "?korisnik=" + korisnik + "&" + "voznja=" + voznja;
                 return await url.WithBasicAuth(Username, Password).GetJsonAsync<T>();
             }
             catch (FlurlHttpException ex)

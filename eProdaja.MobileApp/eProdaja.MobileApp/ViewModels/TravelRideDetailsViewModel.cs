@@ -23,6 +23,7 @@ namespace eProdaja.MobileApp.ViewModels
             UkloniCommand = new Command(async () => await Ukloni());
             LoadCommand = new Command(async () => await LoadTipovi());
             OcjenaCommand = new Command(async () => await Ocjena());
+            LoadOcjenaCommand = new Command(async () => await LoadOcjena());
         }
 
         ObservableCollection<Grad> _UsputniGradovi = new ObservableCollection<Grad>();
@@ -144,6 +145,28 @@ namespace eProdaja.MobileApp.ViewModels
         public ICommand UkloniCommand { get; set; }
         public ICommand LoadCommand { get; set; }
         public ICommand OcjenaCommand { get; set; }
+        public ICommand LoadOcjenaCommand { get; set; }
+
+
+        public async Task LoadOcjena()
+        {
+            var r = await _rezervacija.GetById<Rezervacija>(rezervacijaID);
+            var v = await _voznja.GetById<Voznja>(r.VoznjaID);
+
+            var o = await _ocjena.GetByKorisnik<Ocjene>(APIService.UserID, v.VoznjaID);
+            if (o != null)
+            {
+                _provjeraOcjene = true;
+                ocjenaID = o.OcjeneID;
+                Komentar = o.Komentar;
+
+                foreach (var tip in _tipovi)
+                {
+                    if (tip.TipOcjeneID == o.TipOcjeneID)
+                        SelectedTip = tip;
+                }
+            }
+        }
 
         private async Task Ocjena()
         {
@@ -161,12 +184,25 @@ namespace eProdaja.MobileApp.ViewModels
 
             try
             {
-                var o = await _ocjena.Insert<Ocjene>(req);
-                if (o != null)
+                if (!_provjeraOcjene)
                 {
-                    await Application.Current.MainPage.DisplayAlert("Carpool", "Uspješno dodan komentar", "OK");
-                    await Application.Current.MainPage.Navigation.PopAsync();
+                    var o = await _ocjena.Insert<Ocjene>(req);
+                    if (o != null)
+                    {
+                        await Application.Current.MainPage.DisplayAlert("Carpool", "Uspješno ste ocijenili vožnju", "OK");
+                        await Application.Current.MainPage.Navigation.PopAsync();
+                    }
                 }
+                else
+                {
+                    var o = await _ocjena.Update<Ocjene>(ocjenaID, req);
+                    if (o != null)
+                    {
+                        await Application.Current.MainPage.DisplayAlert("Carpool", "Uspješno ste promijenili ocjenu", "OK");
+                        await Application.Current.MainPage.Navigation.PopAsync();
+                    }
+                }
+
             }
             catch (Exception)
             {
@@ -185,8 +221,6 @@ namespace eProdaja.MobileApp.ViewModels
                 _tipovi.Add(tip);
                 SelectedTip = tip;
             }
-
-
         }
 
         public async Task Ukloni()

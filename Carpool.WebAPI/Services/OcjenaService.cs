@@ -10,12 +10,18 @@ using System.Threading.Tasks;
 
 namespace Carpool.WebAPI.Services
 {
-    public class OcjenaService : BaseCRUDService<Model.Ocjene, OcjenaSearchRequest, Database.Ocjene, OcjenaUpsertRequest, OcjenaUpsertRequest>
+    public class OcjenaService : BaseCRUDService<Model.Ocjene, OcjenaSearchRequest, Database.Ocjene, OcjenaUpsertRequest, OcjenaUpsertRequest>, IOcjenaService
     {
         private readonly IHttpContextAccessor _httpContext;
         public OcjenaService(CarpoolContext context, IMapper mapper, IHttpContextAccessor httpContext) : base(context, mapper)
         {
             _httpContext = httpContext;
+        }
+
+        public Model.Ocjene GetByKorisnik(int korisnikID, int voznjaID)
+        {
+            var getOcjene = _context.Ocjene.Where(o => o.KorisnikID == korisnikID && o.VoznjaID == voznjaID).FirstOrDefault();
+            return _mapper.Map<Model.Ocjene>(getOcjene);
         }
 
         public override List<Model.Ocjene> Get(OcjenaSearchRequest request)

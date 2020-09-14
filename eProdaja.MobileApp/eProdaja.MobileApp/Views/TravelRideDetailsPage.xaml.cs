@@ -27,6 +27,8 @@ namespace eProdaja.MobileApp.Views
         {
             await model.Init((int)RezervacijaID);
             await model.LoadTipovi();
+
+            await model.LoadOcjena();
         }
     }
 }

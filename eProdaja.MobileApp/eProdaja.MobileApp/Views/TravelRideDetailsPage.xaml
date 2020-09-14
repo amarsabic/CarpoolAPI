@@ -41,15 +41,15 @@
                     <Label Text="Vrijeme polaska:"></Label>
                     <Label FontAttributes="Bold" Text="{Binding VrijemePolaska}"></Label>
                 </StackLayout>
-                <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" IsVisible="{Binding UkloniVisible}">
                     <Label Text="Slobodna mjesta:"></Label>
                     <Label FontAttributes="Bold" Text="{Binding SlobodnaMjesta}"></Label>
                 </StackLayout>
                 <Button  Command="{Binding UkloniCommand}" Text="Ukloni rezervaciju" IsVisible="{Binding UkloniVisible}"></Button>
             </StackLayout>
-            <StackLayout HorizontalOptions="CenterAndExpand" Margin="0, 20, 0, 0"  IsVisible="{Binding OcjenaVisible}">
-                <Label Text="Ocjene korisnika:"></Label>
-     
+            <StackLayout HorizontalOptions="FillAndExpand" Padding="50, 20, 50, 20"  IsVisible="{Binding OcjenaVisible}">
+                <Label Text="Ocjena:"   FontSize="15"
+                                       FontAttributes="Bold"></Label>
     
                 <Picker ItemsSource="{Binding TipOcjene}"
                         ItemDisplayBinding="{Binding Ocjena}"

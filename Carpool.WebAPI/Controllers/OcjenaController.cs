@@ -14,5 +14,11 @@ namespace Carpool.WebAPI.Controllers
         public OcjenaController(ICRUDService<Ocjene, OcjenaSearchRequest, OcjenaUpsertRequest, OcjenaUpsertRequest> service) : base(service)
         {
         }
+
+        [HttpGet("getbykorisnik")]
+        public Model.Ocjene GetByKorisnik(int korisnik, int voznja)
+        {
+            return (_service as IOcjenaService).GetByKorisnik(korisnik, voznja);
+        }
     }
 }

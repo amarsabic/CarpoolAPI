@@ -8,6 +8,7 @@ namespace Carpool.WebAPI.Services
 {
    public interface IOcjenaService: ICRUDService<Model.Ocjene, OcjenaSearchRequest, OcjenaUpsertRequest, OcjenaUpsertRequest>
     {
+        Model.Ocjene GetByKorisnik(int korisnikID, int voznjaID);
     }
 
 }
