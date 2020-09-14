@@ -12,39 +12,55 @@
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.Content>
-        <StackLayout Padding="50, 20, 50, 20">
-            <StackLayout Orientation="Horizontal">
-                <Label Text="Objavio/la"></Label>
-                <Label FontAttributes="Bold" Text="{Binding KorisnickoIme}"></Label>
-                <Label Text="{Binding DatumObjave}"></Label>
-            </StackLayout>
+        <StackLayout>
+            <StackLayout Padding="50, 20, 50, 20">
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Objavio/la"></Label>
+                    <Label FontAttributes="Bold" Text="{Binding KorisnickoIme}"></Label>
+                    <Label Text="{Binding DatumObjave}"></Label>
+                </StackLayout>
 
-            <Frame CornerRadius="20"
+                <Frame CornerRadius="20"
                                        Padding="0"
                                        IsClippedToBounds="True">
-                <Image Source="{Binding Slika, Converter={StaticResource imgConv}}"></Image>
-            </Frame>
-            <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
-                <Label FontAttributes="Bold" FontSize="20" Text="{Binding GradPolaska}"></Label>
-                <Image WidthRequest="30" HeightRequest="30" Source="icons8-arrow-64.png"></Image>
-                <Label FontAttributes="Bold" FontSize="20" Text="{Binding GradDestinacija}"></Label>
+                    <Image Source="{Binding Slika, Converter={StaticResource imgConv}}"></Image>
+                </Frame>
+                <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                    <Label FontAttributes="Bold" FontSize="20" Text="{Binding GradPolaska}"></Label>
+                    <Image WidthRequest="30" HeightRequest="30" Source="icons8-arrow-64.png"></Image>
+                    <Label FontAttributes="Bold" FontSize="20" Text="{Binding GradDestinacija}"></Label>
+                </StackLayout>
+                <StackLayout HorizontalOptions="Center">
+                    <Label FontAttributes="Bold" FontSize="20" Text="{Binding PunaCijenaPrikaz}"></Label>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                    <Label Text="Datum polaska:"></Label>
+                    <Label FontAttributes="Bold" Text="{Binding DatumPolaska}"></Label>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                    <Label Text="Vrijeme polaska:"></Label>
+                    <Label FontAttributes="Bold" Text="{Binding VrijemePolaska}"></Label>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                    <Label Text="Slobodna mjesta:"></Label>
+                    <Label FontAttributes="Bold" Text="{Binding SlobodnaMjesta}"></Label>
+                </StackLayout>
+                <Button  Command="{Binding UkloniCommand}" Text="Ukloni rezervaciju" IsVisible="{Binding UkloniVisible}"></Button>
             </StackLayout>
-            <StackLayout HorizontalOptions="Center">
-                <Label FontAttributes="Bold" FontSize="20" Text="{Binding PunaCijenaPrikaz}"></Label>
+            <StackLayout HorizontalOptions="CenterAndExpand" Margin="0, 20, 0, 0"  IsVisible="{Binding OcjenaVisible}">
+                <Label Text="Ocjene korisnika:"></Label>
+     
+    
+                <Picker ItemsSource="{Binding TipOcjene}"
+                        ItemDisplayBinding="{Binding Ocjena}"
+                        SelectedItem="{Binding SelectedTip}"></Picker>
+                <Label Text="Komentar:"></Label>
+                <Editor Placeholder="..."
+                        AutoSize="TextChanges"
+                        Text="{Binding Komentar}"></Editor>
+                <Button  Command="{Binding OcjenaCommand}" Text="Ocijeni"></Button>
             </StackLayout>
-            <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
-                <Label Text="Datum polaska:"></Label>
-                <Label FontAttributes="Bold" Text="{Binding DatumPolaska}"></Label>
-            </StackLayout>
-            <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
-                <Label Text="Vrijeme polaska:"></Label>
-                <Label FontAttributes="Bold" Text="{Binding VrijemePolaska}"></Label>
-            </StackLayout>
-            <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
-                <Label Text="Slobodna mjesta:"></Label>
-                <Label FontAttributes="Bold" Text="{Binding SlobodnaMjesta}"></Label>
-            </StackLayout>
-            <Button  Command="{Binding UkloniCommand}" Text="Ukloni rezervaciju" IsVisible="{Binding UkloniVisible}"></Button>
         </StackLayout>
+        
     </ContentPage.Content>
 </ContentPage>

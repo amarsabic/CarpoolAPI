@@ -27,6 +27,7 @@ namespace Carpool.WebAPI.Mappers
             CreateMap<Database.Obavijesti, Model.Obavijesti>();
             CreateMap<Database.Obavijesti, ObavijestiUpsertRequest>().ReverseMap();
             CreateMap<Database.TipObavijesti, Model.TipObavijesti>();
+            CreateMap<Database.TipOcjene, Model.TipOcjene>();
             CreateMap<Database.Grad, Model.Grad>().ReverseMap();
             CreateMap<Database.Vozac, Model.Vozac>();
             CreateMap<Database.Vozac, Model.Vozac>().ReverseMap();
@@ -35,6 +36,8 @@ namespace Carpool.WebAPI.Mappers
             CreateMap<Database.UsputniGradovi, UsputniGradoviUpsertRequest>().ReverseMap();
             CreateMap<Database.Rezervacija, RezervacijaUpsertRequest>().ReverseMap();
             CreateMap<Database.Rezervacija, Model.Rezervacija>().ReverseMap();
+            CreateMap<Database.Ocjene, OcjenaUpsertRequest>().ReverseMap();
+            CreateMap<Database.Ocjene, Model.Ocjene>().ReverseMap();
         }
     }
 }

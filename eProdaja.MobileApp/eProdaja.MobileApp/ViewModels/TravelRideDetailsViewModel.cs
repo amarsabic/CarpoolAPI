@@ -10,26 +10,65 @@ using Xamarin.Forms;
 
 namespace eProdaja.MobileApp.ViewModels
 {
-    public class TravelRideDetailsViewModel:BaseViewModel
+    public class TravelRideDetailsViewModel : BaseViewModel
     {
         private readonly APIService _automobili = new APIService("Automobil");
         private readonly APIService _voznja = new APIService("Voznja");
         private readonly APIService _rezervacija = new APIService("Rezervacija");
+        private readonly APIService _tipOcjene = new APIService("TipOcjene");
+        private readonly APIService _ocjena = new APIService("Ocjena");
         public TravelRideDetailsViewModel()
         {
             InitCommand = new Command(async (param) => await Init((int)param));
             UkloniCommand = new Command(async () => await Ukloni());
+            LoadCommand = new Command(async () => await LoadTipovi());
+            OcjenaCommand = new Command(async () => await Ocjena());
         }
 
         ObservableCollection<Grad> _UsputniGradovi = new ObservableCollection<Grad>();
 
         public int rezervacijaID;
+        public int ocjenaID;
+
+        ObservableCollection<TipOcjene> _tipovi = new ObservableCollection<TipOcjene>();
+        public ObservableCollection<TipOcjene> TipOcjene
+        {
+            get { return _tipovi; }
+            set { SetProperty(ref _tipovi, value); }
+        }
+        public string _komentar = null;
+        public string Komentar
+        {
+            get { return _komentar; }
+            set { SetProperty(ref _komentar, value); }
+        }
+
+        public bool _provjeraOcjene = false;
+        public bool ProvjeraOcjene
+        {
+            get { return _provjeraOcjene; }
+            set { SetProperty(ref _provjeraOcjene, value); }
+        }
+
+        private TipOcjene _selectedTip;
+        public TipOcjene SelectedTip
+        {
+            get { return _selectedTip; }
+            set { SetProperty(ref _selectedTip, value); }
+        }
 
         public bool _ukloniVisible;
         public bool UkloniVisible
         {
             get { return _ukloniVisible; }
             set { SetProperty(ref _ukloniVisible, value); }
+        }
+
+        public bool _ocjenaVisible;
+        public bool OcjenaVisible
+        {
+            get { return _ocjenaVisible; }
+            set { SetProperty(ref _ocjenaVisible, value); }
         }
 
         public ObservableCollection<Grad> UsputniGradovi
@@ -103,6 +142,52 @@ namespace eProdaja.MobileApp.ViewModels
         }
         public ICommand InitCommand { get; set; }
         public ICommand UkloniCommand { get; set; }
+        public ICommand LoadCommand { get; set; }
+        public ICommand OcjenaCommand { get; set; }
+
+        private async Task Ocjena()
+        {
+            var r = await _rezervacija.GetById<Rezervacija>(rezervacijaID);
+
+            var v = await _voznja.GetById<Voznja>(r.VoznjaID);
+
+            OcjenaUpsertRequest req = new OcjenaUpsertRequest
+            {
+                Komentar = Komentar,
+                KorisnikID = APIService.UserID,
+                TipOcjeneID = SelectedTip.TipOcjeneID,
+                VoznjaID = v.VoznjaID
+            };
+
+            try
+            {
+                var o = await _ocjena.Insert<Ocjene>(req);
+                if (o != null)
+                {
+                    await Application.Current.MainPage.DisplayAlert("Carpool", "Uspješno dodan komentar", "OK");
+                    await Application.Current.MainPage.Navigation.PopAsync();
+                }
+            }
+            catch (Exception)
+            {
+
+            }
+
+        }
+
+        public async Task LoadTipovi()
+        {
+            var result = await _tipOcjene.Get<List<TipOcjene>>(null);
+
+            _tipovi.Clear();
+            foreach (var tip in result)
+            {
+                _tipovi.Add(tip);
+                SelectedTip = tip;
+            }
+
+
+        }
 
         public async Task Ukloni()
         {
@@ -123,7 +208,7 @@ namespace eProdaja.MobileApp.ViewModels
             try
             {
                 var r = await _rezervacija.GetById<Rezervacija>(rezervacijaId);
-             
+
                 var v = await _voznja.GetById<Voznja>(r.VoznjaID);
 
                 var auto = await _automobili.GetById<Automobil>(v.AutomobilID);
@@ -146,6 +231,8 @@ namespace eProdaja.MobileApp.ViewModels
                 }
 
                 UkloniVisible = v.IsAktivna;
+                OcjenaVisible = !v.IsAktivna;
+
             }
             catch (Exception)
             {

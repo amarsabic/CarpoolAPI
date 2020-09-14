@@ -26,6 +26,7 @@ namespace eProdaja.MobileApp.Views
         protected async override void OnAppearing()
         {
             await model.Init((int)RezervacijaID);
+            await model.LoadTipovi();
         }
     }
 }

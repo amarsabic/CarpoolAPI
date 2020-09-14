@@ -17,28 +17,36 @@ namespace eProdaja.MobileApp.ViewModels
         private readonly APIService _voznja = new APIService("Voznja");
         private readonly APIService _rezervacija = new APIService("Rezervacija");
         private readonly APIService _korisnik = new APIService("Korisnik");
+        private readonly APIService _ocjena = new APIService("Ocjena");
         public RideDetailsViewModel()
         {
             InitCommand = new Command(async (param) => await Init((int)param));
             MainReservationCommand = new Command(async () => await MainReservation());
+            LoadOcjeneCommand = new Command(async () => await LoadOcjene());
             RouteCityReservationCommand = new Command(async (param) => await RouteCityReservation((int)param));
         }
 
         ObservableCollection<Grad> _UsputniGradovi = new ObservableCollection<Grad>();
+        ObservableCollection<Ocjene> _OcjeneList = new ObservableCollection<Ocjene>();
 
         public int voznjaID;
 
-        bool _isVisible=true;
+        bool _isVisible = true;
         public bool IsVisibleButton
         {
             get { return _isVisible; }
             set { SetProperty(ref _isVisible, value); }
-        } 
-       
+        }
+
         public ObservableCollection<Grad> UsputniGradovi
         {
             get { return _UsputniGradovi; }
             set { SetProperty(ref _UsputniGradovi, value); }
+        }
+        public ObservableCollection<Ocjene> OcjeneList
+        {
+            get { return _OcjeneList; }
+            set { SetProperty(ref _OcjeneList, value); }
         }
 
         public byte[] _slika = null;
@@ -107,6 +115,34 @@ namespace eProdaja.MobileApp.ViewModels
         public ICommand InitCommand { get; set; }
         public ICommand MainReservationCommand { get; set; }
         public ICommand RouteCityReservationCommand { get; set; }
+        public ICommand LoadOcjeneCommand { get; set; }
+
+        public async Task LoadOcjene()
+        {
+            try
+            {
+                OcjenaSearchRequest request = new OcjenaSearchRequest
+                {
+                    byVoznjaID = true,
+                    VoznjaID = voznjaID
+                };
+                var ocjene = await _ocjena.Get<List<Ocjene>>(request);
+
+                _OcjeneList.Clear();
+                if (ocjene.Count != 0)
+                {
+                    foreach (var o in ocjene)
+                    {
+                        _OcjeneList.Add(o);
+                    }
+                }
+            }
+            catch (Exception)
+            {
+
+            }
+        }
+
         public async Task RouteCityReservation(int usputniGradID)
         {
             try
@@ -139,7 +175,7 @@ namespace eProdaja.MobileApp.ViewModels
                 };
                 var x = await _rezervacija.Insert<Rezervacija>(request);
                 if (x != null)
-                { 
+                {
                     await Application.Current.MainPage.Navigation.PushModalAsync(new PaymentPage(voznjaID));
                 }
             }
@@ -153,7 +189,7 @@ namespace eProdaja.MobileApp.ViewModels
         {
             try
             {
-                
+
                 var v = await _voznja.GetById<Voznja>(voznjaId);
 
                 if (APIService.UserID == v.VozacID)

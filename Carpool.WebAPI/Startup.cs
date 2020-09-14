@@ -77,6 +77,7 @@ namespace Carpool.WebAPI
             services.AddScoped<IKorisnikService, KorisnikService>();
 
             services.AddScoped<ICRUDService<Model.Automobil, AutomobilSearchRequest, AutomobilInsertRequest, AutomobilInsertRequest>, AutomobilService>();
+            services.AddScoped<ICRUDService<Model.Ocjene, OcjenaSearchRequest, OcjenaUpsertRequest, OcjenaUpsertRequest>, OcjenaService>();
             services.AddScoped<ICRUDService<Model.Vozac, VozacSearchRequest, VozacUpsertRequest, VozacUpsertRequest>, VozacService>();
 
             services.AddScoped<ICRUDService<Model.Obavijesti, ObavijestiSearchRequest, ObavijestiUpsertRequest, ObavijestiUpsertRequest>, ObavijestService>();
@@ -86,6 +87,7 @@ namespace Carpool.WebAPI
             services.AddScoped<IService<Model.Uloge, object>, BaseService<Model.Uloge, object, Uloge>>();
 
             services.AddScoped<IService<Model.TipObavijesti, object>, BaseService<Model.TipObavijesti, object, TipObavijesti>>();
+            services.AddScoped<IService<Model.TipOcjene, object>, BaseService<Model.TipOcjene, object, TipOcjene>>();
             services.AddHttpContextAccessor();
             services.AddScoped<ICRUDService<Model.Voznja, VoznjaSearchRequest, VoznjaUspertRequest, VoznjaUspertRequest>, VoznjaService>();
             services.AddScoped<ICRUDService<Model.Rezervacija, RezervacijaSearchRequest, RezervacijaUpsertRequest, RezervacijaUpsertRequest>, RezervacijaService>();

@@ -25,6 +25,7 @@ namespace eProdaja.MobileApp.Views
         protected async override void OnAppearing()
         {
             await model.Init((int)VoznjaID);
+            await model.LoadOcjene();
         }
 
         private async void RouteCityReservation(object sender, SelectedItemChangedEventArgs e)

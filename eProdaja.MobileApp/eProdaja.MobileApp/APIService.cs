@@ -56,6 +56,29 @@ namespace eProdaja.MobileApp
             }
         }
 
+        public async Task<T> GetByKorisnik<T>(object search)
+        {
+            var url = $"{_apiUrl}/{_route}/{"getbykorisnik"}";
+
+            try
+            {
+                if (search != null)
+                {
+                    url += "?";
+                    url += await search.ToQueryString();
+                }
+                return await url.WithBasicAuth(Username, Password).GetJsonAsync<T>();
+            }
+            catch (FlurlHttpException ex)
+            {
+                if (ex.Call.HttpStatus == System.Net.HttpStatusCode.Unauthorized)
+                {
+                    await Application.Current.MainPage.DisplayAlert("Greška", "Pogrešan username ili password", "OK");
+                }
+                throw;
+            }
+        }
+
         public async Task<T> Recommend<T>()
         {
             var url = $"{_apiUrl}/{_route}/{"recommend"}";
