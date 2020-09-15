@@ -133,44 +133,43 @@ namespace eProdaja.MobileApp.ViewModels
 
         async Task Save()
         {
-            if (!Validate())
+            if (Validate())
             {
-                return;
-            }
-            var request = new ObavijestiUpsertRequest
-            {
-                Naslov = Naslov,
-                KratkiOpis = KratkiOpis,
-                DatumVrijemeObjave = DatumVrijemeObjave,
-                TipObavijestiID = SelectedTip.TipObavijestiID,
-                VozacID = vozacID
-            };
-
-            if (obavijestID != null)
-            {
-                try
+                var request = new ObavijestiUpsertRequest
                 {
-                    await _obavijestiService.Update<Obavijesti>(obavijestID, request);
-                    await Application.Current.MainPage.DisplayAlert("Carpool", "Uspješna izmjena", "OK");
+                    Naslov = Naslov,
+                    KratkiOpis = KratkiOpis,
+                    DatumVrijemeObjave = DatumVrijemeObjave,
+                    TipObavijestiID = SelectedTip.TipObavijestiID,
+                    VozacID = vozacID
+                };
 
-                    await Application.Current.MainPage.Navigation.PopAsync();
+                if (obavijestID != null)
+                {
+                    try
+                    {
+                        await _obavijestiService.Update<Obavijesti>(obavijestID, request);
+                        await Application.Current.MainPage.DisplayAlert("Carpool", "Uspješna izmjena", "OK");
+
+                        await Application.Current.MainPage.Navigation.PopAsync();
+                    }
+                    catch (Exception)
+                    {
+
+                    }
                 }
-                catch (Exception)
+                else
                 {
+                    try
+                    {
+                        await _obavijestiService.Insert<dynamic>(request);
+                        await Application.Current.MainPage.DisplayAlert("OK", "Uspješno objavljeno", "OK");
+                        await Application.Current.MainPage.Navigation.PopAsync();
+                    }
+                    catch (Exception)
+                    {
 
-                }
-            }
-            else
-            {
-                try
-                {
-                    await _obavijestiService.Insert<dynamic>(request);
-                    await Application.Current.MainPage.DisplayAlert("OK", "Uspješno objavljeno", "OK");
-                    await Application.Current.MainPage.Navigation.PopAsync();
-                }
-                catch (Exception)
-                {
-
+                    }
                 }
             }
         }

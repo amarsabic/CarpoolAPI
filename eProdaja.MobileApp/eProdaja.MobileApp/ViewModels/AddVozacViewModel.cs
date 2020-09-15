@@ -1,5 +1,6 @@
 ﻿using Carpool.Model;
 using Carpool.Model.Requests;
+using eProdaja.MobileApp.Views;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -68,31 +69,30 @@ namespace eProdaja.MobileApp.ViewModels
 
         async Task Save()
         {
-            if (!Validate())
+            if (Validate())
             {
-                return;
-            }
-            var request = new VozacUpsertRequest
-            {
-                BrVozackeDozvole = BrVozackeDozvole,
-                DatumIstekaVozackeDozvole = DatumIstekaVozackeDozvole
-            };
-
-            try
-            {
-                var vozac = await _vozac.Insert<Vozac>(request);
-                await Application.Current.MainPage.DisplayAlert("Carpool", "Postali ste vozač!", "OK");
-
-                if (vozac != null)
+                var request = new VozacUpsertRequest
                 {
-                    APIService.IsVozac = true;
+                    BrVozackeDozvole = BrVozackeDozvole,
+                    DatumIstekaVozackeDozvole = DatumIstekaVozackeDozvole
+                };
+
+                try
+                {
+                    var vozac = await _vozac.Insert<Vozac>(request);
+                    await Application.Current.MainPage.DisplayAlert("Carpool", "Postali ste vozač! Logirajte se ponovo!", "OK");
+
+                    if (vozac != null)
+                    {
+                        APIService.IsVozac = true;
+                    }
+
+                    Application.Current.MainPage = new NavigationPage(new LoginPage());
                 }
+                catch (Exception)
+                {
 
-                await Application.Current.MainPage.Navigation.PopAsync();
-            }
-            catch (Exception)
-            {
-
+                }
             }
         }
     }

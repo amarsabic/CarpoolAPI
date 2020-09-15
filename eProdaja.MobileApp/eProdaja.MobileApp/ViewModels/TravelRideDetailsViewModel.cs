@@ -147,6 +147,19 @@ namespace eProdaja.MobileApp.ViewModels
         public ICommand OcjenaCommand { get; set; }
         public ICommand LoadOcjenaCommand { get; set; }
 
+        public bool Validate()
+        {
+            if (string.IsNullOrWhiteSpace(Komentar))
+            {
+                Application.Current.MainPage.DisplayAlert("Greška", "Popunite sva polja!", "OK");
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+
 
         public async Task LoadOcjena()
         {
@@ -170,43 +183,45 @@ namespace eProdaja.MobileApp.ViewModels
 
         private async Task Ocjena()
         {
-            var r = await _rezervacija.GetById<Rezervacija>(rezervacijaID);
-
-            var v = await _voznja.GetById<Voznja>(r.VoznjaID);
-
-            OcjenaUpsertRequest req = new OcjenaUpsertRequest
+            if (Validate())
             {
-                Komentar = Komentar,
-                KorisnikID = APIService.UserID,
-                TipOcjeneID = SelectedTip.TipOcjeneID,
-                VoznjaID = v.VoznjaID
-            };
+                var r = await _rezervacija.GetById<Rezervacija>(rezervacijaID);
 
-            try
-            {
-                if (!_provjeraOcjene)
+                var v = await _voznja.GetById<Voznja>(r.VoznjaID);
+
+                OcjenaUpsertRequest req = new OcjenaUpsertRequest
                 {
-                    var o = await _ocjena.Insert<Ocjene>(req);
-                    if (o != null)
+                    Komentar = Komentar,
+                    KorisnikID = APIService.UserID,
+                    TipOcjeneID = SelectedTip.TipOcjeneID,
+                    VoznjaID = v.VoznjaID
+                };
+
+                try
+                {
+                    if (!_provjeraOcjene)
                     {
-                        await Application.Current.MainPage.DisplayAlert("Carpool", "Uspješno ste ocijenili vožnju", "OK");
-                        await Application.Current.MainPage.Navigation.PopAsync();
+                        var o = await _ocjena.Insert<Ocjene>(req);
+                        if (o != null)
+                        {
+                            await Application.Current.MainPage.DisplayAlert("Carpool", "Uspješno ste ocijenili vožnju", "OK");
+                            await Application.Current.MainPage.Navigation.PopAsync();
+                        }
+                    }
+                    else
+                    {
+                        var o = await _ocjena.Update<Ocjene>(ocjenaID, req);
+                        if (o != null)
+                        {
+                            await Application.Current.MainPage.DisplayAlert("Carpool", "Uspješno ste promijenili ocjenu", "OK");
+                            await Application.Current.MainPage.Navigation.PopAsync();
+                        }
                     }
                 }
-                else
+                catch (Exception)
                 {
-                    var o = await _ocjena.Update<Ocjene>(ocjenaID, req);
-                    if (o != null)
-                    {
-                        await Application.Current.MainPage.DisplayAlert("Carpool", "Uspješno ste promijenili ocjenu", "OK");
-                        await Application.Current.MainPage.Navigation.PopAsync();
-                    }
+
                 }
-
-            }
-            catch (Exception)
-            {
-
             }
 
         }

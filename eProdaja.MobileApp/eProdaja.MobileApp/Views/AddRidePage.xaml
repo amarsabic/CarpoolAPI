@@ -49,7 +49,7 @@
             <DatePicker Date="{Binding DatumPolaska}" MinimumDate="{Binding MinimumDate}"></DatePicker>
             <Label Text="Vrijeme polaska"></Label>
             <TimePicker Time="{Binding VrijemePolaska}"></TimePicker>
-          
+         
 
             <Picker Title="Automobil"
                         ItemsSource="{Binding Automobili}"

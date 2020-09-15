@@ -412,7 +412,7 @@
             this.panelAktivneVoznje.Controls.Add(this.pictureBox1);
             this.panelAktivneVoznje.Controls.Add(this.label4);
             this.panelAktivneVoznje.Controls.Add(this.labelBrojAktivnihVoznji);
-            this.panelAktivneVoznje.Location = new System.Drawing.Point(42, 25);
+            this.panelAktivneVoznje.Location = new System.Drawing.Point(42, 35);
             this.panelAktivneVoznje.Name = "panelAktivneVoznje";
             this.panelAktivneVoznje.Size = new System.Drawing.Size(280, 150);
             this.panelAktivneVoznje.TabIndex = 0;

@@ -70,6 +70,12 @@ namespace Carpool.WebAPI.Services
                     GradID = usputni.GradID
                 });
             }
+
+            _context.Voznje.Attach(entity);
+            _context.Voznje.Update(entity);
+
+            _mapper.Map(request, entity);
+
             _context.SaveChanges();
 
             return _mapper.Map<Model.Voznja>(entity);

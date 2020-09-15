@@ -298,6 +298,11 @@ namespace eProdaja.MobileApp.ViewModels
                 Application.Current.MainPage.DisplayAlert("Greška", "Usputni gradovi ne mogu sadržavati polazak i destinaciju!", "OK");
                 return false;
             }
+            else if (DatumPolaska < DateTime.Now)
+            {
+                Application.Current.MainPage.DisplayAlert("Greška", "Datum polaska ne može biti manji od trenutnog!", "OK");
+                return false;
+            }
             else
             {
                 return true;

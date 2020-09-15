@@ -134,6 +134,11 @@ namespace eProdaja.MobileApp.ViewModels
                 Application.Current.MainPage.DisplayAlert("Greška", "Odaberite datum isteka registracije!", "OK");
                 return false;
             }
+            else if (DatumIstekaRegistracije < DateTime.Now)
+            {
+                Application.Current.MainPage.DisplayAlert("Greška", "Vaša registracija je istekla!", "OK");
+                return false;
+            }
             else if (Slika == null)
             {
                 Application.Current.MainPage.DisplayAlert("Greška", "Obavezno dodavanje slike automobila!", "OK");
@@ -147,53 +152,52 @@ namespace eProdaja.MobileApp.ViewModels
 
         async Task Save()
         {
-            if (!Validate())
+            if (Validate())
             {
-                return;
-            }
-            var model = new AutomobilInsertRequest
-            {
-                BrojRegOznaka = BrojRegOznaka,
-                DatumIstekaRegistracije = DatumIstekaRegistracije,
-                Godiste = Godiste,
-                Model = Model,
-                Naziv = Naziv,
-                Slika=Slika,
-                SlikaThumb=SlikaThumb
-            };
-            if (automobilID != null)
-            {
-
-                try
+                var model = new AutomobilInsertRequest
                 {
-                    var a = await _automobilService.Update<Automobil>(automobilID, model);
-                    if (a != null)
-                    {
-                        await Application.Current.MainPage.DisplayAlert("Carpool", "Uspješna izmjena", "OK");
+                    BrojRegOznaka = BrojRegOznaka,
+                    DatumIstekaRegistracije = DatumIstekaRegistracije,
+                    Godiste = Godiste,
+                    Model = Model,
+                    Naziv = Naziv,
+                    Slika = Slika,
+                    SlikaThumb = SlikaThumb
+                };
+                if (automobilID != null)
+                {
 
-                        await Application.Current.MainPage.Navigation.PopAsync();
+                    try
+                    {
+                        var a = await _automobilService.Update<Automobil>(automobilID, model);
+                        if (a != null)
+                        {
+                            await Application.Current.MainPage.DisplayAlert("Carpool", "Uspješna izmjena", "OK");
+
+                            await Application.Current.MainPage.Navigation.PopAsync();
+                        }
+                    }
+                    catch (Exception)
+                    {
+
                     }
                 }
-                catch (Exception)
+                else
                 {
-
-                }
-            }
-            else
-            {
-                try
-                {
-                    var a = await _automobilService.Insert<Automobil>(model);
-                    if (a != null)
+                    try
                     {
-                        await Application.Current.MainPage.DisplayAlert("OK", "Uspješno dodavanje", "OK");
+                        var a = await _automobilService.Insert<Automobil>(model);
+                        if (a != null)
+                        {
+                            await Application.Current.MainPage.DisplayAlert("OK", "Uspješno dodavanje", "OK");
 
-                        await Application.Current.MainPage.Navigation.PopAsync();
+                            await Application.Current.MainPage.Navigation.PopAsync();
+                        }
                     }
-                }
-                catch (Exception)
-                {
+                    catch (Exception)
+                    {
 
+                    }
                 }
             }
         }
