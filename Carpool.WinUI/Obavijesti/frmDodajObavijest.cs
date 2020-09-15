@@ -22,29 +22,32 @@ namespace Carpool.WinUI.Obavijesti
 
         private async void btnDodaj_Click(object sender, EventArgs e)
         {
-            ObavijestiUpsertRequest request = new ObavijestiUpsertRequest();
-
-            var idTip = cmbTipObavijesti.SelectedValue;
-            if (idTip != null)
+            if (this.ValidateChildren())
             {
-                if (int.TryParse(idTip.ToString(), out int tipId))
+                ObavijestiUpsertRequest request = new ObavijestiUpsertRequest();
+
+                var idTip = cmbTipObavijesti.SelectedValue;
+                if (idTip != null)
                 {
-                    request.TipObavijestiID = tipId;
+                    if (int.TryParse(idTip.ToString(), out int tipId))
+                    {
+                        request.TipObavijestiID = tipId;
+                    }
+
+                    request.DatumVrijemeObjave = DateTime.Now;
+                    request.Naslov = txtNaslov.Text;
+                    request.KratkiOpis = rtxtSadrzaj.Text;
+
+
+                    await _obavijestiService.Insert<Model.Obavijesti>(request);
+
+                    MessageBox.Show("Uspješno dodana obavijest");
+                    this.Close();
                 }
-
-                request.DatumVrijemeObjave = DateTime.Now;
-                request.Naslov = txtNaslov.Text;
-                request.KratkiOpis = rtxtSadrzaj.Text;
-                 
-
-                await _obavijestiService.Insert<Model.Obavijesti>(request);
-
-                MessageBox.Show("Uspješno dodana obavijest");
-                this.Close();
-            }
-            else
-            {
-                MessageBox.Show("Odaberite tip");
+                else
+                {
+                    MessageBox.Show("Odaberite tip");
+                }
             }
         }
 
