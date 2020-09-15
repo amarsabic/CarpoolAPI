@@ -82,11 +82,5 @@ namespace Carpool.WinUI.Korisnici
             frmDodaj frm = new frmDodaj();
             frm.Show();
         }
-
-        private void btnPassword_Click(object sender, EventArgs e)
-        {
-            frmPassword frm = new frmPassword();
-            frm.Show();
-        }
     }
 }

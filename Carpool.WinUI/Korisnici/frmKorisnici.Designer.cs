@@ -42,7 +42,6 @@
             this.Email = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.IsVozac = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.btnPassword = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvKorisnici)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -95,7 +94,6 @@
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.btnPassword);
             this.panel1.Controls.Add(this.btnDodaj);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.btnPrikazi);
@@ -113,7 +111,7 @@
             this.btnDodaj.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDodaj.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDodaj.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnDodaj.Location = new System.Drawing.Point(455, 29);
+            this.btnDodaj.Location = new System.Drawing.Point(619, 29);
             this.btnDodaj.Name = "btnDodaj";
             this.btnDodaj.Size = new System.Drawing.Size(148, 34);
             this.btnDodaj.TabIndex = 5;
@@ -195,21 +193,6 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Korisnici";
             // 
-            // btnPassword
-            // 
-            this.btnPassword.BackColor = System.Drawing.Color.DarkGray;
-            this.btnPassword.FlatAppearance.BorderSize = 0;
-            this.btnPassword.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPassword.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnPassword.Location = new System.Drawing.Point(619, 29);
-            this.btnPassword.Name = "btnPassword";
-            this.btnPassword.Size = new System.Drawing.Size(148, 34);
-            this.btnPassword.TabIndex = 32;
-            this.btnPassword.Text = "Promijeni password";
-            this.btnPassword.UseVisualStyleBackColor = false;
-            this.btnPassword.Click += new System.EventHandler(this.btnPassword_Click);
-            // 
             // frmKorisnici
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -245,6 +228,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Email;
         private System.Windows.Forms.DataGridViewCheckBoxColumn IsVozac;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Button btnPassword;
     }
 }

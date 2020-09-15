@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(HomePage));
             this.panelMenu = new System.Windows.Forms.Panel();
+            this.profilePicture = new System.Windows.Forms.PictureBox();
             this.btnIzvjestaji = new System.Windows.Forms.Button();
             this.btnVoznje = new System.Windows.Forms.Button();
             this.panelLogo = new System.Windows.Forms.Panel();
@@ -58,7 +59,11 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label4 = new System.Windows.Forms.Label();
             this.labelBrojAktivnihVoznji = new System.Windows.Forms.Label();
+            this.btnDodaj = new System.Windows.Forms.Button();
+            this.btnPassword = new System.Windows.Forms.Button();
+            this.btnLogout = new System.Windows.Forms.Button();
             this.panelMenu.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.profilePicture)).BeginInit();
             this.panelLogo.SuspendLayout();
             this.panelTitleBar.SuspendLayout();
             this.panelDesktopPanel.SuspendLayout();
@@ -74,7 +79,11 @@
             // panelMenu
             // 
             this.panelMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(19)))), ((int)(((byte)(19)))), ((int)(((byte)(19)))));
+            this.panelMenu.Controls.Add(this.btnLogout);
+            this.panelMenu.Controls.Add(this.btnPassword);
+            this.panelMenu.Controls.Add(this.profilePicture);
             this.panelMenu.Controls.Add(this.btnIzvjestaji);
+            this.panelMenu.Controls.Add(this.btnDodaj);
             this.panelMenu.Controls.Add(this.btnVoznje);
             this.panelMenu.Controls.Add(this.panelLogo);
             this.panelMenu.Controls.Add(this.btnKorisnici);
@@ -83,8 +92,16 @@
             this.panelMenu.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelMenu.Location = new System.Drawing.Point(0, 0);
             this.panelMenu.Name = "panelMenu";
-            this.panelMenu.Size = new System.Drawing.Size(260, 686);
+            this.panelMenu.Size = new System.Drawing.Size(260, 691);
             this.panelMenu.TabIndex = 0;
+            // 
+            // profilePicture
+            // 
+            this.profilePicture.Location = new System.Drawing.Point(41, 126);
+            this.profilePicture.Name = "profilePicture";
+            this.profilePicture.Size = new System.Drawing.Size(166, 135);
+            this.profilePicture.TabIndex = 7;
+            this.profilePicture.TabStop = false;
             // 
             // btnIzvjestaji
             // 
@@ -94,7 +111,7 @@
             this.btnIzvjestaji.ForeColor = System.Drawing.Color.Gainsboro;
             this.btnIzvjestaji.Image = ((System.Drawing.Image)(resources.GetObject("btnIzvjestaji.Image")));
             this.btnIzvjestaji.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnIzvjestaji.Location = new System.Drawing.Point(0, 327);
+            this.btnIzvjestaji.Location = new System.Drawing.Point(3, 611);
             this.btnIzvjestaji.Name = "btnIzvjestaji";
             this.btnIzvjestaji.Padding = new System.Windows.Forms.Padding(11, 0, 0, 0);
             this.btnIzvjestaji.Size = new System.Drawing.Size(260, 41);
@@ -113,7 +130,7 @@
             this.btnVoznje.ForeColor = System.Drawing.Color.Gainsboro;
             this.btnVoznje.Image = ((System.Drawing.Image)(resources.GetObject("btnVoznje.Image")));
             this.btnVoznje.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnVoznje.Location = new System.Drawing.Point(-3, 139);
+            this.btnVoznje.Location = new System.Drawing.Point(0, 423);
             this.btnVoznje.Name = "btnVoznje";
             this.btnVoznje.Padding = new System.Windows.Forms.Padding(11, 0, 0, 0);
             this.btnVoznje.Size = new System.Drawing.Size(260, 41);
@@ -167,7 +184,7 @@
             this.btnKorisnici.ForeColor = System.Drawing.Color.Gainsboro;
             this.btnKorisnici.Image = ((System.Drawing.Image)(resources.GetObject("btnKorisnici.Image")));
             this.btnKorisnici.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnKorisnici.Location = new System.Drawing.Point(0, 280);
+            this.btnKorisnici.Location = new System.Drawing.Point(3, 564);
             this.btnKorisnici.Name = "btnKorisnici";
             this.btnKorisnici.Padding = new System.Windows.Forms.Padding(11, 0, 0, 0);
             this.btnKorisnici.Size = new System.Drawing.Size(260, 41);
@@ -186,7 +203,7 @@
             this.btnAutomobili.ForeColor = System.Drawing.Color.Gainsboro;
             this.btnAutomobili.Image = ((System.Drawing.Image)(resources.GetObject("btnAutomobili.Image")));
             this.btnAutomobili.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAutomobili.Location = new System.Drawing.Point(0, 233);
+            this.btnAutomobili.Location = new System.Drawing.Point(3, 517);
             this.btnAutomobili.Name = "btnAutomobili";
             this.btnAutomobili.Padding = new System.Windows.Forms.Padding(11, 0, 0, 0);
             this.btnAutomobili.Size = new System.Drawing.Size(260, 41);
@@ -205,7 +222,7 @@
             this.btnObavijesti.ForeColor = System.Drawing.Color.Gainsboro;
             this.btnObavijesti.Image = ((System.Drawing.Image)(resources.GetObject("btnObavijesti.Image")));
             this.btnObavijesti.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnObavijesti.Location = new System.Drawing.Point(0, 186);
+            this.btnObavijesti.Location = new System.Drawing.Point(3, 470);
             this.btnObavijesti.Name = "btnObavijesti";
             this.btnObavijesti.Padding = new System.Windows.Forms.Padding(11, 0, 0, 0);
             this.btnObavijesti.Size = new System.Drawing.Size(260, 41);
@@ -310,7 +327,7 @@
             this.panelDesktopPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelDesktopPanel.Location = new System.Drawing.Point(260, 104);
             this.panelDesktopPanel.Name = "panelDesktopPanel";
-            this.panelDesktopPanel.Size = new System.Drawing.Size(1006, 582);
+            this.panelDesktopPanel.Size = new System.Drawing.Size(1006, 587);
             this.panelDesktopPanel.TabIndex = 2;
             // 
             // pictureBox4
@@ -448,17 +465,63 @@
             this.labelBrojAktivnihVoznji.TabIndex = 1;
             this.labelBrojAktivnihVoznji.Text = "23";
             // 
+            // btnDodaj
+            // 
+            this.btnDodaj.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.btnDodaj.FlatAppearance.BorderSize = 0;
+            this.btnDodaj.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDodaj.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDodaj.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnDodaj.Location = new System.Drawing.Point(50, 280);
+            this.btnDodaj.Name = "btnDodaj";
+            this.btnDodaj.Size = new System.Drawing.Size(148, 31);
+            this.btnDodaj.TabIndex = 10;
+            this.btnDodaj.Text = "Uredi profil";
+            this.btnDodaj.UseVisualStyleBackColor = false;
+            this.btnDodaj.Click += new System.EventHandler(this.btnDodaj_Click);
+            // 
+            // btnPassword
+            // 
+            this.btnPassword.BackColor = System.Drawing.Color.DarkGray;
+            this.btnPassword.FlatAppearance.BorderSize = 0;
+            this.btnPassword.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPassword.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnPassword.Location = new System.Drawing.Point(50, 317);
+            this.btnPassword.Name = "btnPassword";
+            this.btnPassword.Size = new System.Drawing.Size(148, 31);
+            this.btnPassword.TabIndex = 33;
+            this.btnPassword.Text = "Promijeni password";
+            this.btnPassword.UseVisualStyleBackColor = false;
+            this.btnPassword.Click += new System.EventHandler(this.btnPassword_Click);
+            // 
+            // btnLogout
+            // 
+            this.btnLogout.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(19)))), ((int)(((byte)(19)))), ((int)(((byte)(19)))));
+            this.btnLogout.FlatAppearance.BorderSize = 0;
+            this.btnLogout.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnLogout.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLogout.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnLogout.Location = new System.Drawing.Point(50, 359);
+            this.btnLogout.Name = "btnLogout";
+            this.btnLogout.Size = new System.Drawing.Size(148, 31);
+            this.btnLogout.TabIndex = 34;
+            this.btnLogout.Text = "Odjavi se";
+            this.btnLogout.UseVisualStyleBackColor = false;
+            this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
+            // 
             // HomePage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1266, 686);
+            this.ClientSize = new System.Drawing.Size(1266, 691);
             this.Controls.Add(this.panelDesktopPanel);
             this.Controls.Add(this.panelTitleBar);
             this.Controls.Add(this.panelMenu);
             this.Name = "HomePage";
             this.Text = "HomePage";
             this.panelMenu.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.profilePicture)).EndInit();
             this.panelLogo.ResumeLayout(false);
             this.panelLogo.PerformLayout();
             this.panelTitleBar.ResumeLayout(false);
@@ -509,5 +572,9 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label labelAutomobil;
         private System.Windows.Forms.PictureBox pictureBox4;
+        private System.Windows.Forms.PictureBox profilePicture;
+        private System.Windows.Forms.Button btnDodaj;
+        private System.Windows.Forms.Button btnPassword;
+        private System.Windows.Forms.Button btnLogout;
     }
 }

@@ -53,11 +53,11 @@
             this.GradPolaska,
             this.GradDestinacija,
             this.UsputniGradNaziv});
-            this.dgvRezervacije.Location = new System.Drawing.Point(13, 169);
+            this.dgvRezervacije.Location = new System.Drawing.Point(13, 92);
             this.dgvRezervacije.Name = "dgvRezervacije";
             this.dgvRezervacije.ReadOnly = true;
             this.dgvRezervacije.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvRezervacije.Size = new System.Drawing.Size(1151, 425);
+            this.dgvRezervacije.Size = new System.Drawing.Size(752, 425);
             this.dgvRezervacije.TabIndex = 0;
             this.dgvRezervacije.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.dgvRezervacije_MouseDoubleClick);
             // 
@@ -112,19 +112,24 @@
             // 
             // btnPrint
             // 
-            this.btnPrint.Location = new System.Drawing.Point(1046, 108);
+            this.btnPrint.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(136)))), ((int)(((byte)(169)))));
+            this.btnPrint.FlatAppearance.BorderSize = 0;
+            this.btnPrint.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPrint.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPrint.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnPrint.Location = new System.Drawing.Point(13, 32);
             this.btnPrint.Name = "btnPrint";
             this.btnPrint.Size = new System.Drawing.Size(118, 43);
             this.btnPrint.TabIndex = 1;
             this.btnPrint.Text = "Printaj rezervaciju";
-            this.btnPrint.UseVisualStyleBackColor = true;
+            this.btnPrint.UseVisualStyleBackColor = false;
             this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click);
             // 
             // frmRezervacije
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1176, 606);
+            this.ClientSize = new System.Drawing.Size(781, 533);
             this.Controls.Add(this.btnPrint);
             this.Controls.Add(this.dgvRezervacije);
             this.Name = "frmRezervacije";

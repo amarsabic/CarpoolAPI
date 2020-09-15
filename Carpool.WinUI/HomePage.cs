@@ -10,6 +10,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
@@ -35,6 +36,7 @@ namespace Carpool.WinUI
             this.Text = string.Empty;
             this.ControlBox = false;
 
+            GetProfilePicture();
             GetBrojAktivnihVoznji();
             GetBrojAutomobila();
             GetBrojKorisnika();
@@ -44,6 +46,27 @@ namespace Carpool.WinUI
         private extern static void ReleaseCapture();
         [DllImport("user32.DLL", EntryPoint = "SendMessage")]
         private extern static void SendMessage(System.IntPtr hWnd, int wMsg, int wParam, int lParam);
+
+        public static Bitmap ByteToImage(byte[] blob)
+        {
+            MemoryStream mStream = new MemoryStream();
+            byte[] pData = blob;
+            mStream.Write(pData, 0, Convert.ToInt32(pData.Length));
+            Bitmap bm = new Bitmap(mStream, false);
+            mStream.Dispose();
+            return bm;
+        }
+
+        private async void GetProfilePicture()
+        {
+            var k = await _korisnici.GetById<Model.Korisnik>(APIService.UserID);
+
+            if (k.Slika.Length != 0)
+            {
+                profilePicture.Image = ByteToImage(k.Slika);
+                profilePicture.SizeMode = PictureBoxSizeMode.StretchImage;
+            }
+        }
 
         private async void GetBrojAktivnihVoznji()
         {
@@ -100,7 +123,7 @@ namespace Carpool.WinUI
         {
             foreach (Control previousBtn in panelMenu.Controls)
             {
-                if (previousBtn.GetType() == typeof(Button))
+                if (previousBtn.GetType() == typeof(Button) && previousBtn.Name!="btnDodaj" && previousBtn.Name!= "btnPassword" && previousBtn.Name!= "btnLogout")
                 {
                     previousBtn.BackColor = Color.FromArgb(19, 19, 19);
                     previousBtn.ForeColor = Color.Gainsboro;
@@ -136,12 +159,6 @@ namespace Carpool.WinUI
             OpenChildForm(frm, sender);
         }
 
-        //private void btnRezervacije_Click(object sender, EventArgs e)
-        //{
-        //    frmRezervacije frm = new frmRezervacije(null);
-        //    frm.TopLevel = false;
-        //    OpenChildForm(frm, sender);
-        //}
 
         private void btnObavijesti_Click(object sender, EventArgs e)
         {
@@ -210,6 +227,23 @@ namespace Carpool.WinUI
         {
             ReleaseCapture();
             SendMessage(this.Handle, 0x112, 0xf012, 0);
+        }
+
+        private void btnDodaj_Click(object sender, EventArgs e)
+        {
+            frmDodaj frm = new frmDodaj(APIService.UserID);
+            frm.Show();
+        }
+
+        private void btnPassword_Click(object sender, EventArgs e)
+        {
+            frmPassword frm = new frmPassword();
+            frm.Show();
+        }
+
+        private void btnLogout_Click(object sender, EventArgs e)
+        {
+            Application.Restart();
         }
     }
 }

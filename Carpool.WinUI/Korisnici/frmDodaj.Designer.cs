@@ -53,7 +53,12 @@
             this.btnPrint = new System.Windows.Forms.Button();
             this.dtmDatumRodjenja = new System.Windows.Forms.DateTimePicker();
             this.label13 = new System.Windows.Forms.Label();
+            this.profilePicture = new System.Windows.Forms.PictureBox();
+            this.btnDodajSliku = new System.Windows.Forms.Button();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.txtSlika = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.profilePicture)).BeginInit();
             this.SuspendLayout();
             // 
             // txtIme
@@ -149,7 +154,7 @@
             this.btnSpremi.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSpremi.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSpremi.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnSpremi.Location = new System.Drawing.Point(58, 349);
+            this.btnSpremi.Location = new System.Drawing.Point(51, 582);
             this.btnSpremi.Name = "btnSpremi";
             this.btnSpremi.Size = new System.Drawing.Size(370, 29);
             this.btnSpremi.TabIndex = 14;
@@ -202,7 +207,7 @@
             this.btnObrisiKorisnika.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnObrisiKorisnika.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnObrisiKorisnika.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnObrisiKorisnika.Location = new System.Drawing.Point(271, 384);
+            this.btnObrisiKorisnika.Location = new System.Drawing.Point(264, 617);
             this.btnObrisiKorisnika.Name = "btnObrisiKorisnika";
             this.btnObrisiKorisnika.Size = new System.Drawing.Size(157, 29);
             this.btnObrisiKorisnika.TabIndex = 23;
@@ -251,7 +256,7 @@
             this.btnPrint.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnPrint.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnPrint.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnPrint.Location = new System.Drawing.Point(58, 384);
+            this.btnPrint.Location = new System.Drawing.Point(51, 617);
             this.btnPrint.Name = "btnPrint";
             this.btnPrint.Size = new System.Drawing.Size(157, 29);
             this.btnPrint.TabIndex = 28;
@@ -275,11 +280,48 @@
             this.label13.TabIndex = 30;
             this.label13.Text = "Datum rođenja";
             // 
+            // profilePicture
+            // 
+            this.profilePicture.Location = new System.Drawing.Point(25, 306);
+            this.profilePicture.Name = "profilePicture";
+            this.profilePicture.Size = new System.Drawing.Size(200, 133);
+            this.profilePicture.TabIndex = 31;
+            this.profilePicture.TabStop = false;
+            // 
+            // btnDodajSliku
+            // 
+            this.btnDodajSliku.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.btnDodajSliku.FlatAppearance.BorderSize = 0;
+            this.btnDodajSliku.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDodajSliku.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDodajSliku.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnDodajSliku.Location = new System.Drawing.Point(25, 480);
+            this.btnDodajSliku.Name = "btnDodajSliku";
+            this.btnDodajSliku.Size = new System.Drawing.Size(200, 29);
+            this.btnDodajSliku.TabIndex = 32;
+            this.btnDodajSliku.Text = "Dodaj sliku";
+            this.btnDodajSliku.UseVisualStyleBackColor = false;
+            this.btnDodajSliku.Click += new System.EventHandler(this.btnDodajSliku_Click);
+            // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "openFileDialog1";
+            // 
+            // txtSlika
+            // 
+            this.txtSlika.Location = new System.Drawing.Point(25, 454);
+            this.txtSlika.Name = "txtSlika";
+            this.txtSlika.Size = new System.Drawing.Size(200, 20);
+            this.txtSlika.TabIndex = 33;
+            // 
             // frmDodaj
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(479, 450);
+            this.ClientSize = new System.Drawing.Size(479, 673);
+            this.Controls.Add(this.txtSlika);
+            this.Controls.Add(this.btnDodajSliku);
+            this.Controls.Add(this.profilePicture);
             this.Controls.Add(this.label13);
             this.Controls.Add(this.dtmDatumRodjenja);
             this.Controls.Add(this.btnPrint);
@@ -308,6 +350,7 @@
             this.Text = "Korisnici";
             this.Load += new System.EventHandler(this.frmDodaj_Load);
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.profilePicture)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -339,5 +382,9 @@
         private System.Windows.Forms.Button btnPrint;
         private System.Windows.Forms.DateTimePicker dtmDatumRodjenja;
         private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.PictureBox profilePicture;
+        private System.Windows.Forms.Button btnDodajSliku;
+        private System.Windows.Forms.OpenFileDialog openFileDialog1;
+        private System.Windows.Forms.TextBox txtSlika;
     }
 }

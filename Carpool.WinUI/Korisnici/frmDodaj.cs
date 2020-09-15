@@ -34,24 +34,36 @@ namespace Carpool.WinUI.Korisnici
             }
         }
 
+        public static Bitmap ByteToImage(byte[] blob)
+        {
+            System.IO.MemoryStream mStream = new System.IO.MemoryStream();
+            byte[] pData = blob;
+            mStream.Write(pData, 0, Convert.ToInt32(pData.Length));
+            Bitmap bm = new Bitmap(mStream, false);
+            mStream.Dispose();
+            return bm;
+        }
+
+        KorisnikInsertRequest request = new KorisnikInsertRequest();
         private async void btnSpremi_Click(object sender, EventArgs e)
         {
             if (this.ValidateChildren())
             {
                 var roleList = clbUloge.CheckedItems.Cast<Model.Uloge>().Select(x => x.UlogaId).ToList();
 
-                var request = new KorisnikInsertRequest()
-                {
-                    Email = txtEmail.Text,
-                    BrojTelefona = txtTelefon.Text,
-                    Ime = txtIme.Text,
-                    Prezime = txtPrezime.Text,
-                    KorisnickoIme = txtKorisnickoIme.Text,
-                    Password = txtPass.Text,
-                    PasswordConfirmation = txtPassPotvrda.Text,
-                    Uloge=roleList,
-                    DatumRodjenja=dtmDatumRodjenja.Value
-                };
+                //var request = new KorisnikInsertRequest()
+                //{
+                request.Email = txtEmail.Text;
+                request.BrojTelefona = txtTelefon.Text;
+                request.Ime = txtIme.Text;
+                request.Prezime = txtPrezime.Text;
+                request.KorisnickoIme = txtKorisnickoIme.Text;
+                request.Password = txtPass.Text;
+                request.PasswordConfirmation = txtPassPotvrda.Text;
+                request.Uloge = roleList;
+                request.DatumRodjenja = dtmDatumRodjenja.Value;
+                //Slika=profilePicture
+                //};
 
                 if (cmbGrad.SelectedIndex == 0)
                 {
@@ -60,18 +72,18 @@ namespace Carpool.WinUI.Korisnici
                 }
 
                 var idGrad = cmbGrad.SelectedValue;
-               
+
 
                 if (int.TryParse(idGrad.ToString(), out int gradId))
                 {
                     request.GradID = gradId;
                 }
 
-             
+
                 Model.Korisnik entity = null;
                 if (_id.HasValue)
                 {
-                   entity = await _apiService.Update<Model.Korisnik>(_id.Value, request);
+                    entity = await _apiService.Update<Model.Korisnik>(_id.Value, request);
                 }
                 else
                 {
@@ -99,12 +111,17 @@ namespace Carpool.WinUI.Korisnici
                     txtKorisnickoIme.Text = korisnik.KorisnickoIme;
                     txtTelefon.Text = korisnik.BrojTelefona;
                     dtmDatumRodjenja.Value = korisnik.DatumRodjenja;
+                    if (korisnik.Slika.Length != 0)
+                    {
+                        profilePicture.Image = ByteToImage(korisnik.Slika);
+                        profilePicture.SizeMode = PictureBoxSizeMode.StretchImage;
+                    }
                 }
                 else
                 {
                     MessageBox.Show("Korisnik ne postoji ili je uklonjen!");
                     return;
-                }  
+                }
             }
 
             await LoadUloge();
@@ -125,11 +142,11 @@ namespace Carpool.WinUI.Korisnici
                 {
                     if (result[i].GradID == grad.GradID)
                     {
-                        cmbGrad.SelectedItem = result[i+1];
+                        cmbGrad.SelectedItem = result[i + 1];
                     }
                 }
             }
-         
+
             cmbGrad.DisplayMember = "Naziv";
             cmbGrad.ValueMember = "GradID";
         }
@@ -174,7 +191,7 @@ namespace Carpool.WinUI.Korisnici
                 errorProvider.SetError(txtTelefon, Properties.Resources.Validation_RequiredField);
                 e.Cancel = true;
             }
-            else if(!System.Text.RegularExpressions.Regex.IsMatch(txtTelefon.Text, "^[0-9]*$"))
+            else if (!System.Text.RegularExpressions.Regex.IsMatch(txtTelefon.Text, "^[0-9]*$"))
             {
                 errorProvider.SetError(txtTelefon, "Telefon može sadržavati samo brojeve");
             }
@@ -244,6 +261,26 @@ namespace Carpool.WinUI.Korisnici
             else
             {
                 errorProvider.SetError(txtKorisnickoIme, null);
+            }
+        }
+
+        private void btnDodajSliku_Click(object sender, EventArgs e)
+        {
+            var result = openFileDialog1.ShowDialog();
+
+            if (result == DialogResult.OK)
+            {
+                var fileName = openFileDialog1.FileName;
+
+                var file = System.IO.File.ReadAllBytes(fileName);
+
+                request.Slika = file;
+                request.SlikaThumb = file;
+
+                txtSlika.Text = fileName;
+
+                Image image = Image.FromFile(fileName);
+                profilePicture.Image = image;
             }
         }
     }
