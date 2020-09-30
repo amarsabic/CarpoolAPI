@@ -17,11 +17,11 @@
 ```sh
 git clone https://github.com/amarsabic/CarpoolAPI.git
 ```
-3. Install Docker Desktop 
+2. Install Docker Desktop 
 ```sh
 https://www.docker.com/products/docker-desktop
 ```
-4. Open project folder and run command prompt 
+3. Open project folder and run command prompt 
 ```JS
 docker-compose build
 ```
